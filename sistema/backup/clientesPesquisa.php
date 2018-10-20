@@ -39,7 +39,7 @@
 			<!-- nav -->
 		</header>
 		<!-- /#menu -->
-		<?php include "menu.htm";?>
+		<?php include "menu.html";?>
 		<!-- /#menu -->
 
 		<div class="content-wrapper">

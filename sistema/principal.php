@@ -19,7 +19,6 @@
 				<span class="logo-mini">CW</span>
 					<span ><?php //title();?></span>
 			</a>
-			<!-- nav -->
 			<nav class="navbar navbar-static-top">
 				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
 					<span class="sr-only">Toggle navigation</span>
@@ -28,49 +27,38 @@
 					<p class="text-white">Olá!  !!!</p>
 				</div>
 			</nav>
-			<!-- nav -->
 		</header>
-		<!-- /#menu -->
-            <?php include "menu.htm";?>
-        <!-- /#menu -->
+            <?php include "menu.html";?>
 
 		<div class="content-wrapper">
 			<section class="content-header">
 		<! #mensagem >
 			</section>
 			<section class="content">
-				<!-- Your Page Content Here -->
 				<form id="FrmMain" runat="server">
 					<asp:Label ID="LbIdEscola" runat="server" Visible="false" Text="Label"></asp:Label>
-					<!-- MODAL AREA -->
-
-					<!-- MODAL AREA -->
-
-					<!-- CONTEÚDO DA PÁGINA -->
-
 					<table class="table">
 						<thead>
 							<tr>
 								<td colspan="2">
-									<!-- Content -->
 									<div class="row">
 										<div class="col-md-12">
 											<div class="box">
 												<div class="box-header with-border">
 													<h3 class="box-title">Principal</h3>
-												</div><!-- /.box-header -->
+												</div>
 												Informações que deseja deixar na área principal.
-											</div><!-- /.box -->
+											</div>
 
-										</div><!-- /.col -->
+										</div>
 									</div>
-									<!-- Content -->
+									
 
 								</td>
 							</tr>
 						</thead>
 					</table>
-					<!-- CONTEÚDO DA PÁGINA -->
+					
 				</form>
 			</section>
 		</div>
@@ -82,7 +70,7 @@
 		</footer>
 		<div class="control-sidebar-bg"></div>
 	</div>
-	<!-- Optional JavaScript -->
+	
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>

@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-<?php
-//include "../resources/resources.php";
-?>
-=======
 <?php //include "../resources/resources.php"; ?>
->>>>>>> bc5d8db9592aa3d793109329d12f78d566abcdeb
 <html>
 <head>
   <meta charset="utf-8">
@@ -33,14 +27,7 @@
         </tr>
       </nav>
     </header>
-<<<<<<< HEAD
-    <!-- /#menu -->
-    <?php //include "menu.htm";?>
-    <!-- /#menu -->
-
-=======
-    <?php include("menu.html"); ?>
->>>>>>> bc5d8db9592aa3d793109329d12f78d566abcdeb
+    <?php include "menu.html";?>
     <div class="content-wrapper">
       <section class="content">
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -64,11 +51,11 @@
         </div>
 <div class="container-fluid">
 <div class="table">
-
-      <div id="titulo">Dados Confirmação</div>
-
+    <div id="titulo">Dados Confirmação</div>
     <div>
-      <div class="col-md-12 col-sm-12 col-xs-12"><input type="text" class="form-control" placeholder="Confirmação Nº" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div></br>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <input type="text" class="form-control" placeholder="Confirmação Nº" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div></br>
     </div>
 
       <div id="titulo">Dados do Vendedor</div>
@@ -249,6 +236,7 @@
 <div class="control-sidebar-bg"></div>
 </div>
 <!-- Optional JavaScript -->
+<script src="../bootstrap/js/app.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -256,7 +244,6 @@ crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4="
 crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-      <script src="../bootstrap/js/app.min.js"></script>
 
 </body>
 </html>

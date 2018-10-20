@@ -27,18 +27,10 @@
 					<p class="text-white"><!-- Mensagens --></p>
 				</div>
 			</nav>
-			<!-- nav -->
 		</header>
-		<!-- /#menu -->
 		<?php include "menu.html";?>
-		<!-- /#menu -->
-
 		<div class="content-wrapper">
 			<section class="content">
-				<!-- Your Page Content Here -->
-				<!-- MODAL AREA -->
-
-				<!-- Modal -->
 				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -70,10 +62,18 @@
       <td>Dados Básicos</td>
     </tr>
     <tr>
-      <td><input type="text" class="form-control" placeholder="Razão Social" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control col-xs-3" placeholder="Cnpj" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control col-xs-3" placeholder="I. Estadual" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td></td>
+      <td>
+        <input type="text" class="form-control" placeholder="Razão Social" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </td>
+      <td>
+        <input type="text" class="form-control col-xs-3" placeholder="Cnpj" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </td>
+      <td>
+        <input type="text" class="form-control col-xs-3" placeholder="I. Estadual" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </td>
+      <td>
+
+      </td>
     </tr>
     <tr>
       <td>Contatos</td>

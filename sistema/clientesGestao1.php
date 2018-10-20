@@ -1,4 +1,4 @@
-<?php include "../resources/security.php";?>
+<?php //include "../resources/security.php";?>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -30,7 +30,7 @@
 			<!-- nav -->
 		</header>
 		<!-- /#menu -->
-		<?php include "menu.htm";?>
+		<?php include "menu.html";?>
 		<!-- /#menu -->
 
 		<div class="content-wrapper">
@@ -140,7 +140,7 @@
 	<div class="pull-right hidden-xs">
 		<i class="fab fa-optin-monster"></i>
 	</div>
-	Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php mostraIP();?>
+	Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php //mostraIP();?>
 </footer>
 <div class="control-sidebar-bg"></div>
 </div>

@@ -1,21 +1,14 @@
-<?php
-include "../resources/resources.php"; 
-?>
+<?php //include "../resources/resources.php"; ?>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Ceagro | Web</title>
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-  name="viewport">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
   <link rel="stylesheet" href="../bootstrap/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../bootstrap/css/skins/skin-blue.min.css">
-  <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -33,18 +26,10 @@ include "../resources/resources.php";
           <p class="text-white"><!-- Mensagens --></p>
         </tr>
       </nav>
-      <!-- nav -->
     </header>
-    <!-- /#menu -->
-    <?php include("menu.htm"); ?>
-    <!-- /#menu -->
-    
+    <?php include("menu.html"); ?>
     <div class="content-wrapper">
       <section class="content">
-        <!-- Your Page Content Here -->
-        <!-- MODAL AREA -->
-
-        <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -64,13 +49,7 @@ include "../resources/resources.php";
             </div>
           </div>
         </div>
-
-        <!-- MODAL AREA -->
-
-<!-- CONTEÚDO DA PÁGINA -->
-
 <div class="container-fluid">
-
 <div class="table">
 	
       <div id="titulo">Dados Confirmação</div>

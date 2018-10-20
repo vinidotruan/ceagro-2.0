@@ -1,21 +1,21 @@
 <?php
-   include "../resources/resources.php"; 
-    include "../resources/security.php"; 
+//    include "../resources/resources.php"; 
+//     include "../resources/security.php"; 
   
-    safeWeb();
+//     safeWeb();
 ?>
 
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><?php title(); ?></title>
+	<title><?php //title(); ?></title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 		name="viewport">
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../bootstrap/css/AdminLTE.min.css">
-	<link rel="stylesheet" href="../bootstrap/css/skins/skin-blue.min.css">
+	<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../bootstrap/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="../../bootstrap/css/skins/skin-blue.min.css">
 	<!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -26,7 +26,7 @@
 		<header class="main-header">
 			<a href="http://ceagro.ektech.com.br" class="logo">
 				<span class="logo-mini">CW</span>
-					<span ><?php title(); ?></span>
+					<span ><?php //title(); ?></span>
 			</a>
 			<!-- nav -->
 			<nav class="navbar navbar-static-top">
@@ -92,7 +92,7 @@
 			<div class="pull-right hidden-xs">
 				<i class="fab fa-optin-monster"></i>
 			</div>
-			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php mostraIp(); ?>
+			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php //mostraIp(); ?>
 		</footer>
 		<div class="control-sidebar-bg"></div>
 	</div>

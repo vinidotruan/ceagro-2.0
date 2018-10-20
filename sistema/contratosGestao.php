@@ -1,5 +1,5 @@
 <?php
-include "../resources/resources.php"; 
+//include "../resources/resources.php";
 ?>
 <html>
 <head>
@@ -12,10 +12,6 @@ include "../resources/resources.php";
 </head>
   <link rel="stylesheet" href="../bootstrap/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../bootstrap/css/skins/skin-blue.min.css">
-  <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -36,9 +32,9 @@ include "../resources/resources.php";
       <!-- nav -->
     </header>
     <!-- /#menu -->
-    <?php include("menu.htm"); ?>
+    <?php //include "menu.htm";?>
     <!-- /#menu -->
-    
+
     <div class="content-wrapper">
       <section class="content">
         <!-- Your Page Content Here -->
@@ -72,26 +68,26 @@ include "../resources/resources.php";
 <div class="container-fluid">
 
 <div class="table">
-	
+
       <div id="titulo">Dados Confirmação</div>
-    
+
     <div>
       <div class="col-md-12 col-sm-12 col-xs-12"><input type="text" class="form-control" placeholder="Confirmação Nº" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div></br>
     </div>
-	
+
       <div id="titulo">Dados do Vendedor</div>
-	
+
     <div>
       <div class="col-md-12 col-sm-12 col-xs-12" id="campo"><input type="text" class="form-control" class="form-control" placeholder="CNPJ" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
 	  </div>
-	  
+
       <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
 	  <input type="text" class="form-control" placeholder="Nome" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 	  </div>
 	  <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
 	  <input type="text" class="form-control" placeholder="Razão Social" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 	  </div>
-	  
+
 	  <div class="linha2">
 	  <div class="col-md-4 col-sm-4 col-xs-12" id="campo_direita"><input type="text" class="form-control" placeholder="Estado" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
       <div class="col-md-4 col-sm-4 col-xs-12" id="campo_direita"><input type="text" class="form-control" placeholder="Cidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
@@ -113,18 +109,18 @@ include "../resources/resources.php";
       <div></div>
     </div>
 	<div id="titulo">Dados do Comprador</div>
-	
+
     <div>
       <div class="col-md-12 col-sm-12 col-xs-12" id="campo"><input type="text" class="form-control" class="form-control" placeholder="CNPJ" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
 	  </div>
-	  
+
       <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
 	  <input type="text" class="form-control" placeholder="Nome" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 	  </div>
 	  <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
 	  <input type="text" class="form-control" placeholder="Razão Social" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 	  </div>
-	  
+
 	  <div class="linha2">
 	  <div class="col-md-4 col-sm-4 col-xs-12" id="campo_direita"><input type="text" class="form-control" placeholder="Estado" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
       <div class="col-md-4 col-sm-4 col-xs-12" id="campo_direita"><input type="text" class="form-control" placeholder="Cidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
@@ -165,8 +161,8 @@ include "../resources/resources.php";
 	<div class="col-md-6 col-sm-6 col-xs-12" id="campo">
 		<input type="text" class="form-control col-xs-3" placeholder="Quantidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 		</div>
-		
-	  
+
+
 	   <div>
 	   </div>
     </div>
@@ -199,19 +195,19 @@ include "../resources/resources.php";
     <div>
       <div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita"><input type="text" class="form-control" placeholder="Número" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
       <div class="col-md-8 col-sm-8 col-xs-8" id="campo"><input type="text" class="form-control" placeholder="Endereço" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
-      
-      
+
+
     </div>
     <div>
 		<div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita"><input type="text" class="form-control" placeholder="Cidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
 		<div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita"><input type="text" class="form-control" placeholder="Bairro" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
         <div class="col-md-4 col-sm-4 col-xs-4" id="campo"><input type="text" class="form-control" placeholder="Complemento" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
-	             	  
+
     </div>
 	<div>
 	  <div class="col-md-6 col-sm-6 col-xs-6" id="campo_direita"><input type="text" class="form-control" placeholder="Cep" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
 	  <div class="col-md-6 col-sm-6 col-xs-6" id="campo"><input type="text" class="form-control" placeholder="Estado" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
-	  
+
 	</div>
     <div id="titulo">
       Endereço de Entrega
@@ -219,19 +215,19 @@ include "../resources/resources.php";
     <div>
       <div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita"><input type="text" class="form-control" placeholder="Número" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
       <div class="col-md-8 col-sm-8 col-xs-8" id="campo"><input type="text" class="form-control" placeholder="Endereço" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
-      
-      
+
+
     </div>
     <div>
 		<div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita"><input type="text" class="form-control" placeholder="Cidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
 		<div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita"><input type="text" class="form-control" placeholder="Bairro" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
         <div class="col-md-4 col-sm-4 col-xs-4" id="campo"><input type="text" class="form-control" placeholder="Complemento" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
-	             	  
+
     </div>
 	<div>
 	  <div class="col-md-6 col-sm-6 col-xs-6" id="campo_direita"><input type="text" class="form-control" placeholder="Cep" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
 	  <div class="col-md-6 col-sm-6 col-xs-6" id="campo"><input type="text" class="form-control" placeholder="Estado" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
-	  
+
 	</div>
     <div id="grupo_botoes">
       <div id="botoes"><button type="button" class="btn btn-danger">Alterar Dados</button></div>
@@ -240,7 +236,7 @@ include "../resources/resources.php";
     </div>
   </tbody>
 </table>
-  
+
 </div>
 
 

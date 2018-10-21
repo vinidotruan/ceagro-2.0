@@ -102,4 +102,6 @@
 </footer>
 <div class="control-sidebar-bg"></div>
 </div>
+<?php include 'imports/imports.html'?>
+<script src="clientes.js"></script>
 <?php include 'imports/rodape.html'?>

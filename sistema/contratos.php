@@ -1,5 +1,5 @@
 <?php include 'imports/cabecalho.html'?>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" onload="buscar()">
   <div class="wrapper">
     <header class="main-header">
       <a href="http://ceagro.ektech.com.br" class="logo">
@@ -54,11 +54,21 @@
       <div id="titulo">Dados do Vendedor</div>
     <form id="formulario">
     <div>
+<<<<<<< HEAD
       <div class="col-md-12 col-sm-12 col-xs-12" id="campo"><input type="text" name="cnpj" class="form-control" class="form-control" placeholder="CNPJ" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
 	  </div>
 
       <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
 	  <input type="text" name="nome" class="form-control" placeholder="Nome" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+=======
+      <div class="col-md-12 col-sm-12 col-xs-12" id="campo"><input type="text" class="form-control" id="cnpj" class="form-control" placeholder="CNPJ" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
+	  </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
+    <input list="vendedores" name="vendedor" oninput="selecionarVendedor(this)">
+      <datalist id="vendedores">
+      </datalist>
+>>>>>>> 883321f2635ffbbdc9dd39d59dfae5235033e74d
 	  </div>
 	  <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
 	  <input type="text" name="razao_social" class="form-control" placeholder="Razão Social" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">

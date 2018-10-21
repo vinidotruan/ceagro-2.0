@@ -42,21 +42,40 @@ CREATE TABLE IF NOT EXISTS `banco` (
 
 DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE IF NOT EXISTS `clientes` (
-  `cnpj` int(11) NOT NULL,
-  `nome` varchar(75) NOT NULL,
-  `razao_social` varchar(100) NOT NULL,
-  `responsavel` varchar(50) DEFAULT NULL,
-  `cidade` varchar(30) NOT NULL,
-  `estado` char(2) NOT NULL,
-  `email` varchar(40) NOT NULL,
-  `telefone` int(11) DEFAULT NULL,
-  `assintaura` varchar(50) DEFAULT NULL,
-  `atuacao` varchar(10) DEFAULT NULL,
-  `inscricao_estadual` varchar(255) NOT NULL,
-  `telefone2` int(11) NOT NULL,
-  `obs` text NOT NULL,
-  PRIMARY KEY (`cnpj`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  id int not null AUTO_INCREMENT,
+  razao_social varchar(255),
+  cnpj varchar(255),
+  inscricao_estadual varchar(255),
+  nome varchar(255),
+  responsavel varchar(255),
+  email varchar(255),
+  atuacao varchar(255),
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `contatos`;
+CREATE TABLE IF NOT EXISTS `contatos` (
+  cliente_id int not null,
+  telefone varchar(255),
+  observacao varchar(255)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `enderecos`;
+CREATE TABLE IF NOT EXISTS `enderecos` (
+  cliente_id int not null,
+  cep varchar(255),
+  complemento varchar(255)
+  bairro varchar(255)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `contratos`;
+CREATE TABLE IF NOT EXISTS `contratos` (
+  cliente_comprador_id int not null,
+  cliente_vendedor_id int not null,
+  cep varchar(255),
+  complemento varchar(255)
+  bairro varchar(255)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 

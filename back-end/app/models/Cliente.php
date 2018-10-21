@@ -5,9 +5,10 @@ namespace App\Models;
 class Cliente
 {
 
-    public $cnpj;
-    public $nome;
     public $razao_social;
+    public $cnpj;
+    public $inscricao_estadual;
+    public $nome;
     public $responsavel;
     public $cidade;
     public $estado;
@@ -15,7 +16,6 @@ class Cliente
     public $telefone;
     public $assinatura;
     public $atuacao;
-    public $inscricao_estadual;
     public $telefone2;
     public $obs;
 }

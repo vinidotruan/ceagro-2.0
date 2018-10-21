@@ -42,4 +42,5 @@
 			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php //mostraIp();?>
 		</footer>
 		<div class="control-sidebar-bg"></div>
+	<?php include 'imports/imports.html'?>
 	<?php include 'imports/rodape.html'?>

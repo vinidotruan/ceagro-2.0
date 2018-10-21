@@ -68,6 +68,15 @@ CREATE TABLE IF NOT EXISTS `enderecos` (
   bairro varchar(255)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `contratos`;
+CREATE TABLE IF NOT EXISTS `contratos` (
+  cliente_comprador_id int not null,
+  cliente_vendedor_id int not null,
+  cep varchar(255),
+  complemento varchar(255)
+  bairro varchar(255)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 -- --------------------------------------------------------
 
 --

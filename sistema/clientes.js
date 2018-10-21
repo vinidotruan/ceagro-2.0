@@ -7,7 +7,6 @@ $("#formulario").submit(function (event) {
 
 function enviar() {
     var dados = $('#formulario').serialize();
-    console.log('dados');
     $.ajax({
         type: 'POST',
         url: '../back-end/clientes',
@@ -19,7 +18,7 @@ function enviar() {
     });
 }
 
-function buscarClientes() {
+function buscar() {
     $.ajax({
         url: "../back-end/clientes",
         type: "get",
@@ -43,5 +42,15 @@ function popular(clientes) {
         $("#clientes").append(newRow)
 
     }
+}
 
+function filtrar() {
+    $(document).ready(function () {
+        $("#filtro").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#clientes tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
 }

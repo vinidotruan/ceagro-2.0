@@ -1,43 +1,10 @@
 <?php include 'imports/cabecalho.html'?>
-<body class="hold-transition skin-blue sidebar-mini" onload="buscarClientes()">
+<body class="hold-transition skin-blue sidebar-mini" onload="buscar()">
 	<div class="wrapper">
-		<header class="main-header">
-			<a href="http://ceagro.ektech.com.br" class="logo">
-				<span class="logo-mini">CW</span>
-				<span >Ceagro | Web</span>
-			</a>
-			<!-- nav -->
-			<nav class="navbar navbar-static-top">
-				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-					<span class="sr-only">Toggle navigation</span>
-				</a>
-				<div class="navbar-custom-menu">
-					<p class="text-white"><!-- Mensagens --></p>
-				</div>
-			</nav>
-		</header>
+		<?php include "imports/header.html";?>
 		<?php include "menu.html";?>
 		<div class="content-wrapper">
 			<section class="content">
-				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								...
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">Save changes</button>
-							</div>
-						</div>
-					</div>
-				</div>
 				<table class="table">
 					<thead>
 						<td colspan="2">
@@ -47,11 +14,7 @@
 										<div class="box">
 											<div class="box-header with-border">
 												<div class="input-group col-xs-6">
-													<input type="text" name="criterio" class="form-control">
-													<input type="hidden" name="operacao" value="busca">
-													<div class="input-group-btn">
-														<button type="submit" class="btn btn-danger">Buscar</button>
-													</div>
+													<input type="text" id='filtro' name="criterio" class="form-control" onkeyup="filtrar()">
 												</div>
 											</div>
 											<div class="box-body">
@@ -69,24 +32,12 @@
 
 													</tbody>
 												</table>
-											</div><!-- /.box-body -->
-											<div class="box-footer clearfix">
-												<ul class="pagination pagination-sm no-margin pull-right">
-													<li><a href="#">&laquo;</a></li>
-													<li><a href="#">1</a></li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-													<li><a href="#">&raquo;</a></li>
-												</ul>
 											</div>
-										</div><!-- /.box -->
-									</div><!-- /.col -->
-									<!-- Content -->
+										</div>
+									</div>
 								</td>
 							</thead>
 						</table>
-
-						<!-- CONTEÚDO DA PÁGINA -->
 					</form>
 				</section>
 			</div>
@@ -98,4 +49,6 @@
 			</footer>
 			<div class="control-sidebar-bg"></div>
 		</div>
+		<?php include 'imports/imports.html'?>
+		<script src="clientes.js"></script>
 		<?php include 'imports/rodape.html'?>

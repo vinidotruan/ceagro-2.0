@@ -1,5 +1,5 @@
 <?php
-include "../resources/resources.php"; 
+//include "../resources/resources.php";
 ?>
 <html>
 <head>
@@ -10,8 +10,8 @@ include "../resources/resources.php";
   name="viewport">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
-  <link rel="stylesheet" href="../bootstrap/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../bootstrap/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="../../bootstrap/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../bootstrap/css/skins/skin-blue.min.css">
   <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -36,9 +36,9 @@ include "../resources/resources.php";
       <!-- nav -->
     </header>
     <!-- /#menu -->
-    <?php include("menu.html"); ?>
+    <?php include "../menu.html";?>
     <!-- /#menu -->
-    
+
     <div class="content-wrapper">
       <section class="content">
         <!-- Your Page Content Here -->
@@ -64,11 +64,6 @@ include "../resources/resources.php";
             </div>
           </div>
         </div>
-
-        <!-- MODAL AREA -->
-
-<!-- CONTEÚDO DA PÁGINA -->
-
 <div class="container-fluid">
 
 <table class="table">
@@ -83,7 +78,7 @@ include "../resources/resources.php";
     <tr>
       <td>Dados do Vendedor</td>
     </tr>
-	
+
     <tr>
       <td><input type="text" class="form-control" placeholder="CNPJ" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
 	  </tr>
@@ -157,7 +152,7 @@ include "../resources/resources.php";
 	  </select>
 	  </td>
 	  <td>
-       <textarea rows="4" cols="100" placeholder="Descrição..."></textarea> 
+       <textarea rows="4" cols="100" placeholder="Descrição..."></textarea>
 	   </td>
 	   <td>
 	   </td>
@@ -218,7 +213,7 @@ include "../resources/resources.php";
     </tr>
   </tbody>
 </table>
-  
+
 </div>
 
 
@@ -235,14 +230,11 @@ include "../resources/resources.php";
 <div class="control-sidebar-bg"></div>
 </div>
 <!-- Optional JavaScript -->
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-crossorigin="anonymous"></script>
-<script src="http://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4="
-crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-      <script src="../bootstrap/js/app.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<script src="http://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="../../bootstrap/js/app.min.js"></script>
 
 </body>
 </html>

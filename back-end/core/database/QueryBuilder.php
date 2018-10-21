@@ -29,11 +29,9 @@ class QueryBuilder
             implode(', ', array_keys($dados)),
             ':' . implode(', :', array_keys($dados))
         );
-
         try {
             $statement = $this->pdo->prepare($sql);
             $statement->execute($dados);
-
         } catch (PDOException $e) {
             die($e->getMessage());
         }

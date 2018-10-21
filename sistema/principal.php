@@ -1,34 +1,8 @@
-<?php
-//include "../resources/resources.php";
-?>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ceagro | Web</title>
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-  name="viewport">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="../bootstrap/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../bootstrap/css/skins/skin-blue.min.css">
-</head>
+<?php include 'imports/cabecalho.html'?>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
-    <header class="main-header">
-      <a href="http://ceagro.ektech.com.br" class="logo">
-        <span class="logo-mini">CW</span>
-        <span >Ceagro | Web</span>
-      </a>
-      <nav class="navbar navbar-static-top">
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-          <span class="sr-only">Toggle navigation</span>
-        </a>
-        <div class="navbar-custom-menu">
-          <p class="text-white"><!-- Mensagens --></p>
-        </tr>
-      </nav>
-    </header>
-	<?php include "menu.html";?>
+		<?php include "imports/header.html";?>
+		<?php include "menu.html";?>
 	<div class="content-wrapper">
 			<section class="content-header">
 		<! #mensagem >

@@ -1,11 +1,12 @@
 <?php include 'imports/cabecalho.html'?>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" onload="buscarClientes()">
 	<div class="wrapper">
 		<header class="main-header">
 			<a href="http://ceagro.ektech.com.br" class="logo">
 				<span class="logo-mini">CW</span>
 				<span >Ceagro | Web</span>
 			</a>
+			<!-- nav -->
 			<nav class="navbar navbar-static-top">
 				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
 					<span class="sr-only">Toggle navigation</span>
@@ -54,20 +55,19 @@
 												</div>
 											</div>
 											<div class="box-body">
-												<table class="table table-bordered">
-													<tr>
-														<th style="width: 20px"></th>
-														<th hidden="">Id Cliente</th>
-														<th style="width: 200px">Razão Social</th>
-														<th>Cnpj</th>
-														<th style="width: 150px">Insc Estadual</th>
-													</tr>
-													<?php
-# Pegou as informações do Post
-if (isset($_POST["criterio"]) && isset($_POST["operacao"])) {
-    loadClientes($_POST["criterio"]);
-}
-?>
+												<table class="table table-bordered" id="clientes">
+													<thead>
+														<tr>
+															<th style="width: 20px"></th>
+															<th hidden="">Id Cliente</th>
+															<th style="width: 200px">Razão Social</th>
+															<th>Cnpj</th>
+															<th style="width: 150px">Insc Estadual</th>
+														</tr>
+													</thead>
+													<tbody>
+
+													</tbody>
 												</table>
 											</div><!-- /.box-body -->
 											<div class="box-footer clearfix">

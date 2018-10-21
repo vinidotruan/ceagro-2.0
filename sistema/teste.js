@@ -10,15 +10,11 @@ function enviar() {
     console.log('teste');
     $.ajax({
         type: 'POST',
-        url: 'envia_email.php',
+        url: '../back-end/clientes',
         data: dados,
         dataType: 'json',
         success: function (response) {
-            $('#mensagem').css('display', 'block')
-                .removeClass()
-                .addClass(response.tipo)
-                .html('')
-                .html('<p>' + response.mensagem + '</p>');
+            console.log(response);
         }
     });
 }

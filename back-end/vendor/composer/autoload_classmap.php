@@ -14,6 +14,8 @@ return array(
     'App\\Core\\Database\\QueryBuilder' => $baseDir . '/core/database/QueryBuilder.php',
     'App\\Core\\Request' => $baseDir . '/core/Request.php',
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
+    'App\\Models\\Cliente' => $baseDir . '/app/models/Cliente.php',
+    'App\\Models\\Url' => $baseDir . '/app/models/Url.php',
     'App\\Models\\Usuario' => $baseDir . '/app/models/Usuario.php',
     'ComposerAutoloaderInit7af411bac7756e8562419bf7dd0e78b2' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',

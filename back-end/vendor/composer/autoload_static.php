@@ -15,6 +15,8 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
         'App\\Core\\Database\\QueryBuilder' => __DIR__ . '/../..' . '/core/database/QueryBuilder.php',
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
+        'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/models/Cliente.php',
+        'App\\Models\\Url' => __DIR__ . '/../..' . '/app/models/Url.php',
         'App\\Models\\Usuario' => __DIR__ . '/../..' . '/app/models/Usuario.php',
         'ComposerAutoloaderInit7af411bac7756e8562419bf7dd0e78b2' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',

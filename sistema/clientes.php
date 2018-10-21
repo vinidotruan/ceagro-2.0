@@ -1,16 +1,4 @@
-<?php //include "../resources/security.php";?>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Ceagro | Web</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-	name="viewport">
-	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../bootstrap/css/AdminLTE.min.css">
-	<link rel="stylesheet" href="../bootstrap/css/skins/skin-blue.min.css">
-</head>
+<?php include 'imports/cabecalho.html'?>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
@@ -114,11 +102,4 @@
 </footer>
 <div class="control-sidebar-bg"></div>
 </div>
-<!-- Optional JavaScript -->
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-<script src="teste.js" type="text/javascript"></script>
-</body>
-</html>
+<?php include 'imports/rodape.html'?>

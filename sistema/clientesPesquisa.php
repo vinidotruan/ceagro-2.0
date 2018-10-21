@@ -1,19 +1,4 @@
-<?php
-// include "../resources/security.php"; 
-// include "../resources/dadosClientes.php"; 
-// safeWeb();
-?>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Ceagro | Web</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../bootstrap/css/AdminLTE.min.css">
-	<link rel="stylesheet" href="../bootstrap/css/skins/skin-blue.min.css">
-</head>
+<?php include 'imports/cabecalho.html'?>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
@@ -30,7 +15,7 @@
 				</div>
 			</nav>
 		</header>
-		<?php include("menu.html"); ?>
+		<?php include "menu.html";?>
 		<div class="content-wrapper">
 			<section class="content">
 				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -55,7 +40,7 @@
 				<table class="table">
 					<thead>
 						<td colspan="2">
-							<form method="post">                      
+							<form method="post">
 								<div class="row">
 									<div class="col-md-12">
 										<div class="box">
@@ -77,12 +62,12 @@
 														<th>Cnpj</th>
 														<th style="width: 150px">Insc Estadual</th>
 													</tr>
-													<?php 
-													# Pegou as informações do Post
-													if(isset($_POST["criterio"]) && isset($_POST["operacao"]) ){
-														loadClientes($_POST["criterio"]);
-													} 
-													?>
+													<?php
+# Pegou as informações do Post
+if (isset($_POST["criterio"]) && isset($_POST["operacao"])) {
+    loadClientes($_POST["criterio"]);
+}
+?>
 												</table>
 											</div><!-- /.box-body -->
 											<div class="box-footer clearfix">
@@ -109,21 +94,8 @@
 				<div class="pull-right hidden-xs">
 					<i class="fab fa-optin-monster"></i>
 				</div>
-				Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php mostraIP(); ?>
+				Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php //mostraIP();?>
 			</footer>
 			<div class="control-sidebar-bg"></div>
 		</div>
-		<!-- Optional JavaScript -->
-		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-		crossorigin="anonymous"></script>
-		<script src="http://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4="
-		crossorigin="anonymous"></script>
-		<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-		<script src="../bootstrap/js/app.min.js"></script>
-	</body>
-	</html>
+		<?php include 'imports/rodape.html'?>

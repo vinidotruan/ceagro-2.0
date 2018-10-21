@@ -1,22 +1,4 @@
-<?php
-//include "../resources/resources.php";
-?>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ceagro | Web</title>
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-  name="viewport">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
-  <link rel="stylesheet" href="../../bootstrap/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../../bootstrap/css/skins/skin-blue.min.css">
-  <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
+<?php include 'imports/cabecalho.html'?>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
     <header class="main-header">
@@ -229,12 +211,4 @@
 </footer>
 <div class="control-sidebar-bg"></div>
 </div>
-<!-- Optional JavaScript -->
-<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
-<script src="http://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-<script src="../../bootstrap/js/app.min.js"></script>
-
-</body>
-</html>
+<?php include 'imports/rodape.html'?>

@@ -13,26 +13,23 @@
   <link rel="stylesheet" href="../bootstrap/css/skins/skin-blue.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-	<?php include 'menu.html'?>
-	<body class="hold-transition skin-blue sidebar-mini">
-	<div class="wrapper">
-		<header class="main-header">
-			<a href="http://ceagro.ektech.com.br" class="logo">
-				<span class="logo-mini">CW</span>
-					<span ><?php //title();?></span>
-			</a>
-			<nav class="navbar navbar-static-top">
-				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-					<span class="sr-only">Toggle navigation</span>
-				</a>
-				<div class="navbar-custom-menu">
-					<p class="text-white">Olá!  !!!</p>
-				</div>
-			</nav>
-		</header>
-            <?php include "menu.html";?>
-
-		<div class="content-wrapper">
+  <div class="wrapper">
+    <header class="main-header">
+      <a href="http://ceagro.ektech.com.br" class="logo">
+        <span class="logo-mini">CW</span>
+        <span >Ceagro | Web</span>
+      </a>
+      <nav class="navbar navbar-static-top">
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+          <p class="text-white"><!-- Mensagens --></p>
+        </tr>
+      </nav>
+    </header>
+	<?php include "menu.html";?>
+	<div class="content-wrapper">
 			<section class="content-header">
 		<! #mensagem >
 			</section>
@@ -68,8 +65,7 @@
 			<div class="pull-right hidden-xs">
 				<i class="fab fa-optin-monster"></i>
 			</div>
-			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php mostraIp();?>
+			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php //mostraIp();?>
 		</footer>
 		<div class="control-sidebar-bg"></div>
-	</div>
 	<?php include 'imports/rodape.html'?>

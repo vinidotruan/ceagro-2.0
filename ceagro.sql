@@ -81,25 +81,6 @@ CREATE TABLE IF NOT EXISTS `contratos` (
   clausula3 varchar(255) NOT NULL,
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `contratos`
---
-
-DROP TABLE IF EXISTS `contratos`;
-CREATE TABLE IF NOT EXISTS `contratos` (
-  `id` int not null AUTO_INCREMENT,
-  `peso_qualidade` text NOT NULL,
-  `comissao` text NOT NULL,
-  `clausula1` text NOT NULL,
-  `clausula2` text NOT NULL,
-  `clausula3` text NOT NULL,
-  `id_cliente_vendedor` int(11) NOT NULL,
-  `id_cliente_comprador` int(11) NOT NULL,
-  `numero_confirmacao` int(11) NOT NULL,
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 DROP TABLE IF EXISTS `produtos`;
 CREATE TABLE IF NOT EXISTS `produtos` (
   `id` int(11) NOT NULL,

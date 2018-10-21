@@ -58,10 +58,10 @@
       <div>
         <input type="text" class="form-control col-xs-3" name="inscricao_estadual" placeholder="I. Estadual" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
       </div>
-      <div>
-
-      </div>
+			<input type="submit" class="btn btn-warning" value="Enviar">
+		</form>
     </div>
+	<form id="formulario">
     <div>
       <div>Contatos</div>
     </div>
@@ -77,16 +77,45 @@
     <div>
       <td colspan="4"><textarea class="form-control" name="obs" rows="5" id="comment" placeholder="Obs"></textarea></div>
     </div>
-    <div>
+    <div id="grupo_botoes">
+      <div id="botoes"><button type="button" class="btn btn-danger">Alterar Dados</button></div>
+      <div id="botoes"><button type="button" class="btn btn-primary">Limpar Formulário</button></div>
+      <div id="botoes"><input type="submit" class="btn btn-warning" value="Enviar"></div>
+    </div>
+</form>
+</br>
+</br>
+<div>
+Endereço:
+</div>
+<div>
+<form id="formulario">
+<div>
+      <div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita"><input type="text" name="numero" class="form-control" placeholder="Número" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
+      <div class="col-md-8 col-sm-8 col-xs-8" id="campo"><input type="text" name="endereco" class="form-control" placeholder="Endereço" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
 
-      <div><button type="button" class="btn btn-danger">Alterar Dados</button></div>
-      <div><button type="button" class="btn btn-primary">Limpar Formulário</button></div>
-      <div><input type="submit" class="btn btn-warning" value="enviar"></div>
 
     </div>
+    <div>
+		<div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita"><input type="text" name="cidade" class="form-control" placeholder="Cidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
+		<div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita"><input type="text" name="cidade" class="form-control" placeholder="Bairro" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
+        <div class="col-md-4 col-sm-4 col-xs-4" id="campo"><input type="text" name="complemento" class="form-control" placeholder="Complemento" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
 
+    </div>
+	<div>
+	  <div class="col-md-6 col-sm-6 col-xs-6" id="campo_direita"><input type="text" name="cep" class="form-control" placeholder="Cep" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
+	  <div class="col-md-6 col-sm-6 col-xs-6" id="campo"><input type="text" name="estado" class="form-control" placeholder="Estado" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
+
+	</div>
+    <div id="grupo_botoes">
+      <div id="botoes"><button type="button" class="btn btn-danger">Alterar Dados</button></div>
+      <div id="botoes"><button type="button" class="btn btn-primary">Limpar Formulário</button></div>
+      <div id="botoes"><input type="submit" class="btn btn-warning" value="Enviar"></div>
+    </div>
 </form>
 </div>
+</div>
+
 
 
 

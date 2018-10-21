@@ -29,9 +29,13 @@ class Router
     public function direcionar($uri, $requestType)
     {
         if (array_key_exists($uri, $this->routes[$requestType])) {
-            return $this->executarAcao(
-                ...explode('@', $this->routes[$requestType][$uri])
-            );
+            try {
+                return $this->executarAcao(
+                    ...explode('@', $this->routes[$requestType][$uri])
+                );
+            } catch (\Exception $exception) {
+                return $exception->getMessage();
+            }
         }
         throw new \Exception("URI solicitada não existe.");
 
@@ -39,19 +43,12 @@ class Router
 
     protected function executarAcao($controller, $metodo)
     {
-        /*
-        |
-        | \\
-        |
-        | caso seja usado somente um \ o php irá dar um "escaping":
-        | não irá ignorar os {}.
-        |
-         */
         $controller = "App\\Controllers\\{$controller}";
         $controller = new $controller;
+        dd($metodo);
 
         if (!method_exists($controller, $metodo)) {
-            throw new Exception("Método não encontrado.");
+            throw new \Exception("Método não encontrado.");
         }
 
         return $controller->$metodo();

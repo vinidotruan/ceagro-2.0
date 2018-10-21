@@ -56,78 +56,48 @@
 <!-- CONTEÚDO DA PÁGINA -->
 <div class="container-fluid">
 
-<table class="table">
-  <tbody>
-    <tr>
-      <td>Dados Básicos</td>
-    </tr>
-    <tr>
-      <td>
-        <input type="text" class="form-control" placeholder="Razão Social" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-      </td>
-      <td>
-        <input type="text" class="form-control col-xs-3" placeholder="Cnpj" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-      </td>
-      <td>
-        <input type="text" class="form-control col-xs-3" placeholder="I. Estadual" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-      </td>
-      <td>
+<form action="../back-end/Controllers/Controller.php" method="POST">
+    <div>
+      <div>Dados Básicos</div>
+    </div>
+    <div>
+      <div>
+        <input type="text" class="form-control" name="razao_social" placeholder="Razão Social" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+      <div>
+        <input type="text" class="form-control col-xs-3" name="cnpj" placeholder="Cnpj" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+      <div>
+        <input type="text" class="form-control col-xs-3" name="inscricao_estadual" placeholder="I. Estadual" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+      <div>
 
-      </td>
-    </tr>
-    <tr>
-      <td>Contatos</td>
-    </tr>
-     <tr>
-      <td><input type="text" class="form-control" placeholder="Email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control col-xs-3" placeholder="Telefone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control col-xs-3" placeholder="Telefone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control col-xs-3" placeholder="Telefone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-    </tr>
-    <tr>
-      <td><input type="text" class="form-control" placeholder="Contato" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-    </tr>
-    <tr>
-      <td colspan="4"><textarea class="form-control" rows="5" id="comment" placeholder="Obs"></textarea></td>
-    </tr>
-    <tr>
-      <td>Endereço de Faturamento</td>
-    </tr>
-    <tr>
-      <td><input type="text" class="form-control" placeholder="Cep" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control" placeholder="Endereço" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control" placeholder="Número" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><input type="text" class="form-control" placeholder="Complemento" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control" placeholder="Cidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control" placeholder="Estado" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control" placeholder="Bairro" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-    </tr>
-    <tr>
-      <td>Endereço de Entrega</td>
-    </tr>
-    <tr>
-      <td><input type="text" class="form-control" placeholder="Cep" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control" placeholder="Endereço" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control" placeholder="Número" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><input type="text" class="form-control" placeholder="Complemento" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control" placeholder="Cidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control" placeholder="Estado" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-      <td><input type="text" class="form-control" placeholder="Bairro" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></td>
-    </tr>
-    <tr>
-      <td><button type="button" class="btn btn-danger">Alterar Dados</button></td>
-      <td><button type="button" class="btn btn-primary">Limpar Formulário</button></td>
-      <td><button type="button" class="btn btn-warning">Incluir Cadastro</button></td>
-    </tr>
-  </tbody>
-</table>
+      </div>
+    </div>
+    <div>
+      <div>Contatos</div>
+    </div>
+     <div>
+      <div><input type="text" class="form-control" name="email" placeholder="Email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
+      <div><input type="text" class="form-control col-xs-3" name="telefone" placeholder="Telefone1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
+      <div><input type="text" class="form-control col-xs-3" name="telefone2" placeholder="Telefone2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
+     
+    </div>
+    <div>
+      <div><input type="text" class="form-control" name="nome" placeholder="Nome" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
+    </div>
+    <div>
+      <td colspan="4"><textarea class="form-control" name="obs" rows="5" id="comment" placeholder="Obs"></textarea></div>
+    </div>
+    <div>
+      
+      <div><button type="button" class="btn btn-danger">Alterar Dados</button></div>
+      <div><button type="button" class="btn btn-primary">Limpar Formulário</button></div>
+      <div><input type="submit" class="btn btn-warning" value="enviar"></div>
 
+    </div>
+
+</form>
 </div>
 
 

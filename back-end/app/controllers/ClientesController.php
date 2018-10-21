@@ -4,8 +4,13 @@ namespace App\Controllers;
 
 class ClientesController
 {
-    public function cadastrar($dados)
+    public function buscarTodos()
     {
-        print_r($dados);
+        $usuarios = App::get('db')->selectAll("clientes", Cliente::class);
+        return compact('clientes');
+    }
+    public function cadastrar()
+    {
+        print_r($_GET);
     }
 }

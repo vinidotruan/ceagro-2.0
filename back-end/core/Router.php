@@ -45,7 +45,6 @@ class Router
     {
         $controller = "App\\Controllers\\{$controller}";
         $controller = new $controller;
-        dd($metodo);
 
         if (!method_exists($controller, $metodo)) {
             throw new \Exception("Método não encontrado.");

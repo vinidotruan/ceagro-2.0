@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `banco`;
 CREATE TABLE IF NOT EXISTS `banco` (
-  `nome` varchar(50) NOT NULL,
-  `ID` int(11) NOT NULL
+  nome varchar(50) NOT NULL,
+  id int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `contatos` (
 
 DROP TABLE IF EXISTS `enderecos`;
 CREATE TABLE IF NOT EXISTS `enderecos` (
+  id int not null AUTO_INCREMENT
   cliente_id int not null,
   cep varchar(255),
   complemento varchar(255)
@@ -72,9 +73,12 @@ DROP TABLE IF EXISTS `contratos`;
 CREATE TABLE IF NOT EXISTS `contratos` (
   cliente_comprador_id int not null,
   cliente_vendedor_id int not null,
-  cep varchar(255),
-  complemento varchar(255)
-  bairro varchar(255)
+  produto_id int not null,
+  peso_qualidade varchar(255),
+  comissao varchar(255),
+  clausula1 varchar(255) NOT NULL,
+  clausula2 varchar(255) NOT NULL,
+  clausula3 varchar(255) NOT NULL,
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -85,70 +89,25 @@ CREATE TABLE IF NOT EXISTS `contratos` (
 
 DROP TABLE IF EXISTS `contratos`;
 CREATE TABLE IF NOT EXISTS `contratos` (
+  `id` int not null AUTO_INCREMENT,
   `peso_qualidade` text NOT NULL,
   `comissao` text NOT NULL,
   `clausula1` text NOT NULL,
   `clausula2` text NOT NULL,
   `clausula3` text NOT NULL,
-  `ID_vendedor` int(11) NOT NULL,
-  `ID_comprador` int(11) NOT NULL,
+  `id_cliente_vendedor` int(11) NOT NULL,
+  `id_cliente_comprador` int(11) NOT NULL,
   `numero_confirmacao` int(11) NOT NULL,
-  `ID_faturamento` int(11) NOT NULL,
-  `ID_entrega` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `entrega`
---
-
-DROP TABLE IF EXISTS `entrega`;
-CREATE TABLE IF NOT EXISTS `entrega` (
-  `endereco` varchar(30) NOT NULL,
-  `numero` int(11) NOT NULL,
-  `complemento` varchar(30) NOT NULL,
-  `bairro` varchar(30) NOT NULL,
-  `cidade` varchar(30) NOT NULL,
-  `estado` varchar(2) NOT NULL,
-  `cep` int(11) NOT NULL,
-  `ID` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `faturamento`
---
-
-DROP TABLE IF EXISTS `faturamento`;
-CREATE TABLE IF NOT EXISTS `faturamento` (
-  `endereco` varchar(20) NOT NULL,
-  `numero` int(11) NOT NULL,
-  `complemento` varchar(20) NOT NULL,
-  `bairro` varchar(20) NOT NULL,
-  `cidade` varchar(20) NOT NULL,
-  `estado` varchar(2) NOT NULL,
-  `cep` int(11) NOT NULL,
-  `ID` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `produtos`
---
 
 DROP TABLE IF EXISTS `produtos`;
 CREATE TABLE IF NOT EXISTS `produtos` (
-  `ID` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `titulo` varchar(100) NOT NULL,
   `descricao` text NOT NULL,
   `quantidade` double NOT NULL,
   `medida` varchar(10) NOT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 

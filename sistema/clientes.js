@@ -1,13 +1,13 @@
 $("#formulario").submit(function (event) {
     event.preventDefault();
-    console.log('teste');
+    console.log('dados');
     enviar();
 });
 
 
 function enviar() {
     var dados = $('#formulario').serialize();
-    console.log('teste');
+    console.log('dados');
     $.ajax({
         type: 'POST',
         url: '../back-end/clientes',

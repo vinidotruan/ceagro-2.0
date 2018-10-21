@@ -40,6 +40,7 @@
         </div>
 <div class="container-fluid">
 <div class="table">
+  <form id="formulario">
     <div id="titulo">Dados Confirmação</div>
     <div>
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -204,8 +205,9 @@
     <div id="grupo_botoes">
       <div id="botoes"><button type="button" class="btn btn-danger">Alterar Dados</button></div>
       <div id="botoes"><button type="button" class="btn btn-primary">Limpar Formulário</button></div>
-      <div id="botoes"><button type="button" class="btn btn-warning">Incluir Cadastro</button></div>
+      <div id="botoes"><input type="submit" class="btn btn-warning" value="Enviar"></div>
     </div>
+</form>
   </tbody>
 </table>
 
@@ -213,7 +215,7 @@
 
 
 <!-- CONTEÚDO DA PÁGINA -->
-</form>
+
 </section>
 </div>
 <footer class="main-footer">
@@ -224,4 +226,6 @@
 </footer>
 <div class="control-sidebar-bg"></div>
 </div>
+<?php include 'imports/imports.html'?>
+<script src="contratos.js"></script>
 <?php include 'imports/rodape.html'?>

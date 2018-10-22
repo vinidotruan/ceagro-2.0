@@ -59,7 +59,8 @@ function popularVendedor() {
 
 function buscarEndereco(id) {
     $.ajax({
-        url: `../back-end/clientes/${id}/enderecos`,
+        url: `../back-end/clientes/enderecos`,
+        data: { 'id': id },
         type: "get",
         dataType: "json",
         success: function (data) {

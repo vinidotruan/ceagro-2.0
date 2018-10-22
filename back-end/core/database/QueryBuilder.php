@@ -23,7 +23,8 @@ class QueryBuilder
 
     public function selectWhere($tabela, $classe, $campos)
     {
-
+        $campos = implode(' = ', $dados);
+        dd($campos);
         $statement = $this->pdo->prepare("select * from {$tabela} where ");
         $statement->execute();
 

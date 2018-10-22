@@ -38,10 +38,6 @@
 						</div>
 					</div>
 				</div>
-
-				<!-- MODAL AREA -->
-
-<!-- CONTEÚDO DA PÁGINA -->
 <div class="container-fluid">
 
 <form id="formulario">

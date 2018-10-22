@@ -21,6 +21,15 @@ class QueryBuilder
         return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
     }
 
+    public function selectWhere($tabela, $classe, $campos)
+    {
+
+        $statement = $this->pdo->prepare("select * from {$tabela} where ");
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
+    }
+
     public function insert($tabela, $dados)
     {
         $sql = sprintf(

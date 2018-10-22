@@ -4,6 +4,7 @@ $("#formulario").submit(function (event) {
 });
 
 vendedores = [];
+enderecos = [];
 vendedor = [];
 var compradores = [];
 
@@ -44,13 +45,26 @@ function popularVendedores(clientes) {
 function selecionarVendedor(event) {
     //loadsh
     vendedor = _.find(vendedores, ['nome', event.value]);
+    buscarEndereco(vendedor.id);
     popularVendedor();
 }
 
 function popularVendedor() {
     $.each(vendedor, function (index, valor) {
-        if ($(`#${index}`)) {
-            $(`#${index}`).val(valor);
+        if ($(`#vendedor_${index}`)) {
+            $(`#vendedor_${index}`).val(valor);
+        }
+    });
+}
+
+function buscarEndereco(id) {
+    $.ajax({
+        url: `../back-end/clientes/${id}/enderecos`,
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            enderecos = data;
+            popularVendedores(data);
         }
     });
 }

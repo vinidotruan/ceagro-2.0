@@ -16,60 +16,60 @@
                                         </div>
                                     </form>
                                     <div id="titulo">Dados do Vendedor</div>
-                                    <form id="formulario">
-                                        <div>
-                                            <div class="col-md-12 col-sm-12 col-xs-12" id="campo">
-                                              <input type="text" name="nome" autocomplete="off" list="vendedores" class="form-control" placeholder="Selecione seu vendedor" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                              <datalist id="vendedores">
-                                              </datalist>
-                                            </div>
-                                        </div>
+                                      <form id="formulario">
+                                          <div>
+                                              <div class="col-md-12 col-sm-12 col-xs-12" id="campo">
+                                                <input oninput="selecionarVendedor(this)" type="text" name="vendedor_nome" autocomplete="off" list="vendedores" class="form-control" placeholder="Selecione seu vendedor" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                <datalist id="vendedores">
+                                                </datalist>
+                                              </div>
+                                          </div>
 
-                                        <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
-                                        <input type="text" name="cnpj" class="form-control" class="form-control" placeholder="CNPJ" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
-                                            <input type="text" name="razao_social" class="form-control" placeholder="Razão Social" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
+                                          <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
+                                          <input type="text" id="vendedor_cnpj" name="vendedor_cnpj" class="form-control" class="form-control" placeholder="CNPJ" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                          </div>
+                                          <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
+                                              <input type="text" id="vendedor_razao_social" name="vendedor_razao_social" class="form-control" placeholder="Razão Social" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                          </div>
 
-                                        <div class="linha2">
-                                            <div class="col-md-4 col-sm-4 col-xs-12" id="campo_direita">
-                                                <input type="text" name="estado" class="form-control" placeholder="Estado" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                            </div>
-                                            <div class="col-md-4 col-sm-4 col-xs-12" id="campo_direita">
-                                                <input type="text" name="cidade" class="form-control" placeholder="Cidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                            </div>
-                                            <div class="col-md-4 col-sm-4 col-xs-12" id="campo">
-                                                <input type="text" name="responsavel" class="form-control" placeholder="Responsável" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
-                                                <input type="text" name="telefone" class="form-control" placeholder="Telefone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 col-xs-12" id="campo">
-                                                <input type="text" name="email" class="form-control" placeholder="E-mail" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
-                                                <input type="text" name="assinatura" class="form-control" placeholder="Assinatura" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                            </div>
-                                            <div>
-                                                <select class="col-md-6 col-sm-6 col-xs-12" id="select">
-                                                    <option>Selecione o Banco do Vendedor</option>
-                                                    <option value="Bradesco">Bradesco</option>
-                                                    <option value="Itaú">Itaú</option>
-                                                    <option value="Banco do Brasil">Banco do Brasil</option>
-                                                    <option value="Banrisul">Banrisul</option>
-                                                    <option value="Santander">Santander</option>
-                                                    <option value="Caixa">Caixa</option>
-                                                </select>
-                                            </div>
-                                            <div>
+                                          <div class="linha2">
+                                              <div class="col-md-4 col-sm-4 col-xs-12" id="campo_direita">
+                                                  <input type="text" id="vendedor_estado" name="vendedor_estado" class="form-control" placeholder="Estado" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                              </div>
+                                              <div class="col-md-4 col-sm-4 col-xs-12" id="campo_direita">
+                                                  <input type="text" id="vendedor_cidade" name="vendedor_cidade" class="form-control" placeholder="Cidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                              </div>
+                                              <div class="col-md-4 col-sm-4 col-xs-12" id="campo">
+                                                  <input type="text" id="vendedor_responsavel" name="vendedor_responsavel" class="form-control" placeholder="Responsável" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                              </div>
+                                          </div>
+                                          <div>
+                                              <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
+                                                  <input type="text" id="vendedor_telefone" name="vendedor_telefone" class="form-control" placeholder="Telefone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                              </div>
+                                              <div class="col-md-6 col-sm-6 col-xs-12" id="campo">
+                                                  <input type="text" id="vendedor_email" name="vendedor_email" class="form-control" placeholder="E-mail" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                              </div>
+                                              <div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
+                                                  <input type="text" id="vendedor_assinatura" name="vendedor_assinatura" class="form-control" placeholder="Assinatura" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                              </div>
+                                              <div>
+                                                  <select id="vendedor_banco" name="vendedor_banco" class="col-md-6 col-sm-6 col-xs-12" id="select">
+                                                      <option>Selecione o Banco do Vendedor</option>
+                                                      <option value="Bradesco">Bradesco</option>
+                                                      <option value="Itaú">Itaú</option>
+                                                      <option value="Banco do Brasil">Banco do Brasil</option>
+                                                      <option value="Banrisul">Banrisul</option>
+                                                      <option value="Santander">Santander</option>
+                                                      <option value="Caixa">Caixa</option>
+                                                  </select>
+                                              </div>
+                                              <div>
 
-                                            </div>
-                                        </div>
+                                              </div>
+                                          </div>
 
-                                    </form>
+                                      </form>
                                     <form id="formulario">
                                         <div id="titulo">Dados do Comprador</div>
 
@@ -121,8 +121,8 @@
                                             <div>
 
                                             </div>
-                                        </div>
 
+                                        </div>
                                     </form>
                                     <form id="formulario">
                                         <div id="titulo">Dados do Contrato</div>

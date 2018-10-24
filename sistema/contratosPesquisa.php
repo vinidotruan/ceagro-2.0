@@ -1,19 +1,4 @@
-<?php
-// include "../resources/security.php";
-// include "../resources/dadosClientes.php";
-// safeWeb();
-?>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Ceagro | Web</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../bootstrap/css/AdminLTE.min.css">
-	<link rel="stylesheet" href="../bootstrap/css/skins/skin-blue.min.css">
-</head>
+<?php include "imports/cabecalho.html" ?>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
@@ -77,12 +62,6 @@
 														<th>Cnpj</th>
 														<th style="width: 150px">Insc Estadual</th>
 													</tr>
-													<?php
-# Pegou as informações do Post
-if (isset($_POST["criterio"]) && isset($_POST["operacao"])) {
-    loadClientes($_POST["criterio"]);
-}
-?>
 												</table>
 											</div><!-- /.box-body -->
 											<div class="box-footer clearfix">

@@ -4,6 +4,7 @@ $("#formulario").submit(function (event) {
     enviar();
 });
 
+console.log('logado');
 
 function enviar() {
     var dados = $('#formulario').serialize();

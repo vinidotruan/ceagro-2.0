@@ -1,5 +1,5 @@
 <?php
-$producao = false;
+$producao = true;
 if (!$producao) {
     return [
         'database' => [
@@ -14,3 +14,15 @@ if (!$producao) {
         ],
     ];
 }
+return [
+    'database' => [
+        'connection' => "mysql:host=sistemaceagro.mysql.dbaas.com.br",
+        'dbname' => "sistemaceagro",
+        'charset' => "utf8",
+        'username' => "sistemaceagro",
+        'password' => "tVSCV6KiC4izpv",
+        'options' => [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ],
+    ],
+];

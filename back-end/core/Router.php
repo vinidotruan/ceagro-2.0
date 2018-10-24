@@ -37,7 +37,6 @@ class Router
                 return $exception->getMessage();
             }
         }
-        dd($uri);
         throw new \Exception("URI solicitada não existe.");
 
     }

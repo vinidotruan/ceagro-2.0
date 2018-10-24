@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `enderecos` (
   id int not null AUTO_INCREMENT
   cliente_id int not null,
   cep varchar(255),
-  complemento varchar(255)
+  complemento varchar(255),
   bairro varchar(255)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

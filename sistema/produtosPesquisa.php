@@ -74,7 +74,7 @@
 														<th style="width: 20px"></th>
 														<th hidden="">ID</th>
 														<th style="width: 200px">Título</th>
-														<th>Medida</th>
+														<th>Medida  </th>
 														<th style="width: 150px">Quantidade</th>
 													</tr>
 													<?php

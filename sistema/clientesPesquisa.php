@@ -28,10 +28,7 @@
 															<th style="width: 150px">Insc Estadual</th>
 														</tr>
 													</thead>
-													<tbody>
-
-													</tbody>
-												</table>
+													</table>
 											</div>
 										</div>
 									</div>

@@ -56,6 +56,29 @@ function popularVendedor() {
         }
     });
 }
+//Ruan deve revisar daqui pra baixo!
+function popularCompradores(clientes) {
+    $.each(clientes, function (index, cliente) {
+        var option = '<option value="' + cliente.nome + '">' + cliente.nome + '</option>';
+        $("#compradores").append(option)
+    })
+}
+
+function selecionarComprador(event) {
+    //loadsh
+    comprador = _.find(compradores, ['nome', event.value]);
+    buscarEndereco(comprador.id);
+    popularComprador();
+}
+
+function popularComprador() {
+    $.each(comprador, function (index, valor) {
+        if ($(`#comprador${index}`)) {
+            $(`#comprador_${index}`).val(valor);
+        }
+    });
+}
+
 
 function buscarEndereco(id) {
     $.ajax({

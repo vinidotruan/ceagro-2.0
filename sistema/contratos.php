@@ -18,6 +18,7 @@
                                 </form>
                             </div>
                         </div>
+
                         <div class="row mx-auto">
                             <div class="col-12 mx-auto">
                                 <form id="formulario" class="">
@@ -51,41 +52,51 @@
                                             <input type="text" id="vendedor_assinatura" name="vendedor_assinatura" class="form-control" placeholder="Assinatura" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                         </div>
                                     </div>
-                                    </form>
-                                </div>
-                            </div>
-                        <form id="formulario">
-                            <div id="titulo">Produto:</div>
-                        <div>
-                            <div class="col-md-12 col-sm-12 col-xs-12" >
-                                <input type="text" name="titulo" class="form-control" placeholder="Nome" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12" >
-                                <textarea class="form-control" rows="5" id="comment" placeholder="Descrição" name="descricao"></textarea>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select id="select">
-                                    <option value="Grama">Grama</option>
-                                    <option value="Quilo">Quilo</option>
-                                    <option value="Tonelada">Tonelada</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12" >
-                                <input type="text" name="quantidade" class="form-control col-xs-3" placeholder="Quantidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </form>
                             </div>
                         </div>
-                        </form>
+                        <div class="row mx-auto">
+                            <div class="col-12 mx-auto">
+                                <form id="formulario">
+                                    <div class="form-row mx-3">
+                                        <div id="titulo">Produto:</div>
+
+                                        <div class="col-md-4 col-sm-4 col-xs-4">
+                                            <input type="text" name="titulo" class="form-control" placeholder="Nome" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                            <input type="text" name="titulo" class="form-control" placeholder="Safra" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-3" >
+                                            <input type="text" name="quantidade" class="form-control col-xs-3" placeholder="Quantidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                            <select id="select">
+                                                <option value="Grama">Grama</option>
+                                                <option value="Quilo">Quilo</option>
+                                                <option value="Tonelada">Tonelada</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <textarea class="form-control" rows="5" id="comment" placeholder="Descrição" name="descricao"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <form id="formulario">
                             <div id="titulo">
                                 Contrato
                             </div>
                             <div>
-                                <div class="col-md-12 col-sm-12 col-xs-12" >
+                                <div class="col-md-6 col-sm-6 col-xs-6">
                                     <textarea class="form-control" name="peso_quantidade" rows="5" id="comment" placeholder="Peso e qualidade">
 
                                     </textarea>
                                 </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12" >
+                                <div class="col-md-6 col-sm-6 col-xs-6">
                                     <textarea class="form-control" name="comissao" rows="5" id="comment" placeholder="Comissão...">
 
                                     </textarea>

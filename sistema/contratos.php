@@ -149,156 +149,107 @@
                                             <option value="Tonelada">Tonelada</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-12" id="campo">
-                                        <input type="text" name="quantidade" class="form-control col-xs-3" placeholder="Quantidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                    </div>
-
-                                    <div>
-                                    </div>
-                                </div>
-
                                 </form>
-                                <form id="formulario">
-                                    <div id="titulo">
-                                        Contrato
-                                    </div>
-                                    <div>
-                                        <div class="col-md-12 col-sm-12 col-xs-12" id="campo">
-                                            <textarea class="form-control" name="peso_quantidade" rows="5" id="comment" placeholder="Peso e qualidade">
-
-                                            </textarea>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-xs-12" id="campo">
-                                            <textarea class="form-control" name="comissao" rows="5" id="comment" placeholder="Comissão...">
-
-                                            </textarea>
-                                        </div>
-                                        <div id="titulo">
-                                            Adendo
-                                        </div>
-                                        <div>
-                                            <div class="col-md-12 col-sm-12 col-xs-12" id="campo">
-                                                <textarea class="form-control" name="clausula1" rows="5" id="comment" placeholder="Clausula1">
-
-                                                </textarea>
-                                            </div>
-                                            <div class="col-md-12 col-sm-12 col-xs-12" id="campo">
-                                                <textarea class="form-control" name="clausula2" rows="5" id="comment" placeholder="Clausula2">
-
-                                                </textarea>
-                                            </div>
-                                            <div class="col-md-12 col-sm-12 col-xs-12" id="campo">
-                                                <textarea class="form-control" name="clausula3" rows="5" id="comment" placeholder="Clausula3">
-
-                                                </textarea>
-                                            </div>
-
-                                </form>
-                                <form id="formulario">
-                                    <div id="titulo">
-                                        Endereço de Faturamento
-                                    </div>
-                                    <div>
-                                        <div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita">
-                                            <input type="text" name="numero" class="form-control" placeholder="Número" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-                                        <div class="col-md-8 col-sm-8 col-xs-8" id="campo">
-                                            <input type="text" name="endereco" class="form-control" placeholder="Endereço" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-
-                                    </div>
-                                    <div>
-                                        <div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita">
-                                            <input type="text" name="cidade" class="form-control" placeholder="Cidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-                                        <div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita">
-                                            <input type="text" name="bairro" class="form-control" placeholder="Bairro" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-                                        <div class="col-md-4 col-sm-4 col-xs-4" id="campo">
-                                            <input type="text" name="complemento" class="form-control" placeholder="Complemento" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-
-                                    </div>
-                                    <div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6" id="campo_direita">
-                                            <input type="text" name="cep" class="form-control" placeholder="Cep" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6" id="campo">
-                                            <input type="text" name="estado" class="form-control" placeholder="Estado" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-
-                                    </div>
-
-                                </form>
-                                <form id="formulario">
-                                    <div id="titulo">
-                                        Endereço de Entrega
-                                    </div>
-                                    <div>
-                                        <div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita">
-                                            <input type="text" name="numero" class="form-control" placeholder="Número" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-                                        <div class="col-md-8 col-sm-8 col-xs-8" id="campo">
-                                            <input type="text" name="endereco" class="form-control" placeholder="Endereço" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-
-                                    </div>
-                                    <div>
-                                        <div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita">
-                                            <input type="text" name="cidade" class="form-control" placeholder="Cidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-                                        <div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita">
-                                            <input type="text" name="cidade" class="form-control" placeholder="Bairro" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-                                        <div class="col-md-4 col-sm-4 col-xs-4" id="campo">
-                                            <input type="text" name="complemento" class="form-control" placeholder="Complemento" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-
-                                    </div>
-                                    <div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6" id="campo_direita">
-                                            <input type="text" name="cep" class="form-control" placeholder="Cep" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6" id="campo">
-                                            <input type="text" name="estado" class="form-control" placeholder="Estado" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-
-                                    </div>
-                                    <div id="grupo_botoes">
-                                        <div id="botoes">
-                                            <button type="button" class="btn btn-danger">Alterar Dados</button>
-                                        </div>
-                                        <div id="botoes">
-                                            <button type="button" class="btn btn-primary">Limpar Formulário</button>
-                                        </div>
-                                        <div id="botoes">
-                                            <input type="submit" class="btn btn-warning" value="Enviar">
-                                        </div>
-                                    </div>
-                                </form>
-                                </tbody>
-                                </table>
-
-                                </div>
-
-                                <!-- CONTEÚDO DA PÁGINA -->
-
-                        </section>
-                        </div>
-                        <footer class="main-footer">
-                            <div class="pull-right hidden-xs">
-                                <i class="fab fa-optin-monster">
-
-    </i>
                             </div>
-                            Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip:
-                            <?php //mostraIP(); ?>
-                        </footer>
-                        <div class="control-sidebar-bg">
+                        </div>
 
+                        <div class="row mx-auto">
+                            <div class="col-12 mx-auto">
+                                <form id="formulario" class="">
+                                    <div class="form-row mx-3">
+                                        <div id="titulo" class="col-12">Dados do Vendedor</div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6" >
+                                                <input oninput="selecionarVendedor(this)" type="text" name="vendedor_nome" autocomplete="off" list="vendedores" class="form-control" placeholder="Selecione seu vendedor" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                <datalist id="vendedores">
+                                                </datalist>
+                                            </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <input oninput="selecionarCnpj(this)" type="text" name="vendedor_cnpj" autocomplete="off" list="vendedores_cnpjs" class="form-control" placeholder="Digite seu cnpj" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                            <datalist id="vendedores_cnpjs">
+                                            </datalist>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mx-3">
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <input type="text" id="vendedor_razao_social" name="vendedor_razao_social" class="form-control" placeholder="Razão Social" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <input type="text" id="vendedor_responsavel" name="vendedor_responsavel" class="form-control" placeholder="Responsável" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <input type="text" id="vendedor_telefone" name="vendedor_telefone" class="form-control" placeholder="Telefone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <input type="text" id="vendedor_email" name="vendedor_email" class="form-control" placeholder="E-mail" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <input type="text" id="vendedor_assinatura" name="vendedor_assinatura" class="form-control" placeholder="Assinatura" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
+                        <div class="row mx-auto">
+                            <div class="col-12 mx-auto">
+                                <form id="formulario">
+                                    <div class="form-row mx-3">
+                                        <div id="titulo">Produto:</div>
+
+                                        <div class="col-md-4 col-sm-4 col-xs-4">
+                                            <input type="text" name="titulo" class="form-control" placeholder="Nome" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                            <input type="text" name="titulo" class="form-control" placeholder="Safra" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-3" >
+                                            <input type="text" name="quantidade" class="form-control col-xs-3" placeholder="Quantidade" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                            <select id="select">
+                                                <option value="Grama">Grama</option>
+                                                <option value="Quilo">Quilo</option>
+                                                <option value="Tonelada">Tonelada</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <textarea class="form-control" rows="5" id="comment" placeholder="Descrição" name="descricao"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <?php include 'imports/imports.html'?>
-                            <script src="contratos.js">
-                            </script>
-                            <?php include 'imports/rodape.html'?>
+                        <form id="formulario">
+                            <div id="titulo">
+                                Contrato
+                            </div>
+                            <div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <textarea class="form-control" name="peso_quantidade" rows="5" id="comment" placeholder="Peso e qualidade">
+
+                                    </textarea>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <textarea class="form-control" name="comissao" rows="5" id="comment" placeholder="Comissão...">
+
+                                    </textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                <footer class="main-footer">
+                    <div class="pull-right hidden-xs">
+                        <i class="fab fa-optin-monster">
+
+                        </i>
+                    </div>
+            Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip:
+                </footer>
+                <div class="control-sidebar-bg"></div>
+            </div>
+<?php include 'imports/imports.html'?>
+<script src="contratos.js">
+</script>
+<?php include 'imports/rodape.html'?>

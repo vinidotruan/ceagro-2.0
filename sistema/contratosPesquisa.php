@@ -1,35 +1,7 @@
-<?php
-// include "../resources/security.php";
-// include "../resources/dadosClientes.php";
-// safeWeb();
-?>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Ceagro | Web</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../bootstrap/css/AdminLTE.min.css">
-	<link rel="stylesheet" href="../bootstrap/css/skins/skin-blue.min.css">
-</head>
+<?php include "imports/cabecalho.html"?>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
-		<header class="main-header">
-			<a href="http://ceagro.ektech.com.br" class="logo">
-				<span class="logo-mini">CW</span>
-				<span >Ceagro | Web</span>
-			</a>
-			<nav class="navbar navbar-static-top">
-				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-					<span class="sr-only">Toggle navigation</span>
-				</a>
-				<div class="navbar-custom-menu">
-					<p class="text-white"><!-- Mensagens --></p>
-				</div>
-			</nav>
-		</header>
+		<?php include "imports/header.html"?>
 		<?php include "menu.html";?>
 		<div class="content-wrapper">
 			<section class="content">
@@ -77,12 +49,6 @@
 														<th>Cnpj</th>
 														<th style="width: 150px">Insc Estadual</th>
 													</tr>
-													<?php
-# Pegou as informações do Post
-if (isset($_POST["criterio"]) && isset($_POST["operacao"])) {
-    loadClientes($_POST["criterio"]);
-}
-?>
 												</table>
 											</div><!-- /.box-body -->
 											<div class="box-footer clearfix">
@@ -113,4 +79,5 @@ if (isset($_POST["criterio"]) && isset($_POST["operacao"])) {
 			</footer>
 			<div class="control-sidebar-bg"></div>
 		</div>
+		<?php include 'imports/imports.html'?>
 		<?php include 'imports/rodape.html'?>

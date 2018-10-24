@@ -1,4 +1,19 @@
-<?php include 'imports/cabecalho.html'?>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ceagro | Web</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../bootstrap/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="../../bootstrap/css/skins/skin-blue.min.css">
+	<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
     <header class="main-header">
@@ -211,4 +226,16 @@
 </footer>
 <div class="control-sidebar-bg"></div>
 </div>
-<?php include 'imports/rodape.html'?>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4="
+crossorigin="anonymous"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="../bootstrap/js/app.min.js"></script>

@@ -31,6 +31,7 @@ function buscar() {
             vendedores = data;
             compradores = data;
             popularVendedores(data);
+            popularVendedoresCnpjs(data);
         }
     });
 }
@@ -42,10 +43,22 @@ function popularVendedores(clientes) {
     })
 }
 
+function popularVendedoresCnpjs(clientes) {
+    $.each(clientes, function (index, cliente) {
+        var option = '<option value="' + cliente.cnpj + '">' + cliente.cnpj + '</option>';
+        $("#vendedores_cnpjs").append(option)
+    })
+}
+
 function selecionarVendedor(event) {
     //loadsh
     vendedor = _.find(vendedores, ['nome', event.value]);
-    buscarEndereco(vendedor.id);
+    popularVendedor();
+}
+
+function selecionarCnpj(event) {
+    //loadsh
+    vendedor = _.find(vendedores, ['cnpj', event.value]);
     popularVendedor();
 }
 
@@ -79,16 +92,4 @@ function popularComprador() {
     });
 }
 
-
-function buscarEndereco(id) {
-    $.ajax({
-        url: `../back-end/clientes/${id}/enderecos`,
-        type: "get",
-        dataType: "json",
-        success: function (data) {
-            enderecos = data;
-            popularVendedores(data);
-        }
-    });
-}
 

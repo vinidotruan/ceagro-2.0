@@ -3,7 +3,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 # RewriteCond %{REQUEST_URI} !=/favicon.ico
 RewriteCond %{REQUEST_URI} !^/node_modules/.*$
-RewriteCond %{REQUEST_URI} !^/sistema/.*$
 RewriteCond %{REQUEST_URI} !^/imagens/.*$
 RewriteCond %{REQUEST_URI} !^/uploads/.*$
-RewriteRule ^(.*)$ index.php [QSA,L]
+RewriteRule ^([^/]+)$ index.php [QSA,L]

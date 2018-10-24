@@ -64,8 +64,9 @@ function selecionarCnpj(event) {
 
 function popularVendedor() {
     $.each(vendedor, function (index, valor) {
-        if ($(`#vendedor_${index}`)) {
-            $(`#vendedor_${index}`).val(valor);
+        if ($(`#vendedor > #${index}`)) {
+            console.log($(`#vendedor > #${index}`));
+            $(`#vendedor input#${index}`).val(valor);
         }
     });
 }

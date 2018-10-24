@@ -1,8 +1,8 @@
 <?php include "imports/cabecalho.html"?>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
-		<?php include "imports/header.html"?>
-		<?php include "menu.html";?>
+	<?php include "imports/header.html"?>
+	<?php include "menu.html";?>
 		<div class="content-wrapper">
 			<section class="content">
 				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -62,12 +62,9 @@
 											</div>
 										</div><!-- /.box -->
 									</div><!-- /.col -->
-									<!-- Content -->
 								</td>
 							</thead>
 						</table>
-
-						<!-- CONTEÚDO DA PÁGINA -->
 					</form>
 				</section>
 			</div>

@@ -1,20 +1,7 @@
-<?php include "imports/cabecalho.html" ?>
+<?php include "imports/cabecalho.html"?>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
-		<header class="main-header">
-			<a href="http://ceagro.ektech.com.br" class="logo">
-				<span class="logo-mini">CW</span>
-				<span >Ceagro | Web</span>
-			</a>
-			<nav class="navbar navbar-static-top">
-				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-					<span class="sr-only">Toggle navigation</span>
-				</a>
-				<div class="navbar-custom-menu">
-					<p class="text-white"><!-- Mensagens --></p>
-				</div>
-			</nav>
-		</header>
+		<?php include "imports/header.html"?>
 		<?php include "menu.html";?>
 		<div class="content-wrapper">
 			<section class="content">
@@ -92,4 +79,5 @@
 			</footer>
 			<div class="control-sidebar-bg"></div>
 		</div>
+		<?php include 'imports/imports.html'?>
 		<?php include 'imports/rodape.html'?>

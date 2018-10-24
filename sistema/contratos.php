@@ -55,9 +55,7 @@
                                 </div>
                             </div>
                         <form id="formulario">
-                        <div>
                             <div id="titulo">Produto:</div>
-                        </div>
                         <div>
                             <div class="col-md-12 col-sm-12 col-xs-12" >
                                 <input type="text" name="titulo" class="form-control" placeholder="Nome" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">

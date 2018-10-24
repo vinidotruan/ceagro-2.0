@@ -18,9 +18,9 @@ class ClientesController
 
         App::get('db')->insert('clientes', [
             'cnpj' => $_POST['cnpj'],
-            'nome' => $_POST['nome'],
+            //'nome' => $_POST['nome'],
             'razao_social' => $_POST['razao_social'],
-            'email' => $_POST['email'],
+            //'email' => $_POST['email'],
             // // 'assinatura' => $_POST['assinatura'],
             // // 'atuacao' => $_POST['atuacao'],
             'inscricao_estadual' => $_POST['inscricao_estadual'],

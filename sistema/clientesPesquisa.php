@@ -42,7 +42,7 @@
 				<div class="pull-right hidden-xs">
 					<i class="fab fa-optin-monster"></i>
 				</div>
-				Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php //mostraIP();?>
+				Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
 			</footer>
 			<div class="control-sidebar-bg"></div>
 		</div>

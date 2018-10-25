@@ -1,5 +1,5 @@
 <?php include 'imports/cabecalho.html'?>
-<body class="hold-transition skin-blue sidebar-mini" onload="buscar()">
+<body class="hold-transition skin-blue sidebar-mini" onload="buscar(); buscarProdutos()">
    <div class="wrapper">
    <?php include 'imports/header.html'?>
    <?php include "menu.html";?>
@@ -24,7 +24,7 @@
                                             </datalist>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <input oninput="selecionarCnpj(this)" type="text" id="cnpj" name="cnpj" autocomplete="off" list="vendedores_cnpjs" class="form-control" placeholder="Digite seu cnpj">
+                                            <input oninput="selecionarCnpjVendedor(this)" type="text" id="cnpj" name="cnpj" autocomplete="off" list="vendedores_cnpjs" class="form-control" placeholder="Digite seu cnpj">
                                             <datalist id="vendedores_cnpjs">
                                             </datalist>
                                         </div>
@@ -41,19 +41,18 @@
                                             <input type="text" id="assinatura" name="assinatura" class="form-control" placeholder="Assinatura">
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="form-group row" id="comprador">
                                     <div class="form-row mx-3">
-                                        <div id="titulo" class="col-12">Dados do Vendedor</div>
+                                        <div id="titulo" class="col-12">Dados do Comprador</div>
                                         <div class="col-md-6 col-sm-6 col-xs-6" >
-                                            <input oninput="selecionarVendedor(this)" type="text" name="nome" autocomplete="off" list="vendedores" class="form-control" placeholder="Selecione seu vendedor">
-                                            <datalist id="vendedores">
+                                            <input oninput="selecionarComprador(this)" type="text" id="nome" name="nome" autocomplete="off" list="compradores" class="form-control" placeholder="Selecione seu comprador">
+                                            <datalist id="compradores">
                                             </datalist>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <input oninput="selecionarCnpj(this)" type="text" name="cnpj" autocomplete="off" list="vendedores_cnpjs" class="form-control" placeholder="Digite seu cnpj">
-                                            <datalist id="vendedores_cnpjs">
+                                            <input oninput="selecionarCnpjComprador(this)" type="text" id="cnpj" name="cnpj" autocomplete="off" list="compradores_cnpjs" class="form-control" placeholder="Digite seu cnpj">
+                                            <datalist id="compradores_cnpjs">
                                             </datalist>
                                         </div>
                                     </div>
@@ -62,32 +61,34 @@
                                             <input type="text" id="razao_social" name="razao_social" class="form-control" placeholder="Razão Social">
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <input type="text" id="responsavel" name="responsavel" class="form-control" placeholder="Responsável">
+                                            <input type="text" id="responsavel"  name="responsavel" class="form-control" placeholder="Responsável">
                                         </div>
 
                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                             <input type="text" id="assinatura" name="assinatura" class="form-control" placeholder="Assinatura">
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="form-group row">
                                     <div class="form-row mx-3">
                                         <div id="titulo">Produto:</div>
+
                                         <div class="col-md-3 col-sm-3 col-xs-3">
-                                            <input type="text" name="titulo" class="form-control" placeholder="Nome">
+                                            <input oninput="selecionarProduto(this)" type="text" id="produto" name="produto" autocomplete="off" list="produtos" class="form-control" placeholder="Escolha seu produto">
+                                            <datalist id="produtos">
+                                            </datalist>
                                         </div>
                                         <div class="col-md-3 col-sm-3 col-xs-3">
-                                            <input type="text" name="titulo" class="form-control" placeholder="Safra">
+                                            <input type="text" name="safra" class="form-control" placeholder="Safra">
                                         </div>
                                         <div class="col-md-3 col-sm-3 col-xs-3" >
                                             <input type="text" name="quantidade" class="form-control" placeholder="Quantidade">
                                         </div>
                                         <div class="col-md-3 col-sm-3 col-xs-3">
-                                            <select id="select">
-                                                <option value="Grama">Grama</option>
-                                                <option value="Quilo">Quilo</option>
-                                                <option value="Tonelada">Tonelada</option>
+                                            <select name="unidade_medida" id="select">
+                                                <option value="g">Grama</option>
+                                                <option value="k">Quilo</option>
+                                                <option value="t">Tonelada</option>
                                             </select>
                                         </div>
                                     </div>
@@ -97,19 +98,20 @@
                                         </div>
                                     </div>
                                 </div>
+                                <input type="submit" value="enviar">
                             </form>
                         </div>
                     </div>
                 </div>
             </section>
-            <footer class="main-footer">
-                <div class="pull-right hidden-xs">
-                    <i class="fab fa-optin-monster"></i>
-                </div>
-                Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip:
-            </footer>
             <div class="control-sidebar-bg"></div>
         </div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <i class="fab fa-optin-monster"></i>
+            </div>
+            Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip:
+        </footer>
     </div>
    <?php include 'imports/imports.html'?>
    <script src="contratos.js"></script>

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\App;
 use App\Models\Contrato;
 
 class ContratosController
@@ -14,16 +15,22 @@ class ContratosController
 
     public function cadastrar()
     {
+        try {
+            $a = App::get('db')->insert('contratos', [
+                'numero' => $_POST['numero_confirmacao'],
+                'cliente_comprador_id' => $_POST['cliente_comprador_id'],
+                'cliente_vendedor_id' => $_POST['cliente_vendedor_id'],
+                'produto_id' => $_POST['produto_id'],
+                'unidade_medida' => $_POST['unidade_medida'],
+                'safra' => $_POST['safra'],
+                'quantidade' => $_POST['quantidade'],
+                'descricao' => $_POST['descricao'],
+            ]);
+            print_r($a);
 
-        App::get('db')->insert('clientes', [
-            'cnpj' => $_POST['cnpj'],
-            'nome' => $_POST['nome'],
-            'razao_social' => $_POST['razao_social'],
-            'email' => $_POST['email'],
-            // // 'assinatura' => $_POST['assinatura'],
-            // // 'atuacao' => $_POST['atuacao'],
-            'inscricao_estadual' => $_POST['inscricao_estadual'],
-        ]);
+        } catch (\Exception $exception) {
+            print_r($exception);
+        }
 
     }
 }

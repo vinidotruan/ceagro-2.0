@@ -9,8 +9,8 @@ $router->post("sistema/back-end/clientes", "ClientesController@cadastrar");
 $router->get("sistema/back-end/produtos", "ProdutosController@index");
 $router->post("sistema/back-end/produtos", "ProdutosController@cadastrar");
 
-$router->get("sistema/back-end/contratros", "ContratosController@index");
-$router->post("sistema/back-end/contratros", "ContratosController@cadastrar");
+$router->get("sistema/back-end/contratos", "ContratosController@index");
+$router->post("sistema/back-end/contratos", "ContratosController@cadastrar");
 
 ///OFFLINE///
 

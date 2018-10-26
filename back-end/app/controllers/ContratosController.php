@@ -16,7 +16,7 @@ class ContratosController
     public function cadastrar()
     {
         try {
-            $a = App::get('db')->insert('contratos', [
+            $contrato = App::get('db')->insert('contratos', [
                 'numero' => $_POST['numero_confirmacao'],
                 'cliente_comprador_id' => $_POST['cliente_comprador_id'],
                 'cliente_vendedor_id' => $_POST['cliente_vendedor_id'],
@@ -26,7 +26,7 @@ class ContratosController
                 'quantidade' => $_POST['quantidade'],
                 'descricao' => $_POST['descricao'],
             ]);
-            print_r($a);
+            print_r($contrato);
 
         } catch (\Exception $exception) {
             print_r($exception);

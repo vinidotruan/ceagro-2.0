@@ -9,4 +9,11 @@ class EnderecosController
         $endereco = App::get('db')->selectWhere("enderecos", Endereco::class);
         echo json_encode($endereco);
     }
+
+    public function cadastrar()
+    {
+        $endereco = App::get('db')->inser('enderecos', [
+
+        ]);
+    }
 }

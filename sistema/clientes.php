@@ -59,6 +59,7 @@
 							</div>
 						</div>
 					</div>
+				<div class="row" style="margin:auto !important">
 					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top: 2%">
 						<div class="form-group row">
 							<div class="form-row col-lg-12 col-md-12 col-sm-11 col-xs-11">
@@ -72,6 +73,46 @@
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+				<div class="row" style="margin:auto !important">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<form id="endereco">
+							<div class="form-group row">
+								<div class="form-row">
+									<div class="form-row">
+										<div>
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="campo rua" name="rua" class="form-control" placeholder="Razão Social">
+											</div>
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="campo cep"  name="cep" class="form-control" placeholder="Responsável">
+											</div>
+
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="campo bairro" name="bairro" class="form-control" placeholder="Assinatura">
+											</div>
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="bairro" name="bairro" class="form-control" placeholder="Assinatura">
+											</div>
+										</div>
+									</div>
+									<div>
+										<div class="form-row">
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="cep"  name="complemento" class="form-control" placeholder="Responsável">
+											</div>
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="rua" name="cidade" class="form-control" placeholder="Razão Social">
+											</div>
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="rua" name="estado" class="form-control" placeholder="Razão Social">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 				<div>

@@ -1,22 +1,25 @@
-$("#formulario").submit(function (event) {
-    event.preventDefault();
-    console.log('dados');
-    enviar();
-});
 
-console.log('logado');
+var cliente = {};
+var contatos = [{}];
 
 function enviar() {
     var dados = $('#formulario').serialize();
-    $.ajax({
-        type: 'POST',
-        url: '../back-end/clientes',
-        data: dados,
-        dataType: 'json',
-        success: function (response) {
-            console.log(response);
-        }
-    });
+    $.post("../back-end/clientes", dados)
+        .success(function (response) {
+            cliente = JSON.parse(response);
+        });
+}
+
+function cadastrarContato() {
+    $(`#contatos`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    var dados = $("#contatos").serialize();
+    $.post("../back-end/clientes/contatos", dados)
+        .success(function (response) {
+            cliente.contatos = JSON.parse(response);
+            contatos = JSON.parse(response);
+            console.log(contatos);
+            // popularContatos();
+        });
 }
 
 function buscar() {

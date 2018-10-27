@@ -28,7 +28,7 @@
 					</div>
 					<div class="row">
 						<div id="botoes" class="row mx-2">
-								<input type="submit" class="btn btn-warning" value="Enviar">
+							<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar">
 						</div>
 					</div>
 				</form>
@@ -36,13 +36,13 @@
 					<div class="col-6 col-md-6 col-sm-6 col-xs-6">
 						<div class="form-group row">
 							<div class="form-row">
-								<form id="formulario">
+								<form id="contatos">
 									<div>
 										<div> Cadastro de Contatos</div>
 									</div>
 									<div class="row">
 										<div class="col-11 col-md-11 col-sm-11 col-xs-11">
-											<input type="text" class="form-control col-xs-3" name="telefone" placeholder="Telefone1" >
+											<input type="text" class="form-control col-xs-3" name="telefone" placeholder="Telefone1" required>
 										</div>
 									</div>
 									<div class="row">
@@ -52,7 +52,7 @@
 									</div>
 									<div class="row col-md-offset-10">
 										<div class="col-12 col-md-12 col-sm-12 col-xs-12 ">
-											<input type="submit" class="btn btn-warning" value="+">
+											<input type="button" onclick="cadastrarContato()" class="btn btn-warning" value="+">
 										</div>
 									</div>
 								</form>
@@ -72,7 +72,7 @@
 					</div>
 				</div>
 				<div>
-					<form id="formulario">
+					<form id="TELEFONE">
 						<div>
 							<div>Endereço:</div>
 						</div>

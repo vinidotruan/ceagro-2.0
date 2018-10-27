@@ -23,11 +23,14 @@ class QueryBuilder
 
     public function selectWhere($tabela, $classe, $campos)
     {
-        $campos = implode(' = ', $dados);
-        $statement = $this->pdo->prepare("select * from {$tabela} where ");
-        $statement->execute();
-
-        return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
+        try {
+            $campos = implode(' = ', $campos);
+            $statement = $this->pdo->prepare("select * from {$tabela} where {$campos}");
+            $statement->execute();
+            return $statement->fetchObject($classe);
+        } catch (PDOException $exception) {
+            die($e->getMessage());
+        }
     }
 
     public function insert($tabela, $dados)
@@ -41,6 +44,8 @@ class QueryBuilder
         try {
             $statement = $this->pdo->prepare($sql);
             $statement->execute($dados);
+            return $this->pdo->lastInsertId();
+
         } catch (PDOException $e) {
             die($e->getMessage());
         }

@@ -13,7 +13,7 @@ class EnderecosController
     public function cadastrar()
     {
         $endereco = App::get('db')->inser('enderecos', [
-
+            ''
         ]);
     }
 }

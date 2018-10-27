@@ -21,13 +21,13 @@ class QueryBuilder
         return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
     }
 
-    public function selectWhere($tabela, $classe, $campos)
+    public function selectWhere($tabela, $campos)
     {
         try {
             $campos = implode(' = ', $campos);
             $statement = $this->pdo->prepare("select * from {$tabela} where {$campos}");
             $statement->execute();
-            return $statement->fetchObject($classe);
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $exception) {
             die($e->getMessage());
         }

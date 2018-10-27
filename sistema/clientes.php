@@ -7,23 +7,23 @@
 			<section class="content">
 				<form id="formulario">
 					<div>
-						<div>Dados Básicos</div>
+						<div id="titulo">Dados Básicos</div>
 					</div>
 					<div>
 						<div>
 							<input type="text" class="form-control" name="razao_social" placeholder="Razão Social" >
 						</div>
 						<div>
-								<input type="text" class="form-control col-xs-3" name="cnpj" placeholder="Cnpj" >
+							<input type="text" class="form-control col-xs-3" name="cnpj" placeholder="Cnpj" >
 						</div>
 						<div>
-								<input type="text" class="form-control col-xs-3" name="inscricao_estadual" placeholder="I. Estadual" >
+							<input type="text" class="form-control col-xs-3" name="inscricao_estadual" placeholder="I. Estadual" >
 						</div>
 						<div>
-								<input type="text" class="form-control" name="email" placeholder="Email" >
+							<input type="text" class="form-control" name="email" placeholder="Email" >
 						</div>
 						<div>
-								<input type="text" class="form-control" name="nome" placeholder="Nome" >
+							<input type="text" class="form-control" name="nome" placeholder="Nome" >
 						</div>
 					</div>
 					<div class="row">
@@ -33,40 +33,43 @@
 					</div>
 				</form>
 				<div class="row" style="margin:auto !important">
-					<div class="col-6 col-md-6 col-sm-6 col-xs-6">
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 						<div class="form-group row">
 							<div class="form-row">
 								<form id="contatos">
 									<div>
-										<div> Cadastro de Contatos</div>
+										<div id="titulo"> Cadastro de Contatos</div>
 									</div>
-									<div class="row">
+									<div class="form-row">
 										<div class="col-11 col-md-11 col-sm-11 col-xs-11">
 											<input type="text" class="form-control col-xs-3" name="telefone" placeholder="Telefone1" required>
 										</div>
 									</div>
-									<div class="row">
+									<div class="form-row">
 										<div class="col-11 col-md-11 col-sm-11 col-xs-11">
-											<textarea class="form-control" name="obs" rows="5" id="comment" placeholder="Obs"></textarea>
+											<textarea class="form-control" name="observacao" rows="5" id="comment" placeholder="Obs"></textarea>
 										</div>
 									</div>
-									<div class="row col-md-offset-10">
-										<div class="col-12 col-md-12 col-sm-12 col-xs-12 ">
-											<input type="button" onclick="cadastrarContato()" class="btn btn-warning" value="+">
+									<div class="col-11 col-md-11 col-sm-11 col-xs-11">
+										<div id="botoes" class="row">
+											<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar">
 										</div>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
-					<div class="col-6 col-md-6 col-sm-6 col-xs-6">
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top: 2%">
 						<div class="form-group row">
-							<div class="form-row">
-								<form id="formulario">
-									<div>
-										<div> Lista de Contatos</div>
+							<div class="form-row col-lg-12 col-md-12 col-sm-11 col-xs-11">
+								<div class="box box-default form-row" id="contatosLista">
+									<div class="box-header with-border">
+										<h3 class="box-title">Lista de contatos</h3>
+										<div class="box-tools pull-right">
+											<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+										</div>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>

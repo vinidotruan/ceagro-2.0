@@ -6,20 +6,27 @@ function enviar() {
     var dados = $('#formulario').serialize();
     $.post("../back-end/clientes", dados)
         .success(function (response) {
-            cliente = JSON.parse(response);
+            cliente = JSON.parse(response)[0];
         });
 }
 
 function cadastrarContato() {
     $(`#contatos`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     var dados = $("#contatos").serialize();
+
     $.post("../back-end/clientes/contatos", dados)
         .success(function (response) {
-            cliente.contatos = JSON.parse(response);
             contatos = JSON.parse(response);
-            console.log(contatos);
-            // popularContatos();
+            popularContatos(contatos);
         });
+}
+
+function popularContatos(contatos) {
+    $('#contatosLista .box-body').remove();
+    $.each(contatos, function (index, contato) {
+        var option = `<div class="box-body ">${contato.telefone} - ${contato.observacao}</div>`
+        $("#contatosLista").append(option)
+    })
 }
 
 function buscar() {

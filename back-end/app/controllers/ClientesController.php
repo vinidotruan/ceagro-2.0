@@ -28,7 +28,6 @@ class ClientesController
 
         $cliente = App::get('db')->selectWhere(
             'clientes',
-            Cliente::class,
             ["id", $clienteId]
         );
 

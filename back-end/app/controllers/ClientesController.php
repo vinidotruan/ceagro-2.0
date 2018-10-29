@@ -17,13 +17,13 @@ class ClientesController
     {
 
         $clienteId = App::get('db')->insert('clientes', [
-            'cnpj' => $_POST['cnpj'],
-            'nome' => $_POST['nome'],
+            'banco_id' => $_POST['banco_id'],
             'razao_social' => $_POST['razao_social'],
-            'email' => $_POST['email'],
-            // // 'assinatura' => $_POST['assinatura'],
-            // // 'atuacao' => $_POST['atuacao'],
+            'cnpj' => $_POST['cnpj'],
             'inscricao_estadual' => $_POST['inscricao_estadual'],
+            'nome' => $_POST['nome'],
+            'email' => $_POST['email'],
+            'atuacao' => $_POST['atuacao'],
         ]);
 
         $cliente = App::get('db')->selectWhere(

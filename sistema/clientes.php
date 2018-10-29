@@ -3,7 +3,7 @@
 	<div class="wrapper">
 		<?php include "imports/header.html"?>
 		<?php include "menu.html";?>
-		<div class="content-wrapper">
+		<div class="content-wrapper" style="height:auto !important">
 			<section class="content">
 				<form id="formulario">
 					<div>

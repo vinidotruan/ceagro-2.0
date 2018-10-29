@@ -2,18 +2,33 @@
 
 namespace App\Controllers;
 
+use App\Core\App;
+
 class EnderecosController
 {
-    public function index()
+    public function cadastrarEnderecoFaturamento()
     {
-        $endereco = App::get('db')->selectWhere("enderecos", Endereco::class);
-        echo json_encode($endereco);
+
+        $enderecoFaturamentoId = App::get('db')->insert('enderecos_faturamentos', [
+            'cliente_id' => $_POST['cliente_id'],
+            'cep' => $_POST['cep'],
+            'complemento' => $_POST['complemento'],
+            'bairro' => $_POST['bairro'],
+        ]);
+
+        $enderecoFaturamento = App::get('db')->selectWhere('enderecos_faturamento', ["id", $enderecoFaturamentoId]);
+
     }
 
-    public function cadastrar()
+    public function cadastrarEnderecoEntrega()
     {
-        $endereco = App::get('db')->inser('enderecos', [
-            ''
+        $enderecoEntregaId = App::get('db')->insert('enderecos_entregas', [
+            'cliente_id' => $_POST['cliente_id'],
+            'cep' => $_POST['cep'],
+            'complemento' => $_POST['complemento'],
+            'bairro' => $_POST['bairro'],
         ]);
+
+        $enderecoEntrega = App::get('db')->selectWhere('enderecos_entregas', ["id", $enderecoEntregaId]);
     }
 }

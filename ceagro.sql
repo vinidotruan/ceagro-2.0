@@ -31,14 +31,19 @@ SET time_zone
 -- Estrutura da tabela `banco`
 --
 
-DROP TABLE IF EXISTS `banco`;
+DROP TABLE IF EXISTS `bancos`;
 CREATE TABLE
-IF NOT EXISTS `banco`
+IF NOT EXISTS `bancos`
 (
-  nome VARCHAR
+  `id` INT AUTO_INCREMENT
+(11) NOT NULL,
+  `nome` VARCHAR
 (50) NOT NULL,
-  id INT
-(11) NOT NULL
+  PRIMARY KEY
+  `codigo` VARCHAR
+(50) NOT NULL,
+  PRIMARY KEY
+(`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -52,6 +57,7 @@ CREATE TABLE
 IF NOT EXISTS `clientes`
 (
   id INT NOT NULL AUTO_INCREMENT,
+  banco_id INT,
   razao_social VARCHAR
 (255),
   cnpj VARCHAR
@@ -59,8 +65,6 @@ IF NOT EXISTS `clientes`
   inscricao_estadual VARCHAR
 (255),
   nome VARCHAR
-(255),
-  responsavel VARCHAR
 (255),
   email VARCHAR
 (255),
@@ -84,9 +88,9 @@ IF NOT EXISTS `contatos`
 (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `enderecos_faturamento`;
+DROP TABLE IF EXISTS `enderecos_faturamentos`;
 CREATE TABLE
-IF NOT EXISTS `enderecos_faturamento`
+IF NOT EXISTS `enderecos_faturamentos`
 (
   id INT NOT NULL AUTO_INCREMENT,
   cliente_id INT NOT NULL,
@@ -100,9 +104,9 @@ IF NOT EXISTS `enderecos_faturamento`
 (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `enderecos`;
+DROP TABLE IF EXISTS `enderecos_entregas`;
 CREATE TABLE
-IF NOT EXISTS `enderecos_entrega`
+IF NOT EXISTS `enderecos_entregas`
 (
   id INT NOT NULL AUTO_INCREMENT,
 
@@ -141,10 +145,28 @@ DROP TABLE IF EXISTS `produtos`;
 CREATE TABLE
 IF NOT EXISTS `produtos`
 (
-  `id` INT
+  `id` INT AUTO_INCREMENT
 (11) NOT NULL,
-  `titulo` VARCHAR
-(100) NOT NULL,
+  `tipo` VARCHAR
+(100),
+  `nome` VARCHAR
+(100),
+  `categoria` VARCHAR
+(100),
+  PRIMARY KEY
+(`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+COMMIT;
+
+DROP TABLE IF EXISTS `adendos`;
+CREATE TABLE
+IF NOT EXISTS `adendos`
+(
+  `id` INT AUTO_INCREMENT
+(11) NOT NULL,
+  `contrato_id` INT NOT NULL,
+  `definicao` VARCHAR
+(100),
   PRIMARY KEY
 (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

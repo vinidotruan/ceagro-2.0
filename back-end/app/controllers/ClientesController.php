@@ -15,7 +15,6 @@ class ClientesController
 
     public function cadastrar()
     {
-
         $clienteId = App::get('db')->insert('clientes', [
             'banco_id' => $_POST['banco_id'],
             'razao_social' => $_POST['razao_social'],

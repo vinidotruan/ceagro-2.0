@@ -41,6 +41,7 @@ class QueryBuilder
             implode(', ', array_keys($dados)),
             ':' . implode(', :', array_keys($dados))
         );
+        dd($sql);
         try {
             $statement = $this->pdo->prepare($sql);
             $statement->execute($dados);
@@ -49,5 +50,22 @@ class QueryBuilder
         } catch (PDOException $e) {
             die($e->getMessage());
         }
+    }
+
+    public function update($tabela, $dados, $where = null)
+    {
+        $sql = sprintf(
+            "UPDATE %s SET %s WHERE %s",
+            $tabela,
+            ":" . implode("=:", array_key($dados)),
+            implode("=", array_key($where))
+        );
+
+        dd($sql);
+        try {
+            $statement = $this->pdo->prepare($sql);
+
+        } catch (\PDOException $e) {}
+
     }
 }

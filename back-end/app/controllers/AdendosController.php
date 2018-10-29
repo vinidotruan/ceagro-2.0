@@ -13,6 +13,7 @@ class AdendosController
             'contrato_id' => $_POST['contrato_id'],
             'definicao' => $_POST['definicao'],
         ]);
+        
         echo json_encode($adendoId);
     }
 }

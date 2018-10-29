@@ -116,7 +116,7 @@
 					</div>
 				</div>
 				<div>
-					<form id="TELEFONE">
+					<form id="enderecos">
 						<div>
 							<div>Endereço:</div>
 						</div>

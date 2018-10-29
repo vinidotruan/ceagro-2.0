@@ -82,7 +82,7 @@
 								<div class="form-row">
 									<div class="form-row">
 										<div>
-										<div class="title">
+										<div id="titulo" class="col-12">
 										Endereço de Faturamento:
 										</div>
 											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -111,14 +111,14 @@
 											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
 												<input type="text" id="cep" name="cep" class="form-control" placeholder="CEP">
 											</div>
-											<div class="col-11 col-md-11 col-sm-11 col-xs-11">
-										<div id="botoes" class="row">
+										</div>
+										<div class="col-11 col-md-11 col-sm-11 col-xs-11">
+									</div>
+								</div>
+								<div id="botoes" class="row">
 											<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar">
 										</div>
 									</div>
-										</div>
-									</div>
-								</div>
 							</div>
 						</form>
 					</div>
@@ -130,7 +130,7 @@
 								<div class="form-row">
 									<div class="form-row">
 										<div>
-										<div class="title">
+										<div id="titulo" class="col-12">
 										Endereço de Entrega:
 										</div>
 											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -160,13 +160,13 @@
 												<input type="text" id="cep" name="cep" class="form-control" placeholder="CEP">
 											</div>
 											<div class="col-11 col-md-11 col-sm-11 col-xs-11">
-										<div id="botoes" class="row">
-											<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar">
-										</div>
-									</div>
 										</div>
 									</div>
 								</div>
+								<div id="botoes" class="row">
+											<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar">
+										</div>
+									</div>
 							</div>
 						</form>
 					</div>
@@ -177,7 +177,7 @@
 			<div class="pull-right hidden-xs">
 				<i class="fab fa-optin-monster"></i>
 			</div>
-   	Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php //mostraIP();?>
+   	Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
 		</footer>
 		<div class="control-sidebar-bg"></div>
 	</div>

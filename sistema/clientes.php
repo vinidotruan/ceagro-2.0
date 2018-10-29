@@ -77,37 +77,45 @@
 				</div>
 				<div class="row" style="margin:auto !important">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<form id="endereco">
+						<form id="faturamento">
 							<div class="form-group row">
 								<div class="form-row">
 									<div class="form-row">
 										<div>
+										<div class="title">
+										Endereço de Faturamento:
+										</div>
 											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="campo rua" name="rua" class="form-control" placeholder="Razão Social">
+												<input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço">
 											</div>
 											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="campo cep"  name="cep" class="form-control" placeholder="Responsável">
+												<input type="text" id="numero"  name="numero" class="form-control" placeholder="Número">
 											</div>
 
 											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="campo bairro" name="bairro" class="form-control" placeholder="Assinatura">
+												<input type="text" id="complemento" name="complemento" class="form-control" placeholder="Complemento">
 											</div>
 											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="bairro" name="bairro" class="form-control" placeholder="Assinatura">
+												<input type="text" id="bairro" name="bairro" class="form-control" placeholder="Bairro">
 											</div>
 										</div>
 									</div>
 									<div>
 										<div class="form-row">
 											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="cep"  name="complemento" class="form-control" placeholder="Responsável">
+												<input type="text" id="cidade"  name="cidade" class="form-control" placeholder="Cidade">
 											</div>
 											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="rua" name="cidade" class="form-control" placeholder="Razão Social">
+												<input type="text" id="estado" name="estado" class="form-control" placeholder="Estado">
 											</div>
 											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="rua" name="estado" class="form-control" placeholder="Razão Social">
+												<input type="text" id="cep" name="cep" class="form-control" placeholder="CEP">
 											</div>
+											<div class="col-11 col-md-11 col-sm-11 col-xs-11">
+										<div id="botoes" class="row">
+											<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar">
+										</div>
+									</div>
 										</div>
 									</div>
 								</div>
@@ -115,50 +123,53 @@
 						</form>
 					</div>
 				</div>
-				<div>
-					<form id="TELEFONE">
-						<div>
-							<div>Endereço:</div>
-						</div>
-						<div>
-							<div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita">
-								<input disabled type="text" name="numero" class="form-control" placeholder="Número" >
+				<div class="row" style="margin:auto !important">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<form id="entrega">
+							<div class="form-group row">
+								<div class="form-row">
+									<div class="form-row">
+										<div>
+										<div class="title">
+										Endereço de Entrega:
+										</div>
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço">
+											</div>
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="numero"  name="numero" class="form-control" placeholder="Número">
+											</div>
+
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="complemento" name="complemento" class="form-control" placeholder="Complemento">
+											</div>
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="bairro" name="bairro" class="form-control" placeholder="Bairro">
+											</div>
+										</div>
+									</div>
+									<div>
+										<div class="form-row">
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="cidade"  name="cidade" class="form-control" placeholder="Cidade">
+											</div>
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="estado" name="estado" class="form-control" placeholder="Estado">
+											</div>
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="cep" name="cep" class="form-control" placeholder="CEP">
+											</div>
+											<div class="col-11 col-md-11 col-sm-11 col-xs-11">
+										<div id="botoes" class="row">
+											<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar">
+										</div>
+									</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="col-md-8 col-sm-8 col-xs-8" id="campo">
-								<input disabled type="text" name="endereco" class="form-control" placeholder="Endereço" >
-							</div>
-						</div>
-						<div>
-							<div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita">
-								<input disabled type="text" name="cidade" class="form-control" placeholder="Cidade" >
-							</div>
-							<div class="col-md-4 col-sm-4 col-xs-4" id="campo_direita">
-								<input disabled type="text" name="cidade" class="form-control" placeholder="Bairro" >
-							</div>
-							<div class="col-md-4 col-sm-4 col-xs-4" id="campo">
-								<input disabled type="text" name="complemento" class="form-control" placeholder="Complemento" >
-							</div>
-						</div>
-						<div>
-							<div class="col-md-6 col-sm-6 col-xs-6" id="campo_direita">
-								<input disabled type="text" name="cep" class="form-control" placeholder="Cep" >
-							</div>
-							<div class="col-md-6 col-sm-6 col-xs-6" id="campo">
-								<input disabled type="text" name="estado" class="form-control" placeholder="Estado" >
-							</div>
-						</div>
-						<div id="grupo_botoes" class="row">
-							<div id="botoes" class="col">
-								<button disabled type="button" class="btn btn-danger">Alterar Dados</button>
-							</div>
-							<div id="botoes" class="col">
-									<button disabled type="button" class="btn btn-primary">Limpar Formulário</button>
-							</div>
-							<div id="botoes" class="col">
-								<input disabled type="submit" class="btn btn-warning" value="Enviar">
-							</div>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
    		</section>
    	</div>

@@ -15,6 +15,18 @@ START TRANSACTION;
 SET time_zone
 = "+00:00";
 
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('', 'Banco do Brasil S.A', '001');
+INSERT INTO `ceagro`.`bancos` (`nome`, `codigo`) VALUES ('Banco Itaú S.A', '341');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('1', 'Banco Santander (Brasil) S.A', '033');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('2', 'Itaú Unibanco Holding S.A', '237');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('3', 'Banco Bradesco S.A', '745');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('4', 'HSBC Bank Brasil S.A - Banco Múltiplo', '399');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('5', 'Caixa Ecnonômica Federal', '104');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('6', 'Banco Mercantil do Brasil S.A', '389');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('7', 'Banco Rural S.A', '453');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('8', 'Banco Safra S.A', '422');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('9', 'Banco Rendimento S.A', '633');
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,13 +47,9 @@ DROP TABLE IF EXISTS `bancos`;
 CREATE TABLE
 IF NOT EXISTS `bancos`
 (
-  `id` INT AUTO_INCREMENT
-(11) NOT NULL,
-  `nome` VARCHAR
-(50) NOT NULL,
-  PRIMARY KEY
-  `codigo` VARCHAR
-(50) NOT NULL,
+  `id` INT AUTO_INCREMENT NOT NULL,
+  `nome` VARCHAR (50) NOT NULL,
+  `codigo` VARCHAR (50),
   PRIMARY KEY
 (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -100,6 +108,14 @@ IF NOT EXISTS `enderecos_faturamentos`
 (255),
   bairro VARCHAR
 (255),
+  cidade VARCHAR
+(255),
+  numero VARCHAR
+(255),
+  estado VARCHAR
+(255),
+  rua VARCHAR
+(255),
   PRIMARY KEY
 (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -109,13 +125,20 @@ CREATE TABLE
 IF NOT EXISTS `enderecos_entregas`
 (
   id INT NOT NULL AUTO_INCREMENT,
-
   cliente_id INT NOT NULL,
   cep VARCHAR
 (255),
   complemento VARCHAR
 (255),
   bairro VARCHAR
+(255),
+  cidade VARCHAR
+(255),
+  numero VARCHAR
+(255),
+  estado VARCHAR
+(255),
+  rua VARCHAR
 (255),
   PRIMARY KEY
 (`id`)

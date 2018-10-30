@@ -17,6 +17,7 @@ $router->post("sistema/back-end/contratos", "ContratosController@cadastrar");
 $router->get("ceagro/back-end/clientes", "ClientesController@index");
 $router->post("ceagro/back-end/clientes", "ClientesController@cadastrar");
 
+$router->get("ceagro/back-end/clientes/bancos", "ClientesController@buscarBancos");
 $router->get("ceagro/back-end/cientes/contatos", "ContatosController@index");
 $router->post("ceagro/back-end/clientes/contatos", "ContatosController@cadastrar");
 

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controllers\\AdendosController' => $baseDir . '/app/controllers/AdendosController.php',
     'App\\Controllers\\ClientesController' => $baseDir . '/app/controllers/ClientesController.php',
     'App\\Controllers\\ContatosController' => $baseDir . '/app/controllers/ContatosController.php',
     'App\\Controllers\\ContratosController' => $baseDir . '/app/controllers/ContratosController.php',
@@ -16,6 +17,7 @@ return array(
     'App\\Core\\Database\\QueryBuilder' => $baseDir . '/core/database/QueryBuilder.php',
     'App\\Core\\Request' => $baseDir . '/core/Request.php',
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
+    'App\\Models\\Banco' => $baseDir . '/app/models/Banco.php',
     'App\\Models\\Cliente' => $baseDir . '/app/models/Cliente.php',
     'App\\Models\\Contrato' => $baseDir . '/app/models/Contrato.php',
     'App\\Models\\Produto' => $baseDir . '/app/models/Produto.php',

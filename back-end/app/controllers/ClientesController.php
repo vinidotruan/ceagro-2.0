@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\App;
 use App\Models\Cliente;
+use App\Models\Banco;
 
 class ClientesController
 {
@@ -32,5 +33,10 @@ class ClientesController
 
         echo json_encode($cliente);
 
+    }
+
+    public function buscarBancos() {
+        $bancos = App::get('db')->selectAll("bancos", Banco::class);
+        echo json_encode($bancos);
     }
 }

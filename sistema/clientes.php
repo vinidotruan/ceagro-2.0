@@ -26,6 +26,21 @@
 							<input type="text" class="form-control" name="nome" placeholder="Nome" >
 						</div>
 					</div>
+					<div class="form-row">
+						<div class="col-6 col-md-6 col-sm-6 col-xs-6">
+							<select name="banco_id" id="bancos">
+								<option value="1">Selecione o banco do seu cliente</option>
+							</select>
+						</div>
+						<div class="col-6 col-md-6 col-sm-6 col-xs-6">
+							<select name="atuacao" id="">
+								<option value="0">Selecione a atuação do seu cliente</option>
+								<option value="comprador">Comprador</option>
+								<option value="vendedor">Vendedor</option>
+								<option value="ambos">Ambos</option>
+							</select>
+						</div>
+					</div>
 					<div class="row">
 						<div id="botoes" class="row mx-2">
 							<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar">
@@ -52,7 +67,7 @@
 									</div>
 									<div class="col-11 col-md-11 col-sm-11 col-xs-11">
 										<div id="botoes" class="row">
-											<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar">
+											<input type="button" class="btn btn-warning" onclick="cadastrarContato()" value="Enviar">
 										</div>
 									</div>
 								</form>
@@ -86,7 +101,7 @@
 										Endereço de Faturamento:
 										</div>
 											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço">
+												<input type="text" id="endereco" name="rua" class="form-control" placeholder="Endereço">
 											</div>
 											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
 												<input type="text" id="numero"  name="numero" class="form-control" placeholder="Número">
@@ -112,13 +127,11 @@
 												<input type="text" id="cep" name="cep" class="form-control" placeholder="CEP">
 											</div>
 										</div>
-										<div class="col-11 col-md-11 col-sm-11 col-xs-11">
+									</div>
+									<div id="botoes" class="row">
+										<input type="button" class="btn btn-warning" onclick="cadastrarEnderecoFat()" value="Enviar">
 									</div>
 								</div>
-								<div id="botoes" class="row">
-											<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar">
-										</div>
-									</div>
 							</div>
 						</form>
 					</div>
@@ -134,7 +147,7 @@
 										Endereço de Entrega:
 										</div>
 											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço">
+												<input type="text" id="endereco" name="rua" class="form-control" placeholder="Endereço">
 											</div>
 											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
 												<input type="text" id="numero"  name="numero" class="form-control" placeholder="Número">
@@ -164,7 +177,7 @@
 									</div>
 								</div>
 								<div id="botoes" class="row">
-											<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar">
+											<input type="button" class="btn btn-warning" onclick="cadastrarEnderecoEnt()" value="Enviar">
 										</div>
 									</div>
 							</div>

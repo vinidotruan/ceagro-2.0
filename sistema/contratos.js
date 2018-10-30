@@ -63,7 +63,7 @@ function popularVendedores(clientes) {
 
 function popularProdutos(produtos) {
     $.each(produtos, function (index, produto) {
-        var option = '<option value="' + produto.titulo + '">' + produto.titulo + '</option>';
+        var option = '<option value="' + produto.id + '">' + produto.titulo + '</option>';
         $("#produtos").append(option)
     })
 }

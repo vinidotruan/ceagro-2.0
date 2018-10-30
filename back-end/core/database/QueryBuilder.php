@@ -41,14 +41,16 @@ class QueryBuilder
             implode(', ', array_keys($dados)),
             ':' . implode(', :', array_keys($dados))
         );
-        dd($sql);
         try {
             $statement = $this->pdo->prepare($sql);
-            $statement->execute($dados);
+
+            if (!$statement->execute($dados)) {
+                throw new \Exception('Erro ao inserir');
+            }
             return $this->pdo->lastInsertId();
 
-        } catch (PDOException $e) {
-            die($e->getMessage());
+        } catch (\Exception $e) {
+            dd($e->getMessage());
         }
     }
 

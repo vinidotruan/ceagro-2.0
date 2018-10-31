@@ -21,7 +21,7 @@
 												<table class="table table-bordered" id="produtos">
 													<thead>
 														<tr>
-															<th style="width: 20px">produto.titulo</th>
+															<th style="width: 20px">Titulo</th>
 														</tr>
 													</thead>
 													</table>

@@ -42,6 +42,7 @@
 <div id="titulo">
     Produto:
 </div>
+<form id="formulario">
 <div>
       <div class="col-md-12 col-sm-12 col-xs-12" id="campo"><input type="text" name="titulo" class="form-control" placeholder="Título" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div>
 	   <div class="col-md-12 col-sm-12 col-xs-12" id="campo">
@@ -49,9 +50,8 @@
 	</div>
 	<div class="col-md-6 col-sm-6 col-xs-12" id="campo_direita">
 	  <select id="select">
-	  <option value="Grama">Grama</option>
 	  <option value="Quilo">Quilo</option>
-	  <option value="Tonelada">Tonelada</option>
+    <option value="Tonelada">Tonelada</option>
 	  </select>
 	</div>
 	<div class="col-md-6 col-sm-6 col-xs-12" id="campo">
@@ -62,7 +62,7 @@
 	   <div>
 	   </div>
     </div>
-    <div id="botoes"><input type="submit" class="btn btn-warning" value="Enviar"></div>
+    <input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar"></div>
     </form>
 
 </div>
@@ -76,7 +76,7 @@
   <div class="pull-right hidden-xs">
     <i class="fab fa-optin-monster"></i>
   </div>
-  Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php //mostraIP(); ?>
+  Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. 
 </footer>
 <div class="control-sidebar-bg"></div>
 </div>

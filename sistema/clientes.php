@@ -25,6 +25,12 @@
 						<div>
 							<input type="text" class="form-control" name="nome" placeholder="Nome" >
 						</div>
+						<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<select name="atuacao">
+								<option value="comprador">Comprador</option>
+								<option value="vendedor">Vendedor</option>
+								<option value="ambos">Ambos</option>
+						</div>
 					</div>
 					<div class="row">
 						<div id="botoes" class="row mx-2">

@@ -22,7 +22,7 @@ class ClientesController
             'razao_social' => $_POST['razao_social'],
             'email' => $_POST['email'],
             // // 'assinatura' => $_POST['assinatura'],
-            // // 'atuacao' => $_POST['atuacao'],
+            'atuacao' => $_POST['atuacao'],
             'inscricao_estadual' => $_POST['inscricao_estadual'],
         ]);
 

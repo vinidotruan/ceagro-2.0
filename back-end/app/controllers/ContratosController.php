@@ -10,6 +10,11 @@ class ContratosController
     public function index()
     {
         $contratos = App::get('db')->selectAll("contratos", Contrato::class);
+        foreach ($contratos as $contrato) {
+            $contrato->vendedor = $contrato->vendedor();
+            $contrato->comprador = $contrato->comprador();
+            $contrato->produto = $contrato->produto();
+        }
         echo json_encode($contratos);
     }
 

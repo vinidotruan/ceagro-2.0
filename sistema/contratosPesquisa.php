@@ -1,5 +1,5 @@
 <?php include 'imports/cabecalho.html'?>
-<body class="hold-transition skin-blue sidebar-mini" onload="buscar()">
+<body class="hold-transition skin-blue sidebar-mini" onload="buscarContratos()">
 	<div class="wrapper">
 		<?php include "imports/header.html";?>
 		<?php include "menu.html";?>
@@ -21,14 +21,15 @@
 												<table class="table table-bordered" id="produtos">
 													<thead>
 														<tr>
-														<th style="width: 20px"></th>
-															<th hidden=""><a href="contratos.php">Id Cliente</a></th>
-															<th style="width: 200px">Razão Social</th>
-															<th>Cnpj</th>
-															<th style="width: 150px">Insc Estadual</th>
+															<th>Numero</th>
+															<th>Comprador</th>
+															<th>Vendedor</th>
+															<th>Produto</th>
 														</tr>
 													</thead>
-													</table>
+													<tbody id="contratos">
+													</tbody>
+												</table>
 											</div>
 										</div>
 									</div>
@@ -42,10 +43,10 @@
 				<div class="pull-right hidden-xs">
 					<i class="fab fa-optin-monster"></i>
 				</div>
-				Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. 
+				Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
 			</footer>
 			<div class="control-sidebar-bg"></div>
 		</div>
 		<?php include 'imports/imports.html'?>
-		<script src="produtos.js"></script>
+		<script src="contratos.js"></script>
 		<?php include 'imports/rodape.html'?>

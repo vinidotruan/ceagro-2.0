@@ -15,6 +15,7 @@ function enviar() {
     $(`#formulario`).append(`<input hidden name='cliente_vendedor_id' value=${vendedor.id}>`);
     $(`#formulario`).append(`<input hidden name='produto_id' value=${produto.id}>`);
     var dados = $('#formulario').serialize();
+    console.log(dados);
     $.ajax({
         type: 'POST',
         url: '../back-end/contratos',
@@ -24,6 +25,26 @@ function enviar() {
             console.log(response);
         }
     });
+}
+
+function buscarContratos() {
+    $.get("../back-end/contratos", function (response) {
+        contratos = JSON.parse(response);
+        console.log(contratos);
+        popularPesquisa(contratos);
+    });
+}
+
+function popularPesquisa(contratos) {
+    $.each(contratos, function (index, contrato) {
+        var linha = `<tr>
+            <td>${contrato.numero}</td>
+            <td>${contrato.comprador.nome}</td>
+            <td>${contrato.vendedor.nome}</td>
+            <td>${contrato.produto.nome}</td>
+        </tr>`;
+        $("#contratos").append(linha);
+    })
 }
 
 function buscar() {
@@ -63,14 +84,15 @@ function popularVendedores(clientes) {
 
 function popularProdutos(produtos) {
     $.each(produtos, function (index, produto) {
-        var option = '<option value="' + produto.id + '">' + produto.titulo + '</option>';
+        var option = '<option value="' + produto.nome + '">' + produto.nome + '</option>';
         $("#produtos").append(option)
     })
 }
 
 function selecionarProduto(event) {
     //loadsh
-    produto = _.find(produtos, ['titulo', event.value]);
+    produto = _.find(produtos, ['nome', event.value]);
+    console.log(produto);
 }
 
 function popularCompradores(clientes) {

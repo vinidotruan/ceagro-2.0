@@ -1,20 +1,17 @@
 $("#formulario").submit(function (event) {
     event.preventDefault();
-    console.log('dados');
     enviar();
 });
 
-console.log('logado');
-
 function enviar() {
-    var dados = $('#formulario').serialize();
+    var dados = $('#produtos').serialize();
     $.ajax({
         type: 'POST',
         url: '../back-end/produtos',
         data: dados,
         dataType: 'json',
-        success: function (response) {
-            console.log(response);
+        success: function () {
+            buscar();
         }
     });
 }
@@ -24,21 +21,22 @@ function buscar() {
         url: "../back-end/produtos",
         type: "get",
         dataType: "json",
-        success: function (data) {
-            popular(data);
-            console.log(data);
+        success: function (produtos) {
+            popular(produtos);
         }
     });
 }
 
 function popular(produtos) {
+    $('#produtos_lista .item').remove();
     for (const produto of produtos) {
-        var newRow = $("<tr>");
+        var newRow = $("<tr class='item'>");
         var cols = "";
-        cols += `<td>${produto.titulo}</td>`;
+        cols += `<td>${produto.nome}</td>`;
+        cols += `<td>${produto.tipo}</td>`;
+        cols += `<td>${produto.categoria}</td>`;
         newRow.append(cols);
-        $("#produtos").append(newRow)
-
+        $("#produtos_lista").append(newRow)
     }
 }
 

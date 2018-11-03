@@ -1,4 +1,3 @@
-
 var cliente = {};
 var contatos = [{}];
 formsDisable();
@@ -6,12 +5,17 @@ buscarBancos();
 
 function formsDisable() {
     $("#contatos :input").prop("disabled", true);
+    $("#contatos :button").hide();
+    $("#contatos").hide();
     $("#faturamento :input").prop("disabled", true);
+    $("#faturamento :button").hide();
     $("#entrega :input").prop("disabled", true);
+    $("#entrega :button").hide();
 }
 
 function habilitarForm(formulario) {
     $(`#${formulario} :input`).prop("disabled", false);
+    $(`#${formulario} :button`).show();
 }
 
 function irPara(formulario) {
@@ -27,6 +31,7 @@ function enviar() {
             cliente = JSON.parse(response)[0];
             irPara("faturamento");
             habilitarForm("faturamento");
+            $("#contatos").hide();
             habilitarForm("contatos");
         });
 }

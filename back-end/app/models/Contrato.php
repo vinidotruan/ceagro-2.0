@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Core\App;
 
-class Contrato
+class Contrato extends Model
 {
     public $id;
     public $numero;
@@ -18,17 +18,18 @@ class Contrato
     public $comprador;
     public $vendedor;
     public $produto;
+    protected static $table = "contratos";
 
     public function comprador()
     {
-        return App::get('db')->select("select nome, clientes.id from clientes inner join contratos on contratos.cliente_comprador_id = clientes.id where contratos.id = $this->id");
+        return App::get('db')->select("select clientes.* from clientes inner join contratos on contratos.cliente_comprador_id = clientes.id where contratos.id = $this->id");
     }
     public function vendedor()
     {
-        return App::get('db')->select("select nome, clientes.id from clientes inner join contratos on contratos.cliente_vendedor_id = clientes.id where contratos.id = $this->id");
+        return App::get('db')->select("select clientes.* from clientes inner join contratos on contratos.cliente_vendedor_id = clientes.id where contratos.id = $this->id");
     }
     public function produto()
     {
-        return App::get('db')->select("select nome, produtos.id from produtos inner join contratos on contratos.produto_id = produtos.id where contratos.id = $this->id");
+        return App::get('db')->select("select produtos.* from produtos inner join contratos on contratos.produto_id = produtos.id where contratos.id = $this->id");
     }
 }

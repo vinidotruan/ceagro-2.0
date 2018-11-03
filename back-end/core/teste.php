@@ -1,8 +1,12 @@
 <?php
-
+/**
+ *
+ * ceagro/back-end/contratos
+ * ceagro/back-end/contratos/
+ */
 namespace App\Core;
 
-class Router
+class AAAAa
 {
     protected $routes = [
         'POST' => [],
@@ -36,34 +40,21 @@ class Router
             } catch (\Exception $exception) {
                 return $exception->getMessage();
             }
-        } else {
-            foreach ($this->routes[$requestType] as $key => $val) {
-                $pattern = preg_replace('#\(/\)#', '/?', $key);
-                $pattern = "@^" . preg_replace('/{([a-zA-Z0-9\_\-]+)}/', '(?<$1>[a-zA-Z0-9\_\-]+)', $pattern) . "$@D";
-                preg_match($pattern, $uri, $matches);
-                array_shift($matches);
-                if ($matches) {
-                    $getAction = explode('@', $val);
-                    return $this->executarAcao($getAction[0], $getAction[1], $matches);
-                }
-            }
-
         }
-        throw new \Exception('Rota inválida');
+        throw new \Exception("URI solicitada não existe.");
 
     }
 
-    protected function executarAcao($controller, $metodo, $parametros = [])
+    protected function executarAcao($controller, $metodo)
     {
         $controller = "App\\Controllers\\{$controller}";
         $controller = new $controller;
+
         if (!method_exists($controller, $metodo)) {
-            throw new \Exception(
-                "Método não encontrado"
-            );
+            throw new \Exception("Método não encontrado.");
         }
 
-        return $controller->$metodo($parametros);
+        return $controller->$metodo();
     }
 
 }

@@ -15,7 +15,7 @@ class ProdutosController
 
     public function cadastrar()
     {
-        $produtoId = App::get('db')->update('produtos', [
+        $produtoId = App::get('db')->insert('produtos', [
             'tipo' => $_POST['tipo'],
             'nome' => $_POST['nome'],
             'categoria' => $_POST['categoria'],

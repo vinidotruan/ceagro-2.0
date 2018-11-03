@@ -33,20 +33,20 @@
 											</div>
 										</div>
 									</div>
-								</td>
-							</thead>
-						</table>
-					</form>
-				</section>
-			</div>
-			<footer class="main-footer">
-				<div class="pull-right hidden-xs">
-					<i class="fab fa-optin-monster"></i>
-				</div>
-				Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
-			</footer>
-			<div class="control-sidebar-bg"></div>
+								</div>
+							</form>
+						</td>
+					</thead>
+				</table>
+			</section>
 		</div>
-		<?php include 'imports/imports.html'?>
-		<script src="contratos.js"></script>
-		<?php include 'imports/rodape.html'?>
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<i class="fab fa-optin-monster"></i>
+			</div>
+			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
+		</footer>
+	</div>
+	<?php include 'imports/imports.html'?>
+	<script src="contratosPesquisa.js"></script>
+	<?php include 'imports/rodape.html'?>

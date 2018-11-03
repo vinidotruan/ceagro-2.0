@@ -1,5 +1,5 @@
 <?php include 'imports/cabecalho.html'?>
-<body class="hold-transition skin-blue sidebar-mini" onload="buscar(); buscarProdutos()">
+<body class="hold-transition skin-blue sidebar-mini" onload="verificarContrato()">
    <div class="wrapper">
    <?php include 'imports/header.html'?>
    <?php include "menu.html";?>
@@ -8,25 +8,23 @@
                 <div class="container-fluid">
                     <div class="row mx-auto">
                         <div class="col-12">
-                            <form id="formulario">
+                            <form id="contrato">
                                 <div id="titulo">Dados Confirmação</div>
                                 <div class="form-group row">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <input type="text" name="numero_confirmacao" class="form-control" placeholder="Confirmação Nº">
+                                    <input type="text" name="numero" class="form-control" placeholder="Confirmação Nº">
                                     </div>
                                 </div>
                                 <div class="form-group row" id="vendedor">
                                     <div class="form-row mx-3">
                                         <div id="titulo" class="col-12">Dados do Vendedor</div>
                                         <div class="col-md-6 col-sm-6 col-xs-6" >
-                                            <input oninput="selecionarVendedor(this)" type="text" id="nome" name="nome" autocomplete="off" list="vendedores" class="form-control" placeholder="Selecione seu vendedor">
-                                            <datalist id="vendedores">
-                                            </datalist>
+                                            <input onchange="selecionarVendedor(this)" type="text" id="nome" name="nome" autocomplete="off" list="vendedores" class="form-control" placeholder="Selecione seu vendedor">
+                                            <datalist id="vendedores"></datalist>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <input oninput="selecionarCnpjVendedor(this)" type="text" id="cnpj" name="cnpj" autocomplete="off" list="vendedores_cnpjs" class="form-control" placeholder="Digite seu cnpj">
-                                            <datalist id="vendedores_cnpjs">
-                                            </datalist>
+                                            <input onchange="selecionarCnpjVendedor(this)" type="text" id="cnpj" name="cnpj" autocomplete="off" list="vendedores_cnpjs" class="form-control" placeholder="Digite seu cnpj">
+                                            <datalist id="vendedores_cnpjs"></datalist>
                                         </div>
                                     </div>
                                     <div class="form-row mx-3">
@@ -34,11 +32,11 @@
                                             <input type="text" id="razao_social" name="razao_social" class="form-control" placeholder="Razão Social">
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <input type="text" id="responsavel"  name="responsavel" class="form-control" placeholder="Responsável">
+                                            <input type="text" id="responsavel"  name="responsavel_vendedor" class="form-control" placeholder="Responsável">
                                         </div>
 
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <input type="text" id="assinatura" name="assinatura" class="form-control" placeholder="Assinatura">
+                                            <input type="text" id="assinatura" name="assinatura_vendedor" class="form-control" placeholder="Assinatura">
                                         </div>
                                     </div>
                                 </div>
@@ -46,12 +44,12 @@
                                     <div class="form-row mx-3">
                                         <div id="titulo" class="col-12">Dados do Comprador</div>
                                         <div class="col-md-6 col-sm-6 col-xs-6" >
-                                            <input oninput="selecionarComprador(this)" type="text" id="nome" name="nome" autocomplete="off" list="compradores" class="form-control" placeholder="Selecione seu comprador">
+                                            <input onchange="selecionarComprador(this)" type="text" id="nome" name="nome" autocomplete="off" list="compradores" class="form-control" placeholder="Selecione seu comprador">
                                             <datalist id="compradores">
                                             </datalist>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <input oninput="selecionarCnpjComprador(this)" type="text" id="cnpj" name="cnpj" autocomplete="off" list="compradores_cnpjs" class="form-control" placeholder="Digite seu cnpj">
+                                            <input onchange="selecionarCnpjComprador(this)" type="text" id="cnpj" name="cnpj" autocomplete="off" list="compradores_cnpjs" class="form-control" placeholder="Digite seu cnpj">
                                             <datalist id="compradores_cnpjs">
                                             </datalist>
                                         </div>
@@ -61,20 +59,20 @@
                                             <input type="text" id="razao_social" name="razao_social" class="form-control" placeholder="Razão Social">
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <input type="text" id="responsavel"  name="responsavel" class="form-control" placeholder="Responsável">
+                                            <input type="text" id="responsavel"  name="responsavel_comprador" class="form-control" placeholder="Responsável">
                                         </div>
 
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <input type="text" id="assinatura" name="assinatura" class="form-control" placeholder="Assinatura">
+                                            <input type="text" id="assinatura" name="assinatura_comprador" class="form-control" placeholder="Assinatura">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="form-row mx-3">
+                                    <div class="form-row mx-3" id="produto">
                                         <div id="titulo">Produto:</div>
 
                                         <div class="col-md-3 col-sm-3 col-xs-3">
-                                            <input oninput="selecionarProduto(this)" type="text" id="produto" name="produto" autocomplete="off" list="produtos" class="form-control" placeholder="Escolha seu produto">
+                                            <input onchange="selecionarProduto(this)" type="text" id="produto nome" name="nome" autocomplete="off" list="produtos" class="form-control" placeholder="Escolha seu produto">
                                             <datalist id="produtos">
                                             </datalist>
                                         </div>

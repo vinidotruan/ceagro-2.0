@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xs-push-9 col-lg-push-11 col-sm-push-10">
-                                        <input type="submit" class="btn btn-warning" onclick="enviar()" value="Enviar" style="margin-left: auto">
+                                        <input type="submit" class="btn btn-warning" id="enviar" value="Cadastrar" style="margin-left: auto">
                                     </div>
                                 </div>
                             </form>

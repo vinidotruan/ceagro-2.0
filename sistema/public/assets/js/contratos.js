@@ -22,7 +22,10 @@ function verificarContrato() {
     contrato = JSON.parse(localStorage.getItem("contrato"));
     localStorage.removeItem("contrato");
     if (temContrato()) {
+        $("#enviar").val("Atualizar");
         compararFormContrato(contrato, "contrato");
+    } else {
+        $("#enviar").val("Cadastrar");
     }
 }
 
@@ -49,12 +52,21 @@ function cadastrar() {
     $(`#contrato`).append(`<input hidden name='cliente_vendedor_id' value=${vendedor.id}>`);
     $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);
     var dados = $('#contrato').serialize();
-    console.log(dados);
+    $.post('../back-end/contratos', dados).success(function (response) {
+        console.log(response);
+    });
+}
+
+function atualizar() {
+    $(`#contrato`).append(`<input hidden name='cliente_comprador_id' value=${contrato.comprador.id}>`);
+    $(`#contrato`).append(`<input hidden name='cliente_vendedor_id' value=${contrato.vendedor.id}>`);
+    $(`#contrato`).append(`<input hidden name='produto_id' value=${contrato.produto.id}>`);
+    var dados = $('#contrato').serialize();
+
     $.ajax({
-        type: 'POST',
-        url: '../back-end/contratos',
+        url: `../back-end/contratos/${contrato.id}`,
+        type: 'PUT',
         data: dados,
-        dataType: 'json',
         success: function (response) {
             console.log(response);
         }

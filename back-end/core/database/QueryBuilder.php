@@ -73,19 +73,28 @@ class QueryBuilder
         }
     }
 
-    public function update($tabela, $dados, $where = null)
+    public function update($tabela, $dados, $where)
     {
+        $campos = '';
+        foreach ($dados as $key => $valor) {
+            $campos .= "\n $key=:$key,";
+        }
+
+        $campos = rtrim($campos, ",");
         $sql = sprintf(
-            "UPDATE %s SET %s WHERE %s",
+            "UPDATE %s \n SET %s \n WHERE %s",
             $tabela,
-            ":" . implode("=:", array_key($dados)),
-            implode("=", array_key($where))
+            $campos,
+            implode(" = ", $where)
         );
 
         try {
-            $statement = $this->pdo->prepare($sql);
+            $statement = $this->pdo->prepare($sql)->execute($dados);
+            return $where[1];
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
 
-        } catch (\PDOException $e) {}
+        }
 
     }
 }

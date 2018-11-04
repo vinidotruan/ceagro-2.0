@@ -1,8 +1,8 @@
-<?php include 'imports/cabecalho.html'?>
+<?php include 'partials/cabecalho.html'?>
 <body class="hold-transition skin-blue sidebar-mini" onload="buscarContratos()">
 	<div class="wrapper">
-		<?php include "imports/header.html";?>
-		<?php include "menu.html";?>
+		<?php include "partials/header.html";?>
+		<?php include "partials/menu.html";?>
 		<div class="content-wrapper">
 			<section class="content">
 				<table class="table">
@@ -47,6 +47,6 @@
 			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
 		</footer>
 	</div>
-	<?php include 'imports/imports.html'?>
-	<script src="contratosPesquisa.js"></script>
-	<?php include 'imports/rodape.html'?>
+	<?php include 'partials/imports.html'?>
+	<script src="public/assets/js/contratosLista.js"></script>
+	<?php include 'partials/rodape.html'?>

@@ -1,8 +1,8 @@
-<?php include 'imports/cabecalho.html'?>
+<?php include 'partials/cabecalho.html'?>
 <body class="hold-transition skin-blue sidebar-mini" onload="buscar()">
 	<div class="wrapper">
-		<?php include "imports/header.html"?>
-		<?php include "menu.html";?>
+		<?php include "partials/header.html"?>
+		<?php include "partials/menu.html";?>
 		<div class="content-wrapper" style="height:auto !important">
 			<section class="content">
         <div id="titulo">
@@ -71,6 +71,6 @@
 		</footer>
 		<div class="control-sidebar-bg"></div>
 	</div>
-	<?php include 'imports/imports.html'?>
-  <script src="produtos.js"></script>
-	<?php include 'imports/rodape.html'?>
+	<?php include 'partials/imports.html'?>
+  <script src="public/assets/js/produtos.js"></script>
+	<?php include 'partials/rodape.html'?>

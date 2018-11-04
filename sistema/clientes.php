@@ -1,8 +1,8 @@
-<?php include 'imports/cabecalho.html'?>
+<?php include 'partials/cabecalho.html'?>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
-		<?php include "imports/header.html"?>
-		<?php include "menu.html";?>
+		<?php include "partials/header.html"?>
+		<?php include "partials/menu.html";?>
 		<div class="content-wrapper" style="height:auto !important">
 			<section class="content">
 				<form id="formulario">
@@ -191,10 +191,10 @@
 			<div class="pull-right hidden-xs">
 				<i class="fab fa-optin-monster"></i>
 			</div>
-	Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
+			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
 		</footer>
 		<div class="control-sidebar-bg"></div>
 	</div>
-	<?php include 'imports/imports.html'?>
-	<script src="clientes.js"></script>
-	<?php include 'imports/rodape.html'?>
+	<?php include 'partials/imports.html'?>
+	<script src="public/assets/js/clientes.js"></script>
+	<?php include 'partials/rodape.html'?>

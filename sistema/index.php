@@ -1,12 +1,9 @@
-<?php include 'imports/cabecalho.html'?>
+<?php include 'partials/cabecalho.html'?>
 <body class="hold-transition skin-blue sidebar-mini">
-  <div class="wrapper">
-		<?php include "imports/header.html";?>
-		<?php include "menu.html";?>
-	<div class="content-wrapper">
-			<section class="content-header">
-		<! #mensagem >
-			</section>
+	<div class="wrapper">
+	<?php include "partials/header.html";?>
+	<?php include "partials/menu.html";?>
+		<div class="content-wrapper">
 			<section class="content">
 				<form id="FrmMain" runat="server">
 					<asp:Label ID="LbIdEscola" runat="server" Visible="false" Text="Label"></asp:Label>
@@ -25,13 +22,10 @@
 
 										</div>
 									</div>
-
-
 								</td>
 							</tr>
 						</thead>
 					</table>
-
 				</form>
 			</section>
 		</div>
@@ -42,5 +36,6 @@
 			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php //mostraIp();?>
 		</footer>
 		<div class="control-sidebar-bg"></div>
-	<?php include 'imports/imports.html'?>
-	<?php include 'imports/rodape.html'?>
+		<?php include 'partials/imports.html'?>
+		<?php include 'partials/rodape.html'?>
+	</div>

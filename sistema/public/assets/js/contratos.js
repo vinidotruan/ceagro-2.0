@@ -60,7 +60,7 @@ function cadastrar() {
 function atualizar() {
     $(`#contrato`).append(`<input hidden name='cliente_comprador_id' value=${contrato.comprador.id}>`);
     $(`#contrato`).append(`<input hidden name='cliente_vendedor_id' value=${contrato.vendedor.id}>`);
-    $(`#contrato`).append(`<input hidden name='produto_id' value=${contrato.produto.id}>`);
+    $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);
     var dados = $('#contrato').serialize();
 
     $.ajax({

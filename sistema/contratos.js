@@ -1,6 +1,11 @@
 $("#contrato").submit(function (event) {
     event.preventDefault();
-    enviar();
+    if (temContrato()) {
+        atualizar();
+    } else {
+        cadastrar();
+    }
+
 });
 
 vendedores = [];
@@ -9,15 +14,23 @@ produtos = [];
 vendedor = {};
 comprador = {};
 produto = {};
+contrato = {};
 
 function verificarContrato() {
     buscar();
     buscarProdutos();
     contrato = JSON.parse(localStorage.getItem("contrato"));
     localStorage.removeItem("contrato");
-    if (contrato) {
+    if (temContrato()) {
         compararFormContrato(contrato, "contrato");
     }
+}
+
+function temContrato() {
+    if (contrato) {
+        return true;
+    }
+    return false;
 }
 
 function compararFormContrato(contrato, formulario) {
@@ -31,7 +44,7 @@ function compararFormContrato(contrato, formulario) {
     });
 }
 
-function enviar() {
+function cadastrar() {
     $(`#contrato`).append(`<input hidden name='cliente_comprador_id' value=${comprador.id}>`);
     $(`#contrato`).append(`<input hidden name='cliente_vendedor_id' value=${vendedor.id}>`);
     $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);

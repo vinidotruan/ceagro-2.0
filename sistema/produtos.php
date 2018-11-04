@@ -10,10 +10,10 @@
         </div>
         <form id="produtos">
           <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12" id="campo">
-            <input type="text" name="nome" class="form-control" placeholder="Nome" required>
+            <input type="text" name="nome" class="form-control" placeholder="Nome" required autocomplete="off">
           </div>
           <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12" id="campo">
-            <input class="form-control" rows="5" id="comment" placeholder="Categoria" name="categoria" required>
+            <input class="form-control" rows="5" id="comment" placeholder="Categoria" name="categoria" required autocomplete="off">
           </div>
           <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
             <select id="select" name="tipo" style="width:100%" required>
@@ -38,7 +38,7 @@
 										<div class="box">
 											<div class="box-header with-border">
 												<div class="input-group col-xs-6">
-													<input type="text" id='filtro' name="criterio" class="form-control" onkeyup="filtrar()">
+													<input type="text" id='filtro' name="criterio" class="form-control" onkeyup="filtrar()" autocomplete="off">
 												</div>
 											</div>
 											<div class="box-body">

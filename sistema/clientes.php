@@ -185,6 +185,39 @@
 						</form>
 					</div>
 				</div>
+				<div class="row" style="margin:auto !important">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<form id="dadosBancarios">
+							<div class="form-group row">
+								<div class="form-row">
+									<div class="form-row">
+										<div>
+										<div id="titulo" class="col-12">
+										Dados Bancários:
+										</div>
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="endereco" name="rua" class="form-control" placeholder="Banco">
+											</div>
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="numero"  name="numero" class="form-control" placeholder="Agência">
+											</div>
+
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="complemento" name="complemento" class="form-control" placeholder="Conta">
+											</div>
+											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
+												<input type="text" id="bairro" name="bairro" class="form-control" placeholder="Dígito">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="botoes" class="row">
+									<input type="button" class="btn btn-warning" onclick="cadastrarEnderecoEnt()" value="Enviar">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
    			</section>
 		</div>
 		<footer class="main-footer">

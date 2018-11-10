@@ -11,6 +11,8 @@ function formsDisable() {
     $("#faturamento :button").hide();
     $("#entrega :input").prop("disabled", true);
     $("#entrega :button").hide();
+    $("#dadosBancarios :input").prop("disabled", true);
+    $("#dadosBancarios :button").hide();
 }
 
 function habilitarForm(formulario) {
@@ -73,6 +75,18 @@ function popularContatos(contatos) {
         var option = `<div class="box-body ">${contato.telefone} - ${contato.observacao}</div>`
         $("#contatosLista").append(option)
     })
+}
+
+function atualizar() {
+    $(`#cliente`).append(`<input hidden name='cliente_id' value=${comprador.id}>`);
+    var dados = $('#cliente').serialize();
+    $.ajax({
+        url: `../back-end/clientes/${cliente.id}`,
+        type: 'PUT',
+        data: dados,
+        success: function (response) {
+        }
+    });
 }
 
 function buscar() {

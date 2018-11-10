@@ -27,8 +27,6 @@
 															<th>Produto</th>
 														</tr>
 													</thead>
-													<tbody id="contratos">
-													</tbody>
 												</table>
 											</div>
 										</div>

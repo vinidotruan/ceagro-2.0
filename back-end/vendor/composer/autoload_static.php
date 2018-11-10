@@ -9,6 +9,7 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
     public static $classMap = array (
         'App\\Controllers\\AdendosController' => __DIR__ . '/../..' . '/app/controllers/AdendosController.php',
         'App\\Controllers\\ClientesController' => __DIR__ . '/../..' . '/app/controllers/ClientesController.php',
+        'App\\Controllers\\ContasBancariasController' => __DIR__ . '/../..' . '/app/controllers/ContasBancariasController.php',
         'App\\Controllers\\ContatosController' => __DIR__ . '/../..' . '/app/controllers/ContatosController.php',
         'App\\Controllers\\ContratosController' => __DIR__ . '/../..' . '/app/controllers/ContratosController.php',
         'App\\Controllers\\EnderecosController' => __DIR__ . '/../..' . '/app/controllers/EnderecosController.php',
@@ -21,6 +22,8 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
         'App\\Models\\Banco' => __DIR__ . '/../..' . '/app/models/Banco.php',
         'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/models/Cliente.php',
+        'App\\Models\\ContaBancaria' => __DIR__ . '/../..' . '/app/models/ContaBancaria.php',
+        'App\\Models\\Contato' => __DIR__ . '/../..' . '/app/models/Contato.php',
         'App\\Models\\Contrato' => __DIR__ . '/../..' . '/app/models/Contrato.php',
         'App\\Models\\Model' => __DIR__ . '/../..' . '/app/models/Model.php',
         'App\\Models\\Produto' => __DIR__ . '/../..' . '/app/models/Produto.php',

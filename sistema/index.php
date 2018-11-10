@@ -19,7 +19,6 @@
 												</div>
 												Informações que deseja deixar na área principal.
 											</div>
-
 										</div>
 									</div>
 								</td>
@@ -36,6 +35,7 @@
 			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php //mostraIp();?>
 		</footer>
 		<div class="control-sidebar-bg"></div>
+		<?php include "partials/loader.html"?>
 		<?php include 'partials/imports.html'?>
 		<?php include 'partials/rodape.html'?>
 	</div>

@@ -1,10 +1,10 @@
 <?php include 'partials/cabecalho.html'?>
 <body class="hold-transition skin-blue sidebar-mini" onload="buscar()">
-	<div class="wrapper">
+	<div class="wrapper" style=" position:absolute; width:100%">
 		<?php include "partials/header.html"?>
 		<?php include "partials/menu.html";?>
-		<div class="content-wrapper" style="height:auto !important">
-			<section class="content">
+		<div class="content-wrapper" style="height:auto !important;">
+		<section class="content">
         <div id="titulo">
         Produtos:
         </div>

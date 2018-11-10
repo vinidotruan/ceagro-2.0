@@ -1,3 +1,4 @@
+﻿<<<<<<< HEAD
 ﻿-- phpMyAdmin SQL Dump
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
@@ -26,22 +27,19 @@ INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('8', 'Banco Safra
 INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('9', 'Banco Rendimento S.A', '633');
 INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('10', 'Banco do Brasil S.A', '001');
 INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('11','Banco Itaú S.A', '341');
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `ceagro`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `banco`
---
+=======
+﻿INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('1', 'Banco Santander (Brasil) S.A', '033');
+INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('2', 'Itaú Unibanco Holding S.A', '237');
+INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('3', 'Banco Bradesco S.A', '745');
+INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('4', 'HSBC Bank Brasil S.A - Banco Múltiplo', '399');
+INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('5', 'Caixa Ecnonômica Federal', '104');
+INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('6', 'Banco Mercantil do Brasil S.A', '389');
+INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('7', 'Banco Rural S.A', '453');
+INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('8', 'Banco Safra S.A', '422');
+INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('9', 'Banco Rendimento S.A', '633');
+INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('10', 'Banco do Brasil S.A', '001');
+INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('11','Banco Itaú S.A', '341');
+>>>>>>> dbe3f6040e1b7756202b6baf6ff9660b59904f8c
 
 DROP TABLE IF EXISTS `bancos`;
 CREATE TABLE
@@ -50,15 +48,8 @@ IF NOT EXISTS `bancos`
   `id` INT AUTO_INCREMENT NOT NULL,
   `nome` VARCHAR (50) NOT NULL,
   `codigo` VARCHAR (50),
-  PRIMARY KEY
-(`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `clientes`
---
+  PRIMARY KEY (`id`) 
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE
@@ -66,20 +57,26 @@ IF NOT EXISTS `clientes`
 (
   id INT NOT NULL AUTO_INCREMENT,
   banco_id INT,
-  razao_social VARCHAR
-(255),
-  cnpj VARCHAR
-(255),
-  inscricao_estadual VARCHAR
-(255),
-  nome VARCHAR
-(255),
-  email VARCHAR
-(255),
-  atuacao VARCHAR
-(255),
-  PRIMARY KEY
-(`id`)
+  razao_social VARCHAR (255),
+  cnpj VARCHAR (255),
+  inscricao_estadual VARCHAR (255),
+  nome VARCHAR (255),
+  email VARCHAR (255),
+  atuacao VARCHAR (255),
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `contas_bancarias`;
+CREATE TABLE
+IF NOT EXISTS `contas_bancarias`
+(
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cliente_id` INT(11) NOT NULL,
+  `banco_id` VARCHAR(100) DEFAULT NULL,
+  `agencia` VARCHAR(20) DEFAULT NULL,
+  `conta` VARCHAR(20) DEFAULT NULL,
+  `digito` INT(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `contatos`;
@@ -88,12 +85,9 @@ IF NOT EXISTS `contatos`
 (
   id INT NOT NULL AUTO_INCREMENT,
   cliente_id INT NOT NULL,
-  telefone VARCHAR
-(255),
-  observacao VARCHAR
-(255),
-  PRIMARY KEY
-(`id`)
+  telefone VARCHAR (255),
+  observacao VARCHAR (255),
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `enderecos_faturamentos`;
@@ -102,22 +96,14 @@ IF NOT EXISTS `enderecos_faturamentos`
 (
   id INT NOT NULL AUTO_INCREMENT,
   cliente_id INT NOT NULL,
-  cep VARCHAR
-(255),
-  complemento VARCHAR
-(255),
-  bairro VARCHAR
-(255),
-  cidade VARCHAR
-(255),
-  numero VARCHAR
-(255),
-  estado VARCHAR
-(255),
-  rua VARCHAR
-(255),
-  PRIMARY KEY
-(`id`)
+  cep VARCHAR (255),
+  complemento VARCHAR (255),
+  bairro VARCHAR (255),
+  cidade VARCHAR (255),
+  numero VARCHAR (255),
+  estado VARCHAR (255),
+  rua VARCHAR (255),
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `enderecos_entregas`;
@@ -126,22 +112,14 @@ IF NOT EXISTS `enderecos_entregas`
 (
   id INT NOT NULL AUTO_INCREMENT,
   cliente_id INT NOT NULL,
-  cep VARCHAR
-(255),
-  complemento VARCHAR
-(255),
-  bairro VARCHAR
-(255),
-  cidade VARCHAR
-(255),
-  numero VARCHAR
-(255),
-  estado VARCHAR
-(255),
-  rua VARCHAR
-(255),
-  PRIMARY KEY
-(`id`)
+  cep VARCHAR (255),
+  complemento VARCHAR (255),
+  bairro VARCHAR (255),
+  cidade VARCHAR (255),
+  numero VARCHAR (255),
+  estado VARCHAR (255),
+  rua VARCHAR (255),
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `contratos`;
@@ -172,9 +150,8 @@ IF NOT EXISTS `produtos`
   `tipo` VARCHAR (100),
   `nome` VARCHAR (100),
   `categoria` VARCHAR (100),
-  PRIMARY KEY
-(`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 COMMIT;
 
 DROP TABLE IF EXISTS `adendos`;
@@ -184,11 +161,17 @@ IF NOT EXISTS `adendos`
   `id` INT AUTO_INCREMENT NOT NULL,
   `contrato_id` INT NOT NULL,
   `definicao` VARCHAR (100),
+
   PRIMARY KEY
 (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+=======
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+>>>>>>> dbe3f6040e1b7756202b6baf6ff9660b59904f8c

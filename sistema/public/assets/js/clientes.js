@@ -65,7 +65,17 @@ function cadastrarEnderecoEnt() {
     $.post("../back-end/clientes/enderecos-entregas", dados)
         .success(function (response) {
             entrega = JSON.parse(response);
+            irPara("dadosBancarios");
+            habilitarForm("dadosBancarios");
+        });
+}
 
+function cadastrarDadosBancarios() {
+    $(`#dadosBancarios`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    var dados = $("#dadosBancarios").serialize();
+    $.post("../back-end/clientes/dados-bancarios", dados)
+        .success(function (response) {
+            dadosBancarios = JSON.parse(response);
         });
 }
 

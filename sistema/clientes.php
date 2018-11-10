@@ -212,7 +212,7 @@
 									</div>
 								</div>
 								<div id="botoes" class="row">
-									<input type="button" class="btn btn-warning" onclick="cadastrarEnderecoEnt()" value="Enviar">
+									<input type="button" class="btn btn-warning" onclick="cadastrarDadosBancarios()" value="Enviar">
 								</div>
 							</div>
 						</form>

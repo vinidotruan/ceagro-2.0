@@ -73,7 +73,7 @@ function cadastrarEnderecoEnt() {
 function cadastrarDadosBancarios() {
     $(`#dadosBancarios`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     var dados = $("#dadosBancarios").serialize();
-    $.post("../back-end/clientes/dados-bancarios", dados)
+    $.post("../back-end/clientes/contas-bancarias", dados)
         .success(function (response) {
             dadosBancarios = JSON.parse(response);
         });

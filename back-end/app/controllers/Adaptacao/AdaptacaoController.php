@@ -12,6 +12,7 @@ use App\Controllers\ProdutosController;
 use App\Core\App;
 use App\Models\Adaptacao\Cliente as ClientesOld;
 use App\Models\Adaptacao\ClienteContaBacaria as ClienteContaBancariaOld;
+use App\Models\Adaptacao\Contrato as ContratoOld;
 use App\Models\Adaptacao\Produto as ProdutosOld;
 
 class AdaptacaoController
@@ -30,15 +31,26 @@ class AdaptacaoController
                 "atuacao" => $this->verificarAtuacao($clienteOld->id_tipo_cliente),
             ]);
 
-            // $this->adaptarEnderecoEntrega($clienteOld);
-            // $this->adaptarEnderecoFaturamento($clienteOld);
-            $this->adaptarContasBancarias();
-            // $this->adaptarProdutos();
+            $this->adaptarEnderecoEntrega($clienteOld);
+            $this->adaptarEnderecoFaturamento($clienteOld);
 
+        }
+        $this->adaptarProdutos();
+        $this->adaptarContasBancarias();
+
+        echo "TUDO OKA";
+    }
+
+    public function adaptarContratos()
+    {
+        $contratosOld = App::get('db')->selectAll("contrato", ContratoOld::class);
+
+        foreach ($contratosOld as $contrato) {
+            dd([$contrato->ac_vendedor, $contrato->valor_contrato]);
         }
     }
 
-    private function adaptarContasBancarias()
+    public function adaptarContasBancarias()
     {
         $contasOld = App::get('db')->selectAll("cliente_conta_bancaria", ClienteContaBancariaOld::class);
         foreach ($contasOld as $contaOld) {

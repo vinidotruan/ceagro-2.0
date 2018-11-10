@@ -22,6 +22,7 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
         'App\\Models\\Adaptacao\\Cliente' => __DIR__ . '/../..' . '/app/models/Adaptacao/Cliente.php',
         'App\\Models\\Adaptacao\\ClienteContaBacaria' => __DIR__ . '/../..' . '/app/models/Adaptacao/ClienteContaBancaria.php',
+        'App\\Models\\Adaptacao\\Contrato' => __DIR__ . '/../..' . '/app/models/Adaptacao/Contrato.php',
         'App\\Models\\Adaptacao\\Produto' => __DIR__ . '/../..' . '/app/models/Adaptacao/Produto.php',
         'App\\Models\\Banco' => __DIR__ . '/../..' . '/app/models/Banco.php',
         'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/models/Cliente.php',

@@ -21,6 +21,7 @@ return array(
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
     'App\\Models\\Adaptacao\\Cliente' => $baseDir . '/app/models/Adaptacao/Cliente.php',
     'App\\Models\\Adaptacao\\ClienteContaBacaria' => $baseDir . '/app/models/Adaptacao/ClienteContaBancaria.php',
+    'App\\Models\\Adaptacao\\Contrato' => $baseDir . '/app/models/Adaptacao/Contrato.php',
     'App\\Models\\Adaptacao\\Produto' => $baseDir . '/app/models/Adaptacao/Produto.php',
     'App\\Models\\Banco' => $baseDir . '/app/models/Banco.php',
     'App\\Models\\Cliente' => $baseDir . '/app/models/Cliente.php',

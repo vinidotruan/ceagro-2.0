@@ -16,8 +16,8 @@ class ContasBancariasController
     public function cadastrar($conta)
     {
         $contaId = App::get('db')->insert('contas_bancarias', [
-            (!$conta['id']) ?? "id" => $conta['id'],
-            "cliente_id" => $conta["cliente_id"],
+            "id" => intval($conta['id']),
+            "cliente_id" => intval($conta["cliente_id"]),
             "banco" => $conta["banco"] ?? "",
             "agencia" => $conta["agencia"] ?? "",
             "conta" => $conta["conta"] ?? "",

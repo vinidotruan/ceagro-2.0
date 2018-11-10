@@ -41,7 +41,7 @@ IF NOT EXISTS `contas_bancarias`
 (
   `id` INT NOT NULL AUTO_INCREMENT,
   `cliente_id` INT(11) NOT NULL,
-  `banco_id` VARCHAR(100) DEFAULT NULL,
+  `banco` VARCHAR(100) DEFAULT NULL,
   `agencia` VARCHAR(20) DEFAULT NULL,
   `conta` VARCHAR(20) DEFAULT NULL,
   `digito` INT(11) DEFAULT NULL,

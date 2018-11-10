@@ -16,9 +16,9 @@ class ProdutosController
     public function cadastrar($produto)
     {
         $produtoId = App::get('db')->insert('produtos', [
-            'tipo' => $produto['tipo'],
+            'tipo_id' => $produto['tipo_id'],
             'nome' => $produto['nome'],
-            'categoria' => $produto['categoria'],
+            'codigo' => $produto['codigo'],
         ]);
 
         // echo json_encode($produtoId);

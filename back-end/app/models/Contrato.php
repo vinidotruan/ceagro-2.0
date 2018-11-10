@@ -7,7 +7,7 @@ use App\Core\App;
 class Contrato extends Model
 {
     public $id;
-    public $numero;
+    public $codigo;
     public $cliente_comprador_id;
     public $cliente_vendedor_id;
     public $produto_id;

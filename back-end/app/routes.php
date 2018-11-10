@@ -4,7 +4,8 @@ $router->get("ceagro/back-end/clientes", "ClientesController@index");
 $router->post("ceagro/back-end/clientes", "ClientesController@cadastrar");
 
 $router->get("ceagro/back-end/clientes/bancos", "ClientesController@buscarBancos");
-$router->get("ceagro/back-end/cientes/contatos", "ContatosController@index");
+$router->get("ceagro/back-end/clientes/contatos", "ContatosController@index");
+$router->get("ceagro/back-end/clientes/{cliente}/contatos", "ContatosController@index");
 $router->post("ceagro/back-end/clientes/contatos", "ContatosController@cadastrar");
 
 $router->get("ceagro/back-end/cientes/enderecos-entregas", "EnderecosController@index");
@@ -19,4 +20,6 @@ $router->get("ceagro/back-end/contratos", "ContratosController@index");
 $router->get("ceagro/back-end/contratos/{contrato}", "ContratosController@find");
 $router->post("ceagro/back-end/contratos", "ContratosController@cadastrar");
 $router->put("ceagro/back-end/contratos/{contrato}", "ContratosController@update");
+
+$router->get("ceagro/back-end/contas-bancarias", "ContasBancariasController@index");
 // $router->post("ceagro/back-end/contratros", "ContratosController@cadastrar");

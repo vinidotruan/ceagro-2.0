@@ -28,11 +28,14 @@ class QueryBuilder
         return $statement->fetch();
     }
 
-    public function selectWhere($tabela, $campos)
+    public function selectWhere($tabela, $campos = false)
     {
+        $campos = implode(' = ', $campos);
+        $query = "select * from {$tabela}";
+        $query .= ($campos) ? " where {$campos}" : "";
+
         try {
-            $campos = implode(' = ', $campos);
-            $statement = $this->pdo->prepare("select * from {$tabela} where {$campos}");
+            $statement = $this->pdo->prepare($query);
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $exception) {

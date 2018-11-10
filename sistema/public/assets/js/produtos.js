@@ -3,8 +3,17 @@ $("#formulario").submit(function (event) {
     enviar();
 });
 
+
+function exibirLoader() {
+    $("#loader").css('display', 'block');
+}
+
+function fecharLoader() {
+    $("#loader").css('display', 'none');
+}
 function enviar() {
     var dados = $('#produtos').serialize();
+    exibirLoader();
     $.ajax({
         type: 'POST',
         url: '../back-end/produtos',
@@ -12,17 +21,27 @@ function enviar() {
         dataType: 'json',
         success: function () {
             buscar();
+        },
+        done: () => {
+            fecharLoader();
         }
     });
 }
 
 function buscar() {
+    console.log($("#loader"));
+    $("#loader").show();
+    // exibirLoader();
     $.ajax({
         url: "../back-end/produtos",
         type: "get",
         dataType: "json",
         success: function (produtos) {
             popular(produtos);
+        },
+        done: () => {
+            console.log("teste");
+            fecharLoader();
         }
     });
 }

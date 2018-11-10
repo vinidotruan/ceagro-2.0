@@ -20,7 +20,6 @@ class ContatosController
         }
 
         echo json_encode($contatos);
-
     }
 
     public function cadastrar()

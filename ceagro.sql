@@ -1,12 +1,4 @@
-﻿-- phpMyAdmin SQL Dump
--- version 4.8.3
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3306
--- Generation Time: 21-Out-2018 às 16:44
--- Versão do servidor: 5.7.23
--- versão do PHP: 7.2.10
-
+﻿
 SET SQL_MODE
 = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT
@@ -15,17 +7,17 @@ START TRANSACTION;
 SET time_zone
 = "+00:00";
 
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('1', 'Banco Santander (Brasil) S.A', '033');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('2', 'Itaú Unibanco Holding S.A', '237');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('3', 'Banco Bradesco S.A', '745');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('4', 'HSBC Bank Brasil S.A - Banco Múltiplo', '399');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('5', 'Caixa Ecnonômica Federal', '104');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('6', 'Banco Mercantil do Brasil S.A', '389');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('7', 'Banco Rural S.A', '453');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('8', 'Banco Safra S.A', '422');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('9', 'Banco Rendimento S.A', '633');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('10', 'Banco do Brasil S.A', '001');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('11','Banco Itaú S.A', '341');
+INSERT INTO `bancos`(`id`, `nome`, `codigo`) VALUES ('1', 'Banco Santander (Brasil) S.A', '033');
+INSERT INTO `bancos`(`id`, `nome`, `codigo`) VALUES ('2', 'Itaú Unibanco Holding S.A', '237');
+INSERT INTO `bancos`(`id`, `nome`, `codigo`) VALUES ('3', 'Banco Bradesco S.A', '745');
+INSERT INTO `bancos`(`id`, `nome`, `codigo`) VALUES ('4', 'HSBC Bank Brasil S.A - Banco Múltiplo', '399');
+INSERT INTO `bancos`(`id`, `nome`, `codigo`) VALUES ('5', 'Caixa Ecnonômica Federal', '104');
+INSERT INTO `bancos`(`id`, `nome`, `codigo`) VALUES ('6', 'Banco Mercantil do Brasil S.A', '389');
+INSERT INTO `bancos`(`id`, `nome`, `codigo`) VALUES ('7', 'Banco Rural S.A', '453');
+INSERT INTO `bancos`(`id`, `nome`, `codigo`) VALUES ('8', 'Banco Safra S.A', '422');
+INSERT INTO `bancos`(`id`, `nome`, `codigo`) VALUES ('9', 'Banco Rendimento S.A', '633');
+INSERT INTO `bancos`(`id`, `nome`, `codigo`) VALUES ('10', 'Banco do Brasil S.A', '001');
+INSERT INTO `bancos`(`id`, `nome`, `codigo`) VALUES ('11','Banco Itaú S.A', '341');
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;

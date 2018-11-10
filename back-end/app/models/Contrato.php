@@ -8,8 +8,8 @@ class Contrato extends Model
 {
     public $id;
     public $codigo;
-    public $cliente_comprador_id;
-    public $cliente_vendedor_id;
+    public $comprador_id;
+    public $vendedor_id;
     public $produto_id;
     public $safra;
     public $quantidade;

@@ -5,6 +5,7 @@ namespace App\Controllers\Adaptacao;
 // use App\Models\{Cliente, EnderecoEntrega, EnderecoFaturamento};
 // use App\Controllers\ClientesController;
 
+use App\Controllers\AdendosController;
 use App\Controllers\ClientesController;
 use App\Controllers\ContasBancariasController;
 use App\Controllers\EnderecosController;
@@ -46,7 +47,47 @@ class AdaptacaoController
         $contratosOld = App::get('db')->selectAll("contrato", ContratoOld::class);
 
         foreach ($contratosOld as $contrato) {
-            dd([$contrato->ac_vendedor, $contrato->valor_contrato]);
+            if ($contrato->clausula_1_comprador) {
+                (new AdendosController)->cadastrar([
+                    "contrato_id" => $contrato->id,
+                    "definicao" => $contrato->clausula_1_comprador,
+                ]);
+
+            }
+            if ($contrato->clausula_2_comprador) {
+                (new AdendosController)->cadastrar([
+                    "contrato_id" => $contrato->id,
+                    "definicao" => $contrato->clausula_2_comprador,
+                ]);
+
+            }
+            if ($contrato->clausula_3_comprador) {
+                (new AdendosController)->cadastrar([
+                    "contrato_id" => $contrato->id,
+                    "definicao" => $contrato->clausula_3_comprador,
+                ]);
+
+            }
+            if ($contrato->clausula_1_vendedor) {
+                (new AdendosController)->cadastrar([
+                    "contrato_id" => $contrato->id,
+                    "definicao" => $contrato->clausula_1_vendedor,
+                ]);
+
+            }
+            if ($contrato->clausula_2_vendedor) {
+                (new AdendosController)->cadastrar([
+                    "contrato_id" => $contrato->id,
+                    "definicao" => $contrato->clausula_2_vendedor,
+                ]);
+
+            }
+            if ($contrato->clausula_3_vendedor) {
+                (new AdendosController)->cadastrar([
+                    "contrato_id" => $contrato->id,
+                    "definicao" => $contrato->clausula_3_vendedor,
+                ]);
+            }
         }
     }
 

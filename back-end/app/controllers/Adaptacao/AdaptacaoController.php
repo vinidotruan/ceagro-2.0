@@ -41,7 +41,7 @@ class AdaptacaoController
         echo "TUDO OKA";
     }
 
-    public function adaptarContratos()
+    public function adaptarAdendos()
     {
         $contratosOld = App::get('db')->selectAll("contrato", ContratoOld::class);
 

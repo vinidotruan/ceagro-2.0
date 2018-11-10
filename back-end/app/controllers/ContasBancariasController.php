@@ -10,12 +10,18 @@ class ContasBancariasController
     public function index()
     {
         $contas = App::get('db')->selectAll('contas_bancarias', ContaBancaria::class);
-        echo json_encode($contas);
+        // echo json_encode($contas);
     }
 
-    public function cadastrar()
+    public function cadastrar($conta)
     {
-        $contaId = App::get('db')->insert('contas_bancarias',
-            []);
+        $contaId = App::get('db')->insert('contas_bancarias', [
+            (!$conta['id']) ?? "id" => $conta['id'],
+            "cliente_id" => $conta["cliente_id"],
+            "banco" => $conta["banco"] ?? "",
+            "agencia" => $conta["agencia"] ?? "",
+            "conta" => $conta["conta"] ?? "",
+            "digito" => ($conta["conta"]) ?? null,
+        ]);
     }
 }

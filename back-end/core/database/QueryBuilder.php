@@ -72,7 +72,7 @@ class QueryBuilder
             return $this->pdo->lastInsertId();
 
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            dd($e);
         }
     }
 

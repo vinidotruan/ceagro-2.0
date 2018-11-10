@@ -29,6 +29,7 @@ function enviar() {
     $.post("../back-end/clientes", dados)
         .success(function (response) {
             cliente = JSON.parse(response)[0];
+            console.log(cliente);
             irPara("faturamento");
             habilitarForm("faturamento");
             $("#contatos").hide();
@@ -49,6 +50,7 @@ function cadastrarContato() {
 function cadastrarEnderecoFat() {
     $(`#faturamento`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     var dados = $("#faturamento").serialize();
+
     $.post("../back-end/clientes/enderecos-faturamentos", dados)
         .success(function (response) {
             faturamento = JSON.parse(response);

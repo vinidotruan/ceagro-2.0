@@ -116,9 +116,19 @@ CREATE TABLE
 IF NOT EXISTS `produtos`
 (
   `id` INT AUTO_INCREMENT NOT NULL,
-  `tipo` VARCHAR (100),
+  `tipo_id` INT NOT NULL,
+  `codigo` VARCHAR (100),
   `nome` VARCHAR (100),
-  `categoria` VARCHAR (100),
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+COMMIT;
+
+DROP TABLE IF EXISTS `categorias`;
+CREATE TABLE
+IF NOT EXISTS `categorias`
+(
+  `id` INT AUTO_INCREMENT NOT NULL,
+  `definicao` VARCHAR (100),
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 COMMIT;
@@ -133,3 +143,19 @@ IF NOT EXISTS `adendos`
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 COMMIT;
+
+DROP TABLE IF EXISTS `unidade_medida`;
+CREATE TABLE `unidade_medida` (
+`id` int(11) NOT NULL auto_increment,
+`descricao` varchar(60) NOT NULL,
+`abreviatura` varchar(10) NOT NULL,
+PRIMARY KEY  (`id_unidade_medida`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `unidade_medida` (`id_unidade_medida`, `descricao`, `abreviatura`) VALUES 
+('1','Quilograma'),
+ ('2','Saca'),
+ ('3','Grama'),
+ ('4','Grão'),
+ ('5','Tonelada'),
+ ('6','Miligrama');

@@ -19,7 +19,7 @@ class ContatosController
             $contatos = App::get('db')->selectAll('contatos', Contato::class);
         }
 
-        echo json_encode($contatos);
+        // echo json_encode($contatos);
     }
 
     public function cadastrar()
@@ -31,6 +31,6 @@ class ContatosController
         ]);
 
         $contato = App::get('db')->selectWhere('contatos', ['cliente_id', $_POST['cliente_id']]);
-        echo json_encode($contato);
+        // echo json_encode($contato);
     }
 }

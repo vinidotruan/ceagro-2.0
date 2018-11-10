@@ -20,7 +20,7 @@ function verificarContrato() {
     buscar();
     buscarProdutos();
     contrato = JSON.parse(localStorage.getItem("contrato"));
-    localStorage.removeItem("contrato");
+    // localStorage.removeItem("contrato");
     if (temContrato()) {
         $("#enviar").val("Atualizar");
         comprador = contrato.comprador;

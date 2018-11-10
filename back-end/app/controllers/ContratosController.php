@@ -15,7 +15,7 @@ class ContratosController
             $contrato->comprador = $contrato->comprador();
             $contrato->produto = $contrato->produto();
         }
-        echo json_encode($contratos);
+        // echo json_encode($contratos);
     }
 
     public function find($contrato)
@@ -25,7 +25,7 @@ class ContratosController
         $contrato->comprador = $contrato->comprador();
         $contrato->produto = $contrato->produto();
 
-        echo json_encode($contrato);
+        // echo json_encode($contrato);
     }
 
     public function cadastrar()
@@ -51,10 +51,10 @@ class ContratosController
                 ["id", $contratoId]
             );
 
-            echo json_encode($contrato);
+            // echo json_encode($contrato);
 
         } catch (\Exception $exception) {
-            echo json_encode($exception);
+            // echo json_encode($exception);
         }
     }
 
@@ -82,10 +82,10 @@ class ContratosController
                 ["id", $contratoId]
             )[0];
 
-            echo json_encode($contrato);
+            // echo json_encode($contrato);
 
         } catch (\Exception $exception) {
-            echo json_encode($exception);
+            // echo json_encode($exception);
         }
     }
 }

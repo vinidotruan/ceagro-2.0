@@ -43,6 +43,14 @@ class Router
 
         if (array_key_exists($uri, $this->routes[$requestType])) {
             try {
+                if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                    list($controller, $metodo) = explode('@', $this->routes[$requestType][$uri]);
+                    return $this->executarAcao(
+                        $controller,
+                        $metodo,
+                        $_POST
+                    );
+                }
                 return $this->executarAcao(
                     ...explode('@', $this->routes[$requestType][$uri])
                 );
@@ -79,7 +87,19 @@ class Router
         if (!method_exists($controller, $metodo)) {
             throw new \Exception("Método não encontrado");
         }
+
+        if ($this->isPost()) {
+            return $controller->$metodo($parametros);
+        }
         return $controller->$metodo(...$parametros);
+    }
+
+    private function isPost()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            return true;
+        }
+        return false;
     }
 
 }

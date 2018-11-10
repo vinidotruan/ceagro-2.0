@@ -3,40 +3,40 @@
 namespace App\Controllers;
 
 use App\Core\App;
-use App\Models\Cliente;
 use App\Models\Banco;
+use App\Models\Cliente;
 
 class ClientesController
 {
     public function index()
     {
         $clientes = App::get('db')->selectAll("clientes", Cliente::class);
-        echo json_encode($clientes);
+        // echo json_encode($clientes);
     }
 
-    public function cadastrar()
+    public function cadastrar($cliente)
     {
         $clienteId = App::get('db')->insert('clientes', [
-            'banco_id' => $_POST['banco_id'],
-            'razao_social' => $_POST['razao_social'],
-            'cnpj' => $_POST['cnpj'],
-            'inscricao_estadual' => $_POST['inscricao_estadual'],
-            'nome' => $_POST['nome'],
-            'email' => $_POST['email'],
-            'atuacao' => $_POST['atuacao'],
+            'razao_social' => $cliente['razao_social'],
+            'cnpj' => $cliente['cnpj'],
+            'inscricao_estadual' => $cliente['inscricao_estadual'],
+            'nome' => $cliente['nome'] ?? "",
+            'email' => $cliente['email'],
+            'atuacao' => $cliente['atuacao'],
         ]);
 
-        $cliente = App::get('db')->selectWhere(
+        $ultimoCliente = App::get('db')->selectWhere(
             'clientes',
             ["id", $clienteId]
         );
 
-        echo json_encode($cliente);
-
+        // echo json_encode($ultimoCliente);
+        return $ultimoCliente;
     }
 
-    public function buscarBancos() {
+    public function buscarBancos()
+    {
         $bancos = App::get('db')->selectAll("bancos", Banco::class);
-        echo json_encode($bancos);
+        // echo json_encode($bancos);
     }
 }

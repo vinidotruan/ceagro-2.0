@@ -50,8 +50,8 @@ function compararFormContrato(contrato, formulario) {
 }
 
 function cadastrar() {
-    $(`#contrato`).append(`<input hidden name='cliente_comprador_id' value=${comprador.id}>`);
-    $(`#contrato`).append(`<input hidden name='cliente_vendedor_id' value=${vendedor.id}>`);
+    $(`#contrato`).append(`<input hidden name='comprador_id' value=${comprador.id}>`);
+    $(`#contrato`).append(`<input hidden name='vendedor_id' value=${vendedor.id}>`);
     $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);
     var dados = $('#contrato').serialize();
     $.post('../back-end/contratos', dados).success(function (response) {
@@ -92,14 +92,12 @@ function buscar() {
 }
 
 function buscarProdutos() {
-    console.log("teste");
     $.ajax({
         url: "../back-end/produtos",
         type: "get",
         dataType: "json",
         success: function (data) {
             produtos = data;
-            console.log(data);
             popularProdutos(produtos);
             buscarUnidadesDeMedidas();
         }

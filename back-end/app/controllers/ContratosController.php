@@ -40,10 +40,11 @@ class ContratosController
                 'vendedor_id' => $contrato['vendedor_id'],
                 'assinatura_vendedor' => $contrato['assinatura_vendedor'],
                 'produto_id' => $contrato['produto_id'],
-                'unidade_medida_id' => $contrato['unidade_medida'],
+                'unidade_medida_id' => $contrato['unidade_medida_id'],
                 'safra' => $contrato['safra'],
                 'quantidade' => $contrato['quantidade'],
                 'observacao' => $contrato['observacao'],
+                'valor' => $contrato['valor'] ?? 0.0,
             ]);
 
             $ultimoContrato = App::get('db')->selectWhere(

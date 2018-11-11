@@ -21,9 +21,6 @@ function enviar() {
         dataType: 'json',
         success: function () {
             buscar();
-        },
-        done: () => {
-            fecharLoader();
         }
     });
 }
@@ -35,9 +32,17 @@ function buscar() {
         dataType: "json",
         success: function (produtos) {
             popular(produtos);
-        },
-        done: () => {
-            fecharLoader();
+            buscarTipos();
+        }
+    });
+}
+function buscarTipos() {
+    $.ajax({
+        url: "../back-end/produtos/tipos",
+        type: "get",
+        dataType: "json",
+        success: function (tipos) {
+            popularTipos(tipos);
         }
     });
 }
@@ -48,8 +53,7 @@ function popular(produtos) {
         var newRow = $("<tr class='item'>");
         var cols = "";
         cols += `<td>${produto.nome}</td>`;
-        cols += `<td>${produto.tipo}</td>`;
-        cols += `<td>${produto.categoria}</td>`;
+        cols += `<td>${produto.tipo.definicao}</td>`;
         newRow.append(cols);
         $("#produtos_lista").append(newRow)
     }
@@ -64,4 +68,11 @@ function filtrar() {
             });
         });
     });
+}
+
+function popularTipos(tipos) {
+    $.each(tipos, function (index, tipo) {
+        var option = '<option value="' + tipo.id + '">' + tipo.definicao + '</option>';
+        $("#tipos").append(option)
+    })
 }

@@ -16,11 +16,8 @@
             <input class="form-control" rows="5" id="comment" placeholder="Categoria" name="categoria" required autocomplete="off">
           </div>
           <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
-            <select id="select" name="tipo" style="width:100%" required>
+            <select id="tipos" name="tipo_id" class="form-control" style="width:100%" required>
                 <option value="grao">Selecione o tipo do produto</option>
-                <option value="grao">grão</option>
-                <option value="oleo">óleo</option>
-                <option value="farelo">farelo</option>
             </select>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12" >
@@ -47,7 +44,6 @@
 														<tr>
 															<th>Nome</th>
 															<th>Tipo</th>
-															<th>Categoria</th>
 														</tr>
 													</thead>
 													<tbody id="produtos_lista">

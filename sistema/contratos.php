@@ -58,13 +58,16 @@
                                             <datalist id="produtos">
                                             </datalist>
                                         </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
+                                        <div class="col-md-2 col-sm-2 col-xs-6 col-lg-2">
                                             <input type="text" name="safra" class="form-control" placeholder="Safra" required autocomplete="off">
                                         </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3" >
+                                        <div class="col-md-2 col-sm-2 col-xs-6 col-lg-2" >
                                             <input type="text" name="quantidade" class="form-control" placeholder="Quantidade" required autocomplete="off">
                                         </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
+                                        <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3" >
+                                            <input type="text" name="valor" class="form-control" placeholder="Valor" required autocomplete="off">
+                                        </div>
+                                        <div class="col-md-2 col-sm-2 col-xs-6 col-lg-2">
                                             <select name="unidade_medida_id" id="unidades" class="form-control">
                                             </select>
                                         </div>

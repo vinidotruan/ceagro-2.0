@@ -36,9 +36,8 @@ class QueryBuilder
 
     public function selectWhere($tabela, $campos = null)
     {
-        $campos = implode(' = ', $campos);
         $query = "select * from {$tabela}";
-        $query .= ($campos) ? " where {$campos}" : "";
+        $query .= ($campos) ? " where " . implode(' = ', $campos) : "";
 
         try {
             $statement = $this->pdo->prepare($query);
@@ -54,6 +53,7 @@ class QueryBuilder
         $query = "select * from {$tabela}";
         $query .= ($campos) ? " where " . implode(' > ', $campos) : "";
         $query .= ($limite) ? " limit {$limite}" : "";
+        $query .= " order by id desc";
 
         try {
             $statement = $this->pdo->prepare($query);
@@ -94,7 +94,7 @@ class QueryBuilder
             return $this->pdo->lastInsertId();
 
         } catch (\Exception $e) {
-            die([$e->getMessage(), $sql, $dados]);
+            return [$e->getMessage(), $sql, $dados];
         }
     }
 

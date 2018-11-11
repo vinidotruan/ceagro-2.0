@@ -15,6 +15,7 @@ $router->post("ceagro/back-end/clientes/enderecos-faturamentos", "EnderecosContr
 
 $router->get("ceagro/back-end/produtos", "ProdutosController@index");
 $router->post("ceagro/back-end/produtos", "ProdutosController@cadastrar");
+$router->get("ceagro/back-end/produtos/tipos", "ProdutosController@tipos");
 
 $router->get("ceagro/back-end/contratos", "ContratosController@index");
 $router->get("ceagro/back-end/contratos/{contrato}", "ContratosController@find");

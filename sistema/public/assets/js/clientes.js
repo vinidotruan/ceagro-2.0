@@ -29,7 +29,6 @@ function enviar() {
     $.post("../back-end/clientes", dados)
         .success(function (response) {
             cliente = JSON.parse(response)[0];
-            console.log(cliente);
             irPara("faturamento");
             habilitarForm("faturamento");
             $("#contatos").hide();

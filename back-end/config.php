@@ -14,6 +14,7 @@ if (!$producao) {
         ],
     ];
 }
+
 return [
     'database' => [
         'connection' => "mysql:host=sistemaceagro.mysql.dbaas.com.br",

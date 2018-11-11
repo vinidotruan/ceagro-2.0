@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Controllers\\AdendosController' => $baseDir . '/app/controllers/AdendosController.php',
     'App\\Controllers\\ClientesController' => $baseDir . '/app/controllers/ClientesController.php',
+    'App\\Controllers\\ContasBancariasController' => $baseDir . '/app/controllers/ContasBancariasController.php',
     'App\\Controllers\\ContatosController' => $baseDir . '/app/controllers/ContatosController.php',
     'App\\Controllers\\ContratosController' => $baseDir . '/app/controllers/ContratosController.php',
     'App\\Controllers\\EnderecosController' => $baseDir . '/app/controllers/EnderecosController.php',
@@ -20,6 +21,8 @@ return array(
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
     'App\\Models\\Banco' => $baseDir . '/app/models/Banco.php',
     'App\\Models\\Cliente' => $baseDir . '/app/models/Cliente.php',
+    'App\\Models\\ContaBancaria' => $baseDir . '/app/models/ContaBancaria.php',
+    'App\\Models\\Contato' => $baseDir . '/app/models/Contato.php',
     'App\\Models\\Contrato' => $baseDir . '/app/models/Contrato.php',
     'App\\Models\\Model' => $baseDir . '/app/models/Model.php',
     'App\\Models\\Produto' => $baseDir . '/app/models/Produto.php',

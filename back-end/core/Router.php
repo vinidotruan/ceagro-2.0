@@ -58,7 +58,11 @@ class Router
                 if ($matches) {
                     $getAction = explode('@', $val);
                     $parametros = (isset($putData)) ? $putData : $parametros = [];
-                    $parametros['id'] = $matches[0];
+                    foreach ($matches as $key => $match) {
+                        if (!preg_match('/[^0-9]/', $key)) {
+                            $parametros[$key] = $match;
+                        }
+                    }
                     return $this->executarAcao($getAction[0], $getAction[1], $parametros);
                 }
             }
@@ -75,8 +79,7 @@ class Router
         if (!method_exists($controller, $metodo)) {
             throw new \Exception("Método não encontrado");
         }
-
-        return $controller->$metodo($parametros);
+        return $controller->$metodo(...$parametros);
     }
 
 }

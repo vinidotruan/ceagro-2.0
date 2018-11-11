@@ -17,7 +17,7 @@ class ClientesController
     public function cadastrar($cliente)
     {
         $clienteId = App::get('db')->insert('clientes', [
-            'id' => $cliente['id'],
+            // 'id' => $cliente['id'],
             'razao_social' => $cliente['razao_social'],
             'cnpj' => $cliente['cnpj'],
             'inscricao_estadual' => $cliente['inscricao_estadual'],

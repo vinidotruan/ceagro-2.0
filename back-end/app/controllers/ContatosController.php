@@ -30,7 +30,7 @@ class ContatosController
             'observacao' => $contato['observacao'],
         ]);
 
-        $ultimoContato = App::get('db')->selectWhere('contatos', ['cliente_id', $contato['cliente_id']]);
-        echo json_encode($contato);
+        $ultimosContatos = App::get('db')->selectWhere('contatos', ['cliente_id', $contato['cliente_id']]);
+        echo json_encode($ultimosContatos);
     }
 }

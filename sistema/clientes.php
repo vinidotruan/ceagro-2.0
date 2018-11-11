@@ -22,16 +22,8 @@
 						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">
 							<input type="text" class="form-control" name="email" placeholder="Email" autocomplete="off">
 						</div>
-						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">
-							<input type="text" class="form-control" name="nome" placeholder="Nome" autocomplete="off">
-						</div>
 					</div>
 					<div class="form-row">
-						<div class="col-6 col-md-6 col-sm-6 col-xs-6">
-							<select name="banco_id" id="bancos" class="form-control">
-								<option value="1">Selecione o banco do seu cliente</option>
-							</select>
-						</div>
 						<div class="col-6 col-md-6 col-sm-6 col-xs-6">
 							<select name="atuacao" class="form-control" autocomplete="off">
 								<option value="0">Selecione a atuação do seu cliente</option>
@@ -47,7 +39,7 @@
 						</div>
 					</div>
 				</form>
-				<div id="contatos">
+				<div>
 					<form id="contatos">
 					<div class="row" style="margin:auto !important">
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -195,18 +187,15 @@
 										<div id="titulo" class="col-12">
 										Dados Bancários:
 										</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="endereco" name="rua" class="form-control" placeholder="Banco">
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="endereco" name="banco" class="form-control" placeholder="Banco">
 											</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="numero"  name="numero" class="form-control" placeholder="Agência">
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="numero"  name="agencia" class="form-control" placeholder="Agência">
 											</div>
 
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="complemento" name="complemento" class="form-control" placeholder="Conta">
-											</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="bairro" name="bairro" class="form-control" placeholder="Dígito">
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="complemento" name="conta" class="form-control" placeholder="Conta">
 											</div>
 										</div>
 									</div>

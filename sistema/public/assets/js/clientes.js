@@ -31,10 +31,11 @@ function enviar() {
     $.post("../back-end/clientes", dados)
         .success(function (response) {
             cliente = JSON.parse(response)[0];
+            $("#contatos").show();
+            habilitarForm("contatos");
             irPara("faturamento");
             habilitarForm("faturamento");
-            $("#contatos").hide();
-            habilitarForm("contatos");
+            buscarContatos();
         });
 }
 
@@ -74,7 +75,7 @@ function cadastrarEnderecoEnt() {
 function cadastrarContaBancaria() {
     $(`#dadosBancarios`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     var dados = $("#dadosBancarios").serialize();
-    $.post(`../back-end/clientes/${cliente.id}/contas-bancarias`, dados)
+    $.post(`../back-end/clientes/contas-bancarias`, dados)
         .success(function (response) {
             dadosBancarios = JSON.parse(response);
         });
@@ -83,6 +84,7 @@ function cadastrarContaBancaria() {
 function popularContatos(contatos) {
     $('#contatosLista .box-body').remove();
     $.each(contatos, function (index, contato) {
+        console.log(contato);
         var option = `<div class="box-body ">${contato.telefone} - ${contato.observacao}</div>`
         $("#contatosLista").append(option)
     })
@@ -118,6 +120,17 @@ function buscarBancos() {
         dataType: "json",
         success: function (data) {
             popularBancos(data);
+        }
+    });
+}
+
+function buscarContatos() {
+    $.ajax({
+        url: `../back-end/clientes/${cliente.id}/bancos`,
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            popularContatos(data);
         }
     });
 }

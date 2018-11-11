@@ -38,7 +38,6 @@ class QueryBuilder
     {
         $query = "select * from {$tabela}";
         $query .= ($campos) ? " where " . implode(' = ', $campos) : "";
-
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();

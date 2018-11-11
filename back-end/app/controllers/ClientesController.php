@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use App\Core\App;
-use App\Models\Cliente;
 use App\Models\Banco;
+use App\Models\Cliente;
 
 class ClientesController
 {
@@ -17,7 +17,6 @@ class ClientesController
     public function cadastrar()
     {
         $clienteId = App::get('db')->insert('clientes', [
-            'banco_id' => $_POST['banco_id'],
             'razao_social' => $_POST['razao_social'],
             'cnpj' => $_POST['cnpj'],
             'inscricao_estadual' => $_POST['inscricao_estadual'],
@@ -35,7 +34,8 @@ class ClientesController
 
     }
 
-    public function buscarBancos() {
+    public function buscarBancos()
+    {
         $bancos = App::get('db')->selectAll("bancos", Banco::class);
         echo json_encode($bancos);
     }

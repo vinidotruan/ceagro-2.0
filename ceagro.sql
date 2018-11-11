@@ -1,14 +1,31 @@
-﻿INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('1', 'Banco Santander (Brasil) S.A', '033');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('2', 'Itaú Unibanco Holding S.A', '237');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('3', 'Banco Bradesco S.A', '745');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('4', 'HSBC Bank Brasil S.A - Banco Múltiplo', '399');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('5', 'Caixa Ecnonômica Federal', '104');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('6', 'Banco Mercantil do Brasil S.A', '389');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('7', 'Banco Rural S.A', '453');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('8', 'Banco Safra S.A', '422');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('9', 'Banco Rendimento S.A', '633');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('10', 'Banco do Brasil S.A', '001');
-INSERT INTO `sistemaceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('11','Banco Itaú S.A', '341');
+﻿﻿-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: 21-Out-2018 às 16:44
+-- Versão do servidor: 5.7.23
+-- versão do PHP: 7.2.10
+
+SET SQL_MODE
+= "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT
+= 0;
+START TRANSACTION;
+SET time_zone
+= "+00:00";
+
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('1', 'Banco Santander (Brasil) S.A', '033');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('2', 'Itaú Unibanco Holding S.A', '237');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('3', 'Banco Bradesco S.A', '745');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('4', 'HSBC Bank Brasil S.A - Banco Múltiplo', '399');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('5', 'Caixa Ecnonômica Federal', '104');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('6', 'Banco Mercantil do Brasil S.A', '389');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('7', 'Banco Rural S.A', '453');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('8', 'Banco Safra S.A', '422');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('9', 'Banco Rendimento S.A', '633');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('10', 'Banco do Brasil S.A', '001');
+INSERT INTO `ceagro`.`bancos` (`id`, `nome`, `codigo`) VALUES ('11','Banco Itaú S.A', '341');
 
 DROP TABLE IF EXISTS `bancos`;
 CREATE TABLE
@@ -45,7 +62,7 @@ IF NOT EXISTS `contas_bancarias`
   `agencia` VARCHAR(20) DEFAULT NULL,
   `conta` VARCHAR(20) DEFAULT NULL,
   `digito` INT(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `contatos`;
@@ -140,6 +157,16 @@ IF NOT EXISTS `adendos`
   `id` INT AUTO_INCREMENT NOT NULL,
   `contrato_id` INT NOT NULL,
   `definicao` VARCHAR (100),
+
+  PRIMARY KEY
+(`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+=======
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 COMMIT;

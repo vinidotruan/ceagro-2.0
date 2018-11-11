@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-class Adendo
+class TipoProduto
 {
     public $id;
-    public $contrato_id;
     public $definicao;
 }

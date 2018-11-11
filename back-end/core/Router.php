@@ -50,6 +50,16 @@ class Router
                         $metodo,
                         $_POST
                     );
+
+                }
+                if (sizeof($_GET) > 1) {
+
+                    list($controller, $metodo) = explode('@', $this->routes[$requestType][$uri]);
+                    return $this->executarAcao(
+                        $controller,
+                        $metodo,
+                        array_slice($_GET, 1)
+                    );
                 }
                 return $this->executarAcao(
                     ...explode('@', $this->routes[$requestType][$uri])
@@ -67,7 +77,7 @@ class Router
                     $getAction = explode('@', $val);
                     $parametros = (isset($putData)) ? $putData : $parametros = [];
                     foreach ($matches as $key => $match) {
-                        if (!preg_match('/[^0-9]/', $key)) {
+                        if (preg_match('/[^0-9]/', $key)) {
                             $parametros[$key] = $match;
                         }
                     }
@@ -88,8 +98,13 @@ class Router
             throw new \Exception("Método não encontrado");
         }
 
-        if ($this->isPost()) {
+        if ($this->isPost() || $this->isPut()) {
             return $controller->$metodo($parametros);
+        }
+
+        if ($this->isGet()) {
+            $parametros = array_values($parametros);
+            return $controller->$metodo(...$parametros);
         }
         return $controller->$metodo(...$parametros);
     }
@@ -97,6 +112,22 @@ class Router
     private function isPost()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            return true;
+        }
+        return false;
+    }
+
+    private function isPut()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+            return true;
+        }
+        return false;
+    }
+
+    private function isGet()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             return true;
         }
         return false;

@@ -14,6 +14,6 @@ class AdendosController
             'definicao' => $_POST['definicao'],
         ]);
 
-        // echo json_encode($adendoId);
+        echo json_encode($adendoId);
     }
 }

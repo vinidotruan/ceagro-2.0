@@ -19,18 +19,18 @@ class ContatosController
             $contatos = App::get('db')->selectAll('contatos', Contato::class);
         }
 
-        // echo json_encode($contatos);
+        echo json_encode($contatos);
     }
 
-    public function cadastrar()
+    public function cadastrar($contato)
     {
         $contatoId = App::get('db')->insert('contatos', [
-            'telefone' => $_POST['telefone'],
-            'observacao' => $_POST['observacao'],
-            'cliente_id' => $_POST['cliente_id'],
+            'telefone' => $contato['telefone'],
+            'cliente_id' => $contato['cliente_id'],
+            'observacao' => $contato['observacao'],
         ]);
 
-        $contato = App::get('db')->selectWhere('contatos', ['cliente_id', $_POST['cliente_id']]);
-        // echo json_encode($contato);
+        $ultimoContato = App::get('db')->selectWhere('contatos', ['cliente_id', $contato['cliente_id']]);
+        echo json_encode($contato);
     }
 }

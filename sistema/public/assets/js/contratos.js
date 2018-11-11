@@ -18,13 +18,13 @@ contrato = {};
 
 function verificarContrato() {
     buscar();
-    buscarProdutos();
     contrato = JSON.parse(localStorage.getItem("contrato"));
-    // localStorage.removeItem("contrato");
+    localStorage.removeItem("contrato");
     if (temContrato()) {
         $("#enviar").val("Atualizar");
         comprador = contrato.comprador;
         vendedor = contrato.vendedor;
+        produto = contrato.produto;
         compararFormContrato(contrato, "contrato");
     } else {
         $("#enviar").val("Cadastrar");
@@ -41,7 +41,7 @@ function temContrato() {
 function compararFormContrato(contrato, formulario) {
     $.each(contrato, function (campo, valor) {
         $(`#${formulario}`).find('select, input, textarea').each(function (index, formObj) {
-            if (typeof valor === "object") {
+            if (typeof valor === "object" && valor) {
                 compararFormContrato(valor, campo);
             }
             (campo === formObj.name) ? $(formObj).val(valor) : "";
@@ -59,8 +59,8 @@ function cadastrar() {
 }
 
 function atualizar() {
-    $(`#contrato`).append(`<input hidden name='cliente_comprador_id' value=${comprador.id}>`);
-    $(`#contrato`).append(`<input hidden name='cliente_vendedor_id' value=${vendedor.id}>`);
+    $(`#contrato`).append(`<input hidden name='comprador_id' value=${comprador.id}>`);
+    $(`#contrato`).append(`<input hidden name='vendedor_id' value=${vendedor.id}>`);
     $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);
     var dados = $('#contrato').serialize();
 
@@ -85,18 +85,35 @@ function buscar() {
             popularVendedoresCnpjs(vendedores);
             popularCompradores(compradores);
             popularCompradoresCnpjs(compradores);
+            buscarProdutos();
+
         }
     });
 }
 
 function buscarProdutos() {
+    console.log("teste");
     $.ajax({
         url: "../back-end/produtos",
         type: "get",
         dataType: "json",
         success: function (data) {
             produtos = data;
+            console.log(data);
             popularProdutos(produtos);
+            buscarUnidadesDeMedidas();
+        }
+    });
+}
+
+function buscarUnidadesDeMedidas() {
+    $.ajax({
+        url: "../back-end/unidades-medidas",
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            unidadesMedidas = data;
+            popularUnidadesMedidas(unidadesMedidas);
         }
     });
 }
@@ -108,6 +125,12 @@ function popularVendedores(clientes) {
     })
 }
 
+function popularUnidadesMedidas(unidades) {
+    $.each(unidades, function (index, unidade) {
+        var option = '<option value="' + unidade.id + '">' + unidade.titulo + '</option>';
+        $("#unidades").append(option)
+    })
+}
 function popularProdutos(produtos) {
     $.each(produtos, function (index, produto) {
         var option = '<option value="' + produto.nome + '">' + produto.nome + '</option>';

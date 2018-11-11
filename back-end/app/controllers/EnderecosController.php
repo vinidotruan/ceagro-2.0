@@ -19,7 +19,7 @@ class EnderecosController
             'cliente_id' => $enderecoFaturamento['cliente_id'],
         ]);
         $enderecoFaturamento = App::get('db')->selectWhere('enderecos_faturamentos', ["id", $enderecoFaturamentoId]);
-        // echo json_encode($enderecoFaturamento);
+        echo json_encode($enderecoFaturamento);
 
     }
 
@@ -37,6 +37,6 @@ class EnderecosController
         ]);
 
         $enderecoEntrega = App::get('db')->selectWhere('enderecos_entregas', ["id", $enderecoEntregaId]);
-        // echo json_encode($enderecoEntrega);
+        echo json_encode($enderecoEntrega);
     }
 }

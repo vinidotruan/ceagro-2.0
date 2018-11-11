@@ -2,18 +2,15 @@
 
 namespace App\Controllers\Adaptacao;
 
-// use App\Models\{Cliente, EnderecoEntrega, EnderecoFaturamento};
-// use App\Controllers\ClientesController;
-
 use App\Controllers\AdendosController;
 use App\Controllers\ClientesController;
 use App\Controllers\ContasBancariasController;
+use App\Controllers\ContatosController;
 use App\Controllers\EnderecosController;
 use App\Controllers\ProdutosController;
 use App\Core\App;
 use App\Models\Adaptacao\Cliente as ClientesOld;
 use App\Models\Adaptacao\ClienteContaBacaria as ClienteContaBancariaOld;
-use App\Models\Adaptacao\Contrato as ContratoOld;
 use App\Models\Adaptacao\Produto as ProdutosOld;
 
 class AdaptacaoController
@@ -32,6 +29,7 @@ class AdaptacaoController
                 "atuacao" => $this->verificarAtuacao($clienteOld->id_tipo_cliente),
             ]);
 
+            $this->adaptarContatos($clienteOld);
             $this->adaptarEnderecoEntrega($clienteOld);
             $this->adaptarEnderecoFaturamento($clienteOld);
 
@@ -42,52 +40,67 @@ class AdaptacaoController
         echo "TUDO OKA";
     }
 
-    public function adaptarAdendos()
+    public function adaptarContatos($clienteOld)
     {
-        $contratosOld = App::get('db')->selectAll("contrato", ContratoOld::class);
+        if ($clienteOld->telefone) {
+            (new ContatosController)->cadastrar([
+                'cliente_id' => $clienteOld->id_cliente,
+                'telefone' => $clienteOld->telefone,
+                'observacao' => $clienteOld->contato_emp_nome,
+            ]);
+        }
 
-        foreach ($contratosOld as $contrato) {
-            if ($contrato->clausula_1_comprador) {
-                (new AdendosController)->cadastrar([
-                    "contrato_id" => $contrato->id,
-                    "definicao" => $contrato->clausula_1_comprador,
-                ]);
+        if ($clienteOld->tel_comercial) {
+            (new ContatosController)->cadastrar([
+                'cliente_id' => $clienteOld->id_cliente,
+                'telefone' => $clienteOld->tel_comercial,
+                'observacao' => $clienteOld->contato_emp_nome,
+            ]);
+        }
+    }
 
-            }
-            if ($contrato->clausula_2_comprador) {
-                (new AdendosController)->cadastrar([
-                    "contrato_id" => $contrato->id,
-                    "definicao" => $contrato->clausula_2_comprador,
-                ]);
+    public function adaptarAdendos($contrato)
+    {
+        if ($contrato->clausula_1_comprador) {
+            (new AdendosController)->cadastrar([
+                "contrato_id" => $contrato->id,
+                "definicao" => $contrato->clausula_1_comprador,
+            ]);
 
-            }
-            if ($contrato->clausula_3_comprador) {
-                (new AdendosController)->cadastrar([
-                    "contrato_id" => $contrato->id,
-                    "definicao" => $contrato->clausula_3_comprador,
-                ]);
+        }
+        if ($contrato->clausula_2_comprador) {
+            (new AdendosController)->cadastrar([
+                "contrato_id" => $contrato->id,
+                "definicao" => $contrato->clausula_2_comprador,
+            ]);
 
-            }
-            if ($contrato->clausula_1_vendedor) {
-                (new AdendosController)->cadastrar([
-                    "contrato_id" => $contrato->id,
-                    "definicao" => $contrato->clausula_1_vendedor,
-                ]);
+        }
+        if ($contrato->clausula_3_comprador) {
+            (new AdendosController)->cadastrar([
+                "contrato_id" => $contrato->id,
+                "definicao" => $contrato->clausula_3_comprador,
+            ]);
 
-            }
-            if ($contrato->clausula_2_vendedor) {
-                (new AdendosController)->cadastrar([
-                    "contrato_id" => $contrato->id,
-                    "definicao" => $contrato->clausula_2_vendedor,
-                ]);
+        }
+        if ($contrato->clausula_1_vendedor) {
+            (new AdendosController)->cadastrar([
+                "contrato_id" => $contrato->id,
+                "definicao" => $contrato->clausula_1_vendedor,
+            ]);
 
-            }
-            if ($contrato->clausula_3_vendedor) {
-                (new AdendosController)->cadastrar([
-                    "contrato_id" => $contrato->id,
-                    "definicao" => $contrato->clausula_3_vendedor,
-                ]);
-            }
+        }
+        if ($contrato->clausula_2_vendedor) {
+            (new AdendosController)->cadastrar([
+                "contrato_id" => $contrato->id,
+                "definicao" => $contrato->clausula_2_vendedor,
+            ]);
+
+        }
+        if ($contrato->clausula_3_vendedor) {
+            (new AdendosController)->cadastrar([
+                "contrato_id" => $contrato->id,
+                "definicao" => $contrato->clausula_3_vendedor,
+            ]);
         }
     }
 
@@ -111,6 +124,7 @@ class AdaptacaoController
 
         foreach ($produtosOld as $produtoOld) {
             $produto = (new ProdutosController)->cadastrar([
+                "id" => $produtoOld->id_produto,
                 "tipo_id" => $produtoOld->id_categoria,
                 "codigo" => $produtoOld->codigo,
                 "nome" => $produtoOld->titulo,

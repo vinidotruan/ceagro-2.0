@@ -10,7 +10,7 @@ class ContasBancariasController
     public function index()
     {
         $contas = App::get('db')->selectAll('contas_bancarias', ContaBancaria::class);
-        // echo json_encode($contas);
+        echo json_encode($contas);
     }
 
     public function cadastrar($conta)

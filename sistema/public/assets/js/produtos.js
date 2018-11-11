@@ -29,9 +29,6 @@ function enviar() {
 }
 
 function buscar() {
-    console.log($("#loader"));
-    $("#loader").show();
-    // exibirLoader();
     $.ajax({
         url: "../back-end/produtos",
         type: "get",
@@ -40,7 +37,6 @@ function buscar() {
             popular(produtos);
         },
         done: () => {
-            console.log("teste");
             fecharLoader();
         }
     });

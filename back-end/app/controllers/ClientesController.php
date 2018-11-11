@@ -11,7 +11,7 @@ class ClientesController
     public function index()
     {
         $clientes = App::get('db')->selectAll("clientes", Cliente::class);
-        // echo json_encode($clientes);
+        echo json_encode($clientes);
     }
 
     public function cadastrar($cliente)
@@ -31,13 +31,13 @@ class ClientesController
             ["id", $clienteId]
         );
 
-        // echo json_encode($ultimoCliente);
+        echo json_encode($ultimoCliente);
         return $ultimoCliente;
     }
 
     public function buscarBancos()
     {
         $bancos = App::get('db')->selectAll("bancos", Banco::class);
-        // echo json_encode($bancos);
+        echo json_encode($bancos);
     }
 }

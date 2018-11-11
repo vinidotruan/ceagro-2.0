@@ -8,33 +8,31 @@
 				<table class="table">
 					<thead>
 						<td colspan="2">
-							<form method="post">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="box">
-											<div class="box-header with-border">
-												<div class="input-group col-xs-6">
-													<input type="text" id='filtro' name="criterio" class="form-control" onkeyup="filtrar()">
-												</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="box">
+										<div class="box-header with-border">
+											<div class="input-group col-xs-6">
+												<input type="text" id='filtro' name="criterio" class="form-control" onkeyup="filtrar()" autocomplete="off">
 											</div>
-											<div class="box-body">
-												<table class="table table-bordered" id="produtos">
-													<thead>
-														<tr>
-															<th>Numero</th>
-															<th>Comprador</th>
-															<th>Vendedor</th>
-															<th>Produto</th>
-														</tr>
-													</thead>
-													<tbody id="contratos">
-													</tbody>
-												</table>
-											</div>
+										</div>
+										<div class="box-body">
+											<table class="table table-bordered" id="produtos">
+												<thead>
+													<tr>
+														<th>Numero</th>
+														<th>Comprador</th>
+														<th>Vendedor</th>
+														<th>Produto</th>
+													</tr>
+												</thead>
+												<tbody id="contratos">
+												</tbody>
+											</table>
 										</div>
 									</div>
 								</div>
-							</form>
+							</div>
 						</td>
 					</thead>
 				</table>

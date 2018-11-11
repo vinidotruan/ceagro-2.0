@@ -9,7 +9,6 @@ class ContratosController
 {
     public function index($limite = null)
     {
-        $limite = null;
         $contratos = App::get('db')
             ->selectTo("contratos", Contrato::class, null, $limite);
         foreach ($contratos as &$contrato) {

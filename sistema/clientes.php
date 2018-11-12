@@ -10,29 +10,27 @@
 						<div id="titulo">Dados Básicos</div>
 					</div>
 					<div>
-						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">
+					<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
 							<input type="text" class="form-control" name="razao_social" placeholder="Razão Social" autocomplete="off">
 						</div>
-						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">
+						<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
 							<input type="text" class="form-control col-xs-3" name="cnpj" placeholder="Cnpj" autocomplete="off">
 						</div>
-						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">
+						<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
 							<input type="text" class="form-control col-xs-3" name="inscricao_estadual" placeholder="I. Estadual" autocomplete="off">
 						</div>
-						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">
+						<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
 							<input type="text" class="form-control" name="email" placeholder="Email" autocomplete="off">
 						</div>
-						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">
+						<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
 							<input type="text" class="form-control" name="nome" placeholder="Nome" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-row">
-						<div class="col-6 col-md-6 col-sm-6 col-xs-6">
-							<select name="banco_id" id="bancos" class="form-control">
-								<option value="1">Selecione o banco do seu cliente</option>
-							</select>
-						</div>
-						<div class="col-6 col-md-6 col-sm-6 col-xs-6">
+					<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+							<input type="text" class="form-control" name="banco" placeholder="Banco do Cliente" autocomplete="off">
+					</div>
+						<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
 							<select name="atuacao" class="form-control" autocomplete="off">
 								<option value="0">Selecione a atuação do seu cliente</option>
 								<option value="comprador">Comprador</option>
@@ -218,6 +216,7 @@
 						</form>
 					</div>
 				</div>
+			</div>
    			</section>
 		</div>
 		<footer class="main-footer">

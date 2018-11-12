@@ -18,24 +18,24 @@
                                 <div class="form-group row" id="vendedor">
                                     <div class="form-row mx-3">
                                         <div id="titulo" class="col-12">Dados do Vendedor</div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6" >
+                                        <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <input onchange="selecionarVendedor(this)" type="text" id="nome" name="nome" autocomplete="off" list="vendedores" class="form-control" placeholder="Selecione seu vendedor" required autocomplete="off">
                                             <datalist id="vendedores"></datalist>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                                        <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <input onchange="selecionarCnpjVendedor(this)" type="text" id="cnpj" name="cnpj" autocomplete="off" list="vendedores_cnpjs" class="form-control" placeholder="Digite seu cnpj" required autocomplete="off">
                                             <datalist id="vendedores_cnpjs"></datalist>
                                         </div>
                                     </div>
                                     <div class="form-row mx-3">
-                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                                    <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <input type="text" id="razao_social" name="razao_social" class="form-control" placeholder="Razão Social" required autocomplete="off">
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                                        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" id="responsavel"  name="responsavel_vendedor" class="form-control" placeholder="Responsável" required autocomplete="off">
                                         </div>
 
-                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                                        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" id="assinatura" name="assinatura_vendedor" class="form-control" placeholder="Assinatura" required autocomplete="off">
                                         </div>
                                     </div>
@@ -43,26 +43,26 @@
                                 <div class="form-group row" id="comprador">
                                     <div class="form-row mx-3">
                                         <div id="titulo" class="col-12">Dados do Comprador</div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6" >
+                                        <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <input onchange="selecionarComprador(this)" type="text" id="nome" name="nome" autocomplete="off" list="compradores" class="form-control" placeholder="Selecione seu comprador" required autocomplete="off">
                                             <datalist id="compradores">
                                             </datalist>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                                        <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <input onchange="selecionarCnpjComprador(this)" type="text" id="cnpj" name="cnpj" autocomplete="off" list="compradores_cnpjs" class="form-control" placeholder="Digite seu cnpj" required autocomplete="off">
                                             <datalist id="compradores_cnpjs">
                                             </datalist>
                                         </div>
                                     </div>
                                     <div class="form-row mx-3">
-                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                                    <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <input type="text" id="razao_social" name="razao_social" class="form-control" placeholder="Razão Social" required autocomplete="off">
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                                        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" id="responsavel"  name="responsavel_comprador" class="form-control" placeholder="Responsável" required autocomplete="off">
                                         </div>
 
-                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                                        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" id="assinatura" name="assinatura_comprador" class="form-control" placeholder="Assinatura" required autocomplete="off">
                                         </div>
                                     </div>
@@ -82,11 +82,7 @@
                                             <input type="text" name="quantidade" class="form-control" placeholder="Quantidade" required autocomplete="off">
                                         </div>
                                         <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
-                                            <select name="unidade_medida" class="form-control">
-                                                <option value="g">Grama</option>
-                                                <option value="k">Quilo</option>
-                                                <option value="t">Tonelada</option>
-                                            </select>
+                                            <input type="text" name="preco" class="form-control" placeholder="Preço" required autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-row">

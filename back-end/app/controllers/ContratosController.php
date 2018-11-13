@@ -43,6 +43,7 @@ class ContratosController
                 'safra' => $contrato['safra'],
                 'quantidade' => $contrato['quantidade'],
                 'observacao' => $contrato['observacao'],
+                'tipo_embarque' => $contrato['tipo_embarque'],
                 'valor' => $contrato['valor'] ?? 0.0,
             ]);
 

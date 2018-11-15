@@ -16,7 +16,7 @@ class ContratosController
             $contrato->comprador = $contrato->comprador();
             $contrato->produto = $contrato->produto();
         }
-        echo json_encode($contratos[0]);
+        echo json_encode($contratos);
     }
 
     public function find($contrato)

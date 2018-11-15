@@ -7,7 +7,7 @@ use App\Models\Contrato;
 
 class ContratosController
 {
-    public function index($limite = null)
+    public function index($limite = 50)
     {
         $contratos = App::get('db')
             ->selectTo("contratos", Contrato::class, null, $limite);
@@ -16,7 +16,7 @@ class ContratosController
             $contrato->comprador = $contrato->comprador();
             $contrato->produto = $contrato->produto();
         }
-        echo json_encode($contratos);
+        echo json_encode($contratos[0]);
     }
 
     public function find($contrato)
@@ -33,17 +33,24 @@ class ContratosController
     {
         try {
             $contratoId = App::get('db')->insert('contratos', [
-                'codigo' => $contrato['codigo'],
-                'comprador_id' => $contrato['comprador_id'],
-                'assinatura_comprador' => $contrato['assinatura_comprador'],
+                'empresa_id' => $contrato['empresa_id'],
                 'vendedor_id' => $contrato['vendedor_id'],
-                'assinatura_vendedor' => $contrato['assinatura_vendedor'],
                 'produto_id' => $contrato['produto_id'],
+                'tipo_embarque' => $contrato['tipo_embarque'],
+                'comprador_id' => $contrato['comprador_id'],
+                'codigo' => $contrato['codigo'],
+                'assinatura_vendedor' => $contrato['assinatura_vendedor'],
+                'assinatura_comprador' => $contrato['assinatura_comprador'],
+                'quantidade_descricao' => $contrato['quantidade_descricao'],
+                'preco_texto' => $contrato['preco_texto'],
+                'pagamento_texto' => $contrato['pagamento_texto'],
+                'comissao' => $contrato['comissao'],
+                'peso_qualidade' => $contrato['peso_qualidade'],
+                'peso_total' => $contrato['peso_total'],
                 'unidade_medida_id' => $contrato['unidade_medida_id'],
+                'valor_contrato' => $contrato['valor_contrato'] ?? "",
+                'data_cadastro' => $contrato['data_cadastro'],
                 'safra' => $contrato['safra'],
-                'quantidade' => $contrato['quantidade'],
-                'observacao' => $contrato['observacao'],
-                'valor' => $contrato['valor'] ?? 0.0,
             ]);
 
             $ultimoContrato = App::get('db')->selectWhere(

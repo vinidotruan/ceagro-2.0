@@ -5,6 +5,7 @@
 	<?php include "partials/menu.html";?>
 		<div class="content-wrapper">
 			<section class="content">
+			<input type="button" value="" onclick="adaptar()">
 				<form id="FrmMain" runat="server">
 					<asp:Label ID="LbIdEscola" runat="server" Visible="false" Text="Label"></asp:Label>
 					<table class="table">

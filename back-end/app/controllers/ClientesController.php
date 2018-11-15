@@ -26,13 +26,13 @@ class ClientesController
             'atuacao' => $cliente['atuacao'],
         ]);
 
-        $ultimoCliente = App::get('db')->selectWhere(
-            'clientes',
-            ["id", $clienteId]
-        );
+        // $ultimoCliente = App::get('db')->selectWhere(
+        //     'clientes',
+        //     ["id", $clienteId]
+        // );
 
-        echo json_encode($ultimoCliente);
-        return $ultimoCliente;
+        // echo json_encode($ultimoCliente);
+        return $clienteId;
     }
 
     public function buscarBancos()

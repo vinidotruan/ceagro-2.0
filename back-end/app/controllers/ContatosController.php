@@ -31,6 +31,7 @@ class ContatosController
         ]);
 
         $ultimosContatos = App::get('db')->selectWhere('contatos', ['cliente_id', $contato['cliente_id']]);
-        echo json_encode($ultimosContatos);
+        // echo json_encode($ultimosContatos);
+        return $ultimosContatos;
     }
 }

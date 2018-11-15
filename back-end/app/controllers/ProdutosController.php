@@ -33,7 +33,8 @@ class ProdutosController
             'codigo' => $produto['codigo'],
         ]);
 
-        echo json_encode($produtoId);
+        // echo json_encode($produtoId);
+        return $produtoId;
 
     }
 }

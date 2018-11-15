@@ -4,15 +4,17 @@ namespace App\Models;
 
 use App\Core\App;
 
-class Produto
+class Produto extends Model
 {
     public $id;
     public $nome;
     public $tipo_id;
     public $tipo;
 
+    public static $table = "produtos";
+
     public function tipo()
     {
-        return App::get('db')->find("tipos_produtos", ["id", $this->tipo_id], TipoProduto::class)[0];
+        return TipoProduto::find(["id", $this->tipo_id]);
     }
 }

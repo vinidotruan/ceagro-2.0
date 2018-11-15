@@ -2,8 +2,8 @@
 
 function view($pagina, $dados = [])
 {
-    extract($dados);
-    return require "app/views/{$pagina}.php";
+    extract((array) $dados);
+    require "app/views/{$pagina}.php";
 }
 
 function redirecionar($path)

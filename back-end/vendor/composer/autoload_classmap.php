@@ -13,6 +13,7 @@ return array(
     'App\\Controllers\\ContatosController' => $baseDir . '/app/controllers/ContatosController.php',
     'App\\Controllers\\ContratosController' => $baseDir . '/app/controllers/ContratosController.php',
     'App\\Controllers\\EnderecosController' => $baseDir . '/app/controllers/EnderecosController.php',
+    'App\\Controllers\\PDF\\ContratosController' => $baseDir . '/app/controllers/PDF/ContratosController.php',
     'App\\Controllers\\ProdutosController' => $baseDir . '/app/controllers/ProdutosController.php',
     'App\\Controllers\\Teste' => $baseDir . '/app/controllers/teste.php',
     'App\\Controllers\\UnidadesMedidasController' => $baseDir . '/app/controllers/UnidadesMedidasController.php',

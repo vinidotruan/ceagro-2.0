@@ -9,23 +9,13 @@ class ContratosController
 {
     public function index($limite = 50)
     {
-        $contratos = App::get('db')
-            ->selectTo("contratos", Contrato::class, null, $limite);
-        foreach ($contratos as &$contrato) {
-            $contrato->vendedor = $contrato->vendedor();
-            $contrato->comprador = $contrato->comprador();
-            $contrato->produto = $contrato->produto();
-        }
+        $contratos = App::get('db')->selectTo("contratos", Contrato::class, null, $limite);
         echo json_encode($contratos);
     }
 
-    public function find($contrato)
+    public function show($contrato)
     {
         $contrato = Contrato::find(["id", $contrato]);
-        $contrato->vendedor = $contrato->vendedor();
-        $contrato->comprador = $contrato->comprador();
-        $contrato->produto = $contrato->produto();
-
         echo json_encode($contrato);
     }
 

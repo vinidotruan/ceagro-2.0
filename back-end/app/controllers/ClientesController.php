@@ -46,16 +46,12 @@ public function update($cliente)
 {
     try {
         $clienteId = App::get('db')->update('clientes', [
-            'codigo' => $cliente['codigo'],
-            'comprador_id' => $cliente['comprador_id'],
-            'assinatura_comprador' => $cliente['assinatura_comprador'],
-            'vendedor_id' => $cliente['vendedor_id'],
-            'assinatura_vendedor' => $cliente['assinatura_vendedor'],
-            'produto_id' => $cliente['produto_id'],
-            'unidade_medida_id' => $cliente['unidade_medida_id'],
-            'safra' => $cliente['safra'],
-            'quantidade' => $cliente['quantidade'],
-            'observacao' => $cliente['observacao'],
+            'razao_social' => $cliente['razao_social'],
+            'cnpj' => $cliente['cnpj'],
+            'inscricao_estadual' => $cliente['inscricao_estadual'],
+            'nome' => $cliente['nome'] ?? "",
+            'email' => $cliente['email'],
+            'atuacao' => $cliente['atuacao'],
         ],
             ["id", $cliente['cliente']]);
 
@@ -69,6 +65,5 @@ public function update($cliente)
     } catch (\Exception $exception) {
         echo json_encode($exception);
     }
-}
 }
 }

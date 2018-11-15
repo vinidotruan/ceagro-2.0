@@ -3,5 +3,8 @@
         "classmap": [
             "./"
         ]
+    },
+    "require": {
+        "dompdf/dompdf": "^0.8.2"
     }
 }

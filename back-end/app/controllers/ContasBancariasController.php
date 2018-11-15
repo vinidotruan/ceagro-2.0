@@ -21,14 +21,14 @@ class ContasBancariasController
             "banco" => $conta["banco"] ?? "",
             "agencia" => $conta["agencia"] ?? "",
             "conta" => $conta["conta"] ?? "",
-            "digito" => ($conta["conta"]) ?? null,
         ]);
 
-        $ultimaConta = App::get('db')->selectWhere(
-            'contas_bancarias',
-            ["id", $contaId]
-        );
+        // $ultimaConta = App::get('db')->selectWhere(
+        //     'contas_bancarias',
+        //     ["id", $contaId]
+        // );
 
-        echo json_encode($ultimaConta);
+        // echo json_encode($ultimaConta);
+        return $ultimaContaId;
     }
 }

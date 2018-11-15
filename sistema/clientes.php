@@ -10,13 +10,13 @@
 						<div id="titulo">Dados Básicos</div>
 					</div>
 					<div>
-						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">
+						<div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xs-12">
 							<input type="text" class="form-control" name="razao_social" placeholder="Razão Social" autocomplete="off">
 						</div>
-						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">
+						<div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xs-12">
 							<input type="text" class="form-control col-xs-3" name="cnpj" placeholder="Cnpj" autocomplete="off">
 						</div>
-						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">
+						<div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xs-12">
 							<input type="text" class="form-control col-xs-3" name="inscricao_estadual" placeholder="I. Estadual" autocomplete="off">
 						</div>
 						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">

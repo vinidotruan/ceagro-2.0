@@ -40,4 +40,35 @@ class ClientesController
         $bancos = App::get('db')->selectAll("bancos", Banco::class);
         echo json_encode($bancos);
     }
+
+
+public function update($cliente)
+{
+    try {
+        $clienteId = App::get('db')->update('clientes', [
+            'codigo' => $cliente['codigo'],
+            'comprador_id' => $cliente['comprador_id'],
+            'assinatura_comprador' => $cliente['assinatura_comprador'],
+            'vendedor_id' => $cliente['vendedor_id'],
+            'assinatura_vendedor' => $cliente['assinatura_vendedor'],
+            'produto_id' => $cliente['produto_id'],
+            'unidade_medida_id' => $cliente['unidade_medida_id'],
+            'safra' => $cliente['safra'],
+            'quantidade' => $cliente['quantidade'],
+            'observacao' => $cliente['observacao'],
+        ],
+            ["id", $cliente['cliente']]);
+
+        $cliente = App::get('db')->selectWhere(
+            'clientes',
+            ["id", $clienteId]
+        )[0];
+
+        echo json_encode($cliente);
+
+    } catch (\Exception $exception) {
+        echo json_encode($exception);
+    }
+}
+}
 }

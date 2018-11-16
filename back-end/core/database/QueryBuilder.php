@@ -23,21 +23,40 @@ class QueryBuilder
 
     public function select($query)
     {
-        $statement = $this->pdo->prepare($query);
-        $statement->execute();
-        return $statement->fetch();
+        // $query .= " limit 10";
+        try {
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
+            return $statement->fetch();
+
+        } catch (\PDOException $e) {
+            return $e;
+        }
     }
 
-    public function selectWhere($tabela, $campos = false)
+    public function selectWhere($tabela, $campos = null)
     {
-        $campos = implode(' = ', $campos);
         $query = "select * from {$tabela}";
-        $query .= ($campos) ? " where {$campos}" : "";
-
+        $query .= ($campos) ? " where " . implode(' = ', $campos) : "";
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $exception) {
+            die($e->getMessage());
+        }
+    }
+
+    public function selectTo($tabela, $classe, $campos = null, $limite = null)
+    {
+        $query = "select * from {$tabela}";
+        $query .= ($campos) ? " where " . implode(' > ', $campos) : "";
+        $query .= " order by id desc ";
+        $query .= ($limite) ? " limit {$limite}" : "";
+        try {
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
         } catch (PDOException $exception) {
             die($e->getMessage());
         }
@@ -49,6 +68,7 @@ class QueryBuilder
             $campos = implode(' = ', $campos);
             $statement = $this->pdo->prepare("select * from {$tabela} where {$campos}");
             $statement->execute();
+
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
         } catch (PDOException $exception) {
             die($e->getMessage());
@@ -72,7 +92,7 @@ class QueryBuilder
             return $this->pdo->lastInsertId();
 
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            return [$e->getMessage(), $sql, $dados];
         }
     }
 

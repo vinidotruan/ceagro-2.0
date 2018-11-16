@@ -33,3 +33,14 @@ function selecionarCliente(cliente) {
         $(location).attr('href', 'clientes.php');
     });
 }
+
+function filtrar() {
+    $(document).ready(function () {
+        $("#filtro").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#contratos tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+}

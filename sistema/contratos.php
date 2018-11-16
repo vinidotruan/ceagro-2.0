@@ -3,39 +3,41 @@
    <div class="wrapper">
    <?php include 'partials/header.html'?>
    <?php include "partials/menu.html";?>
+   <link rel="stylesheet" href="../bootstrap/css/estilo.css">
         <div class="content-wrapper">
             <section class="content">
                 <div class="container-fluid">
                     <div class="row mx-auto">
                         <div class="col-12">
                             <form id="contrato">
-                                <div id="titulo">Dados Confirmação</div>
+                                <div id="titulo">Dados do Contrato</div>
                                 <div class="form-group row">
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <input type="text" name="numero" class="form-control" placeholder="Confirmação Nº" required autocomplete="off">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <input type="text" name="codigo" class="form-control" placeholder="Código do contrato" required autocomplete="off">
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <input type="text" name="comicao" class="form-control" placeholder="Comição" required autocomplete="off">
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <input type="text" name="data_cadastro" class="form-control" placeholder="Data do Cadastro" required autocomplete="off">
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <input type="text" name="valor_contrato" class="form-control" placeholder="Valor Contrato" required autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group row" id="vendedor">
                                     <div class="form-row mx-3">
                                         <div id="titulo" class="col-12">Dados do Vendedor</div>
-                                        <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <input onchange="selecionarVendedor(this)" type="text" id="nome" name="nome" autocomplete="off" list="vendedores" class="form-control" placeholder="Selecione seu vendedor" required autocomplete="off">
-                                            <datalist id="vendedores"></datalist>
-                                        </div>
-                                        <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
                                             <input onchange="selecionarCnpjVendedor(this)" type="text" id="cnpj" name="cnpj" autocomplete="off" list="vendedores_cnpjs" class="form-control" placeholder="Digite seu cnpj" required autocomplete="off">
                                             <datalist id="vendedores_cnpjs"></datalist>
                                         </div>
                                     </div>
                                     <div class="form-row mx-3">
-                                    <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
                                             <input type="text" id="razao_social" name="razao_social" class="form-control" placeholder="Razão Social" required autocomplete="off">
                                         </div>
-                                        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" id="responsavel"  name="responsavel_vendedor" class="form-control" placeholder="Responsável" required autocomplete="off">
-                                        </div>
-
-                                        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
                                             <input type="text" id="assinatura" name="assinatura_vendedor" class="form-control" placeholder="Assinatura" required autocomplete="off">
                                         </div>
                                     </div>
@@ -43,26 +45,17 @@
                                 <div class="form-group row" id="comprador">
                                     <div class="form-row mx-3">
                                         <div id="titulo" class="col-12">Dados do Comprador</div>
-                                        <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <input onchange="selecionarComprador(this)" type="text" id="nome" name="nome" autocomplete="off" list="compradores" class="form-control" placeholder="Selecione seu comprador" required autocomplete="off">
-                                            <datalist id="compradores">
-                                            </datalist>
-                                        </div>
-                                        <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
                                             <input onchange="selecionarCnpjComprador(this)" type="text" id="cnpj" name="cnpj" autocomplete="off" list="compradores_cnpjs" class="form-control" placeholder="Digite seu cnpj" required autocomplete="off">
                                             <datalist id="compradores_cnpjs">
                                             </datalist>
                                         </div>
                                     </div>
                                     <div class="form-row mx-3">
-                                    <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
                                             <input type="text" id="razao_social" name="razao_social" class="form-control" placeholder="Razão Social" required autocomplete="off">
                                         </div>
-                                        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" id="responsavel"  name="responsavel_comprador" class="form-control" placeholder="Responsável" required autocomplete="off">
-                                        </div>
-
-                                        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
                                             <input type="text" id="assinatura" name="assinatura_comprador" class="form-control" placeholder="Assinatura" required autocomplete="off">
                                         </div>
                                     </div>
@@ -70,24 +63,37 @@
                                 <div class="form-group row">
                                     <div class="form-row mx-3" id="produto">
                                         <div id="titulo">Produto:</div>
-                                        <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
                                             <input onchange="selecionarProduto(this)" type="text" id="produto nome" name="nome" autocomplete="off" list="produtos" class="form-control" placeholder="Escolha seu produto" required autocomplete="off">
                                             <datalist id="produtos">
                                             </datalist>
                                         </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
                                             <input type="text" name="safra" class="form-control" placeholder="Safra" required autocomplete="off">
                                         </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3" >
-                                            <input type="text" name="quantidade" class="form-control" placeholder="Quantidade" required autocomplete="off">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+                                            <input type="text" name="quantidade_descricao" class="form-control" placeholder="Quantidade e Descrição" required autocomplete="off">
                                         </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
-                                            <input type="text" name="preco" class="form-control" placeholder="Preço" required autocomplete="off">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                                            <input type="text" name="peso_qualidade" class="form-control" placeholder="Peso e Qualidade" required autocomplete="off">
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                                            <select name="unidade_medida_id" id="unidades" class="form-control">
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+                                            <input type="text" name="tipoEmbarque" class="form-control" placeholder="Tipo de Embarque" required autocomplete="off">
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+                                            <input type="text" name="preco_texto" class="form-control" placeholder="Preço" required autocomplete="off">
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+                                            <input type="text" name="peso_total" class="form-control" placeholder="Peso Total" required autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <textarea class="form-control" rows="5" id="comment" placeholder="Descrição" name="descricao"></textarea>
+                                            <textarea class="form-control" rows="5" id="comment" placeholder="Descrição" name="observacao"></textarea>
                                         </div>
                                     </div>
                                 </div>

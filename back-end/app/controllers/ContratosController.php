@@ -7,15 +7,16 @@ use App\Models\Contrato;
 
 class ContratosController
 {
-    public function index()
+    public function index($limite = 50)
     {
-        $contratos = App::get('db')->selectAll("contratos", Contrato::class);
-        foreach ($contratos as $contrato) {
+        $contratos = App::get('db')
+            ->selectTo("contratos", Contrato::class, null, $limite);
+        foreach ($contratos as &$contrato) {
             $contrato->vendedor = $contrato->vendedor();
             $contrato->comprador = $contrato->comprador();
             $contrato->produto = $contrato->produto();
         }
-        echo json_encode($contratos);
+        echo json_encode($contratos[0]);
     }
 
     public function find($contrato)
@@ -28,54 +29,58 @@ class ContratosController
         echo json_encode($contrato);
     }
 
-    public function cadastrar()
+    public function cadastrar($contrato)
     {
         try {
             $contratoId = App::get('db')->insert('contratos', [
-                'numero' => $_POST['numero'],
-                'cliente_comprador_id' => $_POST['cliente_comprador_id'],
-                'assinatura_comprador' => $_POST['assinatura_comprador'],
-                'responsavel_comprador' => $_POST['responsavel_comprador'],
-                'cliente_vendedor_id' => $_POST['cliente_vendedor_id'],
-                'assinatura_vendedor' => $_POST['assinatura_vendedor'],
-                'responsavel_vendedor' => $_POST['responsavel_vendedor'],
-                'produto_id' => $_POST['produto_id'],
-                'unidade_medida' => $_POST['unidade_medida'],
-                'safra' => $_POST['safra'],
-                'quantidade' => $_POST['quantidade'],
-                'descricao' => $_POST['descricao'],
+                'empresa_id' => $contrato['empresa_id'],
+                'vendedor_id' => $contrato['vendedor_id'],
+                'produto_id' => $contrato['produto_id'],
+                'tipo_embarque' => $contrato['tipo_embarque'],
+                'comprador_id' => $contrato['comprador_id'],
+                'codigo' => $contrato['codigo'],
+                'assinatura_vendedor' => $contrato['assinatura_vendedor'],
+                'assinatura_comprador' => $contrato['assinatura_comprador'],
+                'quantidade_descricao' => $contrato['quantidade_descricao'],
+                'preco_texto' => $contrato['preco_texto'],
+                'pagamento_texto' => $contrato['pagamento_texto'],
+                'comissao' => $contrato['comissao'],
+                'peso_qualidade' => $contrato['peso_qualidade'],
+                'peso_total' => $contrato['peso_total'],
+                'unidade_medida_id' => $contrato['unidade_medida_id'],
+                'valor_contrato' => $contrato['valor_contrato'] ?? "",
+                'data_cadastro' => $contrato['data_cadastro'],
+                'safra' => $contrato['safra'],
             ]);
 
-            $contrato = App::get('db')->selectWhere(
+            $ultimoContrato = App::get('db')->selectWhere(
                 'contratos',
                 ["id", $contratoId]
             );
 
-            echo json_encode($contrato);
+            echo json_encode($ultimoContrato);
 
         } catch (\Exception $exception) {
             echo json_encode($exception);
         }
     }
 
-    public function update($dados)
+    public function update($contrato)
     {
         try {
             $contratoId = App::get('db')->update('contratos', [
-                'numero' => $dados['numero'],
-                'cliente_comprador_id' => $dados['cliente_comprador_id'],
-                'assinatura_comprador' => $dados['assinatura_comprador'],
-                'responsavel_comprador' => $dados['responsavel_comprador'],
-                'cliente_vendedor_id' => $dados['cliente_vendedor_id'],
-                'assinatura_vendedor' => $dados['assinatura_vendedor'],
-                'responsavel_vendedor' => $dados['responsavel_vendedor'],
-                'produto_id' => $dados['produto_id'],
-                'unidade_medida' => $dados['unidade_medida'],
-                'safra' => $dados['safra'],
-                'quantidade' => $dados['quantidade'],
-                'descricao' => $dados['descricao'],
+                'codigo' => $contrato['codigo'],
+                'comprador_id' => $contrato['comprador_id'],
+                'assinatura_comprador' => $contrato['assinatura_comprador'],
+                'vendedor_id' => $contrato['vendedor_id'],
+                'assinatura_vendedor' => $contrato['assinatura_vendedor'],
+                'produto_id' => $contrato['produto_id'],
+                'unidade_medida_id' => $contrato['unidade_medida_id'],
+                'safra' => $contrato['safra'],
+                'quantidade' => $contrato['quantidade'],
+                'observacao' => $contrato['observacao'],
             ],
-                ["id", $dados['id']]);
+                ["id", $contrato['contrato']]);
 
             $contrato = App::get('db')->selectWhere(
                 'contratos',

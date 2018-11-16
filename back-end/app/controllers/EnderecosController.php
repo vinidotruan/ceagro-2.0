@@ -6,37 +6,39 @@ use App\Core\App;
 
 class EnderecosController
 {
-    public function cadastrarEnderecoFaturamento()
+    public function cadastrarEnderecoFaturamento($enderecoFaturamento)
     {
         $enderecoFaturamentoId = App::get('db')->insert('enderecos_faturamentos', [
-            'rua' => $_POST['rua'],
-            'numero' => $_POST['numero'],
-            'complemento' => $_POST['complemento'],
-            'bairro' => $_POST['bairro'],
-            'cidade' => $_POST['cidade'],
-            'estado' => $_POST['estado'],
-            'cep' => $_POST['cep'],
-            'cliente_id' => $_POST['cliente_id'],
+            'rua' => $enderecoFaturamento['rua'],
+            'numero' => $enderecoFaturamento['numero'],
+            'complemento' => $enderecoFaturamento['complemento'],
+            'bairro' => $enderecoFaturamento['bairro'],
+            'cidade' => $enderecoFaturamento['cidade'],
+            'estado' => $enderecoFaturamento['estado'],
+            'cep' => $enderecoFaturamento['cep'],
+            'cliente_id' => $enderecoFaturamento['cliente_id'],
         ]);
-        $enderecoFaturamento = App::get('db')->selectWhere('enderecos_faturamentos', ["id", $enderecoFaturamentoId]);
-        echo json_encode($enderecoFaturamento);
+        // $enderecoFaturamento = App::get('db')->selectWhere('enderecos_faturamentos', ["id", $enderecoFaturamentoId]);
+        // echo json_encode($enderecoFaturamento);
+        return $enderecoFaturamentoId;
 
     }
 
-    public function cadastrarEnderecoEntrega()
+    public function cadastrarEnderecoEntrega($enderecoEntrega)
     {
         $enderecoEntregaId = App::get('db')->insert('enderecos_entregas', [
-            'rua' => $_POST['rua'],
-            'numero' => $_POST['numero'],
-            'complemento' => $_POST['complemento'],
-            'bairro' => $_POST['bairro'],
-            'cidade' => $_POST['cidade'],
-            'estado' => $_POST['estado'],
-            'cep' => $_POST['cep'],
-            'cliente_id' => $_POST['cliente_id'],
+            'rua' => $enderecoEntrega['rua'],
+            'numero' => $enderecoEntrega['numero'],
+            'complemento' => $enderecoEntrega['complemento'],
+            'bairro' => $enderecoEntrega['bairro'],
+            'cidade' => $enderecoEntrega['cidade'],
+            'estado' => $enderecoEntrega['estado'],
+            'cep' => $enderecoEntrega['cep'],
+            'cliente_id' => $enderecoEntrega['cliente_id'],
         ]);
 
-        $enderecoEntrega = App::get('db')->selectWhere('enderecos_entregas', ["id", $enderecoEntregaId]);
-        echo json_encode($enderecoEntrega);
+        // $enderecoEntrega = App::get('db')->selectWhere('enderecos_entregas', ["id", $enderecoEntregaId]);
+        // echo json_encode($enderecoEntrega);
+        return $enderecoEntregaId;
     }
 }

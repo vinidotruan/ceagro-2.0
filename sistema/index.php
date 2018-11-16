@@ -5,6 +5,7 @@
 	<?php include "partials/menu.html";?>
 		<div class="content-wrapper">
 			<section class="content">
+			<!--<input type="button" value="" onclick="adaptar()">-->
 				<form id="FrmMain" runat="server">
 					<asp:Label ID="LbIdEscola" runat="server" Visible="false" Text="Label"></asp:Label>
 					<table class="table">
@@ -32,7 +33,7 @@
 			<div class="pull-right hidden-xs">
 				<i class="fab fa-optin-monster"></i>
 			</div>
-			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. | Endereço Ip: <?php //mostraIp();?>
+			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
 		</footer>
 		<div class="control-sidebar-bg"></div>
 		<?php include "partials/loader.html"?>

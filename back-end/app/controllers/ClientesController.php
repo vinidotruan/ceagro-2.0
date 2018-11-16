@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use App\Core\App;
-use App\Models\Cliente;
 use App\Models\Banco;
+use App\Models\Cliente;
 
 class ClientesController
 {
@@ -14,29 +14,56 @@ class ClientesController
         echo json_encode($clientes);
     }
 
-    public function cadastrar()
+    public function cadastrar($cliente)
     {
         $clienteId = App::get('db')->insert('clientes', [
-            'banco_id' => $_POST['banco_id'],
-            'razao_social' => $_POST['razao_social'],
-            'cnpj' => $_POST['cnpj'],
-            'inscricao_estadual' => $_POST['inscricao_estadual'],
-            'nome' => $_POST['nome'],
-            'email' => $_POST['email'],
-            'atuacao' => $_POST['atuacao'],
+            'id' => $cliente['id'],
+            'razao_social' => $cliente['razao_social'],
+            'cnpj' => $cliente['cnpj'],
+            'inscricao_estadual' => $cliente['inscricao_estadual'],
+            'nome' => $cliente['nome'] ?? "",
+            'email' => $cliente['email'],
+            'atuacao' => $cliente['atuacao'],
         ]);
+
+        // $ultimoCliente = App::get('db')->selectWhere(
+        //     'clientes',
+        //     ["id", $clienteId]
+        // );
+
+        // echo json_encode($ultimoCliente);
+        return $clienteId;
+    }
+
+    public function buscarBancos()
+    {
+        $bancos = App::get('db')->selectAll("bancos", Banco::class);
+        echo json_encode($bancos);
+    }
+
+
+public function update($cliente)
+{
+    try {
+        $clienteId = App::get('db')->update('clientes', [
+            'razao_social' => $cliente['razao_social'],
+            'cnpj' => $cliente['cnpj'],
+            'inscricao_estadual' => $cliente['inscricao_estadual'],
+            'nome' => $cliente['nome'] ?? "",
+            'email' => $cliente['email'],
+            'atuacao' => $cliente['atuacao'],
+        ],
+            ["id", $cliente['cliente']]);
 
         $cliente = App::get('db')->selectWhere(
             'clientes',
             ["id", $clienteId]
-        );
+        )[0];
 
         echo json_encode($cliente);
 
+    } catch (\Exception $exception) {
+        echo json_encode($exception);
     }
-
-    public function buscarBancos() {
-        $bancos = App::get('db')->selectAll("bancos", Banco::class);
-        echo json_encode($bancos);
-    }
+}
 }

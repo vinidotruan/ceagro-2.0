@@ -1,6 +1,7 @@
 <?php include 'partials/cabecalho.html'?>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
+	<link rel="stylesheet" href="../bootstrap/css/estilo.css">
 		<?php include "partials/header.html"?>
 		<?php include "partials/menu.html";?>
 		<div class="content-wrapper" style="height:auto !important">
@@ -45,7 +46,7 @@
 						</div>
 					</div>
 				</form>
-				<div id="contatos">
+				<div>
 					<form id="contatos">
 					<div class="row" style="margin:auto !important">
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -193,24 +194,21 @@
 										<div id="titulo" class="col-12">
 										Dados Bancários:
 										</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="endereco" name="rua" class="form-control" placeholder="Banco">
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="endereco" name="banco" class="form-control" placeholder="Banco">
 											</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="numero"  name="numero" class="form-control" placeholder="Agência">
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="numero"  name="agencia" class="form-control" placeholder="Agência">
 											</div>
 
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="complemento" name="complemento" class="form-control" placeholder="Conta">
-											</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="bairro" name="bairro" class="form-control" placeholder="Dígito">
+											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+												<input type="text" id="complemento" name="conta" class="form-control" placeholder="Conta">
 											</div>
 										</div>
 									</div>
 								</div>
 								<div id="botoes" class="row">
-									<input type="button" class="btn btn-warning" onclick="cadastrarDadosBancarios()" value="Enviar">
+									<input type="button" class="btn btn-warning" onclick="cadastrarContaBancaria()" value="Enviar">
 								</div>
 							</div>
 						</form>

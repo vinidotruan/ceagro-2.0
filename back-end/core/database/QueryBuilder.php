@@ -51,7 +51,7 @@ class QueryBuilder
     {
         $query = "select * from {$tabela}";
         $query .= ($campos) ? " where " . implode(' > ', $campos) : "";
-        $query .= " order by id desc ";
+        $query .= " order by id desc";
         $query .= ($limite) ? " limit {$limite}" : "";
         try {
             $statement = $this->pdo->prepare($query);

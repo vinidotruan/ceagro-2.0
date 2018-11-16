@@ -8,4 +8,8 @@ class TipoProduto extends Model
     public $definicao;
 
     public static $table = "tipos_produtos";
+
+    public function __construct()
+    {
+    }
 }

@@ -12,17 +12,14 @@
                             <form id="contrato">
                                 <div id="titulo">Dados do Contrato</div>
                                 <div class="form-group row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" name="codigo" class="form-control" placeholder="Código do contrato" required autocomplete="off">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <input type="text" name="codigo" class="form-control" placeholder="Código do contrato" required autocomplete="off">
                                     </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" name="comicao" class="form-control" placeholder="Comição" required autocomplete="off">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <input type="text" name="comissao" class="form-control" placeholder="Comissão" required autocomplete="off">
                                     </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
                                     <input type="text" name="data_cadastro" class="form-control" placeholder="Data do Cadastro" required autocomplete="off">
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" name="valor_contrato" class="form-control" placeholder="Valor Contrato" required autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group row" id="vendedor">
@@ -82,7 +79,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
-                                            <input type="text" name="tipoEmbarque" class="form-control" placeholder="Tipo de Embarque" required autocomplete="off">
+                                            <input type="text" name="tipo_embarque" class="form-control" placeholder="Tipo de Embarque" required autocomplete="off">
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
                                             <input type="text" name="preco_texto" class="form-control" placeholder="Preço" required autocomplete="off">
@@ -113,7 +110,7 @@
             <div class="pull-right hidden-xs">
                 <i class="fab fa-optin-monster"></i>
             </div>
-            Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados. 
+            Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
         </footer>
     </div>
    <?php include 'partials/imports.html'?>

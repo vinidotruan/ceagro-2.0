@@ -10,7 +10,8 @@ class ClientesController
 {
     public function index()
     {
-        $clientes = App::get('db')->selectAll("clientes", Cliente::class);
+        $clientes = Cliente::get();
+
         echo json_encode($clientes);
     }
 
@@ -26,13 +27,9 @@ class ClientesController
             'atuacao' => $cliente['atuacao'],
         ]);
 
-        // $ultimoCliente = App::get('db')->selectWhere(
-        //     'clientes',
-        //     ["id", $clienteId]
-        // );
+        $ultimoCliente = Cliente::find(["id", $clienteId]);
 
-        // echo json_encode($ultimoCliente);
-        return $clienteId;
+        echo json_encode($ultimoCliente);
     }
 
     public function buscarBancos()
@@ -41,29 +38,28 @@ class ClientesController
         echo json_encode($bancos);
     }
 
+    public function update($cliente)
+    {
+        try {
+            $clienteId = App::get('db')->update('clientes', [
+                'razao_social' => $cliente['razao_social'],
+                'cnpj' => $cliente['cnpj'],
+                'inscricao_estadual' => $cliente['inscricao_estadual'],
+                'nome' => $cliente['nome'] ?? "",
+                'email' => $cliente['email'],
+                'atuacao' => $cliente['atuacao'],
+            ],
+                ["id", $cliente['cliente']]);
 
-public function update($cliente)
-{
-    try {
-        $clienteId = App::get('db')->update('clientes', [
-            'razao_social' => $cliente['razao_social'],
-            'cnpj' => $cliente['cnpj'],
-            'inscricao_estadual' => $cliente['inscricao_estadual'],
-            'nome' => $cliente['nome'] ?? "",
-            'email' => $cliente['email'],
-            'atuacao' => $cliente['atuacao'],
-        ],
-            ["id", $cliente['cliente']]);
+            $cliente = App::get('db')->selectWhere(
+                'clientes',
+                ["id", $clienteId]
+            )[0];
 
-        $cliente = App::get('db')->selectWhere(
-            'clientes',
-            ["id", $clienteId]
-        )[0];
+            echo json_encode($cliente);
 
-        echo json_encode($cliente);
-
-    } catch (\Exception $exception) {
-        echo json_encode($exception);
+        } catch (\Exception $exception) {
+            echo json_encode($exception);
+        }
     }
-}
 }

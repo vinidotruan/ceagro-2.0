@@ -17,9 +17,9 @@ produto = {};
 contrato = {};
 
 function verificarContrato() {
-    buscar();
+    buscarClientes();
     contrato = JSON.parse(localStorage.getItem("contrato"));
-    localStorage.removeItem("contrato");
+    // localStorage.removeItem("contrato");
     if (temContrato()) {
         $("#enviar").val("Atualizar");
         comprador = contrato.comprador;
@@ -73,7 +73,7 @@ function atualizar() {
     });
 }
 
-function buscar() {
+function buscarClientes() {
     $.ajax({
         url: "../back-end/clientes",
         type: "get",
@@ -99,12 +99,13 @@ function buscarProdutos() {
         success: function (data) {
             produtos = data;
             popularProdutos(produtos);
-            buscarUnidadesDeMedidas();
+
         }
     });
 }
 
 function buscarUnidadesDeMedidas() {
+    console.log("teste");
     $.ajax({
         url: "../back-end/unidades-medidas",
         type: "get",

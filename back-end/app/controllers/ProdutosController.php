@@ -10,11 +10,8 @@ class ProdutosController
 {
     public function index()
     {
-        $produtos = App::get('db')->selectAll('produtos', Produto::class);
+        $produtos = Produto::get();
 
-        foreach ($produtos as $key => &$produto) {
-            $produto->tipo = $produto->tipo();
-        }
         echo json_encode($produtos);
     }
 
@@ -33,8 +30,7 @@ class ProdutosController
             'codigo' => $produto['codigo'],
         ]);
 
-        // echo json_encode($produtoId);
-        return $produtoId;
+        echo json_encode($produtoId);
 
     }
 }

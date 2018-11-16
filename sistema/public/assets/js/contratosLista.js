@@ -1,10 +1,5 @@
-$(document).ready(function () {
-
-});
-
 function buscarContratos() {
-    $.get("../back-end/contratos", { limite: 50 }, function (response) {
-        console.log(response);
+    $.get("../back-end/contratos", { limite: 50 }, (response) => {
         contratos = JSON.parse(response);
         popularPesquisa(contratos);
     });

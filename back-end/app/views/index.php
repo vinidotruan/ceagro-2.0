@@ -26,7 +26,7 @@
 
     .confirmacao, .vendedor {margin-top: 3%;}
 
-    .nome {float:left; background-color: red}
+     .nome {float:left; background-color: red}
 
     td {margin-top: 5%}
 

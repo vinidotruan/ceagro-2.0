@@ -36,16 +36,23 @@ class Contrato extends Model
 
     protected static $table = "contratos";
 
+    public function __construct()
+    {
+        $this->comprador();
+        $this->vendedor();
+        $this->produto();
+    }
+
     public function comprador()
     {
-        return App::get('db')->find("clientes", ["id", $this->comprador_id], Cliente::class)[0];
+        return $this->comprador = Cliente::find(["id", $this->comprador_id]);
     }
     public function vendedor()
     {
-        return App::get('db')->find("clientes", ["id", $this->vendedor_id], Cliente::class)[0];
+        return $this->vendedor = Cliente::find(["id", $this->vendedor_id]);
     }
     public function produto()
     {
-        return App::get('db')->find("produtos", ["id", $this->produto_id], Produto::class)[0];
+        return $this->produto = Produto::find(["id", $this->produto_id]);
     }
 }

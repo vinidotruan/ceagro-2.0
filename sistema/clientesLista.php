@@ -22,7 +22,7 @@
 													<thead>
 														<tr>
 															<th style="width: 20px"></th>
-															<th hidden=""><a href="clientes.php">Id Cliente</a></th>
+															<th hidden="">Id Cliente</th>
 															<th style="width: 200px">Razão Social</th>
 															<th>Cnpj</th>
 															<th style="width: 150px">Insc Estadual</th>

@@ -2,6 +2,7 @@
 // //busca de clientes
 $router->get("ceagro/back-end/clientes", "ClientesController@index");
 $router->post("ceagro/back-end/clientes", "ClientesController@cadastrar");
+$router->get("ceagro/back-end/clientes/{cliente}", "ClientesController@show");
 
 $router->get("ceagro/back-end/clientes/bancos", "ClientesController@buscarBancos");
 $router->get("ceagro/back-end/clientes/contatos", "ContatosController@index");

@@ -10,15 +10,19 @@ class ClientesController
 {
     public function index()
     {
-        $clientes = Cliente::get();
-
+        $clientes = Cliente::get(["razao_social", "!=", "' '"]);
         echo json_encode($clientes);
+    }
+
+    public function show($id)
+    {
+        $cliente = Cliente::find(["id", $id]);
+        echo json_encode($cliente);
     }
 
     public function cadastrar($cliente)
     {
         $clienteId = App::get('db')->insert('clientes', [
-            'id' => $cliente['id'],
             'razao_social' => $cliente['razao_social'],
             'cnpj' => $cliente['cnpj'],
             'inscricao_estadual' => $cliente['inscricao_estadual'],

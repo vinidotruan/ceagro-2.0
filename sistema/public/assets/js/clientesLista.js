@@ -2,45 +2,39 @@ $(document).ready(function () {
 
 });
 
-function buscarClientes() {
+function buscar() {
     $.get("../back-end/clientes", function (response) {
         clientes = JSON.parse(response);
-        popularPesquisa(clientes);
+        popularPesquisa(clientes, () => {
+            $(function () {
+                $('#clientes').DataTable();
+                $(".overlay").remove();
+            })
+        });
     });
 }
 
-function popularPesquisa(clientes) {
+function popularPesquisa(clientes, callback) {
     $.each(clientes, function (index, cliente) {
         var linha = `<tr id="${cliente.id}" class="clicavel">
-            <td>${cliente.id}</td>
             <td>${cliente.razao_social}</td>
             <td>${cliente.cnpj}</td>
             <td>${cliente.inscricao_estadual}</td>
         </tr>`;
 
-        $("#clientes").append(linha);
+        $("#clientes tbody").append(linha);
     });
-    $(`#clientes tr`).on("click", function () {
+    $(`#clientes tbody tr`).on("click", function () {
         selecionarCliente(this.id);
     });
+    callback();
 }
 
 function selecionarCliente(cliente) {
-    $.get(`../back-end/clientes/${cliente}/`, function (response) {
+    $.get(`../back-end/clientes/${cliente}`, function (response) {
+        console.log(response);
         cliente = JSON.parse(response);
         localStorage.setItem('cliente', JSON.stringify(cliente));
-    }).success(function () {
         $(location).attr('href', 'clientes.php');
-    });
-}
-
-function filtrar() {
-    $(document).ready(function () {
-        $("#filtro").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#contratos tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
     });
 }

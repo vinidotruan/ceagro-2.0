@@ -8,6 +8,7 @@ class Produto extends Model
 {
     public $id;
     public $nome;
+    public $codigo;
     public $tipo_id;
     public $tipo;
 

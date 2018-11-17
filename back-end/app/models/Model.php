@@ -7,9 +7,9 @@ use App\Core\App;
 class Model
 {
 
-    public static function get()
+    public static function get($where = null)
     {
-        return App::get("db")->selectAll(static::$table, static::class);
+        return App::get("db")->selectAll(static::$table, static::class, $where);
     }
 
     public static function find($campos = ["id", 0])

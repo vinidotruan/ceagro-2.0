@@ -13,12 +13,19 @@ class QueryBuilder
         $this->pdo = $pdo;
     }
 
-    public function selectAll($tabela, $classe)
+    public function selectAll($tabela, $classe, $where = null)
     {
-        $statement = $this->pdo->prepare("select * from {$tabela}");
-        $statement->execute();
+        $query = "select * from {$tabela}";
+        ($where) ? $query .= " where " . implode("", $where) : '';
+        try {
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
 
-        return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
+            return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
+
+        } catch (\PDOException $e) {
+            return $e;
+        }
     }
 
     public function select($query)

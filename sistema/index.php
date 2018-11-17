@@ -35,7 +35,7 @@
 			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
 		</footer>
 		<div class="control-sidebar-bg"></div>
-		<?php include 'partials/imports.html'?>
+	</div>
+	<?php include 'partials/imports.html'?>
     <script src="public/assets/js/clientesLista.js"></script>
 	<?php include 'partials/rodape.html'?>
-	</div>

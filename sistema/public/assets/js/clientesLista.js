@@ -17,6 +17,7 @@ function buscar() {
 function popularPesquisa(clientes, callback) {
     $.each(clientes, function (index, cliente) {
         var linha = `<tr id="${cliente.id}" class="clicavel">
+            <td>${cliente.id}</td>
             <td>${cliente.razao_social}</td>
             <td>${cliente.cnpj}</td>
             <td>${cliente.inscricao_estadual}</td>

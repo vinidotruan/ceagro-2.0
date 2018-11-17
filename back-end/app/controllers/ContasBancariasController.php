@@ -13,6 +13,12 @@ class ContasBancariasController
         echo json_encode($contas);
     }
 
+    public function show($clienteId)
+    {
+        $contas = ContaBancaria::get(["cliente_id", "=", $clienteId]);
+        echo json_encode($contas);
+    }
+
     public function cadastrar($conta)
     {
         $contaId = App::get('db')->insert('contas_bancarias', [

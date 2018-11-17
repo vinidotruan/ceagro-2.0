@@ -24,6 +24,7 @@ $router->post("ceagro/back-end/contratos", "ContratosController@cadastrar");
 $router->put("ceagro/back-end/contratos/{contrato}", "ContratosController@update");
 
 $router->post("ceagro/back-end/clientes/contas-bancarias", "ContasBancariasController@cadastrar");
+$router->get("ceagro/back-end/clientes/{cliente}/contas-bancarias", "ContasBancariasController@show");
 $router->get("ceagro/back-end/adaptacao", "Adaptacao\AdaptacaoController@adaptarClientes");
 $router->get("ceagro/back-end/pdfs/contratos/{contrato}", "PDF\ContratosController@index");
 $router->get("ceagro/back-end/unidades-medidas", "UnidadesMedidasController@index");

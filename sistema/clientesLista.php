@@ -16,6 +16,7 @@
 								<table id="clientes" class="table table-bordered table-striped">
 									<thead>
 										<tr>
+											<th>id</th>
 											<th>Razão Social</th>
 											<th>CNPJ</th>
 											<th>Inscrição Estadual</th>

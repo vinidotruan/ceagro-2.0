@@ -1,7 +1,27 @@
 var cliente = {};
 var contatos = [{}];
+var contas = [{}];
 formsDisable();
 buscarBancos();
+
+function temCliente() {
+    if (cliente) {
+        return true;
+    }
+    return false;
+}
+
+function verificarCliente() {
+    cliente = JSON.parse(localStorage.getItem("cliente"));
+    // localStorage.removeItem("cliente");
+    if (temCliente()) {
+        buscarConta(cliente.id);
+        $("#enviar").val("Atualizar");
+        compararFormCliente(cliente, "cliente");
+    } else {
+        $("#enviar").val("Cadastrar");
+    }
+}
 
 function formsDisable() {
     $("#contatos :input").prop("disabled", true);
@@ -13,6 +33,23 @@ function formsDisable() {
     $("#entrega :button").hide();
     $("#dadosBancarios :input").prop("disabled", true);
     $("#dadosBancarios :button").hide();
+}
+
+function buscarConta(clienteId) {
+    $.get(`../back-end/clientes/${clienteId}/contas-bancarias`, function (response) {
+        contas = JSON.parse(response);
+        console.log(contas);
+    });
+}
+function compararFormCliente(cliente, formulario) {
+    $.each(cliente, function (campo, valor) {
+        $(`#${formulario}`).find('select, input, textarea').each(function (index, formObj) {
+            if (typeof valor === "object" && valor) {
+                compararFormCliente(valor, campo);
+            }
+            (campo === formObj.name) ? $(formObj).val(valor) : "";
+        });
+    });
 }
 
 function habilitarForm(formulario) {

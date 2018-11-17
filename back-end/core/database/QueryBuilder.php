@@ -24,20 +24,19 @@ class QueryBuilder
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
 
         } catch (\PDOException $e) {
-            return $e;
+            die($e->getMessage());
         }
     }
 
     public function select($query)
     {
-        // $query .= " limit 10";
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();
             return $statement->fetch();
 
         } catch (\PDOException $e) {
-            return $e;
+            die($e->getMessage());
         }
     }
 
@@ -50,7 +49,7 @@ class QueryBuilder
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $exception) {
-            die($e->getMessage());
+            die($exception->getMessage());
         }
     }
 
@@ -65,7 +64,7 @@ class QueryBuilder
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
         } catch (PDOException $exception) {
-            die($e->getMessage());
+            die($exception->getMessage());
         }
     }
 
@@ -78,7 +77,7 @@ class QueryBuilder
 
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
         } catch (PDOException $exception) {
-            die($e->getMessage());
+            die($exception->getMessage());
         }
     }
 

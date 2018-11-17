@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <h2 class="page-header">
-                        <i class="fa fa-coffee"></i> Produtos
+                        <i class="fa fa-cart-plus"></i> Produtos
                         <!-- <small class="pull-right">Date: 2/10/2014</small> -->
                         </h2>
                     </div>
@@ -69,6 +69,6 @@
         <div class="control-sidebar-bg"></div>
     </div>
 	<?php include 'partials/imports.html'?>
-    <script src="public/assets/js/clientesLista.js"></script>
+    <script src="public/assets/js/produtos.js"></script>
 	<?php include 'partials/rodape.html'?>
 	</div>

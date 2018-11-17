@@ -13,6 +13,7 @@ class Cliente extends Model
     public $atuacao;
     public $enderecoFaturamento;
     public $enderecoEntrega;
+    public $contasBancarias;
 
     public static $table = "clientes";
 
@@ -30,5 +31,10 @@ class Cliente extends Model
     public function enderecoEntrega()
     {
         return $this->enderecoEntrega = EnderecoEntrega::find(["cliente_id", $this->id]);
+    }
+
+    public function contasBancarias()
+    {
+        return $this->contasBancarias = ContaBancaria::find(["cliente_id", $this->id]);
     }
 }

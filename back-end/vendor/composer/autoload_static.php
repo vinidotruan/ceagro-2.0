@@ -50,6 +50,7 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
         'App\\Controllers\\ContatosController' => __DIR__ . '/../..' . '/app/controllers/ContatosController.php',
         'App\\Controllers\\ContratosController' => __DIR__ . '/../..' . '/app/controllers/ContratosController.php',
         'App\\Controllers\\EnderecosController' => __DIR__ . '/../..' . '/app/controllers/EnderecosController.php',
+        'App\\Controllers\\PDF\\ContratosController' => __DIR__ . '/../..' . '/app/controllers/PDF/ContratosController.php',
         'App\\Controllers\\ProdutosController' => __DIR__ . '/../..' . '/app/controllers/ProdutosController.php',
         'App\\Controllers\\Teste' => __DIR__ . '/../..' . '/app/controllers/teste.php',
         'App\\Controllers\\UnidadesMedidasController' => __DIR__ . '/../..' . '/app/controllers/UnidadesMedidasController.php',

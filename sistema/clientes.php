@@ -58,6 +58,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php include 'partials/alert.html'?>
                                 <div class="box-footer">
                                     <button type="button" class="btn btn-primary pull-right" onclick="cadastrar()"></button>
                                 </div>
@@ -272,6 +273,16 @@
         <div class="clearfix"></div>
         </div>
         <div class="control-sidebar-bg"></div>
+    </div>
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: rgba(0,0,0,0)">
+                <div class="modal-body" style="background: rgba(0,0,0,0)">
+                </div>
+            </div>
+        <!-- /.modal-content -->
+        </div>
+          <!-- /.modal-dialog -->
     </div>
 	<?php include 'partials/imports.html'?>
     <script src="public/assets/js/clientes.js"></script>

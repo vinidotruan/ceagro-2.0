@@ -37,8 +37,6 @@ function compararFormCliente(cliente, formulario) {
             if (typeof valor === "object" && valor) {
                 compararFormCliente(valor, campo);
             }
-
-            console.log(campo);
             if (campo == formObj.name) {
             }
             (campo === formObj.name) ? $(formObj).val(valor) : "";
@@ -54,7 +52,7 @@ function atualizarBotoes() {
 
 function verificarCliente() {
     cliente = JSON.parse(localStorage.getItem("cliente"));
-    // localStorage.removeItem("cliente");
+    localStorage.removeItem("cliente");
     if (temCliente()) {
         atualizarBotoes();
         buscarContas(cliente.id, () => {
@@ -109,16 +107,28 @@ function popularContas(contas) {
     }
 }
 
+
+function esconderModal() {
+    $('#modal-default').modal('hide');
+}
+
+function mostrarModal() {
+    $('#modal-default').modal({ backdrop: 'static', keyboard: false });
+
+}
+
 /**
  * 
  * Cadastros e Updates
  */
 
 function cadastrar() {
+    mostrarModal();
     var dados = $('#cliente').serialize();
     $.post("../back-end/clientes", dados, function (response) {
         cliente = JSON.parse(response)[0];
         $("#contatos").show();
+        esconderModal();
         habilitarForm("contatos");
         irPara("enderecoFaturamento");
         habilitarForm("enderecoFaturamento");
@@ -128,8 +138,10 @@ function cadastrar() {
 
 function cadastrarContato() {
     $(`#contatos`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    mostrarModal();
     var dados = $("#contatos").serialize();
     $.post("../back-end/clientes/contatos", dados, function (response) {
+        esconderModal();
         contatos = JSON.parse(response);
         popularContatos(contatos);
     });
@@ -137,9 +149,11 @@ function cadastrarContato() {
 
 function cadastrarEnderecoFat() {
     $(`#enderecoFaturamento`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    mostrarModal();
     var dados = $("#enderecoFaturamento").serialize();
 
     $.post("../back-end/clientes/enderecos-faturamentos", dados, function (response) {
+        esconderModal();
         faturamento = JSON.parse(response);
         irPara("enderecoEntrega");
         habilitarForm("enderecoEntrega");
@@ -148,8 +162,10 @@ function cadastrarEnderecoFat() {
 
 function cadastrarEnderecoEnt() {
     $(`#enderecoEntrega`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    mostrarModal();
     var dados = $("#enderecoEntrega").serialize();
     $.post("../back-end/clientes/enderecos-entregas", dados, function (response) {
+        esconderModal();
         entrega = JSON.parse(response);
         irPara("contasBancarias");
         habilitarForm("contasBancarias");
@@ -158,8 +174,10 @@ function cadastrarEnderecoEnt() {
 
 function cadastrarContaBancaria() {
     $(`#contasBancarias`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    mostrarModal();
     var dados = $("#contasBancarias").serialize();
     $.post(`../back-end/clientes/contas-bancarias`, dados, function (response) {
+        esconderModal();
         buscarContas(cliente.id);
     });
 }

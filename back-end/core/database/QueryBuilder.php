@@ -16,7 +16,8 @@ class QueryBuilder
     public function selectAll($tabela, $classe, $where = null)
     {
         $query = "select * from {$tabela}";
-        ($where) ? $query .= " where " . implode("", $where) : '';
+        ($where) ? $query .= " where " . implode(" ", $where) : '';
+        $query .= " limit 10;";
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();

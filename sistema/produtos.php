@@ -1,72 +1,74 @@
 <?php include 'partials/cabecalho.html'?>
 <body class="hold-transition skin-blue sidebar-mini" onload="buscar()">
-	<div class="wrapper" style=" position:absolute; width:100%">
-		<?php include "partials/header.html"?>
-		<?php include "partials/menu.html";?>
-		<div class="content-wrapper" style="height:auto !important;">
-		<section class="content">
-        <div id="titulo">
-        Produtos:
+	<div class="wrapper">
+	<?php include "partials/header.html";?>
+	<?php include "partials/menu.html";?>
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <br>
+            <section class="invoice">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="page-header">
+                        <i class="fa fa-cart-plus"></i> Produtos
+                        <!-- <small class="pull-right">Date: 2/10/2014</small> -->
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="row invoice-info">
+                    <form role="form" id="produto">
+                        <div class="box-body">
+                            <div class="form-row">
+                                <div class="col-xs-12 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="nome">Nome</label>
+                                        <input type="text" class="form-control" name="nome" placeholder="Digite o nome do produto" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="nome">Código</label>
+                                        <input type="text" class="form-control" name="codigo" placeholder="Digite o código do produto" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-lg-4">
+                                    <div class="form-group">
+                                        <label>Categoria</label>
+                                        <select class="form-control select2" name="tipo_id" id="tipos" style="width: 100%;">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="button" class="btn btn-primary pull-right" onclick="enviar()">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nome</th>
+                                    <th>Tipo</th>
+                                </tr>
+                            </thead>
+                            <tbody id="produtos_lista">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+        <div class="clearfix"></div>
         </div>
-        <form id="produtos">
-          <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12" id="campo">
-            <input type="text" name="nome" class="form-control" placeholder="Nome" required autocomplete="off">
-          </div>
-          <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12" id="campo">
-            <input class="form-control" rows="5" id="comment" placeholder="Categoria" name="categoria" required autocomplete="off">
-          </div>
-          <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
-            <select id="tipos" name="tipo_id" class="form-control" style="width:100%" required>
-                <option value="grao">Selecione o tipo do produto</option>
-            </select>
-          </div>
-          <div class="col-md-12 col-sm-12 col-xs-12" >
-            <input type="button" class="btn btn-warning" value="Enviar" onclick="enviar()" style="margin-left: 90%">
-          </div>
-        </form>
-   		</section>
-      <section class="content">
-				<table class="table">
-					<thead>
-						<td colspan="2">
-							<form method="post">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="box">
-											<div class="box-header with-border">
-												<div class="input-group col-xs-6">
-													<input type="text" id='filtro' name="criterio" class="form-control" onkeyup="filtrar()" autocomplete="off">
-												</div>
-											</div>
-											<div class="box-body">
-												<table class="table table-bordered" id="produtos">
-													<thead>
-														<tr>
-															<th>Nome</th>
-															<th>Tipo</th>
-														</tr>
-													</thead>
-													<tbody id="produtos_lista">
-													</tbody>
-												</table>
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-						</td>
-					</thead>
-				</table>
-      </section>
-   	</div>
-		<footer class="main-footer">
-			<div class="pull-right hidden-xs">
-				<i class="fab fa-optin-monster"></i>
-			</div>
-   	Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
-		</footer>
-		<div class="control-sidebar-bg"></div>
-	</div>
+        <div class="control-sidebar-bg"></div>
+    </div>
 	<?php include 'partials/imports.html'?>
-  <script src="public/assets/js/produtos.js"></script>
+    <script src="public/assets/js/produtos.js"></script>
 	<?php include 'partials/rodape.html'?>
+	</div>

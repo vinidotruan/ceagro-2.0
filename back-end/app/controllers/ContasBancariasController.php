@@ -13,22 +13,23 @@ class ContasBancariasController
         echo json_encode($contas);
     }
 
+    public function show($clienteId)
+    {
+        $contas = ContaBancaria::get(["cliente_id", "=", $clienteId]);
+        echo json_encode($contas);
+    }
+
     public function cadastrar($conta)
     {
         $contaId = App::get('db')->insert('contas_bancarias', [
-            "id" => intval($conta['id']),
             "cliente_id" => intval($conta["cliente_id"]),
             "banco" => $conta["banco"] ?? "",
             "agencia" => $conta["agencia"] ?? "",
             "conta" => $conta["conta"] ?? "",
         ]);
 
-        // $ultimaConta = App::get('db')->selectWhere(
-        //     'contas_bancarias',
-        //     ["id", $contaId]
-        // );
+        $ultimaConta = ContaBancaria::find(["cliente_id", $conta['cliente_id']]);
 
-        // echo json_encode($ultimaConta);
-        return $ultimaContaId;
+        echo json_encode($ultimaConta);
     }
 }

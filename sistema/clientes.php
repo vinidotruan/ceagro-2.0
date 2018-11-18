@@ -1,222 +1,290 @@
 <?php include 'partials/cabecalho.html'?>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" onload="verificarCliente()">
 	<div class="wrapper">
-		<?php include "partials/header.html"?>
-		<?php include "partials/menu.html";?>
-		<div class="content-wrapper" style="height:auto !important">
-			<section class="content">
-				<form id="formulario">
-					<div>
-						<div id="titulo">Dados Básicos</div>
-					</div>
-					<div>
-						<div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xs-12">
-							<input type="text" class="form-control" name="razao_social" placeholder="Razão Social" autocomplete="off">
-						</div>
-						<div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xs-12">
-							<input type="text" class="form-control col-xs-3" name="cnpj" placeholder="Cnpj" autocomplete="off">
-						</div>
-						<div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xs-12">
-							<input type="text" class="form-control col-xs-3" name="inscricao_estadual" placeholder="I. Estadual" autocomplete="off">
-						</div>
-						<div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xs-12">
-							<input type="text" class="form-control" name="email" placeholder="Email" autocomplete="off">
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="col-6 col-md-6 col-sm-6 col-xs-6">
-							<select name="atuacao" class="form-control" autocomplete="off">
-								<option value="0">Selecione a atuação do seu cliente</option>
-								<option value="comprador">Comprador</option>
-								<option value="vendedor">Vendedor</option>
-								<option value="ambos">Ambos</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xs-push-9 col-lg-push-11 col-sm-push-10">
-							<input type="button" class="btn btn-warning" onclick="enviar()" value="Enviar" style="margin-left: auto">
-						</div>
-					</div>
-				</form>
-				<div>
-					<form id="contatos">
-					<div class="row" style="margin:auto !important">
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-							<div class="form-group row">
-								<div class="form-row">
-										<div>
-											<div id="titulo"> Cadastro de Contatos</div>
-										</div>
-										<div class="form-row">
-											<div class="col-11 col-md-11 col-sm-11 col-xs-11">
-												<input type="text" class="form-control col-xs-3" name="telefone" placeholder="Telefone1" autocomplete="off" required>
-											</div>
-										</div>
-										<div class="form-row">
-											<div class="col-11 col-md-11 col-sm-11 col-xs-11">
-												<textarea class="form-control" name="observacao" rows="5" id="comment" placeholder="Obs"></textarea>
-											</div>
-										</div>
-										<div class="col-11 col-md-11 col-sm-11 col-xs-11">
-											<div id="botoes" class="row">
-												<input type="button" class="btn btn-warning" onclick="cadastrarContato()" value="Enviar">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
-						<div class="row" style="margin:auto !important">
-							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top: 2%">
-								<div class="form-group row">
-									<div class="form-row col-lg-12 col-md-12 col-sm-11 col-xs-11">
-										<div class="box box-default form-row" id="contatosLista">
-											<div class="box-header with-border">
-												<h3 class="box-title">Lista de contatos</h3>
-												<div class="box-tools pull-right">
-													<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row" style="margin:auto !important">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<form id="faturamento">
-							<div class="form-group row">
-								<div class="form-row">
-									<div class="form-row">
-										<div>
-										<div id="titulo" class="col-12">
-										Endereço de Faturamento:
-										</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="endereco" name="rua" class="form-control" placeholder="Endereço">
-											</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="numero"  name="numero" class="form-control" placeholder="Número">
-											</div>
+	<?php include "partials/header.html";?>
+	<?php include "partials/menu.html";?>
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <br>
+            <div class="row">
 
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="complemento" name="complemento" class="form-control" placeholder="Complemento">
-											</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="bairro" name="bairro" class="form-control" placeholder="Bairro">
-											</div>
-										</div>
-									</div>
-									<div>
-										<div class="form-row">
-											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="cidade"  name="cidade" class="form-control" placeholder="Cidade">
-											</div>
-											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="estado" name="estado" class="form-control" placeholder="Estado">
-											</div>
-											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="cep" name="cep" class="form-control" placeholder="CEP">
-											</div>
-										</div>
-									</div>
-									<div id="botoes" class="row">
-										<input type="button" class="btn btn-warning" onclick="cadastrarEnderecoFat()" value="Enviar">
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class="row" style="margin:auto !important">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<form id="entrega">
-							<div class="form-group row">
-								<div class="form-row">
-									<div class="form-row">
-										<div>
-										<div id="titulo" class="col-12">
-										Endereço de Entrega:
-										</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="endereco" name="rua" class="form-control" placeholder="Endereço">
-											</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="numero"  name="numero" class="form-control" placeholder="Número">
-											</div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <section class="invoice">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="page-header">
+                                <i class="fa fa-address-card"></i> Dados Base
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row invoice-info">
+                            <form role="form" id="cliente">
+                                <div class="box-body">
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="razao_social">Razão Social</label>
+                                                <input type="text" class="form-control" name="razao_social" placeholder="Digite o nome do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="cnpj">CNPJ</label>
+                                                <input type="text" class="form-control" name="cnpj" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="inscricao_estadual">Inscrição Estadual</label>
+                                                <input type="text" class="form-control" name="inscricao_estadual" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="text" class="form-control" name="email" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label>Atuação do Cliente</label>
+                                                <select class="form-control select2" name="atuacao" style="width: 100%;">
+                                                    <option value="0">Selecione a atuação do seu cliente</option>
+                                                    <option value="comprador">Comprador</option>
+                                                    <option value="vendedor">Vendedor</option>
+                                                    <option value="ambos">Ambos</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php include 'partials/alert.html'?>
+                                <div class="box-footer">
+                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrar()"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
 
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="complemento" name="complemento" class="form-control" placeholder="Complemento">
-											</div>
-											<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-12">
-												<input type="text" id="bairro" name="bairro" class="form-control" placeholder="Bairro">
-											</div>
-										</div>
-									</div>
-									<div>
-										<div class="form-row">
-											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="cidade"  name="cidade" class="form-control" placeholder="Cidade">
-											</div>
-											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="estado" name="estado" class="form-control" placeholder="Estado">
-											</div>
-											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="cep" name="cep" class="form-control" placeholder="CEP">
-											</div>
-										</div>
-									</div>
-								</div>
-								<div id="botoes" class="row">
-									<input type="button" class="btn btn-warning" onclick="cadastrarEnderecoEnt()" value="Enviar">
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class="row" style="margin:auto !important">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<form id="dadosBancarios">
-							<div class="form-group row">
-								<div class="form-row">
-									<div class="form-row">
-										<div>
-										<div id="titulo" class="col-12">
-										Dados Bancários:
-										</div>
-											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="endereco" name="banco" class="form-control" placeholder="Banco">
-											</div>
-											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="numero"  name="agencia" class="form-control" placeholder="Agência">
-											</div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 enderecoFaturamento">
+                    <section class="invoice">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="page-header">
+                                <i class="fa fa-map"></i> Endereço Faturamento:
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row invoice-info">
+                            <form role="form" id="enderecoFaturamento">
+                                <div class="box-body">
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-lg-8">
+                                            <div class="form-group">
+                                                <label for="rua">Rua</label>
+                                                <input type="text" class="form-control" name="rua" placeholder="Digite o nome do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="numero">Número</label>
+                                                <input type="text" class="form-control" name="numero" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="cidade">Cidade</label>
+                                                <input type="text" class="form-control" name="cidade" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
 
-											<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-												<input type="text" id="complemento" name="conta" class="form-control" placeholder="Conta">
-											</div>
-										</div>
-									</div>
-								</div>
-								<div id="botoes" class="row">
-									<input type="button" class="btn btn-warning" onclick="cadastrarContaBancaria()" value="Enviar">
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-   			</section>
-		</div>
-		<footer class="main-footer">
-			<div class="pull-right hidden-xs">
-				<i class="fab fa-optin-monster"></i>
-			</div>
-			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
-		</footer>
-		<div class="control-sidebar-bg"></div>
-	</div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="bairro">Bairro</label>
+                                                <input type="text" class="form-control" name="bairro" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="complemento">Complemento</label>
+                                                <input type="text" class="form-control" name="complemento" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="estado">Estado</label>
+                                                <input type="text" class="form-control" name="estado" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-8">
+                                            <div class="form-group">
+                                                <label for="cep">CEP</label>
+                                                <input type="text" class="form-control" name="cep" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarEnderecoFat()"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 enderecoEntrega">
+                    <section class="invoice">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="page-header">
+                                <i class="fa fa-map-o"></i> Endereço Entrega:
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row invoice-info">
+                            <form role="form" id="enderecoEntrega">
+                                <div class="box-body">
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-lg-8">
+                                            <div class="form-group">
+                                                <label for="rua">Rua</label>
+                                                <input type="text" class="form-control" name="rua" placeholder="Digite o nome do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="numero">Número</label>
+                                                <input type="text" class="form-control" name="numero" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="cidade">Cidade</label>
+                                                <input type="text" class="form-control" name="cidade" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="bairro">Bairro</label>
+                                                <input type="text" class="form-control" name="bairro" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="complemento">Complemento</label>
+                                                <input type="text" class="form-control" name="complemento" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="estado">Estado</label>
+                                                <input type="text" class="form-control" name="estado" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-8">
+                                            <div class="form-group">
+                                                <label for="cep">CEP</label>
+                                                <input type="text" class="form-control" name="cep" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarEnderecoEnt()"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 contasBancarias">
+
+                    <section class="invoice">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="page-header">
+                                <i class="fa fa-university"></i> Dados Bancários:
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row invoice-info">
+                            <form role="form" id="contasBancarias">
+                                <div class="box-body">
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="banco">Banco</label>
+                                                <input type="text" class="form-control" name="banco" placeholder="Digite o nome do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="agencia">Agência</label>
+                                                <input type="text" class="form-control" name="agencia" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="conta">Conta</label>
+                                                <input type="text" class="form-control" name="conta" placeholder="Digite o código do produto" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarContaBancaria()">Cadastrar</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Banco</th>
+                                            <th>Agência</th>
+                                            <th>Conta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="contas_bancarias">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+
+        <div class="clearfix"></div>
+        </div>
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: rgba(0,0,0,0)">
+                <div class="modal-body" style="background: rgba(0,0,0,0)">
+                </div>
+            </div>
+        <!-- /.modal-content -->
+        </div>
+          <!-- /.modal-dialog -->
+    </div>
 	<?php include 'partials/imports.html'?>
-	<script src="public/assets/js/clientes.js"></script>
+    <script src="public/assets/js/clientes.js"></script>
 	<?php include 'partials/rodape.html'?>
+	</div>

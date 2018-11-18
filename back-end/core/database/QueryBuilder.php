@@ -13,24 +13,31 @@ class QueryBuilder
         $this->pdo = $pdo;
     }
 
-    public function selectAll($tabela, $classe)
+    public function selectAll($tabela, $classe, $where = null)
     {
-        $statement = $this->pdo->prepare("select * from {$tabela}");
-        $statement->execute();
+        $query = "select * from {$tabela}";
+        ($where) ? $query .= " where " . implode(" ", $where) : '';
+        $query .= " limit 10;";
+        try {
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
 
-        return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
+            return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
+
+        } catch (\PDOException $e) {
+            die($e->getMessage());
+        }
     }
 
     public function select($query)
     {
-        // $query .= " limit 10";
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();
             return $statement->fetch();
 
         } catch (\PDOException $e) {
-            return $e;
+            die($e->getMessage());
         }
     }
 
@@ -43,7 +50,7 @@ class QueryBuilder
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $exception) {
-            die($e->getMessage());
+            die($exception->getMessage());
         }
     }
 
@@ -51,14 +58,14 @@ class QueryBuilder
     {
         $query = "select * from {$tabela}";
         $query .= ($campos) ? " where " . implode(' > ', $campos) : "";
-        $query .= " order by id desc ";
+        $query .= " order by id desc";
         $query .= ($limite) ? " limit {$limite}" : "";
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
         } catch (PDOException $exception) {
-            die($e->getMessage());
+            die($exception->getMessage());
         }
     }
 
@@ -71,7 +78,7 @@ class QueryBuilder
 
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
         } catch (PDOException $exception) {
-            die($e->getMessage());
+            die($exception->getMessage());
         }
     }
 

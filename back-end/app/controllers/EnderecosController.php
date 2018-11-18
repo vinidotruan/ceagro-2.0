@@ -20,7 +20,7 @@ class EnderecosController
             'cep' => $enderecoFaturamento['cep'],
             'cliente_id' => $enderecoFaturamento['cliente_id'],
         ]);
-        $enderecoFaturamento = EnderecoFaturamento::find(["id", $enderecoFaturamentoId])[0];
+        $enderecoFaturamento = EnderecoFaturamento::find(["id", $enderecoFaturamentoId]);
         echo json_encode($enderecoFaturamento);
 
     }
@@ -38,7 +38,7 @@ class EnderecosController
             'cliente_id' => $enderecoEntrega['cliente_id'],
         ]);
 
-        $enderecoEntrega = EnderecoEntrega::find(["id", $enderecoEntregaId])[0];
+        $enderecoEntrega = EnderecoEntrega::find(["id", $enderecoEntregaId]);
         echo json_encode($enderecoEntrega);
     }
 

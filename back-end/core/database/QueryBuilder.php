@@ -17,7 +17,7 @@ class QueryBuilder
     {
         $query = "select * from {$tabela}";
         ($where) ? $query .= " where " . implode(" ", $where) : '';
-        $query .= " limit 10;";
+        // $query .= " limit 10;";
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();

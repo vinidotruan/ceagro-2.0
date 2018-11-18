@@ -46,8 +46,19 @@ function compararFormCliente(cliente, formulario) {
 
 function atualizarBotoes() {
     $("#cliente :button").append("Atualizar").attr("onclick", "atualizar()");
-    $("#enderecoFaturamento :button").append("Atualizar").attr("onclick", "atualizarEnderecoFat()");
-    $("#enderecoEntrega :button").append("Atualizar").attr("onclick", "atualizarEnderecoEnt()");
+    console.log(cliente.enderecoEntrega);
+    if (cliente.enderecoEntrega !== null) {
+        $("#enderecoEntrega :button").append("Atualizar").attr("onclick", "atualizarEnderecoEnt()");
+    } else {
+        $("#enderecoEntrega :button").append("Cadastrar").attr("onclick", "cadastrarEnderecoEnt()");
+
+    }
+    if (cliente.enderecoFaturamento !== null) {
+        $("#enderecoFaturamento :button").append("Atualizar").attr("onclick", "atualizarEnderecoFat()");
+    } else {
+        $("#enderecoFaturamento :button").append("Cadastrar").attr("onclick", "cadastrarEnderecoFat()");
+
+    }
 }
 
 function verificarCliente() {
@@ -64,16 +75,6 @@ function verificarCliente() {
     }
 }
 
-function buscarContatos() {
-    $.ajax({
-        url: `../back-end/clientes/${cliente.id}/contatos`,
-        type: "get",
-        dataType: "json",
-        success: function (data) {
-            popularContatos(data);
-        }
-    });
-}
 
 
 function buscarContas(clienteId, callback = null) {
@@ -126,13 +127,13 @@ function cadastrar() {
     mostrarModal();
     var dados = $('#cliente').serialize();
     $.post("../back-end/clientes", dados, function (response) {
-        cliente = JSON.parse(response)[0];
+        cliente = JSON.parse(response);
+        console.log(response);
+        console.log("teste");
         $("#contatos").show();
         esconderModal();
-        habilitarForm("contatos");
         irPara("enderecoFaturamento");
         habilitarForm("enderecoFaturamento");
-        buscarContatos();
     });
 }
 

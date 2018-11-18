@@ -11,25 +11,27 @@ class Contrato extends Model
     public $id;
     public $empresa_id;
     public $contrato_status_id;
-    public $vendedor_id;
     public $cliente_conta_bancaria_id;
     public $operador_id;
-    public $produto_id;
-    public $tipo_embarque;
-    public $comprador_id;
-    public $codigo_contrato;
-    public $assinatura_vendedor;
-    public $assinatura_comprador;
-    public $quantidade_descricao;
-    public $preco_texto;
-    public $pagamento_texto;
-    public $comissao;
-    public $peso_qualidade;
     public $peso_total;
+
+    public $pagamento_texto; //
+    public $vendedor_id; //
+    public $produto_id; //
+    public $tipo_embarque; //
+    public $comprador_id; //
+    public $codigo; //
+    public $assinatura_vendedor; //
+    public $assinatura_comprador; //
+    public $quantidade_descricao; //
+    public $preco_texto; //
+    public $comissao; //
+    public $peso_qualidade; //
     public $unidade_medida_id;
-    public $valor_contrato;
-    public $data_cadastro;
-    public $safra;
+    public $valor_contrato; //
+    public $data_cadastro; //
+    public $safra; //
+
     public $comprador;
     public $vendedor;
     public $produto;

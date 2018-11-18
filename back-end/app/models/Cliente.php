@@ -8,7 +8,6 @@ class Cliente extends Model
     public $razao_social;
     public $cnpj;
     public $inscricao_estadual;
-    public $nome;
     public $email;
     public $atuacao;
     public $enderecoFaturamento;
@@ -25,12 +24,12 @@ class Cliente extends Model
 
     public function enderecoFaturamento()
     {
-        return $this->enderecoFaturamento = EnderecoFaturamento::find(["cliente_id", $this->id]);
+        return EnderecoFaturamento::find(["cliente_id", $this->id]);
     }
 
     public function enderecoEntrega()
     {
-        return $this->enderecoEntrega = EnderecoEntrega::find(["cliente_id", $this->id]);
+        return EnderecoEntrega::find(["cliente_id", $this->id]);
     }
 
     public function contasBancarias()

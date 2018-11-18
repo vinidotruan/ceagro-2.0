@@ -17,18 +17,20 @@ produto = {};
 contrato = {};
 
 function verificarContrato() {
-    buscarClientes();
-    contrato = JSON.parse(localStorage.getItem("contrato"));
-    // localStorage.removeItem("contrato");
-    if (temContrato()) {
-        $("#enviar").val("Atualizar");
-        comprador = contrato.comprador;
-        vendedor = contrato.vendedor;
-        produto = contrato.produto;
-        compararFormContrato(contrato, "contrato");
-    } else {
-        $("#enviar").val("Cadastrar");
-    }
+    buscarClientes(() => {
+        contrato = JSON.parse(localStorage.getItem("contrato"));
+        // localStorage.removeItem("contrato");
+        if (temContrato()) {
+            $("#enviar").val("Atualizar");
+            comprador = contrato.comprador;
+            vendedor = contrato.vendedor;
+            produto = contrato.produto;
+            compararContrato(contrato, "contrato");
+            $('.select2').select2();
+        } else {
+            $("#enviar").val("Cadastrar");
+        }
+    });
 }
 
 function temContrato() {
@@ -38,11 +40,11 @@ function temContrato() {
     return false;
 }
 
-function compararFormContrato(contrato, formulario) {
+function compararContrato(contrato, formulario) {
     $.each(contrato, function (campo, valor) {
         $(`#${formulario}`).find('select, input, textarea').each(function (index, formObj) {
             if (typeof valor === "object" && valor) {
-                compararFormContrato(valor, campo);
+                compararContrato(valor, campo);
             }
             (campo === formObj.name) ? $(formObj).val(valor) : "";
         });
@@ -73,7 +75,7 @@ function atualizar() {
     });
 }
 
-function buscarClientes() {
+function buscarClientes(callback) {
     $.ajax({
         url: "../back-end/clientes",
         type: "get",
@@ -81,12 +83,10 @@ function buscarClientes() {
         success: function (data) {
             vendedores = data;
             compradores = data;
-            popularVendedores(vendedores);
-            popularVendedoresCnpjs(vendedores);
-            popularCompradores(compradores);
-            popularCompradoresCnpjs(compradores);
+            popularClientes(vendedores);
             buscarProdutos();
-
+            $(".overlay").remove();
+            callback();
         }
     });
 }
@@ -117,10 +117,14 @@ function buscarUnidadesDeMedidas() {
     });
 }
 
-function popularVendedores(clientes) {
+function popularClientes(clientes) {
     $.each(clientes, function (index, cliente) {
-        var option = '<option value="' + cliente.nome + '">' + cliente.nome + '</option>';
-        $("#vendedores").append(option)
+        var cnpjs = '<option value="' + cliente.cnpj + '">' + cliente.cnpj + '</option>';
+        var razoes = '<option value="' + cliente.razao_social + '">' + cliente.razao_social + '</option>';
+        $("#comprador #razoes").append(razoes)
+        $("#vendedor #razoes").append(razoes)
+        $("#comprador #cnpjs").append(cnpjs)
+        $("#vendedor #cnpjs").append(cnpjs)
     })
 }
 
@@ -130,75 +134,10 @@ function popularUnidadesMedidas(unidades) {
         $("#unidades").append(option)
     })
 }
+
 function popularProdutos(produtos) {
     $.each(produtos, function (index, produto) {
         var option = '<option value="' + produto.nome + '">' + produto.nome + '</option>';
         $("#produtos").append(option)
     })
-}
-
-function selecionarProduto(event) {
-    //loadsh
-    produto = _.find(produtos, ['nome', event.value]);
-}
-
-function popularCompradores(clientes) {
-    $.each(clientes, function (index, cliente) {
-        var option = '<option value="' + cliente.nome + '">' + cliente.nome + '</option>';
-        $("#compradores").append(option)
-    })
-}
-
-function popularVendedoresCnpjs(clientes) {
-    $.each(clientes, function (index, cliente) {
-        var option = '<option value="' + cliente.cnpj + '">' + cliente.cnpj + '</option>';
-        $("#vendedores_cnpjs").append(option)
-    })
-}
-
-function popularVendedor() {
-    $.each(vendedor, function (index, valor) {
-        if ($(`#vendedor > #${index}`)) {
-            $(`#vendedor input#${index}`).val(valor);
-        }
-    });
-}
-
-function popularCompradoresCnpjs(clientes) {
-    $.each(clientes, function (index, cliente) {
-        var option = '<option value="' + cliente.cnpj + '">' + cliente.cnpj + '</option>';
-        $("#compradores_cnpjs").append(option)
-    })
-}
-
-function selecionarVendedor(event) {
-    //loadsh
-    vendedor = _.find(vendedores, ['nome', event.value]);
-    popularVendedor();
-}
-
-function selecionarCnpjVendedor(event) {
-    //loadsh
-    vendedor = _.find(vendedores, ['cnpj', event.value]);
-    popularVendedor();
-}
-
-function selecionarComprador(event) {
-    //loadsh
-    comprador = _.find(compradores, ['nome', event.value]);
-    popularComprador();
-}
-
-function selecionarCnpjComprador(event) {
-    //loadsh
-    comprador = _.find(compradores, ['cnpj', event.value]);
-    popularComprador();
-}
-
-function popularComprador() {
-    $.each(comprador, function (index, valor) {
-        if ($(`#comprador input#${index}`)) {
-            $(`#comprador input#${index}`).val(valor);
-        }
-    });
 }

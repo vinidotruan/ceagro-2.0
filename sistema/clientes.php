@@ -59,14 +59,14 @@
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary pull-right" onclick="enviar()">Cadastrar</button>
+                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrar()"></button>
                                 </div>
                             </form>
                         </div>
                     </section>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 enderecoFaturamento">
                     <section class="invoice">
                         <div class="row">
                             <div class="col-xs-12">
@@ -131,14 +131,14 @@
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary pull-right" onclick="enviar()">Cadastrar</button>
+                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarEnderecoFat()"></button>
                                 </div>
                             </form>
                         </div>
                     </section>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 enderecoEntrega">
                     <section class="invoice">
                         <div class="row">
                             <div class="col-xs-12">
@@ -203,14 +203,14 @@
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary pull-right" onclick="enviar()">Cadastrar</button>
+                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarEnderecoEnt()"></button>
                                 </div>
                             </form>
                         </div>
                     </section>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 contasBancarias">
 
                     <section class="invoice">
                         <div class="row">
@@ -221,7 +221,7 @@
                             </div>
                         </div>
                         <div class="row invoice-info">
-                            <form role="form" id="entrega">
+                            <form role="form" id="contasBancarias">
                                 <div class="box-body">
                                     <div class="form-row">
                                         <div class="col-xs-12 col-lg-4">
@@ -245,10 +245,26 @@
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary pull-right" onclick="enviar()">Cadastrar</button>
+                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarContaBancaria()">Cadastrar</button>
                                 </div>
                             </form>
                         </div>
+                        <div class="row">
+                            <div class="col-xs-12 table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Banco</th>
+                                            <th>Agência</th>
+                                            <th>Conta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="contas_bancarias">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                     </section>
                 </div>
             </div>

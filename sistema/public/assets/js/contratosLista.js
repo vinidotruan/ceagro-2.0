@@ -1,11 +1,16 @@
 function buscarContratos() {
     $.get("../back-end/contratos", { limite: 50 }, (response) => {
         contratos = JSON.parse(response);
-        popularPesquisa(contratos);
+        popularPesquisa(contratos, () => {
+            $(function () {
+                $('#contratos').DataTable();
+                $(".overlay").remove();
+            });
+        });
     });
 }
 
-function popularPesquisa(contratos) {
+function popularPesquisa(contratos, callback = null) {
     $.each(contratos, function (index, contrato) {
         var linha = `<tr id="${contrato.id}" class="clicavel">
             <td>${contrato.codigo}</td>
@@ -14,18 +19,18 @@ function popularPesquisa(contratos) {
             <td>${contrato.produto.nome}</td>
         </tr>`;
 
-        $("#contratos").append(linha);
+        $("#contratos tbody").append(linha);
     });
     $(`#contratos tr`).on("click", function () {
         selecionarContrato(this.id);
     });
+    (callback) ? callback() : "";
 }
 
 function selecionarContrato(contrato) {
     $.get(`../back-end/contratos/${contrato}/`, function (response) {
         contrato = JSON.parse(response);
         localStorage.setItem('contrato', JSON.stringify(contrato));
-    }).success(function () {
         $(location).attr('href', 'contratos.php');
     });
 }

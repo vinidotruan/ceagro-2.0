@@ -55,10 +55,7 @@ class ClientesController
             ],
                 ["id", $cliente['cliente']]);
 
-            $cliente = App::get('db')->selectWhere(
-                'clientes',
-                ["id", $clienteId]
-            )[0];
+            $cliente = Cliente::find(["id", $clienteId]);
 
             echo json_encode($cliente);
 

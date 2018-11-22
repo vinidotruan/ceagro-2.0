@@ -1,8 +1,8 @@
-<?php include 'partials/cabecalho.html'?>
+<?php include 'partials/cabecalho.html' ?>
 <body class="hold-transition skin-blue sidebar-mini" onload="verificarContrato()">
 	<div class="wrapper">
-	<?php include "partials/header.html";?>
-	<?php include "partials/menu.html";?>
+	<?php include "partials/header.html"; ?>
+	<?php include "partials/menu.html"; ?>
     <div class="wrapper">
         <div class="content-wrapper" style="min-height: 1080px;">
             <br>
@@ -22,25 +22,60 @@
                                     </div>
                                     <div class="row invoice-info">
                                         <div class="box-body">
+
                                             <div class="form-row">
                                                 <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
-                                                        <label for="codigo">Código do Contrato</label>
-                                                        <input type="text" class="form-control" name="codigo" placeholder="Digite o código do contrato" autocomplete="off">
+                                                        <label for="numero_confirmacao">Número de confirmação</label>
+                                                        <input type="text" class="form-control" name="numero_confirmacao" placeholder="Digite o número do contrato" autocomplete="off">
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-12 col-lg-4">
+                                                <div class="col-xs-12 col-lg-2">
+                                                    <div class="form-group">
+                                                        <label for="cfop">CFOP</label>
+                                                        <input type="text" class="form-control" name="cfop" placeholder="Digite o CFOP" autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label for="data_embarque">Data do Embarque</label>
+                                                        <input type="text" class="form-control" name="data_embarque" placeholder="Digite a data do contrato" autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-lg-3">
                                                     <div class="form-group">
                                                         <label for="comissao">Comissão</label>
                                                         <input type="text" class="form-control" name="comissao" placeholder="Informe sobre a comissao do contrato" autocomplete="off">
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="form-row">
                                                 <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
-                                                        <label for="data_cadastro">Data do Contrato</label>
-                                                        <input type="text" class="form-control" name="data_cadastro" placeholder="Digite a data do contrato" autocomplete="off">
+                                                        <label for="tipo_embarque">Tipo de Embarque</label>
+                                                        <input type="text" class="form-control" name="tipo_embarque" placeholder="Digite o tipo de embarque" autocomplete="off">
                                                     </div>
-                                                </div>
+                                               </div>
+                                                <div class="col-xs-12 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="local">Local</label>
+                                                        <input type="text" class="form-control" name="local" placeholder="Digite o local" autocomplete="off">
+                                                    </div>
+                                               </div>
+                                                <div class="col-xs-12 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="solicitacao_cotas">Solicitacao de Cotas</label>
+                                                        <input type="text" class="form-control" name="solicitacao_cotas" placeholder="Digite o local" autocomplete="off">
+                                                    </div>
+                                               </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-xs-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="carregamento">Informações sobre o Carregamento</label>
+                                                        <textarea type="text" class="form-control" name="carregamento" placeholder="Digite o local" autocomplete="off" rows='5'></textarea>
+                                                    </div>
+                                               </div>
                                             </div>
                                         </div>
                                     </div>
@@ -176,44 +211,39 @@
                                                 </div>
                                                 <div class="col-xs-12 col-lg-6">
                                                     <div class="form-group">
-                                                        <label for="quantidade_descricao">Quantidade & Descrição</label>
-                                                        <textarea type="text" class="form-control" name="quantidade_descricao" placeholder="Digite a quantidade" rows="3"></textarea>
+                                                        <label for="">Quantidade</label>
+                                                        <input type="text" class="form-control" name="quantidade" placeholder="Digite a quantidade do produto">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 col-lg-6">
                                                     <div class="form-group">
-                                                        <label for="peso_total">Peso Total</label>
-                                                        <textarea type="text" class="form-control" name="peso_total" placeholder="Digite o peso total" rows="3"></textarea>
+                                                        <label for="preco">Preco</label>
+                                                        <input type="text" class="form-control" name="preco" placeholder="Digite o preco" autocomplete="off">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="col-xs-12 col-lg-4">
+                                                <div class="col-xs-6">
+                                                    <div class="form-group">
+                                                        <label for="pagamento_texto">Pagamento</label>
+                                                        <textarea type="text" class="form-control" name="pagamento_texto" rows="3" placeholder="Digite as informações sobre o pagamento"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-lg-6">
                                                     <div class="form-group">
                                                         <label for="peso_qualidade">Peso & Qualidade</label>
-                                                        <input type="text" class="form-control" name="peso_qualidade" placeholder="Informe sobre o Peso e a Qualdiade" autocomplete="off">
+                                                        <textarea type="text" class="form-control" name="peso_qualidade" placeholder="Digite o peso total" rows="3"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12 col-lg-4">
-                                                <div class="form-group">
-                                                    <label for="tipo_embarque">Tipo de Embarque</label>
-                                                    <input type="text" class="form-control" name="tipo_embarque" placeholder="Digite o tipo de embarque" autocomplete="off">
+                                            <div class="form-row">
+                                                <div class="col-xs-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="descricao">Descricao</label>
+                                                        <textarea type="text" class="form-control" name="descricao" placeholder="Descricao do contrato" rows="3"></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12 col-lg-4">
-                                                <div class="form-group">
-                                                    <label for="preco_texto">Preco</label>
-                                                    <input type="text" class="form-control" name="preco_texto" placeholder="Digite o preco" autocomplete="off">
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="form-group">
-                                                    <label for="pagamento_texto">Pagamento</label>
-                                                    <textarea type="text" class="form-control" name="pagamento_texto" rows="3" placeholder="Digite as informações sobre o pagamento"></textarea>
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </section>
@@ -249,7 +279,7 @@
         </div>
           <!-- /.modal-dialog -->
     </div>
-	<?php include 'partials/imports.html'?>
+	<?php include 'partials/imports.html' ?>
     <script src="public/assets/js/contratos.js"></script>
-	<?php include 'partials/rodape.html'?>
+	<?php include 'partials/rodape.html' ?>
 	</div>

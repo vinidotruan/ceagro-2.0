@@ -9,28 +9,27 @@ use App\Models\Produto;
 class Contrato extends Model
 {
     public $id;
-    public $empresa_id;
-    public $contrato_status_id;
-    public $cliente_conta_bancaria_id;
-    public $operador_id;
-    public $peso_total;
-
-    public $pagamento_texto; //
-    public $vendedor_id; //
-    public $produto_id; //
-    public $tipo_embarque; //
-    public $comprador_id; //
-    public $codigo; //
-    public $assinatura_vendedor; //
-    public $assinatura_comprador; //
-    public $quantidade_descricao; //
-    public $preco_texto; //
-    public $comissao; //
-    public $peso_qualidade; //
+    public $numero_confirmacao;
+    public $vendedor_id;
+    public $comprador_id;
+    public $produto_id;
     public $unidade_medida_id;
-    public $valor_contrato; //
-    public $data_cadastro; //
-    public $safra; //
+    public $safra;
+    public $quantidade;
+    public $descricao;
+    public $preco;
+    public $tipo_embarque;
+    public $local;
+    public $data_embarque;
+    public $pagamento;
+    public $peso_qualidade;
+    public $cfop;
+    public $solicitacao_cotas;
+    public $carregamento;
+    public $assinatura_vendedor;
+    public $assinatura_comprador;
+    public $observacao;
+    public $comissao;
 
     public $comprador;
     public $vendedor;

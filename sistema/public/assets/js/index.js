@@ -3,7 +3,6 @@ function adaptar() {
         url: `../back-end/adaptacao`,
         type: 'GET',
         success: function (response) {
-            console.log("teste");
             console.log(response);
         }
     });

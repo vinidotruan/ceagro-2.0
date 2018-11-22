@@ -27,9 +27,7 @@ body {
     float:right;
 }
 
-.assinatura {
-    margin-right: 10%;
-}
+     .nome {float:left; background-color: red}
 
 .confirmacao, .vendedor {
     margin-top: 3%;

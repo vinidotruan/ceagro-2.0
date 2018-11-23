@@ -35,15 +35,17 @@ class ContratosController
                 'tipo_embarque' => $contrato['tipo_embarque'] ?? "",
                 'local' => $contrato['local'] ?? "",
                 'data_embarque' => $contrato['data_embarque'] ?? "",
-                'pagamento' => $contrato['pagamento'] ?? "",
+                'pagamento_texto' => $contrato['pagamento_texto'] ?? "",
                 'peso_qualidade' => $contrato['peso_qualidade'] ?? "",
                 'cfop' => $contrato['cfop'] ?? "",
+                'valor_contrato' => $contrato['valor_contrato'] ?? "",
                 'solicitacao_cotas' => $contrato['solicitacao_cotas'] ?? "",
                 'carregamento' => $contrato['carregamento'] ?? "",
                 'assinatura_vendedor' => $contrato['assinatura_vendedor'] ?? "",
                 'assinatura_comprador' => $contrato['assinatura_comprador'] ?? "",
                 'observacao' => $contrato['observacao'] ?? "",
                 'comissao' => $contrato['comissao'] ?? "",
+                'codigo' => $contrato['codigo'] ?? "",
             ]);
 
             $ultimoContrato = Contrato::find(["id", $contratoId]);
@@ -69,7 +71,7 @@ class ContratosController
                     'safra' => $contrato['safra'] ?? "",
                     'quantidade' => $contrato['quantidade'] ?? "",
                     'descricao' => $contrato['descricao'] ?? "",
-                    'preco' => $contrato['preco'] ?? "",
+                    'preco_texto' => $contrato['preco_texto'] ?? "",
                     'tipo_embarque' => $contrato['tipo_embarque'] ?? "",
                     'local' => $contrato['local'] ?? "",
                     'data_embarque' => $contrato['data_embarque'] ?? "",

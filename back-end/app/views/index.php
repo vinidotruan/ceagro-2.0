@@ -88,37 +88,37 @@ td {
             <img src="public/img/logo.png" alt="">
         </div>
         <div class="data">
-            <?=$data?>
+            <?= $data ?>
         </div>
     </header>
     <section>
         <div class="confirmacao">
-            <span>Confirmação número: <?=$contrato->codigo?></span>
+            <span>Confirmação número: <?= $contrato->numero_confirmacao ?></span>
         </div>
     </section>
     <section>
         <div class="vendedor">
             <table>
                 <tr>
-                    <td>Vendedor: <?=$contrato->vendedor->razao_social?></td>
-                    <td>A/C: <?=$contrato->assinatura_vendedor?></td>
+                    <td>Vendedor: <?= $contrato->vendedor->razao_social ?></td>
+                    <td>A/C: <?= $contrato->assinatura_vendedor ?></td>
                 </tr>
                 <tr>
                     <td>
-                        Rua <?=($contrato->vendedor->enderecoEntrega->rua) ? $contrato->vendedor->enderecoEntrega->rua . ", " . $contrato->vendedor->enderecoEntrega->numero :
-$contrato->vendedor->enderecoFaturamento->rua . ", " . $contrato->vendedor->enderecoFaturamento->numero?>
+                        Rua <?= ($contrato->vendedor->enderecoEntrega) ? $contrato->vendedor->enderecoEntrega['rua'] . ", " . $contrato->vendedor->enderecoEntrega['numero'] :
+                                $contrato->vendedor->enderecoFaturamento['rua'] . ", " . $contrato->vendedor->enderecoFaturamento['numero'] ?>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                    <?=($contrato->vendedor->enderecoEntrega->cidade) ? $contrato->vendedor->enderecoEntrega->cidade : $contrato->vendedor->enderecoFaturamento->cidade?>
-<?=($contrato->vendedor->enderecoEntrega->estado) ? " - " . $contrato->vendedor->enderecoEntrega->estado : " - " . $contrato->vendedor->enderecoFaturamento->estado?>
+                    <?= ($contrato->vendedor->enderecoEntrega->cidade) ? $contrato->vendedor->enderecoEntrega->cidade : $contrato->vendedor->enderecoFaturamento->cidade ?>
+<?= ($contrato->vendedor->enderecoEntrega->estado) ? " - " . $contrato->vendedor->enderecoEntrega->estado : " - " . $contrato->vendedor->enderecoFaturamento->estado ?>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        CNPJ: <?=$contrato->vendedor->cnpj?>
-                        Inscricao Estadual: <?=$contrato->vendedor->inscricao_estadual?>
+                        CNPJ: <?= $contrato->vendedor->cnpj ?>
+                        Inscricao Estadual: <?= $contrato->vendedor->inscricao_estadual ?>
                     </td>
                 </tr>
             </table>
@@ -128,25 +128,25 @@ $contrato->vendedor->enderecoFaturamento->rua . ", " . $contrato->vendedor->ende
         <div class="comprador">
             <table>
                 <tr>
-                    <td>Comprador: <?=$contrato->comprador->razao_social?></td>
-                    <td>A/C: <?=$contrato->assinatura_comprador?></td>
+                    <td>Comprador: <?= $contrato->comprador->razao_social ?></td>
+                    <td>A/C: <?= $contrato->assinatura_comprador ?></td>
                 </tr>
                 <tr>
                     <td>
-                        Rua <?=($contrato->comprador->enderecoEntrega->rua) ? $contrato->comprador->enderecoEntrega->rua . ", " . $contrato->comprador->enderecoEntrega->numero :
-$contrato->comprador->enderecoFaturamento->rua . ", " . $contrato->comprador->enderecoFaturamento->numero?>
+                        Rua <?= ($contrato->comprador->enderecoEntrega['rua']) ? $contrato->comprador->enderecoEntrega['rua'] . ", " . $contrato->comprador->enderecoEntrega['numero'] :
+                                $contrato->comprador->enderecoFaturamento['rua'] . ", " . $contrato->comprador->enderecoFaturamento['numero'] ?>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                    <?=($contrato->comprador->enderecoEntrega->cidade) ? $contrato->comprador->enderecoEntrega->cidade : $contrato->comprador->enderecoFaturamento->cidade?>
-<?=($contrato->comprador->enderecoEntrega->estado) ? " - " . $contrato->comprador->enderecoEntrega->estado : " - " . $contrato->comprador->enderecoFaturamento->estado?>
+                    <?= ($contrato->comprador->enderecoEntrega->cidade) ? $contrato->comprador->enderecoEntrega->cidade : $contrato->comprador->enderecoFaturamento->cidade ?>
+<?= ($contrato->comprador->enderecoEntrega->estado) ? " - " . $contrato->comprador->enderecoEntrega->estado : " - " . $contrato->comprador->enderecoFaturamento->estado ?>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        CNPJ: <?=$contrato->comprador->cnpj?>
-                        Inscricao Estadual: <?=$contrato->comprador->inscricao_estadual?>
+                        CNPJ: <?= $contrato->comprador->cnpj ?>
+                        Inscricao Estadual: <?= $contrato->comprador->inscricao_estadual ?>
                     </td>
                 </tr>
             </table>
@@ -156,33 +156,33 @@ $contrato->comprador->enderecoFaturamento->rua . ", " . $contrato->comprador->en
         <div class="produto">
             <table>
                 <tr>
-                    <td class="tdproduto">Produto: <?=$contrato->produto->nome?></td>
-                    <td>Safra: <?=$contrato->safra?? "Nenhum"?></td>
+                    <td class="tdproduto">Produto: <?= $contrato->produto->nome ?></td>
+                    <td>Safra: <?= $contrato->safra ?? "Nenhum" ?></td>
                 </tr>
                 <tr>
-                    <td class="tdquantidade">Quantidade e Descrição: <?=$contrato->quantidade_descricao?></td>
+                    <td class="tdquantidade">Quantidade e Descrição: <?= $contrato->quantidade_descricao ?></td>
                 </tr>
                 <tr>
-                    <td class="tdpreco">Preço: <?=$contrato->preco_texto?></td>
+                    <td class="tdpreco">Preço: <?= $contrato->preco_texto ?></td>
                 </tr>
                 <tr>
-                    <td class="tdpagamento">Pagamento e dados bancários: <?=$contrato->pagamento_texto?></td>
+                    <td class="tdpagamento">Pagamento e dados bancários: <?= $contrato->pagamento_texto ?></td>
                 </tr>
                 <tr>
-                    <td class="tdpesoequalidade">Peso e qualidade: <?=$contrato->peso_qualidade?? "Nenhum"?></td>
+                    <td class="tdpesoequalidade">Peso e qualidade: <?= $contrato->peso_qualidade ?? "Nenhum" ?></td>
                 </tr>
                 <tr>
                     <td class="aviso">*A empresa compradora enviará a instrução de carregamento por e-mail.*</td>
                 </tr>
                 <tr>
-                    <td class="tdcomissao">Comissão: <?=$contrato->comissao?></td>
+                    <td class="tdcomissao">Comissão: <?= $contrato->comissao ?></td>
                 </tr>
                 <tr>
                     <td class="aviso">*Nós, como intermediadores, confirmamos que realizamos nesta data esta transação em seu nome com base nas leis e regulamentos. Qualquer discrepância deverá ser comunicada imediatamente*</td>
                 </tr>
                 <tr>
-                    <td class="linha">_________________________<br>Assinatura do Comprador<br><?=$contrato->comprador->cnpj?></td>
-                    <td class="linha">_________________________<br>Assinatura do Vendedor<br><?=$contrato->vendedor->cnpj?></td>
+                    <td class="linha">_________________________<br>Assinatura do Comprador<br><?= $contrato->comprador->cnpj ?></td>
+                    <td class="linha">_________________________<br>Assinatura do Vendedor<br><?= $contrato->vendedor->cnpj ?></td>
                 </td>
                 <tr>
                     <td></td>

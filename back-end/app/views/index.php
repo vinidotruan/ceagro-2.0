@@ -105,8 +105,8 @@ td {
                 </tr>
                 <tr>
                     <td>
-                        Rua <?= ($contrato->vendedor->enderecoEntrega) ? $contrato->vendedor->enderecoEntrega['rua'] . ", " . $contrato->vendedor->enderecoEntrega['numero'] :
-                                $contrato->vendedor->enderecoFaturamento['rua'] . ", " . $contrato->vendedor->enderecoFaturamento['numero'] ?>
+                        Rua <?= ($contrato->vendedor->enderecoEntrega->rua) ? $contrato->vendedor->enderecoEntrega->rua . ", " . $contrato->vendedor->enderecoEntrega->numero :
+                                $contrato->vendedor->enderecoFaturamento->rua . ", " . $contrato->vendedor->enderecoFaturamento->numero ?>
                     </td>
                 </tr>
                 <tr>
@@ -133,8 +133,8 @@ td {
                 </tr>
                 <tr>
                     <td>
-                        Rua <?= ($contrato->comprador->enderecoEntrega['rua']) ? $contrato->comprador->enderecoEntrega['rua'] . ", " . $contrato->comprador->enderecoEntrega['numero'] :
-                                $contrato->comprador->enderecoFaturamento['rua'] . ", " . $contrato->comprador->enderecoFaturamento['numero'] ?>
+                        Rua <?= ($contrato->comprador->enderecoEntrega->rua) ? $contrato->comprador->enderecoEntrega->rua . ", " . $contrato->comprador->enderecoEntrega->numero :
+                                $contrato->comprador->enderecoFaturamento->rua . ", " . $contrato->comprador->enderecoFaturamento->numero ?>
                     </td>
                 </tr>
                 <tr>
@@ -160,7 +160,7 @@ td {
                     <td>Safra: <?= $contrato->safra ?? "Nenhum" ?></td>
                 </tr>
                 <tr>
-                    <td class="tdquantidade">Quantidade e Descrição: <?= $contrato->quantidade_descricao ?></td>
+                    <td class="tdquantidade">Quantidade:     Descrição: <?= $contrato->quantidade_descricao ?></td>
                 </tr>
                 <tr>
                     <td class="tdpreco">Preço: <?= $contrato->preco_texto ?></td>

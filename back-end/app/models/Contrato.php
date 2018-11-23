@@ -17,11 +17,11 @@ class Contrato extends Model
     public $safra;
     public $quantidade;
     public $descricao;
-    public $preco;
+    public $preco_texto;
     public $tipo_embarque;
     public $local;
     public $data_embarque;
-    public $pagamento;
+    public $pagamento_texto;
     public $peso_qualidade;
     public $cfop;
     public $solicitacao_cotas;
@@ -30,6 +30,11 @@ class Contrato extends Model
     public $assinatura_comprador;
     public $observacao;
     public $comissao;
+    public $data_cadastro;
+    public $valor_contrato;
+    public $peso_total;
+    public $codigo;
+
 
     public $comprador;
     public $vendedor;

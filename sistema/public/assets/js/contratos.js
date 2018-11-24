@@ -1,34 +1,75 @@
+$('.select2').select2();
+
 $("#contrato").submit(function (event) {
     event.preventDefault();
     if (temContrato()) {
+        $(`#unidades`).val(contrato.unidade_medida_id);
+        $(`#select2-unidades-container`).append(contrato.unidade_medida_id);
         atualizar();
     } else {
         cadastrar();
     }
-
 });
 
 vendedores = [];
 compradores = [];
+adendos = [];
 produtos = [];
 vendedor = {};
 comprador = {};
 produto = {};
 contrato = {};
 
+function adicionarAdendo() {
+    $(`#adendos`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
+    var dados = $('#adendos').serialize();
+    $.post(`../back-end/adendos`, dados, (success) => {
+        popularAdendos(JSON.parse(success));
+    });
+}
+
 function verificarContrato() {
-    buscar();
-    contrato = JSON.parse(localStorage.getItem("contrato"));
-    localStorage.removeItem("contrato");
-    if (temContrato()) {
-        $("#enviar").val("Atualizar");
-        comprador = contrato.comprador;
-        vendedor = contrato.vendedor;
-        produto = contrato.produto;
-        compararFormContrato(contrato, "contrato");
-    } else {
-        $("#enviar").val("Cadastrar");
-    }
+    buscarClientes(() => {
+        contrato = JSON.parse(localStorage.getItem("contrato"));
+        localStorage.removeItem("contrato");
+        if (temContrato()) {
+            $("#enviar").append("Atualizar");
+            comprador = contrato.comprador;
+            vendedor = contrato.vendedor;
+            produto = contrato.produto;
+            adendos = contrato.adendos;
+            compararContrato(contrato, "contrato");
+            $('.select2').select2();
+            popularAdendos(adendos, mostrarAdendos());
+        } else {
+            $("#enviar").append("Cadastrar");
+        }
+    }, erro => {
+        console.log(erro);
+    });
+}
+
+function mostrarAdendos() {
+    $("#edit").show();
+}
+
+function popularAdendos(adendos, callback) {
+    $('#adendo tr').remove();
+    $.each(adendos, function (index, adendo) {
+        var adendos = '<tr><td colspan="1" value="' + adendo.id + '" class="item">' + adendo.descricao + '</td><td onclick="deletarAdendo(' + adendo.id + ')"><i class="fa fa-trash" aria-hidden="true"></i></td><tr>';
+        $("#adendo").append(adendos)
+    })
+    callback();
+}
+
+function deletarAdendo(id) {
+    $.ajax({
+        url: `../back-end/contratos/${contrato.id}/adendos/${id}`,
+        type: 'DELETE',
+        success: function (adendos) {
+            popularAdendos(JSON.parse(adendos));
+        }
+    });
 }
 
 function temContrato() {
@@ -38,42 +79,68 @@ function temContrato() {
     return false;
 }
 
-function compararFormContrato(contrato, formulario) {
+function compararContrato(contrato, formulario) {
     $.each(contrato, function (campo, valor) {
         $(`#${formulario}`).find('select, input, textarea').each(function (index, formObj) {
             if (typeof valor === "object" && valor) {
-                compararFormContrato(valor, campo);
+
+                compararContrato(valor, campo);
             }
-            (campo === formObj.name) ? $(formObj).val(valor) : "";
+            (formObj.name === campo) ? $(formObj).val(valor) : "";
         });
     });
 }
 
 function cadastrar() {
+    $('#modal-default').modal({ backdrop: 'static', keyboard: false });
     $(`#contrato`).append(`<input hidden name='comprador_id' value=${comprador.id}>`);
     $(`#contrato`).append(`<input hidden name='vendedor_id' value=${vendedor.id}>`);
     $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);
     var dados = $('#contrato').serialize();
-    $.post('../back-end/contratos', dados).success(function (response) {
+    $.post('../back-end/contratos', dados, () => {
+        alertCadastro();
+    });
+}
+
+function alertCadastro() {
+    $('#modal-default').modal('hide');
+    $('.alert i').append("Cadastrado");
+    $('.alert span').append("Cadastrado com sucesso!");
+    $('.alert').show("fast", () => {
+        setTimeout(() => {
+            $('.alert').hide("slow");
+        }, 5000);
+    });
+}
+
+function alertAtualizar() {
+    $('#modal-default').modal('hide');
+    $('.alert i').append("Atualizado");
+    $('.alert span').append("Atualizado com sucesso!");
+    $('.alert').show("fast", () => {
+        setTimeout(() => {
+            $('.alert').hide("slow");
+        }, 5000);
     });
 }
 
 function atualizar() {
+    $('#modal-default').modal({ backdrop: 'static', keyboard: false });
     $(`#contrato`).append(`<input hidden name='comprador_id' value=${comprador.id}>`);
     $(`#contrato`).append(`<input hidden name='vendedor_id' value=${vendedor.id}>`);
     $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);
     var dados = $('#contrato').serialize();
-
     $.ajax({
         url: `../back-end/contratos/${contrato.id}`,
         type: 'PUT',
         data: dados,
-        success: function (response) {
+        success: function () {
+            alertAtualizar();
         }
     });
 }
 
-function buscar() {
+function buscarClientes(callback) {
     $.ajax({
         url: "../back-end/clientes",
         type: "get",
@@ -81,12 +148,11 @@ function buscar() {
         success: function (data) {
             vendedores = data;
             compradores = data;
-            popularVendedores(vendedores);
-            popularVendedoresCnpjs(vendedores);
-            popularCompradores(compradores);
-            popularCompradoresCnpjs(compradores);
+            popularClientes(vendedores);
             buscarProdutos();
-
+            buscarUnidadesDeMedidas();
+            $(".overlay").remove();
+            callback();
         }
     });
 }
@@ -99,7 +165,7 @@ function buscarProdutos() {
         success: function (data) {
             produtos = data;
             popularProdutos(produtos);
-            buscarUnidadesDeMedidas();
+
         }
     });
 }
@@ -116,88 +182,81 @@ function buscarUnidadesDeMedidas() {
     });
 }
 
-function popularVendedores(clientes) {
+function popularClientes(clientes) {
     $.each(clientes, function (index, cliente) {
-        var option = '<option value="' + cliente.nome + '">' + cliente.nome + '</option>';
-        $("#vendedores").append(option)
+        var cnpjs = '<option value="' + cliente.cnpj + '">' + cliente.cnpj + '</option>';
+        var razoes = '<option value="' + cliente.razao_social + '">' + cliente.razao_social + '</option>';
+        $("#comprador #razoes").append(razoes)
+        $("#vendedor #razoes").append(razoes)
+        $("#comprador #cnpjs").append(cnpjs)
+        $("#vendedor #cnpjs").append(cnpjs)
     })
 }
 
 function popularUnidadesMedidas(unidades) {
     $.each(unidades, function (index, unidade) {
-        var option = '<option value="' + unidade.id + '">' + unidade.titulo + '</option>';
+        var option = '<option value=' + unidade.id + '>' + unidade.titulo + '</option>';
         $("#unidades").append(option)
-    })
+    });
 }
+
 function popularProdutos(produtos) {
     $.each(produtos, function (index, produto) {
-        var option = '<option value="' + produto.nome + '">' + produto.nome + '</option>';
+        var option = '<option value="' + produto.id + '">' + produto.nome + '</option>';
         $("#produtos").append(option)
-    })
-}
-
-function selecionarProduto(event) {
-    //loadsh
-    produto = _.find(produtos, ['nome', event.value]);
-}
-
-function popularCompradores(clientes) {
-    $.each(clientes, function (index, cliente) {
-        var option = '<option value="' + cliente.nome + '">' + cliente.nome + '</option>';
-        $("#compradores").append(option)
-    })
-}
-
-function popularVendedoresCnpjs(clientes) {
-    $.each(clientes, function (index, cliente) {
-        var option = '<option value="' + cliente.cnpj + '">' + cliente.cnpj + '</option>';
-        $("#vendedores_cnpjs").append(option)
-    })
-}
-
-function popularVendedor() {
-    $.each(vendedor, function (index, valor) {
-        if ($(`#vendedor > #${index}`)) {
-            $(`#vendedor input#${index}`).val(valor);
-        }
     });
 }
 
-function popularCompradoresCnpjs(clientes) {
-    $.each(clientes, function (index, cliente) {
-        var option = '<option value="' + cliente.cnpj + '">' + cliente.cnpj + '</option>';
-        $("#compradores_cnpjs").append(option)
-    })
+function selecionarCliente(campo, array) {
+    if (array == "vendedores") {
+        variavel = "vendedor";
+        vendedor = _.find(vendedores, {
+            'cnpj': $(`#vendedor select[name='${campo}'] option:selected`).text()
+        }) || _.find(vendedores, {
+            'razao_social': $(`#vendedor select[name='${campo}'] option:selected`).text()
+        });
+    } else {
+        variavel = "comprador";
+        comprador = _.find(compradores, {
+            'cnpj': $(`#comprador select[name='${campo}'] option:selected`).text()
+        }) || _.find(compradores, {
+            'razao_social': $(`#comprador select[name='${campo}'] option:selected`).text()
+        });
+
+    }
+    (campo === 'cnpj') ? mudarSelectRazoes(variavel) : mudarSelectCnpjs(variavel);
 }
 
-function selecionarVendedor(event) {
-    //loadsh
-    vendedor = _.find(vendedores, ['nome', event.value]);
-    popularVendedor();
-}
-
-function selecionarCnpjVendedor(event) {
-    //loadsh
-    vendedor = _.find(vendedores, ['cnpj', event.value]);
-    popularVendedor();
-}
-
-function selecionarComprador(event) {
-    //loadsh
-    comprador = _.find(compradores, ['nome', event.value]);
-    popularComprador();
-}
-
-function selecionarCnpjComprador(event) {
-    //loadsh
-    comprador = _.find(compradores, ['cnpj', event.value]);
-    popularComprador();
-}
-
-function popularComprador() {
-    $.each(comprador, function (index, valor) {
-        if ($(`#comprador input#${index}`)) {
-            $(`#comprador input#${index}`).val(valor);
-        }
+function selecionarProduto() {
+    produto = _.find(produtos, {
+        'nome': $(`#produto select[name='produto_id'] option:selected`).text()
     });
+}
+
+function mudarSelectRazoes(variavel) {
+    if (variavel == "vendedor") {
+        $(`#vendedor #razoes`).val();
+        $(`#vendedor #select2-razoes-container`).empty();
+        $(`#vendedor #razoes`).val(vendedor.razao_social);
+        $(`#vendedor #select2-razoes-container`).append(vendedor.razao_social);
+    } else {
+        $(`#comprador #razoes`).val();
+        $(`#comprador #select2-razoes-container`).empty();
+        $(`#comprador #razoes`).val(comprador.razao_social);
+        $(`#comprador #select2-razoes-container`).append(comprador.razao_social);
+    }
+}
+
+function mudarSelectCnpjs(variavel) {
+    if (variavel == "vendedor") {
+        $(`#vendedor #cnpjs`).val();
+        $(`#vendedor #select2-cnpjs-container`).empty();
+        $(`#vendedor #cnpjs`).val(vendedor.cnpj);
+        $(`#vendedor #select2-cnpjs-container`).append(vendedor.cnpj);
+    } else {
+        $(`#comprador #cnpjs`).val();
+        $(`#comprador #select2-cnpjs-container`).empty();
+        $(`#comprador #cnpjs`).val(comprador.cnpj);
+        $(`#comprador #select2-cnpjs-container`).append(comprador.cnpj);
+    }
 }

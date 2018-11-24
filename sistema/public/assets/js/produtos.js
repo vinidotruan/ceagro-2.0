@@ -1,19 +1,11 @@
-$("#formulario").submit(function (event) {
+$("#produto").submit(function (event) {
     event.preventDefault();
     enviar();
 });
 
-
-function exibirLoader() {
-    $("#loader").css('display', 'block');
-}
-
-function fecharLoader() {
-    $("#loader").css('display', 'none');
-}
 function enviar() {
-    var dados = $('#produtos').serialize();
-    exibirLoader();
+    var dados = $('#produto').serialize();
+    console.log(dados);
     $.ajax({
         type: 'POST',
         url: '../back-end/produtos',
@@ -52,8 +44,9 @@ function popular(produtos) {
     for (const produto of produtos) {
         var newRow = $("<tr class='item'>");
         var cols = "";
+        cols += `<td>${produto.codigo}</td>`;
         cols += `<td>${produto.nome}</td>`;
-        cols += `<td>${produto.tipo.definicao}</td>`;
+        cols += `<td>${produto.tipo.descricao}</td>`;
         newRow.append(cols);
         $("#produtos_lista").append(newRow)
     }
@@ -72,7 +65,7 @@ function filtrar() {
 
 function popularTipos(tipos) {
     $.each(tipos, function (index, tipo) {
-        var option = '<option value="' + tipo.id + '">' + tipo.definicao + '</option>';
+        var option = '<option value="' + tipo.id + '">' + tipo.descricao + '</option>';
         $("#tipos").append(option)
     })
 }

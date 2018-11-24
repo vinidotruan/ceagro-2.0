@@ -24,12 +24,12 @@ class Cliente extends Model
 
     public function enderecoFaturamento()
     {
-        return EnderecoFaturamento::find(["cliente_id", $this->id]);
+        return $this->enderecoFaturamento = EnderecoFaturamento::find(["cliente_id", $this->id]);
     }
 
     public function enderecoEntrega()
     {
-        return EnderecoEntrega::find(["cliente_id", $this->id]);
+        return $this->enderecoEntrega = EnderecoEntrega::find(["cliente_id", $this->id]);
     }
 
     public function contasBancarias()

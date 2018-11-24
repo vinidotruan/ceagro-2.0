@@ -33,4 +33,3 @@ $router->get("ceagro/back-end/clientes/{cliente}/contas-bancarias", "ContasBanca
 $router->get("ceagro/back-end/adaptacao", "Adaptacao\AdaptacaoController@adaptarClientes");
 $router->get("ceagro/back-end/pdfs/contratos/{contrato}", "PDF\ContratosController@index");
 $router->get("ceagro/back-end/unidades-medidas", "UnidadesMedidasController@index");
-// $router->post("sistema/back-end/contratros", "ContratosController@cadastrar");

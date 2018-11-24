@@ -62,6 +62,6 @@ class Contrato extends Model
     }
     public function adendos()
     {
-        return $this->adendos = Adendo::find(['contrato_id', $this->id]);
+        return $this->adendos = Adendo::get(['contrato_id', $this->id]);
     }
 }

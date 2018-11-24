@@ -23,7 +23,8 @@ $router->get("ceagro/back-end/produtos/tipos", "ProdutosController@tipos");
 
 $router->get("ceagro/back-end/contratos", "ContratosController@index");
 $router->get("ceagro/back-end/contratos/{contrato}", "ContratosController@show");
-$router->get("ceagro/back-end/contratos/{contrato}/adendos", "ContratosController@adicionarAdendos");
+$router->delete("ceagro/back-end/contratos/{contrato}/adendos/{adendo}", "ContratosController@removerAdendo");
+$router->post("ceagro/back-end/adendos", "ContratosController@adicionarAdendos");
 $router->post("ceagro/back-end/contratos", "ContratosController@cadastrar");
 $router->put("ceagro/back-end/contratos/{contrato}", "ContratosController@update");
 

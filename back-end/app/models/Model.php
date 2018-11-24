@@ -20,7 +20,7 @@ class Model
 
     public static function delete($campos = ["id", 0])
     {
-        $response = App::get('db')->delete(static::$table, $campos, static::class);
-        return $a = array_shift($response);
+        $response = App::get('db')->delete(static::$table, $campos);
+        return "deletado com sucesso";
     }
 }

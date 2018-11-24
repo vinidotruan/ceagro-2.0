@@ -16,7 +16,11 @@ class QueryBuilder
     public function selectAll($tabela, $classe, $where = null)
     {
         $query = "select * from {$tabela}";
-        ($where) ? $query .= " where " . implode(" ", $where) : '';
+        if (is_array($where) && count($where) === 3) {
+            ($where) ? $query .= " where " . implode(" ", $where) : '';
+        } else {
+            ($where) ? $query .= " where " . implode(" = ", $where) : '';
+        }
         $query .= " limit 10;";
         try {
             $statement = $this->pdo->prepare($query);
@@ -126,10 +130,10 @@ class QueryBuilder
         }
     }
 
-    public function delete($tabela, $campos = [])
+    public function delete($tabela, $campos)
     {
-        $campos = implode(' = ', $campos);
-        $sql = "DELETE FROM {$tabela} WHERE {$campos}";
+        $where = implode(' = ', $campos);
+        $sql = "DELETE FROM {$tabela} WHERE {$where}";
         try {
             $statement = $this->pdo->prepare($sql)->execute();
             return $statement;

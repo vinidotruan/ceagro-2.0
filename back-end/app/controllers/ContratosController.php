@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\App;
 use App\Models\Contrato;
+use App\Models\Adendo;
 
 class ContratosController
 {
@@ -99,33 +100,29 @@ class ContratosController
 
     public function adicionarAdendos($adendo)
     {
-
         try {
-            $adendoId = App::get('db')->insert('contratos', [
-                'descricao' => $adendo['descricao']
+            $adendoId = App::get('db')->insert('adendos', [
+                'descricao' => $adendo['descricao'],
+                'contrato_id' => $adendo['contrato_id']
             ]);
 
-            $ultimoAdendo = Adendo::find(["id", $adendoId]);
+            $adendos = Adendo::get(["contrato_id", $adendo['contrato_id']]);
 
-            echo json_encode($ultimoAdendo);
+            echo json_encode($adendos);
         } catch (\Exception $e) {
             die($e);
         }
     }
 
-    public function removerAdendo($adendo)
+    public function removerAdendo($contratoId, $adendo)
     {
         try {
-            $adendoId = App::get('db')->insert('contratos', [
-                'descricao' => $adendo['descricao']
-            ]);
+            $mensagem = Adendo::delete(["id", $adendo]);
 
-            $ultimoAdendo = Adendo::find(["id", $adendoId]);
-
-            echo json_encode($ultimoAdendo);
+            $adendos = Adendo::get(['contrato_id', $contratoId]);
+            echo json_encode($adendos);
         } catch (\Exception $e) {
             die($e);
         }
-        Contrato::delete(['id' => $adendo->id]);
     }
 }

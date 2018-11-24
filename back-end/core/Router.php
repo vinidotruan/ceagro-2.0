@@ -27,6 +27,11 @@ class Router
         $this->routes['PUT'][$rota] = $controller;
     }
 
+    public function delete($rota, $controller)
+    {
+        $this->routes['DELETE'][$rota] = $controller;
+    }
+
     public function get($rota, $controller)
     {
         $this->routes['GET'][$rota] = $controller;
@@ -102,10 +107,7 @@ class Router
             return $controller->$metodo($parametros);
         }
 
-        if ($this->isGet()) {
-            $parametros = array_values($parametros);
-            return $controller->$metodo(...$parametros);
-        }
+        $parametros = array_values($parametros);
         return $controller->$metodo(...$parametros);
     }
 

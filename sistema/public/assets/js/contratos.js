@@ -20,10 +20,18 @@ comprador = {};
 produto = {};
 contrato = {};
 
+function adicionarAdendo() {
+    $(`#adendos`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
+    var dados = $('#adendos').serialize();
+    $.post(`../back-end/adendos`, dados, (success) => {
+        popularAdendos(JSON.parse(success));
+    });
+}
+
 function verificarContrato() {
     buscarClientes(() => {
         contrato = JSON.parse(localStorage.getItem("contrato"));
-        localStorage.removeItem("contrato");
+        // localStorage.removeItem("contrato");
         if (temContrato()) {
             $("#enviar").append("Atualizar");
             comprador = contrato.comprador;
@@ -32,6 +40,7 @@ function verificarContrato() {
             adendos = contrato.adendos;
             compararContrato(contrato, "contrato");
             $('.select2').select2();
+            popularAdendos(adendos);
         } else {
             $("#enviar").append("Cadastrar");
         }
@@ -45,10 +54,21 @@ function mostrarAdendos() {
 }
 
 function popularAdendos(adendos) {
+    $('#adendo tr').remove();
     $.each(adendos, function (index, adendo) {
-        var cnpjs = '<dd value="' + adendo.id + '">' + adendo.descricao + '</dd>';
-        $("#adendos #dl").append(cnpjs)
+        var adendos = '<tr><td colspan="1" value="' + adendo.id + '" class="item">' + adendo.descricao + '</td><td onclick="deletarAdendo(' + adendo.id + ')"><i class="fa fa-trash" aria-hidden="true"></i></td><tr>';
+        $("#adendo").append(adendos)
     })
+}
+
+function deletarAdendo(id) {
+    $.ajax({
+        url: `../back-end/contratos/${contrato.id}/adendos/${id}`,
+        type: 'DELETE',
+        success: function (adendos) {
+            popularAdendos(JSON.parse(adendos));
+        }
+    });
 }
 
 function temContrato() {

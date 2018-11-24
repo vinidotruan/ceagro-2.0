@@ -85,55 +85,6 @@
                         </div>
 
                         <div class="row">
-                            
-                            <!-- Dados do Comprador -->
-                            <div class="col-xs-12">
-                                <section class="invoice box" id="adendo" style="width: auto">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <h2 class="page-header">
-                                                <i class="fa fa-address-card"></i> Adendos
-                                            </h2>
-                                        </div>
-                                    </div>
-                                    <div class="row invoice-info">
-                                        <div class="box-body">
-                                            <div class="form-row">
-                                                <div class="col-xs-12">
-                                                    <div class="form-group">
-                                                        <label for="descricao">Descricao</label>
-                                                        <input type="text" class="form-control" name="descricao" placeholder="Digite a Assinatura do Comprador" autocomplete="off">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="box-footer">
-                                            <button type="submit" class="btn btn-primary pull-right" id="enviar"></button>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="box box-solid">
-                                                <div class="box-header with-border">
-                                                    <i class="fa fa-text-width"></i>
-
-                                                    <h3 class="box-title">Lista de Adendos</h3>
-                                                </div>
-                                                <!-- /.box-header -->
-                                                <div class="box-body">
-                                                    <dl id="adendos">
-                                                        
-                                                    </dl>
-                                                </div>
-                                                <!-- /.box-body -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-
-                        <div class="row">
                             <!-- Dados do Vendedor -->
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <section class="invoice box" id="vendedor" style="width: auto">
@@ -310,6 +261,54 @@
                 </div>
             </div>
 
+            
+            <div class="row">
+                            <div class="col-xs-12">
+                                <form role="form" id="adendos">
+                                    <section class="invoice box" style="width: auto">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <h2 class="page-header">
+                                                    <i class="fa fa-address-card"></i> Adendos
+                                                </h2>
+                                            </div>
+                                        </div>
+                                        <div class="row invoice-info">
+                                            <div class="box-body">
+                                                <div class="form-row">
+                                                    <div class="col-xs-12">
+                                                        <div class="form-group">
+                                                            <label for="descricao">Descricao</label>
+                                                            <textarea type="text" class="form-control" name="descricao" placeholder="Digite a Assinatura do Comprador" rows="4"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="box-footer">
+                                                <button type="button" class="btn btn-primary pull-right" onclick="adicionarAdendo()">Cadsatrar</button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Descricao</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="adendo">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </form>
+                                
+                            </div>
+                        </div>
+
+
             <div class="clearfix"></div>
             </div>
         <div class="control-sidebar-bg"></div>
@@ -323,7 +322,6 @@
             </div>
         <!-- /.modal-content -->
         </div>
-          <!-- /.modal-dialog -->
     </div>
 	<?php include 'partials/imports.html' ?>
     <script src="public/assets/js/contratos.js"></script>

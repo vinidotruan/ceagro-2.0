@@ -31,7 +31,7 @@ function adicionarAdendo() {
 function verificarContrato() {
     buscarClientes(() => {
         contrato = JSON.parse(localStorage.getItem("contrato"));
-        // localStorage.removeItem("contrato");
+        localStorage.removeItem("contrato");
         if (temContrato()) {
             $("#enviar").append("Atualizar");
             comprador = contrato.comprador;
@@ -40,7 +40,7 @@ function verificarContrato() {
             adendos = contrato.adendos;
             compararContrato(contrato, "contrato");
             $('.select2').select2();
-            popularAdendos(adendos);
+            popularAdendos(adendos, mostrarAdendos());
         } else {
             $("#enviar").append("Cadastrar");
         }
@@ -50,15 +50,16 @@ function verificarContrato() {
 }
 
 function mostrarAdendos() {
-    $("#adendos").show();
+    $("#edit").show();
 }
 
-function popularAdendos(adendos) {
+function popularAdendos(adendos, callback) {
     $('#adendo tr').remove();
     $.each(adendos, function (index, adendo) {
         var adendos = '<tr><td colspan="1" value="' + adendo.id + '" class="item">' + adendo.descricao + '</td><td onclick="deletarAdendo(' + adendo.id + ')"><i class="fa fa-trash" aria-hidden="true"></i></td><tr>';
         $("#adendo").append(adendos)
     })
+    callback();
 }
 
 function deletarAdendo(id) {

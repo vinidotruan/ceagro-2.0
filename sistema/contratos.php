@@ -262,51 +262,51 @@
             </div>
 
             
-            <div class="row">
-                            <div class="col-xs-12">
-                                <form role="form" id="adendos">
-                                    <section class="invoice box" style="width: auto">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <h2 class="page-header">
-                                                    <i class="fa fa-address-card"></i> Adendos
-                                                </h2>
-                                            </div>
-                                        </div>
-                                        <div class="row invoice-info">
-                                            <div class="box-body">
-                                                <div class="form-row">
-                                                    <div class="col-xs-12">
-                                                        <div class="form-group">
-                                                            <label for="descricao">Descricao</label>
-                                                            <textarea type="text" class="form-control" name="descricao" placeholder="Digite a Assinatura do Comprador" rows="4"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="box-footer">
-                                                <button type="button" class="btn btn-primary pull-right" onclick="adicionarAdendo()">Cadsatrar</button>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-12 table-responsive">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Descricao</th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="adendo">
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </form>
-                                
+            <div class="row" id="edit" style="display:none">
+                <div class="col-xs-12">
+                    <form role="form" id="adendos">
+                        <section class="invoice box" style="width: auto">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h2 class="page-header">
+                                        <i class="fa fa-address-card"></i> Adendos
+                                    </h2>
+                                </div>
                             </div>
-                        </div>
+                            <div class="row invoice-info">
+                                <div class="box-body">
+                                    <div class="form-row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="descricao">Descricao</label>
+                                                <textarea type="text" class="form-control" name="descricao" placeholder="Digite a Assinatura do Comprador" rows="4"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="button" class="btn btn-primary pull-right" onclick="adicionarAdendo()">Cadsatrar</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Descricao</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="adendo">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </form>
+                    
+                </div>
+            </div>
 
 
             <div class="clearfix"></div>

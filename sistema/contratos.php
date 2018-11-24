@@ -77,6 +77,56 @@
                                                     </div>
                                                </div>
                                             </div>
+
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            
+                            <!-- Dados do Comprador -->
+                            <div class="col-xs-12">
+                                <section class="invoice box" id="adendo" style="width: auto">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h2 class="page-header">
+                                                <i class="fa fa-address-card"></i> Adendos
+                                            </h2>
+                                        </div>
+                                    </div>
+                                    <div class="row invoice-info">
+                                        <div class="box-body">
+                                            <div class="form-row">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="descricao">Descricao</label>
+                                                        <input type="text" class="form-control" name="descricao" placeholder="Digite a Assinatura do Comprador" autocomplete="off">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary pull-right" id="enviar"></button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="box box-solid">
+                                                <div class="box-header with-border">
+                                                    <i class="fa fa-text-width"></i>
+
+                                                    <h3 class="box-title">Lista de Adendos</h3>
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <div class="box-body">
+                                                    <dl id="adendos">
+                                                        
+                                                    </dl>
+                                                </div>
+                                                <!-- /.box-body -->
+                                            </div>
                                         </div>
                                     </div>
                                 </section>
@@ -127,7 +177,6 @@
                                     </div>
                                 </section>
                             </div>
-
                             <!-- Dados do Comprador -->
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <section class="invoice box" id="comprador" style="width: auto">
@@ -175,7 +224,7 @@
 
                         <div class="row">
                             <!-- Dados do Produto -->
-                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <section class="invoice" id="produto">
                                     <div class="row">
                                         <div class="col-xs-12">
@@ -185,62 +234,60 @@
                                         </div>
                                     </div>
                                     <div class="row invoice-info">
-                                        <div class="box-body">
-                                            <div class="form-row">
-                                                <div class="col-xs-12 col-lg-4">
-                                                    <div class="form-group">
-                                                        <label for="cnpj">Produto</label>
-                                                        <select class="form-control select2" name="produto_id" style="width: 100%;" id="produtos" onchange="selecionarProduto()">
-                                                            <option value="null">Selecione o Produto</option>
-                                                        </select>
+                                        <div class="col-xs-12">
+                                            <div class="box-body">
+                                                <div class="form-row">
+                                                    <div class="col-xs-12 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label for="cnpj">Produto</label>
+                                                            <select class="form-control select2" name="produto_id" style="width: 100%;" id="produtos" onchange="selecionarProduto()"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label for="unidade_medida_id">Unidades</label>
+                                                            <select class="form-control select2" name="unidade_medida_id" style="width: 100%;" id="unidades"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label for="safra">Safra</label>
+                                                            <input type="text" class="form-control" name="safra" placeholder="Informe a safra do produto." autocomplete="off">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="">Quantidade</label>
+                                                            <input type="text" class="form-control" name="quantidade" placeholder="Digite a quantidade do produto">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="preco">Preco</label>
+                                                            <input type="text" class="form-control" name="preco" placeholder="Digite o preco" autocomplete="off">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-12 col-lg-4">
-                                                    <div class="form-group">
-                                                        <label for="unidade_medida_id">Unidades</label>
-                                                        <select class="form-control select2" name="unidade_medida_id" style="width: 100%;" id="unidades">
-                                                            <option value="null">Selecione a Unidade de medida</option>
-                                                        </select>
+                                                <div class="form-row">
+                                                    <div class="col-xs-6">
+                                                        <div class="form-group">
+                                                            <label for="pagamento">Pagamento</label>
+                                                            <textarea type="text" class="form-control" name="pagamento" rows="3" placeholder="Digite as informações sobre o pagamento"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="peso_qualidade">Peso & Qualidade</label>
+                                                            <textarea type="text" class="form-control" name="peso_qualidade" placeholder="Digite o peso total" rows="3"></textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-12 col-lg-4">
-                                                    <div class="form-group">
-                                                        <label for="safra">Safra</label>
-                                                        <input type="text" class="form-control" name="safra" placeholder="Informe a safra do produto." autocomplete="off">
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12 col-lg-6">
-                                                    <div class="form-group">
-                                                        <label for="">Quantidade</label>
-                                                        <input type="text" class="form-control" name="quantidade" placeholder="Digite a quantidade do produto">
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12 col-lg-6">
-                                                    <div class="form-group">
-                                                        <label for="preco">Preco</label>
-                                                        <input type="text" class="form-control" name="preco" placeholder="Digite o preco" autocomplete="off">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-xs-6">
-                                                    <div class="form-group">
-                                                        <label for="pagamento_texto">Pagamento</label>
-                                                        <textarea type="text" class="form-control" name="pagamento_texto" rows="3" placeholder="Digite as informações sobre o pagamento"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12 col-lg-6">
-                                                    <div class="form-group">
-                                                        <label for="peso_qualidade">Peso & Qualidade</label>
-                                                        <textarea type="text" class="form-control" name="peso_qualidade" placeholder="Digite o peso total" rows="3"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-xs-12 col-lg-12">
-                                                    <div class="form-group">
-                                                        <label for="descricao">Descricao</label>
-                                                        <textarea type="text" class="form-control" name="descricao" placeholder="Descricao do contrato" rows="3"></textarea>
+                                                <div class="form-row">
+                                                    <div class="col-xs-12 col-lg-12">
+                                                        <div class="form-group">
+                                                            <label for="descricao">Descricao</label>
+                                                            <textarea type="text" class="form-control" name="descricao" placeholder="Descricao do contrato" rows="3"></textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -250,9 +297,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <!-- Dados do Produto -->
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
-                                <section class="invoice" id="produto">
+                                <section class="invoice" id="button">
                                 <div class="box-footer">
                                     <button type="submit" class="btn btn-primary pull-right" id="enviar"></button>
                                 </div>

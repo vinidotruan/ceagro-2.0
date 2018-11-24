@@ -35,17 +35,15 @@ class ContratosController
                 'tipo_embarque' => $contrato['tipo_embarque'] ?? "",
                 'local' => $contrato['local'] ?? "",
                 'data_embarque' => $contrato['data_embarque'] ?? "",
-                'pagamento_texto' => $contrato['pagamento_texto'] ?? "",
+                'pagamento' => $contrato['pagamento'] ?? "",
                 'peso_qualidade' => $contrato['peso_qualidade'] ?? "",
                 'cfop' => $contrato['cfop'] ?? "",
-                'valor_contrato' => $contrato['valor_contrato'] ?? "",
                 'solicitacao_cotas' => $contrato['solicitacao_cotas'] ?? "",
                 'carregamento' => $contrato['carregamento'] ?? "",
                 'assinatura_vendedor' => $contrato['assinatura_vendedor'] ?? "",
                 'assinatura_comprador' => $contrato['assinatura_comprador'] ?? "",
                 'observacao' => $contrato['observacao'] ?? "",
                 'comissao' => $contrato['comissao'] ?? "",
-                'codigo' => $contrato['codigo'] ?? "",
             ]);
 
             $ultimoContrato = Contrato::find(["id", $contratoId]);
@@ -71,7 +69,7 @@ class ContratosController
                     'safra' => $contrato['safra'] ?? "",
                     'quantidade' => $contrato['quantidade'] ?? "",
                     'descricao' => $contrato['descricao'] ?? "",
-                    'preco_texto' => $contrato['preco_texto'] ?? "",
+                    'preco' => $contrato['preco'] ?? "",
                     'tipo_embarque' => $contrato['tipo_embarque'] ?? "",
                     'local' => $contrato['local'] ?? "",
                     'data_embarque' => $contrato['data_embarque'] ?? "",
@@ -97,5 +95,37 @@ class ContratosController
         } catch (\Exception $exception) {
             echo json_encode($exception);
         }
+    }
+
+    public function adicionarAdendos($adendo)
+    {
+
+        try {
+            $adendoId = App::get('db')->insert('contratos', [
+                'descricao' => $adendo['descricao']
+            ]);
+
+            $ultimoAdendo = Adendo::find(["id", $adendoId]);
+
+            echo json_encode($ultimoAdendo);
+        } catch (\Exception $e) {
+            die($e);
+        }
+    }
+
+    public function removerAdendo($adendo)
+    {
+        try {
+            $adendoId = App::get('db')->insert('contratos', [
+                'descricao' => $adendo['descricao']
+            ]);
+
+            $ultimoAdendo = Adendo::find(["id", $adendoId]);
+
+            echo json_encode($ultimoAdendo);
+        } catch (\Exception $e) {
+            die($e);
+        }
+        Contrato::delete(['id' => $adendo->id]);
     }
 }

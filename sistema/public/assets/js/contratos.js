@@ -13,6 +13,7 @@ $("#contrato").submit(function (event) {
 
 vendedores = [];
 compradores = [];
+adendos = [];
 produtos = [];
 vendedor = {};
 comprador = {};
@@ -28,12 +29,26 @@ function verificarContrato() {
             comprador = contrato.comprador;
             vendedor = contrato.vendedor;
             produto = contrato.produto;
+            adendos = contrato.adendos;
             compararContrato(contrato, "contrato");
             $('.select2').select2();
         } else {
             $("#enviar").append("Cadastrar");
         }
+    }, erro => {
+        console.log(erro);
     });
+}
+
+function mostrarAdendos() {
+    $("#adendos").show();
+}
+
+function popularAdendos(adendos) {
+    $.each(adendos, function (index, adendo) {
+        var cnpjs = '<dd value="' + adendo.id + '">' + adendo.descricao + '</dd>';
+        $("#adendos #dl").append(cnpjs)
+    })
 }
 
 function temContrato() {
@@ -47,10 +62,10 @@ function compararContrato(contrato, formulario) {
     $.each(contrato, function (campo, valor) {
         $(`#${formulario}`).find('select, input, textarea').each(function (index, formObj) {
             if (typeof valor === "object" && valor) {
+
                 compararContrato(valor, campo);
             }
             (formObj.name === campo) ? $(formObj).val(valor) : "";
-            return;
         });
     });
 }
@@ -166,7 +181,7 @@ function popularUnidadesMedidas(unidades) {
 
 function popularProdutos(produtos) {
     $.each(produtos, function (index, produto) {
-        var option = '<option value="' + produto.nome + '">' + produto.nome + '</option>';
+        var option = '<option value="' + produto.id + '">' + produto.nome + '</option>';
         $("#produtos").append(option)
     });
 }

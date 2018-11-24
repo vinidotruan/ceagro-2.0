@@ -17,11 +17,10 @@ class Contrato extends Model
     public $safra;
     public $quantidade;
     public $descricao;
-    public $preco_texto;
+    public $pagamento;
     public $tipo_embarque;
     public $local;
     public $data_embarque;
-    public $pagamento_texto;
     public $peso_qualidade;
     public $cfop;
     public $solicitacao_cotas;
@@ -33,9 +32,8 @@ class Contrato extends Model
     public $data_cadastro;
     public $valor_contrato;
     public $peso_total;
-    public $codigo;
 
-
+    public $adendos;
     public $comprador;
     public $vendedor;
     public $produto;
@@ -47,6 +45,7 @@ class Contrato extends Model
         $this->comprador();
         $this->vendedor();
         $this->produto();
+        $this->adendos();
     }
 
     public function comprador()
@@ -60,5 +59,9 @@ class Contrato extends Model
     public function produto()
     {
         return $this->produto = Produto::find(["id", $this->produto_id]);
+    }
+    public function adendos()
+    {
+        return $this->adendos = Adendo::find(['contrato_id', $this->id]);
     }
 }

@@ -45,15 +45,18 @@ class ClientesController
     public function update($cliente)
     {
         try {
-            $clienteId = App::get('db')->update('clientes', [
-                'razao_social' => $cliente['razao_social'],
-                'cnpj' => $cliente['cnpj'],
-                'inscricao_estadual' => $cliente['inscricao_estadual'],
-                'nome' => $cliente['nome'] ?? "",
-                'email' => $cliente['email'],
-                'atuacao' => $cliente['atuacao'],
-            ],
-                ["id", $cliente['cliente']]);
+            $clienteId = App::get('db')->update(
+                'clientes',
+                [
+                    'razao_social' => $cliente['razao_social'],
+                    'cnpj' => $cliente['cnpj'],
+                    'inscricao_estadual' => $cliente['inscricao_estadual'],
+                    'nome' => $cliente['nome'] ?? "",
+                    'email' => $cliente['email'],
+                    'atuacao' => $cliente['atuacao'],
+                ],
+                ["id", $cliente['cliente']]
+            );
 
             $cliente = Cliente::find(["id", $clienteId]);
 

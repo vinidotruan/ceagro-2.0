@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-class Adendo
+class Adendo extends Model
 {
-    public $id;
     public $contrato_id;
-    public $definicao;
+    public $descricao;
+
+    protected static $table = "adendos";
 }

@@ -17,4 +17,10 @@ class Model
         $response = App::get('db')->find(static::$table, $campos, static::class);
         return $a = array_shift($response);
     }
+
+    public static function delete($campos = ["id", 0])
+    {
+        $response = App::get('db')->delete(static::$table, $campos, static::class);
+        return $a = array_shift($response);
+    }
 }

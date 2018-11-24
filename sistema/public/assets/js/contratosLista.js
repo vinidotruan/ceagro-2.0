@@ -13,7 +13,7 @@ function buscarContratos() {
 function popularPesquisa(contratos, callback = null) {
     $.each(contratos, function (index, contrato) {
         var linha = `<tr id="${contrato.id}" class="clicavel">
-            <td>${contrato.codigo}</td>
+            <td>${contrato.numero_confirmacao}</td>
             <td>${contrato.comprador.razao_social}</td>
             <td>${contrato.vendedor.razao_social}</td>
             <td>${contrato.produto.nome}</td>

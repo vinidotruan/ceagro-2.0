@@ -17,13 +17,12 @@ class QueryBuilder
     {
         $query = "select * from {$tabela}";
         ($where) ? $query .= " where " . implode(" ", $where) : '';
-        // $query .= " limit 10;";
+        $query .= " limit 10;";
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();
 
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
-
         } catch (\PDOException $e) {
             die($e->getMessage());
         }
@@ -78,7 +77,7 @@ class QueryBuilder
 
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
         } catch (PDOException $exception) {
-            die($exception->getMessage());
+            die($exception);
         }
     }
 
@@ -125,6 +124,18 @@ class QueryBuilder
             echo 'Error: ' . $e->getMessage();
 
         }
+    }
 
+    public function delete($tabela, $campos = [])
+    {
+        $campos = implode(' = ', $campos);
+        $sql = "DELETE FROM {$tabela} WHERE {$campos}";
+        try {
+            $statement = $this->pdo->prepare($sql)->execute();
+            return $statement;
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+
+        }
     }
 }

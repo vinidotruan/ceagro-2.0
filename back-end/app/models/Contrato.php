@@ -48,6 +48,7 @@ class Contrato extends Model
         $this->vendedor();
         $this->produto();
         $this->adendos();
+        $this->contaBancaria();
     }
 
 

@@ -206,7 +206,12 @@ function popularContasBancarias(contas) {
             var contas = `<option value="${conta.id}">${conta.conta} | ${conta.agencia} - ${conta.banco}</option>`;
             $("#contas").append(contas)
         }
-    })
+    });
+
+    if (temContrato()) {
+        selecionarConta(contrato.vendedor_conta_bancaria_id);
+        mudarSelectConta(conta);
+    }
 }
 
 function popularCompradores(compradores) {
@@ -303,6 +308,14 @@ function selecionarConta(id) {
     conta = _.find(contasBancarias, {
         'id': id
     });
+
+    contrato.contaBancaria = conta;
+}
+
+function mudarSelectConta(conta) {
+    contaT = `${conta.conta} | ${conta.agencia} - ${conta.banco}`;
+    $(`#contas`).val(contaT);
+    $(`#select2-contas-container`).append(contaT);
 }
 
 function mudarSelectRazoes(variavel) {

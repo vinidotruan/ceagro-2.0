@@ -101,17 +101,19 @@
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="cnpj">Cnpj</label>
-                                                        <select class="form-control select2" name="cnpj" style="width: 100%;" id="cnpjs" onchange="selecionarCliente('cnpj', 'vendedores')">
-                                                            <option value="null">Selecione o Vendedor</option>
-                                                        </select>
+                                                        <select class="form-control select2" name="cnpj" style="width: 100%;" id="cnpjs" onchange="selecionarVendedor('cnpj')"></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="razao_social">Razão Social</label>
-                                                        <select class="form-control select2" name="razao_social" style="width: 100%;" id="razoes" onchange="selecionarCliente('razao_social', 'vendedores')">
-                                                            <option value="null">Selecione o Vendedor</option>
-                                                        </select>
+                                                        <select class="form-control select2" name="razao_social" style="width: 100%;" id="razoes" onchange="selecionarVendedor('razao_social')"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="vendedor_conta_bancaria_id">Contas Bancárias</label>
+                                                        <select class="form-control select2" name="vendedor_conta_bancaria_id" style="width: 100%;" id="contas" onchange="selecionarConta(this.value)"></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12">
@@ -123,7 +125,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="overlay">
+                                    <div class="overlay overlay-vendedores">
                                         <i class="fa fa-refresh fa-spin"></i>
                                     </div>
                                 </section>
@@ -144,17 +146,13 @@
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="cnpj">Cnpj</label>
-                                                        <select class="form-control select2" name="cnpj" style="width: 100%;" id="cnpjs" onchange="selecionarCliente('cnpj', 'compradores')">
-                                                            <option value="null">Selecione o Comprador</option>
-                                                        </select>
+                                                        <select class="form-control select2" name="cnpj" style="width: 100%;" id="cnpjs" onchange="selecionarComprador('cnpj')"></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="razao_social">Razão Social</label>
-                                                        <select class="form-control select2" name="razao_social" style="width: 100%;" id="razoes" onchange="selecionarCliente('razao_social', 'compradores')">
-                                                            <option value="null">Selecione o Comprador</option>
-                                                        </select>
+                                                        <select class="form-control select2" name="razao_social" style="width: 100%;" id="razoes" onchange="selecionarComprador('razao_social')"></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12">
@@ -166,7 +164,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="overlay">
+                                    <div class="overlay overlay-compradores">
                                         <i class="fa fa-refresh fa-spin"></i>
                                     </div>
                                 </section>

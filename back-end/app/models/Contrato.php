@@ -32,9 +32,11 @@ class Contrato extends Model
     public $data_cadastro;
     public $valor_contrato;
     public $peso_total;
+    public $vendedor_conta_bancaria_id;
 
     public $adendos;
     public $comprador;
+    public $contaBancaria;
     public $vendedor;
     public $produto;
 
@@ -48,20 +50,29 @@ class Contrato extends Model
         $this->adendos();
     }
 
+
     public function comprador()
     {
         return $this->comprador = Cliente::find(["id", $this->comprador_id]);
     }
+
     public function vendedor()
     {
         return $this->vendedor = Cliente::find(["id", $this->vendedor_id]);
     }
+
     public function produto()
     {
         return $this->produto = Produto::find(["id", $this->produto_id]);
     }
+
     public function adendos()
     {
         return $this->adendos = Adendo::get(['contrato_id', $this->id]);
+    }
+
+    public function contaBancaria()
+    {
+        return $this->contaBancaria = ContaBancaria::find(['id', $this->vendedor_conta_bancaria_id]);
     }
 }

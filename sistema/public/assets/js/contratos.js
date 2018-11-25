@@ -13,11 +13,13 @@ $("#contrato").submit(function (event) {
 
 vendedores = [];
 compradores = [];
+contasBancarias = [{}]
 adendos = [];
 produtos = [];
 vendedor = {};
 comprador = {};
 produto = {};
+conta = {};
 contrato = {};
 
 function adicionarAdendo() {
@@ -29,15 +31,16 @@ function adicionarAdendo() {
 }
 
 function verificarContrato() {
-    buscarClientes(() => {
+    buscarDados(() => {
         contrato = JSON.parse(localStorage.getItem("contrato"));
-        localStorage.removeItem("contrato");
+        // localStorage.removeItem("contrato");
         if (temContrato()) {
             $("#enviar").append("Atualizar");
             comprador = contrato.comprador;
             vendedor = contrato.vendedor;
             produto = contrato.produto;
             adendos = contrato.adendos;
+
             compararContrato(contrato, "contrato");
             $('.select2').select2();
             popularAdendos(adendos, mostrarAdendos());
@@ -49,6 +52,17 @@ function verificarContrato() {
     });
 }
 
+function buscarDados(callback) {
+    buscarProdutos();
+    buscarUnidadesDeMedidas();
+    buscarVendedores();
+    buscarCompradores(_ => {
+        callback();
+        buscarContasBancaria();
+    });
+
+}
+
 function mostrarAdendos() {
     $("#edit").show();
 }
@@ -58,8 +72,9 @@ function popularAdendos(adendos, callback) {
     $.each(adendos, function (index, adendo) {
         var adendos = '<tr><td colspan="1" value="' + adendo.id + '" class="item">' + adendo.descricao + '</td><td onclick="deletarAdendo(' + adendo.id + ')"><i class="fa fa-trash" aria-hidden="true"></i></td><tr>';
         $("#adendo").append(adendos)
-    })
-    callback();
+    });
+
+    (callback) ? callback() : '';
 }
 
 function deletarAdendo(id) {
@@ -96,6 +111,7 @@ function cadastrar() {
     $(`#contrato`).append(`<input hidden name='comprador_id' value=${comprador.id}>`);
     $(`#contrato`).append(`<input hidden name='vendedor_id' value=${vendedor.id}>`);
     $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);
+    $(`#contrato`).append(`<input hidden name='vendedor_conta_bancaria_Id' value=${conta.id}>`);
     var dados = $('#contrato').serialize();
     $.post('../back-end/contratos', dados, () => {
         alertCadastro();
@@ -128,6 +144,7 @@ function atualizar() {
     $('#modal-default').modal({ backdrop: 'static', keyboard: false });
     $(`#contrato`).append(`<input hidden name='comprador_id' value=${comprador.id}>`);
     $(`#contrato`).append(`<input hidden name='vendedor_id' value=${vendedor.id}>`);
+    $(`#contrato`).append(`<input hidden name='vendedor_conta_bancaria_id' value=${conta.id}>`);
     $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);
     var dados = $('#contrato').serialize();
     $.ajax({
@@ -140,19 +157,80 @@ function atualizar() {
     });
 }
 
-function buscarClientes(callback) {
+function buscarVendedores() {
     $.ajax({
-        url: "../back-end/clientes",
+        url: "../back-end/vendedores",
         type: "get",
         dataType: "json",
-        success: function (data) {
-            vendedores = data;
-            compradores = data;
-            popularClientes(vendedores);
-            buscarProdutos();
-            buscarUnidadesDeMedidas();
-            $(".overlay").remove();
+        success: response => {
+            vendedores = response;
+            popularVendedores(vendedores);
+            $(".overlay-vendedores").remove();
+        }
+    });
+}
+
+function buscarCompradores(callback) {
+    $.ajax({
+        url: "../back-end/compradores",
+        type: "get",
+        dataType: "json",
+        success: response => {
+            compradores = response;
+            popularCompradores(compradores);
+            $(".overlay-compradores").remove();
             callback();
+
+        }
+    });
+}
+
+function buscarContasBancaria() {
+    $.ajax({
+        url: `../back-end/clientes/${vendedor.id}/contas-bancarias`,
+        type: "get",
+        dataType: "json",
+        success: response => {
+            contasBancarias = response;
+            popularContasBancarias(contasBancarias);
+        }
+    });
+}
+
+function popularContasBancarias(contas) {
+    $(`#contas`).val();
+    $(`#contas option`).remove();
+    $(`#select2-contas-container`).empty();
+    $.each(contas, function (index, conta) {
+        if (conta) {
+            var contas = `<option value="${conta.id}">${conta.conta} | ${conta.agencia} - ${conta.banco}</option>`;
+            $("#contas").append(contas)
+        }
+    })
+}
+
+function popularCompradores(compradores) {
+    $.each(compradores, function (index, comprador) {
+        if (comprador.cnpj) {
+            var cnpjs = '<option value="' + comprador.cnpj + '">' + comprador.cnpj + '</option>';
+            $("#comprador #cnpjs").append(cnpjs)
+        }
+        if (comprador.razao_social) {
+            var razoes = '<option value="' + comprador.razao_social + '">' + comprador.razao_social + '</option>';
+            $("#comprador #razoes").append(razoes)
+        }
+    })
+}
+
+function popularVendedores(vendedores) {
+    $.each(vendedores, function (index, vendedor) {
+        if (vendedor.cnpj) {
+            var cnpjs = '<option value="' + vendedor.cnpj + '">' + vendedor.cnpj + '</option>';
+            $("#vendedor #cnpjs").append(cnpjs)
+        }
+        if (vendedor.razao_social) {
+            var razoes = '<option value="' + vendedor.razao_social + '">' + vendedor.razao_social + '</option>';
+            $("#vendedor #razoes").append(razoes);
         }
     });
 }
@@ -182,17 +260,6 @@ function buscarUnidadesDeMedidas() {
     });
 }
 
-function popularClientes(clientes) {
-    $.each(clientes, function (index, cliente) {
-        var cnpjs = '<option value="' + cliente.cnpj + '">' + cliente.cnpj + '</option>';
-        var razoes = '<option value="' + cliente.razao_social + '">' + cliente.razao_social + '</option>';
-        $("#comprador #razoes").append(razoes)
-        $("#vendedor #razoes").append(razoes)
-        $("#comprador #cnpjs").append(cnpjs)
-        $("#vendedor #cnpjs").append(cnpjs)
-    })
-}
-
 function popularUnidadesMedidas(unidades) {
     $.each(unidades, function (index, unidade) {
         var option = '<option value=' + unidade.id + '>' + unidade.titulo + '</option>';
@@ -207,29 +274,34 @@ function popularProdutos(produtos) {
     });
 }
 
-function selecionarCliente(campo, array) {
-    if (array == "vendedores") {
-        variavel = "vendedor";
-        vendedor = _.find(vendedores, {
-            'cnpj': $(`#vendedor select[name='${campo}'] option:selected`).text()
-        }) || _.find(vendedores, {
-            'razao_social': $(`#vendedor select[name='${campo}'] option:selected`).text()
-        });
-    } else {
-        variavel = "comprador";
-        comprador = _.find(compradores, {
-            'cnpj': $(`#comprador select[name='${campo}'] option:selected`).text()
-        }) || _.find(compradores, {
-            'razao_social': $(`#comprador select[name='${campo}'] option:selected`).text()
-        });
+function selecionarVendedor(campo) {
+    vendedor = _.find(vendedores, {
+        'cnpj': $(`#vendedor select[name='${campo}'] option:selected`).text()
+    }) || _.find(vendedores, {
+        'razao_social': $(`#vendedor select[name='${campo}'] option:selected`).text()
+    });
+    (campo === 'cnpj') ? mudarSelectRazoes('vendedor') : mudarSelectCnpjs('vendedor');
+    buscarContasBancaria(vendedor);
+}
 
-    }
-    (campo === 'cnpj') ? mudarSelectRazoes(variavel) : mudarSelectCnpjs(variavel);
+function selecionarComprador(campo) {
+    comprador = _.find(compradores, {
+        'cnpj': $(`#comprador select[name='${campo}'] option:selected`).text()
+    }) || _.find(compradores, {
+        'razao_social': $(`#comprador select[name='${campo}'] option:selected`).text()
+    });
+    (campo === 'cnpj') ? mudarSelectRazoes('comprador') : mudarSelectCnpjs('comprador');
 }
 
 function selecionarProduto() {
     produto = _.find(produtos, {
         'nome': $(`#produto select[name='produto_id'] option:selected`).text()
+    });
+}
+
+function selecionarConta(id) {
+    conta = _.find(contasBancarias, {
+        'id': id
     });
 }
 

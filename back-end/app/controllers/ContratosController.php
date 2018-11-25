@@ -8,9 +8,10 @@ use App\Models\Adendo;
 
 class ContratosController
 {
-    public function index($limite = 50)
+    public function index()
     {
-        $contratos = App::get('db')->selectTo("contratos", Contrato::class, null, $limite);
+        $contratos = Contrato::get();
+
         echo json_encode($contratos);
     }
 
@@ -42,6 +43,7 @@ class ContratosController
                 'solicitacao_cotas' => $contrato['solicitacao_cotas'] ?? "",
                 'carregamento' => $contrato['carregamento'] ?? "",
                 'assinatura_vendedor' => $contrato['assinatura_vendedor'] ?? "",
+                'vendedor_conta_bancaria_id' => $contrato['vendedor_conta_bancaria_id'] ?? "",
                 'assinatura_comprador' => $contrato['assinatura_comprador'] ?? "",
                 'observacao' => $contrato['observacao'] ?? "",
                 'comissao' => $contrato['comissao'] ?? "",
@@ -58,6 +60,7 @@ class ContratosController
 
     public function update($contrato)
     {
+
         try {
             $contratoId = App::get('db')->update(
                 'contratos',
@@ -79,6 +82,7 @@ class ContratosController
                     'solicitacao_cotas' => $contrato['solicitacao_cotas'] ?? "",
                     'carregamento' => $contrato['carregamento'] ?? "",
                     'assinatura_vendedor' => $contrato['assinatura_vendedor'] ?? "",
+                    'vendedor_conta_bancaria_id' => $contrato['vendedor_conta_bancaria_id'] ?? "",
                     'assinatura_comprador' => $contrato['assinatura_comprador'] ?? "",
                     'observacao' => $contrato['observacao'] ?? "",
                     'comissao' => $contrato['comissao'] ?? "",

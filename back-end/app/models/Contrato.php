@@ -37,6 +37,7 @@ class Contrato extends Model
     public $comprador;
     public $vendedor;
     public $produto;
+    public $unidadeMedida;
 
     protected static $table = "contratos";
 
@@ -46,6 +47,7 @@ class Contrato extends Model
         $this->vendedor();
         $this->produto();
         $this->adendos();
+        $this->unidade();
     }
 
     public function comprador()
@@ -63,5 +65,10 @@ class Contrato extends Model
     public function adendos()
     {
         return $this->adendos = Adendo::get(['contrato_id', $this->id]);
+    }
+    public function unidade(){
+
+        return $this->unidadeMedida = UnidadeMedida::find(["id", $this->unidade_medida_id]);
+
     }
 }

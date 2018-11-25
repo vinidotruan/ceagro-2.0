@@ -162,16 +162,18 @@ td {
                     <td>Safra: <?= $contrato->safra ?? "Nenhum" ?></td>
                 </tr>
                 <tr>
-                    <td class="tdquantidade">Quantidade:     Descrição: <?= $contrato->quantidade_descricao ?></td>
+                    <td class="tdquantidade">Quantidade: <?= $contrato->quantidade?></td>
+                    <td class="tdquantidade">Descrição: <?= $contrato->descricao?></td>
                 </tr>
                 <tr>
-                    <td class="tdpreco">Preço: <?= $contrato->preco_texto ?></td>
+                    <td class="tdpreco">Preço: <?= $contrato->preco ?></td>
+                    <td>Unidade de Medida: <?= $contrato->unidadeMedida->titulo ?></td>
                 </tr>
                 <tr>
-                    <td class="tdpagamento">Pagamento e dados bancários: <?= $contrato->pagamento_texto ?></td>
+                    <td class="tdpagamento">Pagamento: <?= $contrato->pagamento ?></td>
                 </tr>
                 <tr>
-                    <td class="tdpesoequalidade">Peso e qualidade: <?= $contrato->peso_qualidade ?? "Nenhum" ?></td>
+                    <td class="tdpesoequalidade">Peso e Qualidade: <?= $contrato->peso_qualidade ?? "Nenhum" ?></td>
                 </tr>
                 <tr>
                     <td class="aviso">*A empresa compradora enviará a instrução de carregamento por e-mail.*</td>

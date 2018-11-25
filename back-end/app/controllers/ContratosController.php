@@ -62,9 +62,9 @@ class ContratosController
             $contratoId = App::get('db')->update(
                 'contratos',
                 [
-                    'numero_confirmacao' => $contrato['numero_confirmacao'] ?? "",
-                    'vendedor_id' => $contrato['vendedor_id'],
-                    'comprador_id' => $contrato['comprador_id'],
+                    'numero_confirmacao' => $contratos['numero_confirmacao'] ?? "",
+                    'vendedor_id' => $contratos['vendedor_id'],
+                    'comprador_id' => $contratos['comprador_id'],
                     'produto_id' => $contrato['produto_id'],
                     'unidade_medida_id' => $contrato['unidade_medida_id'],
                     'safra' => $contrato['safra'] ?? "",

@@ -14,7 +14,11 @@ class Model
 
     public static function find($campos = ["id", 0])
     {
-        $response = App::get('db')->find(static::$table, $campos, static::class);
+        $response = App::get('db')->find(
+            static::$table, 
+            $campos, 
+            static::class
+        );
         return $a = array_shift($response);
     }
 

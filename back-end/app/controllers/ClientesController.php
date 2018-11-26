@@ -14,6 +14,28 @@ class ClientesController
         echo json_encode($clientes);
     }
 
+    public function buscarEnderecoEntrega($cliente)
+    {
+
+    }
+
+    public function buscarVendedores()
+    {
+        $vendedores = Cliente::vendedores();
+        $ambos = Cliente::ambos();
+        $vendedoresA = array_unique(array_merge($vendedores, $ambos), SORT_REGULAR);
+        echo json_encode($vendedoresA);
+    }
+
+    public function buscarCompradores()
+    {
+        $compradores = Cliente::compradores();
+        $ambos = Cliente::ambos();
+        $compradores = array_unique(array_merge($compradores, $ambos), SORT_REGULAR);
+
+        echo json_encode($compradores);
+    }
+
     public function show($id)
     {
         $cliente = Cliente::find(["id", $id]);

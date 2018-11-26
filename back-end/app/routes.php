@@ -1,6 +1,8 @@
 <?php
 // //busca de clientes
 $router->get("ceagro/back-end/clientes", "ClientesController@index");
+$router->get("ceagro/back-end/vendedores", "ClientesController@buscarVendedores");
+$router->get("ceagro/back-end/compradores", "ClientesController@buscarCompradores");
 $router->post("ceagro/back-end/clientes", "ClientesController@cadastrar");
 $router->get("ceagro/back-end/clientes/{cliente}", "ClientesController@show");
 $router->put("ceagro/back-end/clientes/{cliente}", "ClientesController@update");
@@ -8,10 +10,10 @@ $router->put("ceagro/back-end/clientes/{cliente}", "ClientesController@update");
 $router->get("ceagro/back-end/clientes/bancos", "ClientesController@buscarBancos");
 $router->get("ceagro/back-end/clientes/contatos", "ContatosController@index");
 $router->get("ceagro/back-end/clientes/{cliente}/contatos", "ContatosController@index");
+$router->get("ceagro/back-end/clientes/{cliente}/enderecos-entrega", "EnderecosController@buscarEnderecoEntrega");
+$router->get("ceagro/back-end/clientes/{cliente}/enderecos-faturamento", "EnderecosController@buscarEnderecoFaturamento");
 $router->post("ceagro/back-end/clientes/contatos", "ContatosController@cadastrar");
 
-$router->get("ceagro/back-end/cientes/enderecos-entregas", "EnderecosController@index");
-$router->get("ceagro/back-end/cientes/enderecos-faturamentos", "EnderecosController@index");
 $router->post("ceagro/back-end/clientes/enderecos-entregas", "EnderecosController@cadastrarEnderecoEntrega");
 $router->post("ceagro/back-end/clientes/enderecos-faturamentos", "EnderecosController@cadastrarEnderecoFaturamento");
 $router->put("ceagro/back-end/clientes/enderecos-entregas/{enderecoEntrega}", "EnderecosController@updateEnderecoEntrega");

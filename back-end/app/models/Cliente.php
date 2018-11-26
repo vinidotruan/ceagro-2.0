@@ -18,8 +18,8 @@ class Cliente extends Model
 
     public function __construct()
     {
-        $this->enderecoEntrega();
-        $this->enderecoFaturamento();
+        // $this->enderecoEntrega();
+        // $this->enderecoFaturamento();
     }
 
     public function enderecoFaturamento()
@@ -35,5 +35,20 @@ class Cliente extends Model
     public function contasBancarias()
     {
         return $this->contasBancarias = ContaBancaria::find(["cliente_id", $this->id]);
+    }
+
+    public static function vendedores()
+    {
+        return self::get(['atuacao', '"vendedor"']);
+    }
+
+    public static function compradores()
+    {
+        return self::get(['atuacao', '"comprador"']);
+    }
+
+    public static function ambos()
+    {
+        return self::get(['atuacao', '"ambos"']);
     }
 }

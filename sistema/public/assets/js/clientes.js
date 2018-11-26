@@ -45,8 +45,10 @@ function compararFormCliente(cliente, formulario) {
 }
 
 function atualizarBotoes() {
+    $("#cliente :button").text("");
+    $("#enderecoEntrega :button").text("");
+    $("#enderecoFaturamento :button").text("");
     $("#cliente :button").append("Atualizar").attr("onclick", "atualizar()");
-    console.log(cliente.enderecoEntrega);
     if (cliente.enderecoEntrega !== null) {
         $("#enderecoEntrega :button").append("Atualizar").attr("onclick", "atualizarEnderecoEnt()");
     } else {
@@ -69,13 +71,37 @@ function verificarCliente() {
         buscarContas(cliente.id, () => {
             compararFormCliente(cliente, "cliente");
         });
+        buscarEnderecoEntrega(cliente.id, () => {
+            compararFormCliente(cliente, "cliente");
+            atualizarBotoes();
+        });
+        buscarEnderecoFaturamento(cliente.id, () => {
+            compararFormCliente(cliente, "cliente");
+            atualizarBotoes();
+        });
     } else {
         formsDisable();
         $(".btn").append("Salvar");
     }
 }
 
+function buscarEnderecoEntrega(clienteId, callback = null) {
+    $.get(`../back-end/clientes/${clienteId}/enderecos-entrega`, function (response) {
+        cliente.enderecoEntrega = JSON.parse(response);
+        if (callback) {
+            callback();
+        }
+    });
+}
 
+function buscarEnderecoFaturamento(clienteId, callback = null) {
+    $.get(`../back-end/clientes/${clienteId}/enderecos-faturamento`, function (response) {
+        cliente.enderecoFaturamento = JSON.parse(response);
+        if (callback) {
+            callback();
+        }
+    });
+}
 
 function buscarContas(clienteId, callback = null) {
     $.get(`../back-end/clientes/${clienteId}/contas-bancarias`, function (response) {
@@ -220,7 +246,7 @@ function atualizarEnderecoEnt() {
         type: 'PUT',
         data: dados,
         success: function (response) {
-            entrega = JSON.parse(respose);
+            entrega = JSON.parse(response);
         }
     });
 }

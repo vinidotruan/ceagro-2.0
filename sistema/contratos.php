@@ -278,13 +278,13 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <label for="descricao">Descricao</label>
-                                                <textarea type="text" class="form-control" name="descricao" placeholder="Digite a Assinatura do Comprador" rows="4"></textarea>
+                                                <textarea type="text" class="form-control" name="descricao" placeholder="Digite as novas clausulas de adendo:" rows="4"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary pull-right" onclick="adicionarAdendo()">Cadsatrar</button>
+                                    <button type="button" class="btn btn-primary pull-right" onclick="adicionarAdendo()">Cadastrar</button>
                                 </div>
                             </div>
                             <div class="row">

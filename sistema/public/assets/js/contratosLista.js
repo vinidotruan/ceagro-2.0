@@ -13,15 +13,16 @@ function buscarContratos() {
 function popularPesquisa(contratos, callback = null) {
     $.each(contratos, function (index, contrato) {
         var linha = `<tr id="${contrato.id}" class="clicavel">
-            <td>${contrato.numero_confirmacao}</td>
-            <td>${contrato.comprador.razao_social}</td>
-            <td>${contrato.vendedor.razao_social}</td>
-            <td>${contrato.produto.nome}</td>
+            <td class="item">${contrato.numero_confirmacao}</td>
+            <td class="item">${contrato.comprador.razao_social}</td>
+            <td class="item">${contrato.vendedor.razao_social}</td>
+            <td class="item">${contrato.produto.nome}</td>
+            <td><a href="../back-end/pdfs/contratos/${contrato.id}" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" aria-hidden="true" style="color:blue"></i></a></td>
         </tr>`;
 
         $("#contratos tbody").append(linha);
     });
-    $(`#contratos tr`).on("click", function () {
+    $(`#contratos .item`).on("click", function () {
         selecionarContrato(this.id);
     });
     (callback) ? callback() : "";

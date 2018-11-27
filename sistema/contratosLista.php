@@ -1,8 +1,8 @@
-<?php include 'partials/cabecalho.html'?>
+<?php include 'partials/cabecalho.html' ?>
 <body class="hold-transition skin-blue sidebar-mini" onload="buscarContratos()">
 	<div class="wrapper">
-	<?php include "partials/header.html";?>
-	<?php include "partials/menu.html";?>
+	<?php include "partials/header.html"; ?>
+	<?php include "partials/menu.html"; ?>
         <div class="content-wrapper">
 
 			<section class="content">
@@ -20,6 +20,7 @@
 											<th>Comprador</th>
 											<th>Vendedor</th>
 											<th>Produto</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -44,6 +45,6 @@
 		</footer>
 		<div class="control-sidebar-bg"></div>
 	</div>
-	<?php include 'partials/imports.html'?>
+	<?php include 'partials/imports.html' ?>
 	<script src="public/assets/js/contratosLista.js"></script>
-	<?php include 'partials/rodape.html'?>
+	<?php include 'partials/rodape.html' ?>

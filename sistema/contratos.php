@@ -116,6 +116,7 @@
                                                         <select class="form-control select2" name="vendedor_conta_bancaria_id contaBancaria" style="width: 100%;" id="contas" onchange="selecionarConta(this.value)"></select>
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="assinatura">Assinatura do Vendedor</label>

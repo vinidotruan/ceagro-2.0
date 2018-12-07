@@ -18,8 +18,8 @@ class Cliente extends Model
 
     public function __construct()
     {
-        // $this->enderecoEntrega();
-        // $this->enderecoFaturamento();
+    //     $this->enderecoEntrega();
+    //     $this->enderecoFaturamento();
     }
 
     public function enderecoFaturamento()

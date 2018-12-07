@@ -73,7 +73,8 @@ class Contrato extends Model
     {
         return $this->adendos = Adendo::get(['contrato_id', $this->id]);
     }
-    public function unidade(){
+    public function unidade()
+    {
 
         return $this->unidadeMedida = UnidadeMedida::find(["id", $this->unidade_medida_id]);
     }

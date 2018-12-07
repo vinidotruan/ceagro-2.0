@@ -33,7 +33,7 @@ function adicionarAdendo() {
 function verificarContrato() {
     buscarDados(() => {
         contrato = JSON.parse(localStorage.getItem("contrato"));
-        // localStorage.removeItem("contrato");
+        localStorage.removeItem("contrato");
         if (temContrato()) {
             $("#enviar").append("Atualizar");
             comprador = contrato.comprador;

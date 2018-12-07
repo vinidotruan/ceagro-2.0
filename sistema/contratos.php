@@ -24,25 +24,25 @@
                                         <div class="box-body">
 
                                             <div class="form-row">
-                                                <div class="col-xs-12 col-lg-4">
+                                                <!--<div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="numero_confirmacao">Número de confirmação</label>
                                                         <input type="text" class="form-control" name="numero_confirmacao" placeholder="Digite o número do contrato" autocomplete="off">
                                                     </div>
-                                                </div>
-                                                <div class="col-xs-12 col-lg-2">
+                                                </div>-->
+                                                <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="cfop">CFOP</label>
                                                         <input type="text" class="form-control" name="cfop" placeholder="Digite o CFOP" autocomplete="off">
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-12 col-lg-3">
+                                                <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="data_embarque">Data do Embarque</label>
                                                         <input type="text" class="form-control" name="data_embarque" placeholder="Digite a data do contrato" autocomplete="off">
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-12 col-lg-3">
+                                                <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="comissao">Comissão</label>
                                                         <input type="text" class="form-control" name="comissao" placeholder="Informe sobre a comissao do contrato" autocomplete="off">
@@ -201,8 +201,9 @@
                                                     </div>
                                                     <div class="col-xs-12 col-lg-4">
                                                         <div class="form-group">
-                                                            <label for="safra">Safra</label>
-                                                            <input type="text" class="form-control" name="safra" placeholder="Informe a safra do produto." autocomplete="off">
+                                                            <label>Safra<br/></label><br/>
+                                                            <input type="radio" name="safra" autocomplete="off" value="atual">Atual<br/>
+                                                            <input type="radio" name="safra" autocomplete="off" value="novo">Nova<br/>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-12 col-lg-6">

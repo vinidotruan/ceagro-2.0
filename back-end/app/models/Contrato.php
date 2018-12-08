@@ -45,6 +45,7 @@ class Contrato extends Model
 
     public function __construct()
     {
+        
         $this->comprador();
         $this->vendedor();
         $this->produto();

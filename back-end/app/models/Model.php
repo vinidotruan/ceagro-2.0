@@ -27,4 +27,9 @@ class Model
         $response = App::get('db')->delete(static::$table, $campos);
         return "deletado com sucesso";
     }
+
+    public static function store($dados)
+    {
+        return App::get('db')->insert(static::$table, $dados);
+    }
 }

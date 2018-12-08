@@ -11,7 +11,7 @@ class ContratosController
     public function index()
     {
         $contratos = Contrato::get();
-
+        
         echo json_encode($contratos);
     }
 
@@ -21,7 +21,7 @@ class ContratosController
         echo json_encode($contrato);
     }
 
-    public function cadastrar($contrato)
+    public function store($contrato)
     {
         try {
             $contratoId = App::get('db')->insert('contratos', [

@@ -14,35 +14,13 @@ class ClientesController
         echo json_encode($clientes);
     }
 
-    public function buscarEnderecoEntrega($cliente)
-    {
-
-    }
-
-    public function buscarVendedores()
-    {
-        $vendedores = Cliente::vendedores();
-        $ambos = Cliente::ambos();
-        $vendedoresA = array_unique(array_merge($vendedores, $ambos), SORT_REGULAR);
-        echo json_encode($vendedoresA);
-    }
-
-    public function buscarCompradores()
-    {
-        $compradores = Cliente::compradores();
-        $ambos = Cliente::ambos();
-        $compradores = array_unique(array_merge($compradores, $ambos), SORT_REGULAR);
-
-        echo json_encode($compradores);
-    }
-
     public function show($id)
     {
         $cliente = Cliente::find(["id", $id]);
         echo json_encode($cliente);
     }
 
-    public function cadastrar($cliente)
+    public function store($cliente)
     {
         $clienteId = App::get('db')->insert('clientes', [
             'razao_social' => $cliente['razao_social'],
@@ -56,12 +34,6 @@ class ClientesController
         $ultimoCliente = Cliente::find(["id", $clienteId]);
 
         echo json_encode($ultimoCliente);
-    }
-
-    public function buscarBancos()
-    {
-        $bancos = App::get('db')->selectAll("bancos", Banco::class);
-        echo json_encode($bancos);
     }
 
     public function update($cliente)

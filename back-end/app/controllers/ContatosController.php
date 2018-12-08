@@ -22,7 +22,7 @@ class ContatosController
         echo json_encode($contatos);
     }
 
-    public function cadastrar($contato)
+    public function store($contato)
     {
         $contatoId = App::get('db')->insert('contatos', [
             'telefone' => $contato['telefone'],

@@ -20,7 +20,7 @@ class ProdutosController
         echo json_encode($tipos);
     }
 
-    public function cadastrar($produto)
+    public function store($produto)
     {
         $produtoId = App::get('db')->insert('produtos', [
             'tipo_id' => $produto['tipo_id'],

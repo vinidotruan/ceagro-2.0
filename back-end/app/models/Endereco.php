@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class EnderecoEntrega extends Model
+class Endereco extends Model
 {
 
     public $id;
@@ -15,5 +15,5 @@ class EnderecoEntrega extends Model
     public $estado;
     public $rua;
 
-    public static $table = "enderecos_entregas";
+    public static $table = "enderecos";
 }

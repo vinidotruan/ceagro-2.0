@@ -9,7 +9,8 @@ class EstabelecimentosController extends Controller {
     public function index($cliente = null)
     {
         if($cliente) {
-            $estabelecimentos = Estabelecimento::find(['cliente_id', $cliente]);
+
+            $estabelecimentos = Estabelecimento::get(['cliente_id', $cliente]);
         } else {
             $estabelecimentos = Estabelecimento::get();
         }
@@ -18,14 +19,14 @@ class EstabelecimentosController extends Controller {
 
     public function show($estabelecimento) 
     {
-        $estabelecimento = Estabelecimento::find(["id", $estabelecimento]);
+        $estabelecimento = Estabelecimento::get(["id", $estabelecimento]);
         return $this->responderJSON($estabelecimento);
     }
 
     public function store($estabelecimento)
     {
-        $estabelecimentoId = Estabelecimento::store($estabelecimento);
-        $estabelecimento = Estabelecimento::find(["id", $estabelecimentoId]);
+        Estabelecimento::store($estabelecimento);
+        $estabelecimento = Estabelecimento::find(['cliente_id', $estabelecimento['cliente_id']]);
         return $this->responderJSON($estabelecimento);
     }
 }

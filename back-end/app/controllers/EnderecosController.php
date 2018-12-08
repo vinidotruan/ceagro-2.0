@@ -3,8 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\App;
-use App\Models\EnderecoEntrega;
-use App\Models\EnderecoFaturamento;
+use App\Models\Endereco;
 use App\Models\Cliente;
 
 class EnderecosController
@@ -12,7 +11,7 @@ class EnderecosController
     public function index($cliente)
     {
         if ($cliente) {
-            $endereco = Cliente::find(["id", $cliente])->endereco();
+            $endereco = Endereco::find(["cliente_id", $cliente]);
         } else {
             $endereco = Endereco::get();
         }
@@ -20,38 +19,19 @@ class EnderecosController
     }
     public function store($endereco)
     {
-        $enderecoId = App::get('db')->insert('enderecos_faturamentos', [
-            'rua' => $endereco['rua'],
-            'numero' => $endereco['numero'],
-            'complemento' => $endereco['complemento'],
-            'bairro' => $endereco['bairro'],
-            'cidade' => $endereco['cidade'],
-            'estado' => $endereco['estado'],
-            'cep' => $endereco['cep'],
-            'cliente_id' => $endereco['cliente_id'],
-        ]);
-        $endereco = EnderecoFaturamento::find(["id", $enderecoId]);
+        $enderecoId = Endereco::store($endereco);
+        $endereco = Endereco::find(["id", $enderecoId]);
         echo json_encode($endereco);
 
     }
 
     public function update($endereco)
     {
-        $enderecoId = App::get('db')->update(
-            'enderecos_faturamentos',
-            [
-                'rua' => $endereco['rua'],
-                'numero' => $endereco['numero'],
-                'complemento' => $endereco['complemento'],
-                'bairro' => $endereco['bairro'],
-                'cidade' => $endereco['cidade'],
-                'estado' => $endereco['estado'],
-                'cep' => $endereco['cep'],
-            ],
-            ["id", $endereco['id']]
-        );
+        $enderecoId= $endereco['id'];
+        unset($endereco['endereco']);
+        $enderecoId = Endereco::update($endereco,["id", $enderecoId]);
 
-        $endereco = EnderecoFaturamento::find(["id", $enderecoId]);
+        $endereco = endereco::find(["id", $enderecoId]);
         echo json_encode($endereco);
 
     }

@@ -32,4 +32,9 @@ class Model
     {
         return App::get('db')->insert(static::$table, $dados);
     }
+
+    public static function update($dados, $campos = [])
+    {
+        return App::get('db')->update(static::$table, $dados, $campos);
+    }
 }

@@ -1,5 +1,4 @@
 var cliente = {};
-var contatos = [{}];
 
 function temCliente() {
     if (cliente) {
@@ -9,13 +8,12 @@ function temCliente() {
 }
 
 function formsDisable() {
-    $("#contatos :input").prop("disabled", true);
-    $("#contatos :button").hide();
-    $("#contatos").hide();
-    $("#enderecoFaturamento :input").prop("disabled", true);
-    $("#enderecoFaturamento :button").hide();
-    $("#enderecoEntrega :input").prop("disabled", true);
-    $("#enderecoEntrega :button").hide();
+    $("#estabelecimento :input").prop("disabled", true);
+    $("#estabelecimento :button").hide();
+    $("#endereco :input").prop("disabled", true);
+    $("#endereco :button").hide();
+    $("#endereco :input").prop("disabled", true);
+    $("#endereco :button").hide();
     $("#contasBancarias :input").prop("disabled", true);
     $("#contasBancarias :button").hide();
 }
@@ -23,6 +21,11 @@ function formsDisable() {
 function habilitarForm(formulario) {
     $(`#${formulario} :input`).prop("disabled", false);
     $(`#${formulario} :button`).show();
+}
+
+function desabilitarForm(formulario) {
+    $(`#${formulario} :input`).prop("disabled", true);
+    $(`#${formulario} :button`).prop("disabled", true);
 }
 
 function irPara(formulario) {
@@ -46,36 +49,35 @@ function compararFormCliente(cliente, formulario) {
 
 function atualizarBotoes() {
     $("#cliente :button").text("");
-    $("#enderecoEntrega :button").text("");
-    $("#enderecoFaturamento :button").text("");
+    $("#endereco :button").text("");
+    $("#estabelecimento :button").text("");
     $("#cliente :button").append("Atualizar").attr("onclick", "atualizar()");
-    if (cliente.enderecoEntrega !== null) {
-        $("#enderecoEntrega :button").append("Atualizar").attr("onclick", "atualizarEnderecoEnt()");
-    } else {
-        $("#enderecoEntrega :button").append("Cadastrar").attr("onclick", "cadastrarEnderecoEnt()");
+    $("#estabelecimento :button").append("Cadastrar").attr("onclick", "cadastrarEstabelecimento()");
+    $("#contas_bancarias :button").attr("onclick", "cadastrarContaBancaria()");
 
-    }
-    if (cliente.enderecoFaturamento !== null) {
-        $("#enderecoFaturamento :button").append("Atualizar").attr("onclick", "atualizarEnderecoFat()");
+    if (cliente.endereco !== null) {
+        $("#endereco :button").append("Atualizar").attr("onclick", "atualizarEndereco()");
     } else {
-        $("#enderecoFaturamento :button").append("Cadastrar").attr("onclick", "cadastrarEnderecoFat()");
+        $("#endereco :button").append("Cadastrar").attr("onclick", "cadastrarEndereco()");
 
     }
 }
 
 function verificarCliente() {
     cliente = JSON.parse(localStorage.getItem("cliente"));
-    localStorage.removeItem("cliente");
+    // localStorage.removeItem("cliente");
     if (temCliente()) {
         atualizarBotoes();
         buscarContas(cliente.id, () => {
             compararFormCliente(cliente, "cliente");
         });
-        buscarEnderecoEntrega(cliente.id, () => {
+
+        buscarEndereco(cliente.id, () => {
             compararFormCliente(cliente, "cliente");
             atualizarBotoes();
         });
-        buscarEnderecoFaturamento(cliente.id, () => {
+
+        buscarEstabelecimento(cliente.id, () => {
             compararFormCliente(cliente, "cliente");
             atualizarBotoes();
         });
@@ -85,18 +87,19 @@ function verificarCliente() {
     }
 }
 
-function buscarEnderecoEntrega(clienteId, callback = null) {
-    $.get(`../back-end/clientes/${clienteId}/enderecos-entrega`, function (response) {
-        cliente.enderecoEntrega = JSON.parse(response);
+function buscarEndereco(clienteId, callback = null) {
+    $.get(`../back-end/clientes/${clienteId}/enderecos`, function (response) {
+        cliente.endereco = JSON.parse(response);
         if (callback) {
             callback();
         }
     });
 }
 
-function buscarEnderecoFaturamento(clienteId, callback = null) {
-    $.get(`../back-end/clientes/${clienteId}/enderecos-faturamento`, function (response) {
-        cliente.enderecoFaturamento = JSON.parse(response);
+function buscarEstabelecimento(clienteId, callback = null) {
+    $.get(`../back-end/clientes/${clienteId}/estabelecimentos`, function (response) {
+        cliente.estabelecimentos = JSON.parse(response);
+        popularEstabelecimentos(cliente.estabelecimentos);
         if (callback) {
             callback();
         }
@@ -111,14 +114,6 @@ function buscarContas(clienteId, callback = null) {
             callback();
         }
     });
-}
-
-function popularContatos(contatos) {
-    $('#contatosLista .box-body').remove();
-    $.each(contatos, function (index, contato) {
-        var option = `<div class="box-body ">${contato.telefone} - ${contato.observacao}</div>`
-        $("#contatosLista").append(option)
-    })
 }
 
 function popularContas(contas) {
@@ -152,51 +147,69 @@ function mostrarModal() {
 function cadastrar() {
     mostrarModal();
     var dados = $('#cliente').serialize();
-    $.post("../back-end/clientes", dados, function (response) {
+    $.post("../back-end/clientes", dados, response => {
         cliente = JSON.parse(response);
-        console.log(response);
-        console.log("teste");
         $("#contatos").show();
-        esconderModal();
-        irPara("enderecoFaturamento");
-        habilitarForm("enderecoFaturamento");
-    });
+        irPara("endereco");
+        habilitarForm("endereco");
+    }).done(
+        () => desabilitarForm("cliente")
+    ).always(
+        () => esconderModal()
+    ).fail(
+        () => exibirErro("endereco")
+    );
 }
 
-function cadastrarContato() {
-    $(`#contatos`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+function cadastrarEstabelecimento() {
+    $(`#estabelecimento`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     mostrarModal();
-    var dados = $("#contatos").serialize();
-    $.post("../back-end/clientes/contatos", dados, function (response) {
+    var dados = $("#estabelecimento").serialize();
+
+    $.post("../back-end/estabelecimentos", dados, function (response) {
         esconderModal();
-        contatos = JSON.parse(response);
-        popularContatos(contatos);
-    });
+        estabelecimentos = JSON.parse(response);
+        buscarEstabelecimento(cliente.id);
+    }).done(() => {
+        desabilitarForm("estabelecimento");
+        habilitarForm("contasBancarias");
+    }).always(
+        () => esconderModal()
+    ).fail(
+        () => exibirErro("estabelecimento")
+    );
 }
 
-function cadastrarEnderecoFat() {
-    $(`#enderecoFaturamento`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
-    mostrarModal();
-    var dados = $("#enderecoFaturamento").serialize();
+function popularEstabelecimentos(estabelecimentos) {
+    $('#estabelecimentos tr').remove();
+    for (const estabelecimento of estabelecimentos) {
+        var newRow = $("<tr class='item'>");
+        var cols = "";
+        cols += `<td>${estabelecimento.razao_social}</td>`;
+        cols += `<td>${estabelecimento.cnpj}</td>`;
+        cols += `<td>${estabelecimento.inscricao_estadual}</td>`;
+        newRow.append(cols);
+        $("#estabelecimentos").append(newRow)
+    }
+}
 
-    $.post("../back-end/clientes/enderecos-faturamentos", dados, function (response) {
+function cadastrarEndereco() {
+    $(`#endereco`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    mostrarModal();
+    var dados = $("#endereco").serialize();
+
+    $.post("../back-end/clientes/enderecos", dados, function (response) {
         esconderModal();
         faturamento = JSON.parse(response);
-        irPara("enderecoEntrega");
-        habilitarForm("enderecoEntrega");
-    });
-}
-
-function cadastrarEnderecoEnt() {
-    $(`#enderecoEntrega`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
-    mostrarModal();
-    var dados = $("#enderecoEntrega").serialize();
-    $.post("../back-end/clientes/enderecos-entregas", dados, function (response) {
-        esconderModal();
-        entrega = JSON.parse(response);
-        irPara("contasBancarias");
-        habilitarForm("contasBancarias");
-    });
+        irPara("estabelecimento");
+        habilitarForm("estabelecimento");
+    }).done(
+        () => desabilitarForm("endereco")
+    ).always(
+        () => esconderModal()
+    ).fail(
+        () => exibirErro("endereco")
+    );
 }
 
 function cadastrarContaBancaria() {
@@ -210,7 +223,6 @@ function cadastrarContaBancaria() {
 }
 
 function atualizar() {
-    $(`#cliente`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     var dados = $('#cliente').serialize();
     $.ajax({
         url: `../back-end/clientes/${cliente.id}`,
@@ -221,32 +233,23 @@ function atualizar() {
     });
 }
 
-function atualizarEnderecoFat() {
-    $(`#enderecoFaturamento`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
-    $(`#enderecoFaturamento`).append(`<input hidden name='id' value=${cliente.enderecoFaturamento.id}>`);
-    var dados = $("#enderecoFaturamento").serialize();
-
+function atualizarEndereco() {
+    $(`#endereco`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    $(`#endereco`).append(`<input hidden name='id' value=${cliente.endereco.id}>`);
+    var dados = $("#endereco").serialize();
     $.ajax({
-        url: `../back-end/clientes/enderecos-faturamentos/${cliente.enderecoFaturamento.id}`,
-        type: 'PUT',
-        data: dados,
-        success: function (response) {
-            faturamento = JSON.parse(response);
-
-        }
-    });
-}
-
-function atualizarEnderecoEnt() {
-    $(`#enderecoEntrega`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
-    $(`#enderecoEntrega`).append(`<input hidden name='id' value=${cliente.enderecoEntrega.id}>`);
-    var dados = $("#enderecoEntrega").serialize();
-    $.ajax({
-        url: `../back-end/clientes/enderecos-entregas/${cliente.enderecoEntrega.id}`,
+        url: `../back-end/clientes/enderecos/${cliente.endereco.id}`,
         type: 'PUT',
         data: dados,
         success: function (response) {
             entrega = JSON.parse(response);
         }
     });
+}
+
+function exibirErro(form) {
+    $(`#${form} .erro`).show("slow");
+    setTimeout(() => {
+        $(".erro").hide("slow");
+    }, 2000);
 }

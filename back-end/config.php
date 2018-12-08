@@ -18,10 +18,10 @@ if (!$producao) {
 return [
     'database' => [
         'connection' => "mysql:host=sistemaceagro.mysql.dbaas.com.br",
-        'dbname' => "sistemaceagro",
+        'dbname' => "ceagro01",
         'charset' => "utf8",
-        'username' => "sistemaceagro",
-        'password' => "tVSCV6KiC4izpv",
+        'username' => "ceagro01",
+        'password' => "saopio18",
         'options' => [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         ],

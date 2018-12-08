@@ -5,6 +5,7 @@ $(document).ready(function () {
 function buscar() {
     $.get("../back-end/clientes", function (response) {
         clientes = JSON.parse(response);
+    }).done(() => {
         popularPesquisa(clientes, () => {
             $(function () {
                 $('#clientes').DataTable();

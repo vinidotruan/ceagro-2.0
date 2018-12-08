@@ -80,6 +80,7 @@ class QueryBuilder
 
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
         } catch (PDOException $exception) {
+            http_response_code(500);
             die($exception);
         }
     }
@@ -101,7 +102,8 @@ class QueryBuilder
             return $this->pdo->lastInsertId();
 
         } catch (\Exception $e) {
-            return [$e->getMessage(), $sql, $dados];
+            http_response_code(500);
+            die($e->getMessage());
         }
     }
 

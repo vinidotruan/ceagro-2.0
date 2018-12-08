@@ -1,9 +1,13 @@
-function adaptar() {
-    $.ajax({
-        url: `../back-end/adaptacao`,
-        type: 'GET',
-        success: function (response) {
-            console.log(response);
-        }
-    });
-}
+$.get("../back-end/clientes", function (response) {
+    clientes = response;
+    $('#clientes').prop('Counter', 0).animate({
+        Counter: $(this).text()
+    }, {
+
+            duration: 4000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+});

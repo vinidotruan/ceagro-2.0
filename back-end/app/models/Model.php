@@ -30,7 +30,22 @@ class Model
 
     public static function store($dados)
     {
-        return App::get('db')->insert(static::$table, $dados);
+        $data = self::verifyFields($dados);
+        return App::get('db')->insert(static::$table, $data);
+    }
+
+    private static function verifyFields($data)
+    {
+        $reflection = new \ReflectionClass(static::class);
+        $instance = (array) $reflection->newInstanceWithoutConstructor();
+        foreach ($instance as $instanceKey => $field) {
+            foreach ($data as $dataKey => $value) {
+                if(!array_key_exists($dataKey, $instance)) {
+                    unset($data[$dataKey]);
+                }
+            }
+        }
+        return $data;
     }
 
     public static function update($dados, $campos = [])

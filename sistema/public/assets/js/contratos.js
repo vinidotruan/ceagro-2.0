@@ -55,8 +55,7 @@ function verificarContrato() {
 function buscarDados(callback) {
     buscarProdutos();
     buscarUnidadesDeMedidas();
-    buscarVendedores();
-    buscarCompradores(_ => {
+    buscarClientes(_ => {
         callback();
         buscarContasBancaria();
     });
@@ -157,28 +156,15 @@ function atualizar() {
     });
 }
 
-function buscarVendedores() {
+function buscarClientes(callback) {
     $.ajax({
-        url: "../back-end/vendedores",
+        url: "../back-end/clientes",
         type: "get",
         dataType: "json",
         success: response => {
-            vendedores = response;
-            popularVendedores(vendedores);
-            $(".overlay-vendedores").remove();
-        }
-    });
-}
-
-function buscarCompradores(callback) {
-    $.ajax({
-        url: "../back-end/compradores",
-        type: "get",
-        dataType: "json",
-        success: response => {
-            compradores = response;
-            popularCompradores(compradores);
-            $(".overlay-compradores").remove();
+            clientes = response;
+            popularClientes(clientes);
+            $(".overlay").remove();
             callback();
 
         }
@@ -214,15 +200,15 @@ function popularContasBancarias(contas) {
     }
 }
 
-function popularCompradores(compradores) {
+function popularClientes(compradores) {
     $.each(compradores, function (index, comprador) {
         if (comprador.cnpj) {
             var cnpjs = '<option value="' + comprador.cnpj + '">' + comprador.cnpj + '</option>';
-            $("#comprador #cnpjs").append(cnpjs)
+            $(".cliente #cnpjs").append(cnpjs)
         }
         if (comprador.razao_social) {
             var razoes = '<option value="' + comprador.razao_social + '">' + comprador.razao_social + '</option>';
-            $("#comprador #razoes").append(razoes)
+            $(".cliente #razoes").append(razoes)
         }
     })
 }
@@ -280,9 +266,9 @@ function popularProdutos(produtos) {
 }
 
 function selecionarVendedor(campo) {
-    vendedor = _.find(vendedores, {
+    vendedor = _.find(clientes, {
         'cnpj': $(`#vendedor select[name='${campo}'] option:selected`).text()
-    }) || _.find(vendedores, {
+    }) || _.find(clientes, {
         'razao_social': $(`#vendedor select[name='${campo}'] option:selected`).text()
     });
     (campo === 'cnpj') ? mudarSelectRazoes('vendedor') : mudarSelectCnpjs('vendedor');
@@ -290,9 +276,9 @@ function selecionarVendedor(campo) {
 }
 
 function selecionarComprador(campo) {
-    comprador = _.find(compradores, {
+    comprador = _.find(clientes, {
         'cnpj': $(`#comprador select[name='${campo}'] option:selected`).text()
-    }) || _.find(compradores, {
+    }) || _.find(clientes, {
         'razao_social': $(`#comprador select[name='${campo}'] option:selected`).text()
     });
     (campo === 'cnpj') ? mudarSelectRazoes('comprador') : mudarSelectCnpjs('comprador');

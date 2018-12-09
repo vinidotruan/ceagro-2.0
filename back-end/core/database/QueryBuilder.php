@@ -73,9 +73,10 @@ class QueryBuilder
 
     public function find($tabela, $campos, $classe)
     {
+        $campos = implode(' = ', $campos);
+        $query = "select * from {$tabela} where {$campos}";
         try {
-            $campos = implode(' = ', $campos);
-            $statement = $this->pdo->prepare("select * from {$tabela} where {$campos}");
+            $statement = $this->pdo->prepare($query);
             $statement->execute();
 
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);

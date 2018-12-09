@@ -25,7 +25,7 @@
         <div class="col-lg-4 col-xs-8">
           <div class="small-box bg-aqua">
             <div class="inner" id="contratos">
-              <h3>1460</h3>
+              <h3></h3>
 
               <p>Contratos atuais</p>
             </div>
@@ -38,7 +38,7 @@
         <div class="col-lg-4 col-xs-8">
           <div class="small-box bg-green">
             <div class="inner" id="contratos_fut">
-              <h3>160</h3>
+              <h3>-</h3>
 
               <p>Contratos futuros</p>
             </div>
@@ -51,7 +51,7 @@
         <div class="col-lg-4 col-xs-8">
           <div class="small-box bg-yellow">
             <div class="inner" id="clientes">
-              <h3>44</h3>
+              <h3></h3>
 
               <p>Clientes</p>
             </div>

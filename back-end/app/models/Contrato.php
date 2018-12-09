@@ -51,7 +51,6 @@ class Contrato extends Model
 
     public function __construct()
     {
-        
         $this->comprador();
         $this->vendedor();
         $this->produto();
@@ -89,15 +88,5 @@ class Contrato extends Model
     public function contaBancaria()
     {
         return $this->contaBancaria = ContaBancaria::find(['id', $this->vendedor_conta_bancaria_id]);
-    }
-
-    public function estabelecimentoVendedor()
-    {
-        return $this->vendedorEstabelecimento = Estabelecimento::find(["id", $this->vendedor_estabelecimento_id]);
-    }
-
-    public function estabelecimentoComprador()
-    {
-        return $this->compradorEstabelecimento = Estabelecimento::find(["id", $this->comprador_estabelecimento_id]);
     }
 }

@@ -12,7 +12,7 @@ class ContratosController extends Controller
     {
         $contratos = Contrato::get();
         
-        echo json_encode($contratos);
+        return $this->responderJSON($contratos);
     }
 
     public function show($contrato)
@@ -31,7 +31,7 @@ class ContratosController extends Controller
             return $this->responderJSON($ultimoContrato);
 
         } catch (\Exception $exception) {
-            echo json_encode($exception);
+            return $this->responderJSON($exception);
         }
     }
 
@@ -53,7 +53,7 @@ class ContratosController extends Controller
             return $this->responderJSON($contrato);
 
         } catch (\Exception $exception) {
-            echo json_encode($exception);
+            return $this->responderJSON($exception);
         }
     }
 
@@ -67,7 +67,7 @@ class ContratosController extends Controller
 
             $adendos = Adendo::get(["contrato_id", $adendo['contrato_id']]);
 
-            echo json_encode($adendos);
+            return $this->responderJSON($adendos);
         } catch (\Exception $e) {
             die($e);
         }
@@ -79,7 +79,7 @@ class ContratosController extends Controller
             $mensagem = Adendo::delete(["id", $adendo]);
 
             $adendos = Adendo::get(['contrato_id', $contratoId]);
-            echo json_encode($adendos);
+            return $this->responderJSON($adendos);
         } catch (\Exception $e) {
             die($e);
         }

@@ -52,7 +52,7 @@ function atualizarBotoes() {
     $("#endereco :button").text("");
     $("#estabelecimento :button").text("");
     $("#cliente :button").append("Atualizar").attr("onclick", "atualizar()");
-    $("#estabelecimento :button").append("Cadastrar").attr("onclick", "cadastrarEstabelecimento()");
+    //$("#estabelecimento :button").append("Cadastrar").attr("onclick", "cadastrarEstabelecimento()");
     $("#contas_bancarias :button").attr("onclick", "cadastrarContaBancaria()");
 
     if (cliente.endereco !== null) {
@@ -65,7 +65,7 @@ function atualizarBotoes() {
 
 function verificarCliente() {
     cliente = JSON.parse(localStorage.getItem("cliente"));
-    // localStorage.removeItem("cliente");
+    localStorage.removeItem("cliente");
     if (temCliente()) {
         atualizarBotoes();
         buscarContas(cliente.id, () => {
@@ -77,10 +77,6 @@ function verificarCliente() {
             atualizarBotoes();
         });
 
-        buscarEstabelecimento(cliente.id, () => {
-            compararFormCliente(cliente, "cliente");
-            atualizarBotoes();
-        });
     } else {
         formsDisable();
         $(".btn").append("Salvar");
@@ -201,8 +197,8 @@ function cadastrarEndereco() {
     $.post("../back-end/clientes/enderecos", dados, function (response) {
         esconderModal();
         faturamento = JSON.parse(response);
-        irPara("estabelecimento");
-        habilitarForm("estabelecimento");
+        irPara("contasBancarias");
+        habilitarForm("contasBancarias");
     }).done(
         () => desabilitarForm("endereco")
     ).always(

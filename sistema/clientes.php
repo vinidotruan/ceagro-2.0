@@ -26,6 +26,24 @@
                                                 <input type="text" class="form-control" name="nome_fantasia" placeholder="Digite o nome fantasia do seu cliente" autocomplete="off" required>
                                             </div>
                                         </div>
+                                        <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <label for="razao_social">Razão Social</label>
+                                                <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <label for="cnpj">CNPJ</label>
+                                                <input type="text" class="form-control" name="cnpj" placeholder="Digite o cnpj do estabelecimento" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <label for="inscricao_estadual">Inscrição Estadual</label>
+                                                <input type="text" class="form-control" name="inscricao_estadual" placeholder="Digite a inscrição estadual do estabelecimento" autocomplete="off">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="box-footer">
@@ -38,7 +56,7 @@
                 </div>
 
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 endereco">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 endereco">
                     <section class="invoice">
                         <div class="row">
                             <div class="col-xs-12">
@@ -112,64 +130,8 @@
                     </section>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 estabelecimento">
-                    <section class="invoice">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h2 class="page-header">
-                                <i class="fa fa-globe"></i> Estabelecimentos
-                                </h2>
-                            </div>
-                        </div>
-                        <div class="row invoice-info">
-                            <form role="form" id="estabelecimento">
-                                <div class="box-body">
-                                    <div class="form-row">
-                                        <div class="col-xs-4">
-                                            <div class="form-group">
-                                                <label for="razao_social">Razão Social</label>
-                                                <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" autocomplete="off">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-4">
-                                            <div class="form-group">
-                                                <label for="cnpj">CNPJ</label>
-                                                <input type="text" class="form-control" name="cnpj" placeholder="Digite o cnpj do estabelecimento" autocomplete="off">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-4">
-                                            <div class="form-group">
-                                                <label for="inscricao_estadual">Inscrição Estadual</label>
-                                                <input type="text" class="form-control" name="inscricao_estadual" placeholder="Digite a inscrição estadual do estabelecimento" autocomplete="off">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>                               
-                                <div class="box-footer">
-                                    <?php require ('partials/components/erro.html') ?>
-                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarEstabelecimento()"></button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Razão Social</th>
-                                            <th>CNPJ</th>
-                                            <th>Inscrição Estadual</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="estabelecimentos">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 contasBancarias">
+               
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 contasBancarias">
 
                     <section class="invoice">
                         <div class="row">

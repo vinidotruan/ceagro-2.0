@@ -6,55 +6,32 @@ use App\Core\App;
 use App\Models\Contrato;
 use App\Models\Adendo;
 
-class ContratosController
+class ContratosController extends Controller
 {
     public function index()
     {
         $contratos = Contrato::get();
-
-        echo json_encode($contratos);
+        
+        return $this->responderJSON($contratos);
     }
 
     public function show($contrato)
     {
         $contrato = Contrato::find(["id", $contrato]);
-        echo json_encode($contrato);
+        return $this->responderJSON($contrato);
     }
 
-    public function cadastrar($contrato)
+    public function store($contrato)
     {
         try {
-            $contratoId = App::get('db')->insert('contratos', [
-                'numero_confirmacao' => $contrato['numero_confirmacao'] ?? "",
-                'vendedor_id' => $contrato['vendedor_id'],
-                'comprador_id' => $contrato['comprador_id'],
-                'produto_id' => $contrato['produto_id'],
-                'unidade_medida_id' => $contrato['unidade_medida_id'],
-                'safra' => $contrato['safra'] ?? "",
-                'quantidade' => $contrato['quantidade'] ?? "",
-                'descricao' => $contrato['descricao'] ?? "",
-                'preco' => $contrato['preco'] ?? "",
-                'tipo_embarque' => $contrato['tipo_embarque'] ?? "",
-                'local' => $contrato['local'] ?? "",
-                'data_embarque' => $contrato['data_embarque'] ?? "",
-                'pagamento' => $contrato['pagamento'] ?? "",
-                'peso_qualidade' => $contrato['peso_qualidade'] ?? "",
-                'cfop' => $contrato['cfop'] ?? "",
-                'solicitacao_cotas' => $contrato['solicitacao_cotas'] ?? "",
-                'carregamento' => $contrato['carregamento'] ?? "",
-                'assinatura_vendedor' => $contrato['assinatura_vendedor'] ?? "",
-                'vendedor_conta_bancaria_id' => $contrato['vendedor_conta_bancaria_id'] ?? "",
-                'assinatura_comprador' => $contrato['assinatura_comprador'] ?? "",
-                'observacao' => $contrato['observacao'] ?? "",
-                'comissao' => $contrato['comissao'] ?? "",
-            ]);
+            $contratoId = Contrato::store($contrato);
 
-            $ultimoContrato = Contrato::find(["id", $contratoId]);
+            // $ultimoContrato = Contrato::find(["id", $contratoId]);
 
-            echo json_encode($ultimoContrato);
+            return $this->responderJSON($ultimoContrato);
 
         } catch (\Exception $exception) {
-            echo json_encode($exception);
+            return $this->responderJSON($exception);
         }
     }
 
@@ -62,43 +39,21 @@ class ContratosController
     {
 
         try {
-            $contratoId = App::get('db')->update(
-                'contratos',
-                [
-                    'numero_confirmacao' => $contratos['numero_confirmacao'] ?? "",
-                    'vendedor_id' => $contratos['vendedor_id'],
-                    'comprador_id' => $contratos['comprador_id'],
-                    'produto_id' => $contrato['produto_id'],
-                    'unidade_medida_id' => $contrato['unidade_medida_id'],
-                    'safra' => $contrato['safra'] ?? "",
-                    'quantidade' => $contrato['quantidade'] ?? "",
-                    'descricao' => $contrato['descricao'] ?? "",
-                    'preco' => $contrato['preco'] ?? "",
-                    'tipo_embarque' => $contrato['tipo_embarque'] ?? "",
-                    'local' => $contrato['local'] ?? "",
-                    'data_embarque' => $contrato['data_embarque'] ?? "",
-                    'peso_qualidade' => $contrato['peso_qualidade'] ?? "",
-                    'cfop' => $contrato['cfop'] ?? "",
-                    'solicitacao_cotas' => $contrato['solicitacao_cotas'] ?? "",
-                    'carregamento' => $contrato['carregamento'] ?? "",
-                    'assinatura_vendedor' => $contrato['assinatura_vendedor'] ?? "",
-                    'vendedor_conta_bancaria_id' => $contrato['vendedor_conta_bancaria_id'] ?? "",
-                    'assinatura_comprador' => $contrato['assinatura_comprador'] ?? "",
-                    'observacao' => $contrato['observacao'] ?? "",
-                    'comissao' => $contrato['comissao'] ?? "",
-                ],
-                ["id", $contrato['contrato']]
+            $contratoId = $contrato['contrato'];
+            unset($contrato['contrato']);
+
+            $contrato = Contrato::update(
+                $contrato,
+                ["id", $contrato]
             );
 
-            $contrato = App::get('db')->selectWhere(
-                'contratos',
-                ["id", $contratoId]
-            )[0];
+            
+            $contrato = Contrato::find(["id", $contratoId]);
 
-            echo json_encode($contrato);
+            return $this->responderJSON($contrato);
 
         } catch (\Exception $exception) {
-            echo json_encode($exception);
+            return $this->responderJSON($exception);
         }
     }
 
@@ -112,7 +67,7 @@ class ContratosController
 
             $adendos = Adendo::get(["contrato_id", $adendo['contrato_id']]);
 
-            echo json_encode($adendos);
+            return $this->responderJSON($adendos);
         } catch (\Exception $e) {
             die($e);
         }
@@ -124,7 +79,7 @@ class ContratosController
             $mensagem = Adendo::delete(["id", $adendo]);
 
             $adendos = Adendo::get(['contrato_id', $contratoId]);
-            echo json_encode($adendos);
+            return $this->responderJSON($adendos);
         } catch (\Exception $e) {
             die($e);
         }

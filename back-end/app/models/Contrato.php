@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Core\App;
 use App\Models\Cliente;
 use App\Models\Produto;
+use App\Models\Estabelecimento;
+use App\Models\Adendo;
 
 class Contrato extends Model
 {
@@ -33,9 +35,13 @@ class Contrato extends Model
     public $valor_contrato;
     public $peso_total;
     public $vendedor_conta_bancaria_id;
+    public $vendedor_estabelecimento_id;
+    public $comprador_estabelecimento_id;
 
     public $adendos;
     public $comprador;
+    public $compradorEstabelecimento;
+    public $vendedorEstabelecimento;
     public $contaBancaria;
     public $vendedor;
     public $produto;
@@ -73,7 +79,8 @@ class Contrato extends Model
     {
         return $this->adendos = Adendo::get(['contrato_id', $this->id]);
     }
-    public function unidade(){
+    public function unidade()
+    {
 
         return $this->unidadeMedida = UnidadeMedida::find(["id", $this->unidade_medida_id]);
     }

@@ -27,4 +27,29 @@ class Model
         $response = App::get('db')->delete(static::$table, $campos);
         return "deletado com sucesso";
     }
+
+    public static function store($dados)
+    {
+        $data = self::verifyFields($dados);
+        return App::get('db')->insert(static::$table, $data);
+    }
+
+    private static function verifyFields($data)
+    {
+        $reflection = new \ReflectionClass(static::class);
+        $instance = (array) $reflection->newInstanceWithoutConstructor();
+        foreach ($instance as $instanceKey => $field) {
+            foreach ($data as $dataKey => $value) {
+                if(!array_key_exists($dataKey, $instance)) {
+                    unset($data[$dataKey]);
+                }
+            }
+        }
+        return $data;
+    }
+
+    public static function update($dados, $campos = [])
+    {
+        return App::get('db')->update(static::$table, $dados, $campos);
+    }
 }

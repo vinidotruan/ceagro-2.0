@@ -19,7 +19,7 @@ class ContasBancariasController
         echo json_encode($contas);
     }
 
-    public function cadastrar($conta)
+    public function store($conta)
     {
         $contaId = App::get('db')->insert('contas_bancarias', [
             "cliente_id" => intval($conta["cliente_id"]),

@@ -1,5 +1,5 @@
 <?php
-$producao = true;
+$producao = false;
 if (!$producao) {
     return [
         'database' => [
@@ -12,18 +12,20 @@ if (!$producao) {
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             ],
         ],
+        'rotas' => 'ceagro/back-end/'
     ];
 }
 
 return [
     'database' => [
         'connection' => "mysql:host=sistemaceagro.mysql.dbaas.com.br",
-        'dbname' => "sistemaceagro",
+        'dbname' => "ceagro",
         'charset' => "utf8",
-        'username' => "sistemaceagro",
-        'password' => "tVSCV6KiC4izpv",
+        'username' => "ceagro01",
+        'password' => "saopio18",
         'options' => [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         ],
     ],
+    'rotas' => 'back-end'
 ];

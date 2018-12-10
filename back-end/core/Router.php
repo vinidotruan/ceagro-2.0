@@ -91,6 +91,7 @@ class Router
             }
 
         }
+        http_response_code(400);
         throw new \Exception('Rota inválida');
 
     }

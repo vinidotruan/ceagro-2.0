@@ -26,26 +26,20 @@
                                             <div class="form-row">
                                                 <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
-                                                        <label for="numero_confirmacao">Número de confirmação</label>
-                                                        <input type="text" class="form-control" name="numero_confirmacao" placeholder="Digite o número do contrato" autocomplete="off">
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12 col-lg-2">
-                                                    <div class="form-group">
                                                         <label for="cfop">CFOP</label>
-                                                        <input type="text" class="form-control" name="cfop" placeholder="Digite o CFOP" autocomplete="off">
+                                                        <input type="text" class="form-control" name="cfop" placeholder="Digite o CFOP" autocomplete="off" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-12 col-lg-3">
+                                                <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="data_embarque">Data do Embarque</label>
-                                                        <input type="text" class="form-control" name="data_embarque" placeholder="Digite a data do contrato" autocomplete="off">
+                                                        <input type="text" class="form-control" name="data_embarque" placeholder="Digite a data do contrato" autocomplete="off" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-12 col-lg-3">
+                                                <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="comissao">Comissão</label>
-                                                        <input type="text" class="form-control" name="comissao" placeholder="Informe sobre a comissao do contrato" autocomplete="off">
+                                                        <input type="text" class="form-control" name="comissao" placeholder="Informe sobre a comissao do contrato" autocomplete="off" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -53,19 +47,19 @@
                                                 <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="tipo_embarque">Tipo de Embarque</label>
-                                                        <input type="text" class="form-control" name="tipo_embarque" placeholder="Digite o tipo de embarque" autocomplete="off">
+                                                        <input type="text" class="form-control" name="tipo_embarque" placeholder="Digite o tipo de embarque" autocomplete="off" required>
                                                     </div>
                                                </div>
                                                 <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="local">Local</label>
-                                                        <input type="text" class="form-control" name="local" placeholder="Digite o local" autocomplete="off">
+                                                        <input type="text" class="form-control" name="local" placeholder="Digite o local" autocomplete="off" required>
                                                     </div>
                                                </div>
                                                 <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
                                                         <label for="solicitacao_cotas">Solicitacao de Cotas</label>
-                                                        <input type="text" class="form-control" name="solicitacao_cotas" placeholder="Digite o local" autocomplete="off">
+                                                        <input type="text" class="form-control" name="solicitacao_cotas" placeholder="Digite o local" autocomplete="off" required>
                                                     </div>
                                                </div>
                                             </div>
@@ -87,7 +81,7 @@
                         <div class="row">
                             <!-- Dados do Vendedor -->
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <section class="invoice box" id="vendedor" style="width: auto">
+                                <section class="invoice box cliente" id="vendedor" style="width: auto">
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <h2 class="page-header">
@@ -101,39 +95,39 @@
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="cnpj">Cnpj</label>
-                                                        <select class="form-control select2" name="cnpj" style="width: 100%;" id="cnpjs" onchange="selecionarVendedor('cnpj')"></select>
+                                                        <select class="form-control select2" name="cnpj" style="width: 100%;" id="cnpjs" onchange="selecionarVendedor('cnpj')" required></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="razao_social">Razão Social</label>
-                                                        <select class="form-control select2" name="razao_social" style="width: 100%;" id="razoes" onchange="selecionarVendedor('razao_social')"></select>
+                                                        <select class="form-control select2" name="razao_social" style="width: 100%;" id="razoes" onchange="selecionarVendedor('razao_social')" required></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="vendedor_conta_bancaria_id">Contas Bancárias</label>
-                                                        <select class="form-control select2" name="vendedor_conta_bancaria_id contaBancaria" style="width: 100%;" id="contas" onchange="selecionarConta(this.value)"></select>
+                                                        <select class="form-control select2" name="vendedor_conta_bancaria_id contaBancaria" style="width: 100%;" id="contas" onchange="selecionarConta(this.value)" required></select>
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="assinatura">Assinatura do Vendedor</label>
-                                                        <input type="text" class="form-control" name="assinatura_vendedor" placeholder="Digite a Assinatura do Vendedor" autocomplete="off">
+                                                        <input type="text" class="form-control" name="assinatura_vendedor" placeholder="Digite a Assinatura do Vendedor" autocomplete="off" required>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="overlay overlay-vendedores">
+                                    <div class="overlay overlay">
                                         <i class="fa fa-refresh fa-spin"></i>
                                     </div>
                                 </section>
                             </div>
                             <!-- Dados do Comprador -->
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <section class="invoice box" id="comprador" style="width: auto">
+                                <section class="invoice box cliente" id="comprador" style="width: auto">
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <h2 class="page-header">
@@ -147,25 +141,25 @@
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="cnpj">Cnpj</label>
-                                                        <select class="form-control select2" name="cnpj" style="width: 100%;" id="cnpjs" onchange="selecionarComprador('cnpj')"></select>
+                                                        <select class="form-control select2" name="cnpj" style="width: 100%;" id="cnpjs" onchange="selecionarComprador('cnpj')" required></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="razao_social">Razão Social</label>
-                                                        <select class="form-control select2" name="razao_social" style="width: 100%;" id="razoes" onchange="selecionarComprador('razao_social')"></select>
+                                                        <select class="form-control select2" name="razao_social" style="width: 100%;" id="razoes" onchange="selecionarComprador('razao_social')" required></select>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label for="assinatura">Assinatura do Comprador</label>
-                                                        <input type="text" class="form-control" name="assinatura_comprador" placeholder="Digite a Assinatura do Comprador" autocomplete="off">
+                                                        <input type="text" class="form-control" name="assinatura_comprador" placeholder="Digite a Assinatura do Comprador" autocomplete="off" required>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="overlay overlay-compradores">
+                                    <div class="overlay overlay">
                                         <i class="fa fa-refresh fa-spin"></i>
                                     </div>
                                 </section>
@@ -190,31 +184,32 @@
                                                     <div class="col-xs-12 col-lg-4">
                                                         <div class="form-group">
                                                             <label for="cnpj">Produto</label>
-                                                            <select class="form-control select2" name="produto_id" style="width: 100%;" id="produtos" onchange="selecionarProduto()"></select>
+                                                            <select class="form-control select2" name="produto_id" style="width: 100%;" id="produtos" onchange="selecionarProduto()" required></select>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-12 col-lg-4">
                                                         <div class="form-group">
                                                             <label for="unidade_medida_id">Unidades</label>
-                                                            <select class="form-control select2" name="unidade_medida_id" style="width: 100%;" id="unidades"></select>
+                                                            <select class="form-control select2" name="unidade_medida_id" style="width: 100%;" id="unidades" required></select>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-12 col-lg-4">
                                                         <div class="form-group">
-                                                            <label for="safra">Safra</label>
-                                                            <input type="text" class="form-control" name="safra" placeholder="Informe a safra do produto." autocomplete="off">
+                                                            <label>Safra<br/></label><br/>
+                                                            <input type="radio" name="safra" autocomplete="off" value="atual">Atual<br/>
+                                                            <input type="radio" name="safra" autocomplete="off" value="novo">Nova<br/>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-12 col-lg-6">
                                                         <div class="form-group">
                                                             <label for="">Quantidade</label>
-                                                            <input type="text" class="form-control" name="quantidade" placeholder="Digite a quantidade do produto">
+                                                            <input type="text" class="form-control" name="quantidade" placeholder="Digite a quantidade do produto" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-12 col-lg-6">
                                                         <div class="form-group">
-                                                            <label for="preco">Preco</label>
-                                                            <input type="text" class="form-control" name="preco" placeholder="Digite o preco" autocomplete="off">
+                                                            <label for="preco">Preço</label>
+                                                            <input type="text" class="form-control" name="preco" placeholder="Digite o preco" autocomplete="off" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -222,13 +217,13 @@
                                                     <div class="col-xs-6">
                                                         <div class="form-group">
                                                             <label for="pagamento">Pagamento</label>
-                                                            <textarea type="text" class="form-control" name="pagamento" rows="3" placeholder="Digite as informações sobre o pagamento"></textarea>
+                                                            <textarea type="text" class="form-control" name="pagamento" rows="3" placeholder="Digite as informações sobre o pagamento" required></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-12 col-lg-6">
                                                         <div class="form-group">
                                                             <label for="peso_qualidade">Peso & Qualidade</label>
-                                                            <textarea type="text" class="form-control" name="peso_qualidade" placeholder="Digite o peso total" rows="3"></textarea>
+                                                            <textarea type="text" class="form-control" name="peso_qualidade" placeholder="Digite o peso total" rows="3" required></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

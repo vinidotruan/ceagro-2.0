@@ -17,7 +17,7 @@ function popularPesquisa(contratos, callback = null) {
             <td class="item">${contrato.comprador.razao_social}</td>
             <td class="item">${contrato.vendedor.razao_social}</td>
             <td class="item">${contrato.produto.nome}</td>
-            <td><a href="../back-end/pdfs/contratos/${contrato.id}" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" aria-hidden="true" style="color:blue"></i></a></td>
+            <td style="text-align:center"><a href="../back-end/pdfs/contratos/${contrato.id}" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" aria-hidden="true" style="color:blue"></i></a></td>
         </tr>`;
 
         $("#contratos tbody").append(linha);
@@ -33,16 +33,5 @@ function selecionarContrato(contrato) {
         contrato = JSON.parse(response);
         localStorage.setItem('contrato', JSON.stringify(contrato));
         $(location).attr('href', 'contratos.php');
-    });
-}
-
-function filtrar() {
-    $(document).ready(function () {
-        $("#filtro").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#contratos tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
     });
 }

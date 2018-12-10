@@ -73,13 +73,15 @@ class QueryBuilder
 
     public function find($tabela, $campos, $classe)
     {
+        $campos = implode(' = ', $campos);
+        $query = "select * from {$tabela} where {$campos}";
         try {
-            $campos = implode(' = ', $campos);
-            $statement = $this->pdo->prepare("select * from {$tabela} where {$campos}");
+            $statement = $this->pdo->prepare($query);
             $statement->execute();
 
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
         } catch (PDOException $exception) {
+            http_response_code(500);
             die($exception);
         }
     }
@@ -101,7 +103,8 @@ class QueryBuilder
             return $this->pdo->lastInsertId();
 
         } catch (\Exception $e) {
-            return [$e->getMessage(), $sql, $dados];
+            http_response_code(500);
+            die($e->getMessage());
         }
     }
 

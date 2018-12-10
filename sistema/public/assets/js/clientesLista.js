@@ -1,10 +1,7 @@
-$(document).ready(function () {
-
-});
-
 function buscar() {
     $.get("../back-end/clientes", function (response) {
         clientes = JSON.parse(response);
+    }).done(() => {
         popularPesquisa(clientes, () => {
             $(function () {
                 $('#clientes').DataTable();
@@ -33,7 +30,6 @@ function popularPesquisa(clientes, callback) {
 
 function selecionarCliente(cliente) {
     $.get(`../back-end/clientes/${cliente}`, function (response) {
-        console.log(response);
         cliente = JSON.parse(response);
         localStorage.setItem('cliente', JSON.stringify(cliente));
         $(location).attr('href', 'clientes.php');

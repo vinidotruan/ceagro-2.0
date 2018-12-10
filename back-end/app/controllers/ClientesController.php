@@ -6,34 +6,11 @@ use App\Core\App;
 use App\Models\Banco;
 use App\Models\Cliente;
 
-class ClientesController
-{
+class ClientesController extends Controller {
     public function index()
     {
         $clientes = Cliente::get(["razao_social", "!=", "' '"]);
         echo json_encode($clientes);
-    }
-
-    public function buscarEnderecoEntrega($cliente)
-    {
-
-    }
-
-    public function buscarVendedores()
-    {
-        $vendedores = Cliente::vendedores();
-        $ambos = Cliente::ambos();
-        $vendedoresA = array_unique(array_merge($vendedores, $ambos), SORT_REGULAR);
-        echo json_encode($vendedoresA);
-    }
-
-    public function buscarCompradores()
-    {
-        $compradores = Cliente::compradores();
-        $ambos = Cliente::ambos();
-        $compradores = array_unique(array_merge($compradores, $ambos), SORT_REGULAR);
-
-        echo json_encode($compradores);
     }
 
     public function show($id)
@@ -42,50 +19,26 @@ class ClientesController
         echo json_encode($cliente);
     }
 
-    public function cadastrar($cliente)
+    public function store($cliente)
     {
-        $clienteId = App::get('db')->insert('clientes', [
-            'razao_social' => $cliente['razao_social'],
-            'cnpj' => $cliente['cnpj'],
-            'inscricao_estadual' => $cliente['inscricao_estadual'],
-            'nome' => $cliente['nome'] ?? "",
-            'email' => $cliente['email'],
-            'atuacao' => $cliente['atuacao'],
-        ]);
+        $clienteId = Cliente::store($cliente);
 
-        $ultimoCliente = Cliente::find(["id", $clienteId]);
+        $cliente = Cliente::find(["id", $clienteId]);
 
-        echo json_encode($ultimoCliente);
-    }
-
-    public function buscarBancos()
-    {
-        $bancos = App::get('db')->selectAll("bancos", Banco::class);
-        echo json_encode($bancos);
+        return $this->responderJSON($cliente);
     }
 
     public function update($cliente)
     {
-        try {
-            $clienteId = App::get('db')->update(
-                'clientes',
-                [
-                    'razao_social' => $cliente['razao_social'],
-                    'cnpj' => $cliente['cnpj'],
-                    'inscricao_estadual' => $cliente['inscricao_estadual'],
-                    'nome' => $cliente['nome'] ?? "",
-                    'email' => $cliente['email'],
-                    'atuacao' => $cliente['atuacao'],
-                ],
-                ["id", $cliente['cliente']]
-            );
+        $clienteId = $cliente['cliente'];
+        unset($cliente['cliente']);
+        $clienteId = Cliente::update(
+            $cliente,
+            ["id", $clienteId]
+        );
 
-            $cliente = Cliente::find(["id", $clienteId]);
+        $cliente = Cliente::find(["id", $clienteId]);
 
-            echo json_encode($cliente);
-
-        } catch (\Exception $exception) {
-            echo json_encode($exception);
-        }
+        echo json_encode($cliente);
     }
 }

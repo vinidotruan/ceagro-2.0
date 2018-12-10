@@ -7,7 +7,7 @@ use App\Core\App;
 class AdendosController
 {
 
-    public function cadastrar()
+    public function store()
     {
         $adendoId = App::get('db')->insert('adendos', [
             'contrato_id' => $_POST['contrato_id'],

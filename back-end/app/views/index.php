@@ -107,14 +107,14 @@ td {
                 </tr>
                 <tr>
                     <td>
-                        Rua <?= ($contrato->vendedor->enderecoEntrega->rua) ? $contrato->vendedor->enderecoEntrega->rua . ", " . $contrato->vendedor->enderecoEntrega->numero :
-                                $contrato->vendedor->enderecoFaturamento->rua . ", " . $contrato->vendedor->enderecoFaturamento->numero ?>
+                        Rua <?= ($contrato->vendedor->endereco()->rua) ? $contrato->vendedor->endereco()->rua . ", " . $contrato->vendedor->endereco()->numero :
+                                $contrato->vendedor->endereco()->rua . ", " . $contrato->vendedor->endereco()->numero ?>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                    <?= ($contrato->vendedor->enderecoEntrega->cidade) ? $contrato->vendedor->enderecoEntrega->cidade : $contrato->vendedor->enderecoFaturamento->cidade ?>
-<?= ($contrato->vendedor->enderecoEntrega->estado) ? " - " . $contrato->vendedor->enderecoEntrega->estado : " - " . $contrato->vendedor->enderecoFaturamento->estado ?>
+                    <?= ($contrato->vendedor->endereco()->cidade) ? $contrato->vendedor->endereco()->cidade : $contrato->vendedor->endereco()->cidade ?>
+<?= ($contrato->vendedor->endereco()->estado) ? " - " . $contrato->vendedor->endereco()->estado : " - " . $contrato->vendedor->endereco()->estado ?>
                     </td>
                 </tr>
                 <tr>
@@ -135,14 +135,14 @@ td {
                 </tr>
                 <tr>
                     <td>
-                        Rua <?= ($contrato->comprador->enderecoEntrega->rua) ? $contrato->comprador->enderecoEntrega->rua . ", " . $contrato->comprador->enderecoEntrega->numero :
-                                $contrato->comprador->enderecoFaturamento->rua . ", " . $contrato->comprador->enderecoFaturamento->numero ?>
+                        Rua <?= ($contrato->comprador->endereco()->rua) ? $contrato->comprador->endereco()->rua . ", " . $contrato->comprador->endereco()->numero :
+                                $contrato->comprador->endereco()->rua . ", " . $contrato->comprador->endereco()->numero ?>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                    <?= ($contrato->comprador->enderecoEntrega->cidade) ? $contrato->comprador->enderecoEntrega->cidade : $contrato->comprador->enderecoFaturamento->cidade ?>
-<?= ($contrato->comprador->enderecoEntrega->estado) ? " - " . $contrato->comprador->enderecoEntrega->estado : " - " . $contrato->comprador->enderecoFaturamento->estado ?>
+                    <?= ($contrato->comprador->endereco()->cidade) ? $contrato->comprador->endereco()->cidade : $contrato->comprador->endereco()->cidade ?>
+<?= ($contrato->comprador->endereco()->estado) ? " - " . $contrato->comprador->endereco()->estado : " - " . $contrato->comprador->endereco()->estado ?>
                     </td>
                 </tr>
                 <tr>
@@ -162,8 +162,8 @@ td {
                     <td>Safra: <?= $contrato->safra ?? "Nenhum" ?></td>
                 </tr>
                 <tr>
-                    <td class="tdquantidade">Quantidade: <?= $contrato->quantidade?></td>
-                    <td class="tdquantidade">Descrição: <?= $contrato->descricao?></td>
+                    <td class="tdquantidade">Quantidade: <?= $contrato->quantidade ?></td>
+                    <td class="tdquantidade">Descrição: <?= $contrato->descricao ?></td>
                 </tr>
                 <tr>
                     <td class="tdpreco">Preço: <?= $contrato->preco ?></td>

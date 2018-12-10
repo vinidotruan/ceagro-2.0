@@ -7,8 +7,7 @@
         <div class="content-wrapper">
             <br>
             <div class="row">
-
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12">
                     <section class="invoice">
                         <div class="row">
                             <div class="col-xs-12">
@@ -21,45 +20,16 @@
                             <form role="form" id="cliente">
                                 <div class="box-body">
                                     <div class="form-row">
-                                        <div class="col-xs-12 col-lg-4">
+                                        <div class="col-xs-12">
                                             <div class="form-group">
-                                                <label for="razao_social">Razão Social</label>
-                                                <input type="text" class="form-control" name="razao_social" placeholder="Digite o nome do produto" autocomplete="off">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-lg-4">
-                                            <div class="form-group">
-                                                <label for="cnpj">CNPJ</label>
-                                                <input type="text" class="form-control" name="cnpj" placeholder="Digite o código do produto" autocomplete="off">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-lg-4">
-                                            <div class="form-group">
-                                                <label for="inscricao_estadual">Inscrição Estadual</label>
-                                                <input type="text" class="form-control" name="inscricao_estadual" placeholder="Digite o código do produto" autocomplete="off">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-lg-4">
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="text" class="form-control" name="email" placeholder="Digite o código do produto" autocomplete="off">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-lg-4">
-                                            <div class="form-group">
-                                                <label>Atuação do Cliente</label>
-                                                <select class="form-control select2" name="atuacao" style="width: 100%;">
-                                                    <option value="0">Selecione a atuação do seu cliente</option>
-                                                    <option value="comprador">Comprador</option>
-                                                    <option value="vendedor">Vendedor</option>
-                                                    <option value="ambos">Ambos</option>
-                                                </select>
+                                                <label for="razao_social">Nome Fantasia</label>
+                                                <input type="text" class="form-control" name="nome_fantasia" placeholder="Digite o nome fantasia do seu cliente" autocomplete="off" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <?php include 'partials/alert.html'?>
                                 <div class="box-footer">
+                                    <?php require ('partials/components/erro.html') ?>
                                     <button type="button" class="btn btn-primary pull-right" onclick="cadastrar()"></button>
                                 </div>
                             </form>
@@ -67,17 +37,18 @@
                     </section>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 enderecoFaturamento">
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 endereco">
                     <section class="invoice">
                         <div class="row">
                             <div class="col-xs-12">
                                 <h2 class="page-header">
-                                <i class="fa fa-map"></i> Endereço Faturamento:
+                                <i class="fa fa-map"></i> Endereço:
                                 </h2>
                             </div>
                         </div>
                         <div class="row invoice-info">
-                            <form role="form" id="enderecoFaturamento">
+                            <form role="form" id="endereco">
                                 <div class="box-body">
                                     <div class="form-row">
                                         <div class="col-xs-12 col-lg-8">
@@ -131,82 +102,69 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarEnderecoFat()"></button>
+                                    <?php require ('partials/components/erro.html') ?>
+                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarEndereco()"></button>
                                 </div>
                             </form>
                         </div>
                     </section>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 enderecoEntrega">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 estabelecimento">
                     <section class="invoice">
                         <div class="row">
                             <div class="col-xs-12">
                                 <h2 class="page-header">
-                                <i class="fa fa-map-o"></i> Endereço Entrega:
+                                <i class="fa fa-globe"></i> Estabelecimentos
                                 </h2>
                             </div>
                         </div>
                         <div class="row invoice-info">
-                            <form role="form" id="enderecoEntrega">
+                            <form role="form" id="estabelecimento">
                                 <div class="box-body">
                                     <div class="form-row">
-                                        <div class="col-xs-12 col-lg-8">
+                                        <div class="col-xs-4">
                                             <div class="form-group">
-                                                <label for="rua">Rua</label>
-                                                <input type="text" class="form-control" name="rua" placeholder="Digite o nome do produto" autocomplete="off">
+                                                <label for="razao_social">Razão Social</label>
+                                                <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" autocomplete="off">
                                             </div>
                                         </div>
-                                        <div class="col-xs-12 col-lg-4">
+                                        <div class="col-xs-4">
                                             <div class="form-group">
-                                                <label for="numero">Número</label>
-                                                <input type="text" class="form-control" name="numero" placeholder="Digite o código do produto" autocomplete="off">
+                                                <label for="cnpj">CNPJ</label>
+                                                <input type="text" class="form-control" name="cnpj" placeholder="Digite o cnpj do estabelecimento" autocomplete="off">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-xs-12 col-lg-6">
+                                        <div class="col-xs-4">
                                             <div class="form-group">
-                                                <label for="cidade">Cidade</label>
-                                                <input type="text" class="form-control" name="cidade" placeholder="Digite o código do produto" autocomplete="off">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-lg-6">
-                                            <div class="form-group">
-                                                <label for="bairro">Bairro</label>
-                                                <input type="text" class="form-control" name="bairro" placeholder="Digite o código do produto" autocomplete="off">
+                                                <label for="inscricao_estadual">Inscrição Estadual</label>
+                                                <input type="text" class="form-control" name="inscricao_estadual" placeholder="Digite a inscrição estadual do estabelecimento" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="col-xs-12">
-                                            <div class="form-group">
-                                                <label for="complemento">Complemento</label>
-                                                <input type="text" class="form-control" name="complemento" placeholder="Digite o código do produto" autocomplete="off">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-xs-12 col-lg-4">
-                                            <div class="form-group">
-                                                <label for="estado">Estado</label>
-                                                <input type="text" class="form-control" name="estado" placeholder="Digite o código do produto" autocomplete="off">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-lg-8">
-                                            <div class="form-group">
-                                                <label for="cep">CEP</label>
-                                                <input type="text" class="form-control" name="cep" placeholder="Digite o código do produto" autocomplete="off">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div>                               
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarEnderecoEnt()"></button>
+                                    <?php require ('partials/components/erro.html') ?>
+                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarEstabelecimento()"></button>
                                 </div>
                             </form>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Razão Social</th>
+                                            <th>CNPJ</th>
+                                            <th>Inscrição Estadual</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="estabelecimentos">
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -245,8 +203,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarContaBancaria()">Cadastrar</button>
+                                    <?php require ('partials/components/erro.html') ?>
+                                    <button type="button" class="btn btn-primary pull-right">Cadastrar</button>
                                 </div>
                             </form>
                         </div>

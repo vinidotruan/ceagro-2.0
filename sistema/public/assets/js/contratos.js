@@ -33,7 +33,7 @@ function adicionarAdendo() {
 function verificarContrato() {
     buscarDados(() => {
         contrato = JSON.parse(localStorage.getItem("contrato"));
-        localStorage.removeItem("contrato");
+        // localStorage.removeItem("contrato");
         if (temContrato()) {
             $("#enviar").append("Atualizar");
             comprador = contrato.comprador;
@@ -288,11 +288,13 @@ function selecionarProduto() {
     produto = _.find(produtos, {
         'nome': $(`#produto select[name='produto_id'] option:selected`).text()
     });
+
+    $("#produto textarea[name='descricao']").text(produto.descricao);
 }
 
-function selecionarConta(id) {
+function selecionarConta() {
     conta = _.find(contasBancarias, {
-        'id': id
+        'id': $(`#contas`).val()
     });
 
     contrato.contaBancaria = conta;

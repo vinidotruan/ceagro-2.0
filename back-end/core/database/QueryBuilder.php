@@ -86,6 +86,20 @@ class QueryBuilder
         }
     }
 
+    public function last($tabela, $classe)
+    {
+        $query = "select * from {$tabela} order by id limit 1";
+        try {
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
+
+            return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
+        } catch (PDOException $exception) {
+            http_response_code(500);
+            die($exception);
+        }
+    }
+
     public function insert($tabela, $dados)
     {
         $sql = sprintf(
@@ -114,7 +128,6 @@ class QueryBuilder
         foreach ($dados as $key => $valor) {
             $campos .= "\n $key=:$key,";
         }
-
         $campos = rtrim($campos, ",");
         $sql = sprintf(
             "UPDATE %s \n SET %s \n WHERE %s",
@@ -122,7 +135,7 @@ class QueryBuilder
             $campos,
             implode(" = ", $where)
         );
-
+        
         try {
             $statement = $this->pdo->prepare($sql)->execute($dados);
             return $where[1];

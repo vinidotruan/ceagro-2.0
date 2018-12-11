@@ -9,6 +9,7 @@ class Produto extends Model
     public $id;
     public $nome;
     public $codigo;
+    public $descricao = "AA";
     public $tipo_id;
     public $tipo;
 

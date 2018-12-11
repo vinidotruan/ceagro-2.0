@@ -22,6 +22,15 @@ class Model
         return $a = array_shift($response);
     }
 
+    public static function last()
+    {
+        $response = App::get('db')->last(
+            static::$table,
+            static::class
+        );
+        return $a = array_shift($response);
+    }
+
     public static function delete($campos = ["id", 0])
     {
         $response = App::get('db')->delete(static::$table, $campos);
@@ -50,6 +59,7 @@ class Model
 
     public static function update($dados, $campos = [])
     {
-        return App::get('db')->update(static::$table, $dados, $campos);
+        $data = self::verifyFields($dados);
+        return App::get('db')->update(static::$table, $data, $campos);
     }
 }

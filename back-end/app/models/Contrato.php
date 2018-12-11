@@ -11,7 +11,6 @@ use App\Models\Adendo;
 class Contrato extends Model
 {
     public $id;
-    public $id;
     public $vendedor_id;
     public $comprador_id;
     public $produto_id;
@@ -51,6 +50,7 @@ class Contrato extends Model
 
     public function __construct()
     {
+        // $this->numeroConfirmacao();
         $this->comprador();
         $this->vendedor();
         $this->produto();
@@ -88,5 +88,9 @@ class Contrato extends Model
     public function contaBancaria()
     {
         return $this->contaBancaria = ContaBancaria::find(['id', $this->vendedor_conta_bancaria_id]);
+    }
+    public function numeroConfirmacao()
+    {
+        return Contrado::last();
     }
 }

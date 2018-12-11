@@ -22,7 +22,14 @@
                                     </div>
                                     <div class="row invoice-info">
                                         <div class="box-body">
-
+                                            <div class="form-row">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="cfop">Numero de Confirmação</label>
+                                                        <input type="text" class="form-control" name="id" placeholder="Digite o numero de confirmacao" autocomplete="off" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="form-row">
                                                 <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">
@@ -193,13 +200,12 @@
                                                             <select class="form-control select2" name="unidade_medida_id" style="width: 100%;" id="unidades" required></select>
                                                         </div>
                                                     </div>
-                                                    <!-- <div class="col-xs-12 col-lg-4">
+                                                    <div class="col-xs-12 col-lg-4">
                                                         <div class="form-group">
-                                                            <label>Safra<br/></label><br/>
-                                                            <input type="radio" name="safra" autocomplete="off" value="atual">Atual<br/>
-                                                            <input type="radio" name="safra" autocomplete="off" value="novo">Nova<br/>
+                                                        <label for="">Safra</label>
+                                                            <input type="text" class="form-control" name="safra" placeholder="Digite a safra do produto" required>
                                                         </div>
-                                                    </div> -->
+                                                    </div>
                                                     <div class="col-xs-12 col-lg-6">
                                                         <div class="form-group">
                                                             <label for="">Quantidade</label>
@@ -231,7 +237,7 @@
                                                     <div class="col-xs-12 col-lg-12">
                                                         <div class="form-group">
                                                             <label for="descricao">Descricao</label>
-                                                            <textarea type="text" class="form-control" name="descricao" placeholder="Descricao do contrato" rows="3"></textarea>
+                                                            <textarea type="text" class="form-control" name="descricao" id="descricao" placeholder="Descricao do contrato" rows="3"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

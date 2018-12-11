@@ -26,7 +26,7 @@ class ContratosController extends Controller
         try {
             $contratoId = Contrato::store($contrato);
 
-            // $ultimoContrato = Contrato::find(["id", $contratoId]);
+            $ultimoContrato = Contrato::find(["id", $contratoId]);
 
             return $this->responderJSON($ultimoContrato);
 
@@ -44,9 +44,8 @@ class ContratosController extends Controller
 
             $contrato = Contrato::update(
                 $contrato,
-                ["id", $contrato]
+                ["id", $contratoId]
             );
-
             
             $contrato = Contrato::find(["id", $contratoId]);
 

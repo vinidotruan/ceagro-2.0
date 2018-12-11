@@ -1,6 +1,7 @@
 <?php
 
-$router->get("ceagro/back-end/clientes", "ClientesController@index");
+$router->get("back-end/clientes", "ClientesController@index");
+$router->get("/back-end/clientes", "ClientesController@index");
 $router->post("ceagro/back-end/clientes", "ClientesController@store");
 $router->get("ceagro/back-end/clientes/{cliente}", "ClientesController@show");
 $router->put("ceagro/back-end/clientes/{cliente}", "ClientesController@update");

@@ -86,9 +86,10 @@ class QueryBuilder
         }
     }
 
-    public function last($tabela, $classe)
+    public function contratosFuturos($tabela, $classe)
     {
-        $query = "select * from {$tabela} order by id limit 1";
+        $query = "select count(*) from contratos where futuro = 1";
+
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();

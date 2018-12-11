@@ -30,6 +30,10 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row invoice-info">
+                                        <div class="box-body">
                                             <div class="form-row">
                                                 <div class="col-xs-12 col-lg-4">
                                                     <div class="form-group">

@@ -11,6 +11,7 @@ use App\Models\Adendo;
 class Contrato extends Model
 {
     public $id;
+    public $numero_confirmacao;
     public $vendedor_id;
     public $comprador_id;
     public $produto_id;
@@ -47,6 +48,8 @@ class Contrato extends Model
     public $unidadeMedida;
 
     protected static $table = "contratos";
+    protected static $futuros = 160;
+    protected static $atual = 1460;
 
     public function __construct()
     {
@@ -89,8 +92,8 @@ class Contrato extends Model
     {
         return $this->contaBancaria = ContaBancaria::find(['id', $this->vendedor_conta_bancaria_id]);
     }
-    public function numeroConfirmacao()
+    public function ultimoFuturo()
     {
-        return Contrado::last();
+        return Contrado::contratosFuturos();
     }
 }

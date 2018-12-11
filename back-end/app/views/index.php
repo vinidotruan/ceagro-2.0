@@ -176,7 +176,9 @@ td {
                     <td class="tdpesoequalidade">Peso e Qualidade: <?= $contrato->peso_qualidade ?? "Nenhum" ?></td>
                 </tr>
                 <tr>
-                    <td class="aviso">*A empresa compradora enviará a instrução de carregamento por e-mail.*</td>
+                    <td class="aviso">
+                    <?= (strlen($contrato->carregamento) > 0) ? $contrato->carregamento:"*A empresa compradora enviará a instrução de carregamento por e-mail.*"?>
+                    </td>
                 </tr>
                 <tr>
                     <td class="tdcomissao">Comissão: <?= $contrato->comissao ?></td>

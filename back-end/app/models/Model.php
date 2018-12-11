@@ -22,13 +22,9 @@ class Model
         return $a = array_shift($response);
     }
 
-    public static function last()
+    public static function contratosFuturos()
     {
-        $response = App::get('db')->last(
-            static::$table,
-            static::class
-        );
-        return $a = array_shift($response);
+        return $response = App::get('db')->contratosFuturos();
     }
 
     public static function delete($campos = ["id", 0])

@@ -15,6 +15,13 @@ class ContratosController extends Controller
         return $this->responderJSON($contratos);
     }
 
+    public function numeroConfirmacao()
+    {
+        $contratos = Contrato::get();
+        
+        return $this->responderJSON($contratos);
+    }
+
     public function show($contrato)
     {
         $contrato = Contrato::find(["id", $contrato]);
@@ -24,6 +31,9 @@ class ContratosController extends Controller
     public function store($contrato)
     {
         try {
+            if($contrato['futuro']) {
+                $contrato['numero_confirmacao'] = Contrato::$counter + Contrato::ultimoFuturo();
+            }
             $contratoId = Contrato::store($contrato);
 
             $ultimoContrato = Contrato::find(["id", $contratoId]);

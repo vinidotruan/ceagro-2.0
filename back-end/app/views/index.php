@@ -95,7 +95,7 @@ td {
     </header>
     <section>
         <div class="confirmacao">
-            <span>Confirmação número: <?= $contrato->numero_confirmacao ?></span>
+            <span>Confirmação número: <?= $contrato->id ?></span>
         </div>
     </section>
     <section>

@@ -168,7 +168,7 @@
                                 
                                 <div class="box-footer">
                                     <?php require ('partials/components/erro.html') ?>
-                                    <button type="button" class="btn btn-primary pull-right">Cadastrar</button>
+                                    <button type="button" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
                         </div>

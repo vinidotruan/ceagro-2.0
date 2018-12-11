@@ -6,11 +6,11 @@ class Cliente extends Model
 {
     public $id;
     public $nome_fantasia;
-    public $contasBancarias;
-    public $endereco;
     public $razao_social;
     public $cnpj;
     public $inscricao_estadual;
+    public $contasBancarias;
+    public $endereco;
 
     public static $table = "clientes";
 

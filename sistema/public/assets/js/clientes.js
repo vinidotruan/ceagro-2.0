@@ -52,8 +52,10 @@ function atualizarBotoes() {
     $("#endereco :button").text("");
     $("#estabelecimento :button").text("");
     $("#cliente :button").append("Atualizar").attr("onclick", "atualizar()");
+    $("#contasBancarias :button").text("");
     //$("#estabelecimento :button").append("Cadastrar").attr("onclick", "cadastrarEstabelecimento()");
-    $("#contas_bancarias :button").attr("onclick", "cadastrarContaBancaria()");
+    $("#contasBancarias :button").append("Cadastrar").attr("onclick", "cadastrarEstabelecimento()");
+    $("#contasBancarias :button").attr("onclick", "cadastrarContaBancaria()");
 
     if (cliente.endereco !== null) {
         $("#endereco :button").append("Atualizar").attr("onclick", "atualizarEndereco()");
@@ -66,6 +68,7 @@ function atualizarBotoes() {
 function verificarCliente() {
     cliente = JSON.parse(localStorage.getItem("cliente"));
     localStorage.removeItem("cliente");
+
     if (temCliente()) {
         atualizarBotoes();
         buscarContas(cliente.id, () => {

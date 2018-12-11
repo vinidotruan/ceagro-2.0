@@ -11,7 +11,7 @@ use App\Models\Adendo;
 class Contrato extends Model
 {
     public $id;
-    public $numero_confirmacao;
+    public $id;
     public $vendedor_id;
     public $comprador_id;
     public $produto_id;

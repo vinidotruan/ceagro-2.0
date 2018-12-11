@@ -19,7 +19,7 @@ if (!$producao) {
 return [
     'database' => [
         'connection' => "mysql:host=sistemaceagro.mysql.dbaas.com.br",
-        'dbname' => "ceagro",
+        'dbname' => "ceagro01",
         'charset' => "utf8",
         'username' => "ceagro01",
         'password' => "saopio18",

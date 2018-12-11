@@ -1,5 +1,5 @@
 <?php
-$producao = false;
+$producao = true;
 if (!$producao) {
     return [
         'database' => [
@@ -27,5 +27,5 @@ return [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         ],
     ],
-    'rotas' => 'back-end'
+    'rotas' => 'back-end/'
 ];

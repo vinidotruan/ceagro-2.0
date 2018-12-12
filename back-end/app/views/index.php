@@ -83,6 +83,10 @@ td {
     padding-top:50px;
 }
 
+.tdcfop{
+    padding-top:20px;
+}
+
 </style>
 <body>
     <header>
@@ -170,6 +174,9 @@ td {
                     <td>Unidade de Medida: <?= $contrato->unidadeMedida->titulo ?></td>
                 </tr>
                 <tr>
+                    <td class="tdcfop">CFOP: <?=$contrato->cfop ?></td>
+                </tr>
+                <tr>
                     <td class="tdpagamento">Pagamento: <?= $contrato->pagamento ?></td>
                 </tr>
                 <tr>
@@ -185,6 +192,12 @@ td {
                 </tr>
                 <tr>
                     <td class="aviso">*Nós, como intermediadores, confirmamos que realizamos nesta data esta transação em seu nome com base nas leis e regulamentos. Qualquer discrepância deverá ser comunicada imediatamente*</td>
+                </tr>
+                <tr>
+                    <td><?php
+                    /*foreach($contrato->adendo as $adendo)
+                    echo($adendo->$descricao);*/
+                    ?></td>
                 </tr>
                 <tr>
                     <td class="linha">_________________________<br>Assinatura do Comprador<br><?= $contrato->comprador->cnpj ?></td>

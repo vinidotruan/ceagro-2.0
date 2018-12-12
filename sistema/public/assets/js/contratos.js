@@ -1,5 +1,11 @@
 $('.select2').select2();
 
+$(document).ready(function () {
+    $('.minimal[name="futuro"]').on('ifChecked', function (event) {
+        setNumeroConfirmacao();
+    });
+});
+
 $("#contrato").submit(function (event) {
     event.preventDefault();
     if (temContrato()) {
@@ -21,7 +27,7 @@ comprador = {};
 produto = {};
 conta = {};
 contrato = {};
-
+numeros_confirmacao = [{}];
 function adicionarAdendo() {
     $(`#adendos`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
     var dados = $('#adendos').serialize();
@@ -33,7 +39,7 @@ function adicionarAdendo() {
 function verificarContrato() {
     buscarDados(() => {
         contrato = JSON.parse(localStorage.getItem("contrato"));
-        // localStorage.removeItem("contrato");
+        localStorage.removeItem("contrato");
         if (temContrato()) {
             $("#enviar").append("Atualizar");
             comprador = contrato.comprador;
@@ -45,6 +51,7 @@ function verificarContrato() {
             $('.select2').select2();
             popularAdendos(adendos, mostrarAdendos());
         } else {
+            buscarNumeroConfirmacao();
             $("#enviar").append("Cadastrar");
         }
     }, erro => {
@@ -181,6 +188,27 @@ function buscarContasBancaria() {
             popularContasBancarias(contasBancarias);
         }
     });
+}
+
+function buscarNumeroConfirmacao() {
+    $.ajax({
+        url: `../back-end/numero-confirmacao`,
+        type: "get",
+        dataType: "json",
+        success: response => {
+            numeros_confirmacao = response;
+        }
+    });
+}
+
+function setNumeroConfirmacao() {
+    if ($("input[name='futuro']:checked").val() == 1) {
+        $(`:input[name='numero_confirmacao']`).val(numeros_confirmacao[1]);
+    } else {
+        $(`:input[name='numero_confirmacao']`).val(numeros_confirmacao[0]);
+    }
+
+
 }
 
 function popularContasBancarias(contas) {
@@ -333,3 +361,4 @@ function mudarSelectCnpjs(variavel) {
         $(`#comprador #select2-cnpjs-container`).append(comprador.cnpj);
     }
 }
+

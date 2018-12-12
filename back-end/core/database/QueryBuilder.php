@@ -78,7 +78,6 @@ class QueryBuilder
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();
-
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
         } catch (PDOException $exception) {
             http_response_code(500);

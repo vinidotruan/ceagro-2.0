@@ -15,6 +15,7 @@ class Contrato extends Model
     public $vendedor_id;
     public $comprador_id;
     public $produto_id;
+    public $preco;
     public $unidade_medida_id;
     public $safra;
     public $quantidade;
@@ -47,13 +48,13 @@ class Contrato extends Model
     public $produto;
     public $unidadeMedida;
 
+    public $futuro = 160;
+    public $atual = 1460;
     protected static $table = "contratos";
-    public static $futuro = 160;
-    public static $atual = 1460;
+
 
     public function __construct()
     {
-        // $this->numeroConfirmacao();
         $this->comprador();
         $this->vendedor();
         $this->produto();
@@ -94,13 +95,13 @@ class Contrato extends Model
         return $this->contaBancaria = ContaBancaria::find(['id', $this->vendedor_conta_bancaria_id]);
     }
 
-    public static function ultimoFuturo()
+    public function ultimoFuturo()
     {
-        return static::contratosFuturos()->futuros + self::$futuro;
+        return static::contratosFuturos()->futuros + $this->futuro;
     }
 
-    public static function ultimoAtual()
+    public function ultimoAtual()
     {
-        return static::contratosAtuais()->atuais + self::$atual;
+        return static::contratosAtuais()->atuais + $this->atual;
     }
 }

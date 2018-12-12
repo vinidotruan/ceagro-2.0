@@ -16,11 +16,15 @@ class ContratosController extends Controller
     }
 
     public function numeroConfirmacao()
-    {
-        $futuro = Contrato::ultimoFuturo();
-        $atual = Contrato::ultimoAtual();
+    {   
+        $reflection = new \ReflectionClass("App\Models\Contrato");
+        $instance = $reflection->newInstanceWithoutConstructor();
+        $data = "-".date('Y');
+        $data =  str_replace("-","/",$data);
+        $futuro = $instance->ultimoFuturo().$data;
+        $atual = $instance->ultimoAtual().$data;
 
-        return $this->responderJSON([$futuro, $atual]);
+        return $this->responderJSON([$atual, $futuro]);
     }
 
     public function show($contrato)

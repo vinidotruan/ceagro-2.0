@@ -48,23 +48,29 @@
 
                         <div class="form-row">
 
-                          <div class="col-xs-12">
+                          <div class="col-xs-12 col-lg-8">
 
                             <div class="form-group">
 
-                              <label for="cfop">Numero de Confirmação</label>
+                              <label for="numero_confirmacao">Numero de Confirmação</label>
 
                               <input type="text" class="form-control" name="numero_confirmacao" placeholder="Digite o numero de confirmacao" autocomplete="off" disabled>
 
-                            </div>
-
+														</div>
+														
+                        	</div>
+													<div class="col-xs-12 col-lg-4">
                             <div class="form-group">
-                              <label>
-                                <input type="radio" name="futuro" class="minimal" onClick="setNumeroConfirmacao()" value="1" checked> Atual
+                              <label> 
+                                <input type="radio" name="futuro" class="minimal" onClick="setNumeroConfirmacao()" value="0" checked> Atual
                               </label>
-                              <label>
-                                <input type="radio" name="futuro" class="minimal" onClick="setNumeroConfirmacao()"> Futuro
+                              
+                            </div>
+                            <div class="form-group">
+                              <label> 
+                                <input type="radio" name="futuro" class="minimal" onClick="setNumeroConfirmacao()" value="1"> Futuro
                               </label>
+                              
                             </div>
 
                           </div>
@@ -342,7 +348,7 @@
 
                                 <label for="descricao">Descricao</label>
 
-                                <input type="text" class="form-control" name="descricao" placeholder="Digite o preco" autocomplete="off" required>
+                                <input type="text" class="form-control" name="descricao" placeholder="Digite a descrição" autocomplete="off" disabled>
 
                                 <!-- <textarea type="text" class="form-control" name="descricao" id="descricao" placeholder="Descricao do contrato" rows="3"></textarea> -->
 
@@ -408,7 +414,7 @@
 
                           <div class="form-row">
 
-                            <div class="col-xs-4">
+                            <div class="col-xs-6 col-lg-4">
 
                               <div class="form-group">
 
@@ -420,13 +426,13 @@
 
                             </div>
 
-                            <div class="col-xs-4">
+                            <div class="col-xs-6 col-lg-4">
 
                               <div class="form-group">
 
                                 <label for="observacao">Observações</label>
 
-                                <textarea type="text" class="form-control" name="observacao" rows="3" placeholder="Digite as observações" required></textarea>
+                                <textarea type="text" class="form-control" name="observacao" rows="3" placeholder="Digite as observações"></textarea>
 
                               </div>
 
@@ -438,7 +444,7 @@
 
                                 <label for="peso_qualidade">Peso & Qualidade</label>
 
-                                <textarea type="text" class="form-control" name="peso_qualidade" placeholder="Digite o peso total" rows="3" required></textarea>
+                                <textarea type="text" class="form-control" name="peso_qualidade" placeholder="Digite o peso e qualidade" rows="3" required></textarea>
 
                               </div>
 
@@ -450,11 +456,11 @@
 
                                 <label for="cfop">CFOP</label>
 
-                                <select name="local" class="form-control">
+                                <select name="cfop" class="form-control">
 
-                                  <option value="cfop1">cfop1</option>
+                                  <option value="1">CFOP 5102 - mercadoria destinada para industrialização</option>
 
-                                  <option value="cfop2">cfop2</option>
+                                  <option value="2">CFOP 5502 - mercadoria destinada para exportação</option>
 
                                 </select>
 
@@ -482,9 +488,9 @@
 
                               <div class="form-group">
 
-                                <label for="solicitacao_cotas">Solicitacao de Cotas</label>
+                                <label for="solicitacao_cotas">Solicitação de Cotas</label>
 
-                                <input type="text" class="form-control" name="solicitacao_cotas" placeholder="Digite o local" autocomplete="off" required>
+                                <input type="text" class="form-control" name="solicitacao_cotas" placeholder="Solicitação de cotas" autocomplete="off" required>
 
                               </div>
 
@@ -496,7 +502,7 @@
 
                                 <label for="carregamento">Informações sobre o Carregamento</label>
 
-                                <textarea type="text" class="form-control" name="carregamento" placeholder="Digite o local" autocomplete="off" rows='5'></textarea>
+                                <textarea type="text" class="form-control" name="carregamento" placeholder="Informações sobre o carregamento" autocomplete="off" rows='5'></textarea>
 
                               </div>
 
@@ -541,103 +547,7 @@
           </div>
 
         </div>
-
-
-
-
-        <div class="row" id="edit" style="display:none">
-
-          <div class="col-xs-12">
-
-            <form role="form" id="adendos">
-
-              <section class="invoice box" style="width: auto">
-
-                <div class="row">
-
-                  <div class="col-xs-12">
-
-                    <h2 class="page-header">
-
-<i class="fa fa-address-card"></i> Adendos
-
-</h2>
-
-                  </div>
-
-                </div>
-
-                <div class="row invoice-info">
-
-                  <div class="box-body">
-
-                    <div class="form-row">
-
-                      <div class="col-xs-12">
-
-                        <div class="form-group">
-
-                          <label for="descricao">Descricao</label>
-
-                          <textarea type="text" class="form-control" name="descricao" placeholder="Digite as novas clausulas de adendo:" rows="4"></textarea>
-
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                  <div class="box-footer">
-
-                    <button type="button" class="btn btn-primary pull-right" onclick="adicionarAdendo()">Cadastrar</button>
-
-                  </div>
-
-                </div>
-
-                <div class="row">
-
-                  <div class="col-xs-12 table-responsive">
-
-                    <table class="table table-striped">
-
-                      <thead>
-
-                        <tr>
-
-                          <th>Descricao</th>
-
-                          <th></th>
-
-                        </tr>
-
-                      </thead>
-
-                      <tbody id="adendo">
-
-                      </tbody>
-
-                    </table>
-
-                  </div>
-
-                </div>
-
-              </section>
-
-            </form>
-
-
-          </div>
-
-        </div>
-
-
-
-
-
+        
         <div class="clearfix"></div>
 
       </div>

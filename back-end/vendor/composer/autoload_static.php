@@ -43,7 +43,6 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
     );
 
     public static $classMap = array (
-        'App\\Controllers\\AdendosController' => __DIR__ . '/../..' . '/app/controllers/AdendosController.php',
         'App\\Controllers\\ClientesController' => __DIR__ . '/../..' . '/app/controllers/ClientesController.php',
         'App\\Controllers\\ContasBancariasController' => __DIR__ . '/../..' . '/app/controllers/ContasBancariasController.php',
         'App\\Controllers\\ContatosController' => __DIR__ . '/../..' . '/app/controllers/ContatosController.php',
@@ -60,7 +59,6 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
         'App\\Core\\Database\\QueryBuilder' => __DIR__ . '/../..' . '/core/database/QueryBuilder.php',
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
-        'App\\Models\\Adendo' => __DIR__ . '/../..' . '/app/models/Adendo.php',
         'App\\Models\\Banco' => __DIR__ . '/../..' . '/app/models/Banco.php',
         'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/models/Cliente.php',
         'App\\Models\\ContaBancaria' => __DIR__ . '/../..' . '/app/models/ContaBancaria.php',

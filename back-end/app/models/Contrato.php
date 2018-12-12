@@ -6,7 +6,6 @@ use App\Core\App;
 use App\Models\Cliente;
 use App\Models\Produto;
 use App\Models\Estabelecimento;
-use App\Models\Adendo;
 
 class Contrato extends Model
 {
@@ -39,7 +38,6 @@ class Contrato extends Model
     public $vendedor_estabelecimento_id;
     public $comprador_estabelecimento_id;
 
-    public $adendos;
     public $comprador;
     public $compradorEstabelecimento;
     public $vendedorEstabelecimento;
@@ -58,7 +56,6 @@ class Contrato extends Model
         $this->comprador();
         $this->vendedor();
         $this->produto();
-        $this->adendos();
         $this->unidade();
         $this->contaBancaria();
     }
@@ -77,11 +74,6 @@ class Contrato extends Model
     public function produto()
     {
         return $this->produto = Produto::find(["id", $this->produto_id]);
-    }
-
-    public function adendos()
-    {
-        return $this->adendos = Adendo::get(['contrato_id', $this->id]);
     }
     
     public function unidade()

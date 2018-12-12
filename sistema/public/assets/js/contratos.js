@@ -26,7 +26,6 @@ $("#contrato").submit(function (event) {
 vendedores = [];
 compradores = [];
 contasBancarias = [{}]
-adendos = [];
 produtos = [];
 vendedor = {};
 comprador = {};
@@ -34,13 +33,6 @@ produto = {};
 conta = {};
 contrato = {};
 numeros_confirmacao = [{}];
-function adicionarAdendo() {
-    $(`#adendos`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
-    var dados = $('#adendos').serialize();
-    $.post(`../back-end/adendos`, dados, (success) => {
-        popularAdendos(JSON.parse(success));
-    });
-}
 
 function verificarContrato() {
     buscarDados(() => {
@@ -51,11 +43,9 @@ function verificarContrato() {
             comprador = contrato.comprador;
             vendedor = contrato.vendedor;
             produto = contrato.produto;
-            adendos = contrato.adendos;
 
             compararContrato(contrato, "contrato");
             $('.select2').select2();
-            popularAdendos(adendos, mostrarAdendos());
         } else {
             buscarNumeroConfirmacao();
             $("#enviar").append("Cadastrar");
@@ -73,30 +63,6 @@ function buscarDados(callback) {
         buscarContasBancaria();
     });
 
-}
-
-function mostrarAdendos() {
-    $("#edit").show();
-}
-
-function popularAdendos(adendos, callback) {
-    $('#adendo tr').remove();
-    $.each(adendos, function (index, adendo) {
-        var adendos = '<tr><td colspan="1" value="' + adendo.id + '" class="item">' + adendo.descricao + '</td><td onclick="deletarAdendo(' + adendo.id + ')"><i class="fa fa-trash" aria-hidden="true"></i></td><tr>';
-        $("#adendo").append(adendos)
-    });
-
-    (callback) ? callback() : '';
-}
-
-function deletarAdendo(id) {
-    $.ajax({
-        url: `../back-end/contratos/${contrato.id}/adendos/${id}`,
-        type: 'DELETE',
-        success: function (adendos) {
-            popularAdendos(JSON.parse(adendos));
-        }
-    });
 }
 
 function temContrato() {
@@ -318,7 +284,6 @@ function selecionarVendedor(campo) {
 }
 
 function selecionarComprador(campo) {
-    console.log('teste');
     comprador = _.find(clientes, {
         'cnpj': $(`#comprador select[name='${campo}'] option:selected`).text()
     }) || _.find(clientes, {

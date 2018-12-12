@@ -34,9 +34,9 @@ $router->get("{$urlBase}contratos/{contrato}", "ContratosController@show");
 $router->post("{$urlBase}contratos", "ContratosController@store");
 
 $router->put("{$urlBase}contratos/{contrato}", "ContratosController@update");
-
-$router->delete("{$urlBase}contratos/{contrato}/adendos/{adendo}", "ContratosController@removerAdendo");
-$router->post("{$urlBase}adendos", "ContratosController@adicionarAdendos");
+$router->get("{$urlBase}contratos/futuros", "ContratosController@contratosFuturos");
+$router->get("{$urlBase}contratos/atuais", "ContratosController@contratosAtuais");
+$router->get("{$urlBase}contratos/a", "ContratosController@dados");
 
 $router->get("{$urlBase}adaptacao", "Adaptacao\AdaptacaoController@adaptarClientes");
 $router->get("{$urlBase}pdfs/contratos/{contrato}", "PDF\ContratosController@index");

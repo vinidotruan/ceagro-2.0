@@ -547,7 +547,7 @@
           </div>
 
         </div>
-        
+
         <div class="clearfix"></div>
 
       </div>
@@ -579,13 +579,16 @@
     <?php include 'partials/imports.html' ?>
 
     <script src="public/assets/js/contratos.js"></script>
+    
     <script src="adminlte/plugins/iCheck/icheck.min.js"></script>
     <script>
-        
-$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-    checkboxClass: 'icheckbox_minimal-blue',
-    radioClass: 'iradio_minimal-blue'
-})
+            
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+    });
+
+     
     </script>
     <?php include 'partials/rodape.html' ?>
 

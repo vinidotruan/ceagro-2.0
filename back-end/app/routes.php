@@ -1,39 +1,44 @@
 <?php
+use App\Core\App;
 
-$router->get("ceagro/back-end/clientes", "ClientesController@index");
-$router->post("ceagro/back-end/clientes", "ClientesController@store");
-$router->get("ceagro/back-end/clientes/{cliente}", "ClientesController@show");
-$router->put("ceagro/back-end/clientes/{cliente}", "ClientesController@update");
+$urlBase = App::get('config')['rotas'];
+$router->get("{$urlBase}numero-confirmacao", "ContratosController@numeroConfirmacao");
 
-$router->get("ceagro/back-end/clientes/contatos", "ContatosController@index");
-$router->get("ceagro/back-end/clientes/{cliente}/contatos", "ContatosController@index");
-$router->post("ceagro/back-end/clientes/contatos", "ContatosController@store");
+$router->get("{$urlBase}clientes", "ClientesController@index");
+$router->get("ceagro/clientes", "ClientesController@index");
+$router->post("{$urlBase}clientes", "ClientesController@store");
+$router->get("{$urlBase}clientes/{cliente}", "ClientesController@show");
+$router->put("{$urlBase}clientes/{cliente}", "ClientesController@update");
 
-$router->get("ceagro/back-end/clientes/{cliente}/enderecos", "EnderecosController@index");
-$router->post("ceagro/back-end/clientes/enderecos", "EnderecosController@store");
-$router->put("ceagro/back-end/clientes/enderecos/{endereco}", "EnderecosController@update");
+$router->get("{$urlBase}clientes/contatos", "ContatosController@index");
+$router->get("{$urlBase}clientes/{cliente}/contatos", "ContatosController@index");
+$router->post("{$urlBase}clientes/contatos", "ContatosController@store");
 
-$router->post("ceagro/back-end/clientes/contas-bancarias", "ContasBancariasController@store");
-$router->get("ceagro/back-end/clientes/{cliente}/contas-bancarias", "ContasBancariasController@show");
+$router->get("{$urlBase}clientes/{cliente}/enderecos", "EnderecosController@index");
+$router->post("{$urlBase}clientes/enderecos", "EnderecosController@store");
+$router->put("{$urlBase}clientes/enderecos/{endereco}", "EnderecosController@update");
 
-$router->get("ceagro/back-end/clientes/{cliente}/estabelecimentos", "EstabelecimentosController@index");
-$router->get("ceagro/back-end/estabelecimentos", "EstabelecimentosController@index");
-$router->get("ceagro/back-end/estabelecimentos/{estabelecimento}", "EstabelecimentosController@show");
-$router->post("ceagro/back-end/estabelecimentos", "EstabelecimentosController@store");
+$router->post("{$urlBase}clientes/contas-bancarias", "ContasBancariasController@store");
+$router->get("{$urlBase}clientes/{cliente}/contas-bancarias", "ContasBancariasController@show");
 
-$router->get("ceagro/back-end/produtos", "ProdutosController@index");
-$router->post("ceagro/back-end/produtos", "ProdutosController@store");
-$router->get("ceagro/back-end/produtos/tipos", "ProdutosController@tipos");
+$router->get("{$urlBase}clientes/{cliente}/estabelecimentos", "EstabelecimentosController@index");
+$router->get("{$urlBase}estabelecimentos", "EstabelecimentosController@index");
+$router->get("{$urlBase}estabelecimentos/{estabelecimento}", "EstabelecimentosController@show");
+$router->post("{$urlBase}estabelecimentos", "EstabelecimentosController@store");
 
-$router->get("ceagro/back-end/contratos", "ContratosController@index");
-$router->get("ceagro/back-end/contratos/{contrato}", "ContratosController@show");
-$router->post("ceagro/back-end/contratos", "ContratosController@store");
+$router->get("{$urlBase}produtos", "ProdutosController@index");
+$router->post("{$urlBase}produtos", "ProdutosController@store");
+$router->get("{$urlBase}produtos/tipos", "ProdutosController@tipos");
 
-$router->put("ceagro/back-end/contratos/{contrato}", "ContratosController@update");
+$router->get("{$urlBase}contratos", "ContratosController@index");
+$router->get("{$urlBase}contratos/{contrato}", "ContratosController@show");
+$router->post("{$urlBase}contratos", "ContratosController@store");
 
-$router->delete("ceagro/back-end/contratos/{contrato}/adendos/{adendo}", "ContratosController@removerAdendo");
-$router->post("ceagro/back-end/adendos", "ContratosController@adicionarAdendos");
+$router->put("{$urlBase}contratos/{contrato}", "ContratosController@update");
 
-$router->get("ceagro/back-end/adaptacao", "Adaptacao\AdaptacaoController@adaptarClientes");
-$router->get("ceagro/back-end/pdfs/contratos/{contrato}", "PDF\ContratosController@index");
-$router->get("ceagro/back-end/unidades-medidas", "UnidadesMedidasController@index");
+$router->delete("{$urlBase}contratos/{contrato}/adendos/{adendo}", "ContratosController@removerAdendo");
+$router->post("{$urlBase}adendos", "ContratosController@adicionarAdendos");
+
+$router->get("{$urlBase}adaptacao", "Adaptacao\AdaptacaoController@adaptarClientes");
+$router->get("{$urlBase}pdfs/contratos/{contrato}", "PDF\ContratosController@index");
+$router->get("{$urlBase}unidades-medidas", "UnidadesMedidasController@index");

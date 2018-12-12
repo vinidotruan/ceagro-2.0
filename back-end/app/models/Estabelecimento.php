@@ -6,10 +6,6 @@ class Estabelecimento extends Model{
 
     public $id;
     public $cliente_id;
-    public $endereco;
-    public $razao_social;
-    public $cnpj;
-    public $inscricao_estadual;
     
     public static $table = "estabelecimentos";
 

@@ -48,9 +48,12 @@ class Contrato extends Model
     public $unidadeMedida;
 
     protected static $table = "contratos";
+    public static $futuro = 160;
+    public static $atual = 1460;
 
     public function __construct()
     {
+        // $this->numeroConfirmacao();
         $this->comprador();
         $this->vendedor();
         $this->produto();
@@ -88,5 +91,15 @@ class Contrato extends Model
     public function contaBancaria()
     {
         return $this->contaBancaria = ContaBancaria::find(['id', $this->vendedor_conta_bancaria_id]);
+    }
+
+    public static function ultimoFuturo()
+    {
+        return static::contratosFuturos()->futuros + self::$futuro;
+    }
+
+    public static function ultimoAtual()
+    {
+        return static::contratosAtuais()->atuais + self::$atual;
     }
 }

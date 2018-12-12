@@ -27,6 +27,11 @@ class Model
         return $response = App::get('db')->contratosFuturos();
     }
 
+    public static function contratosAtuais()
+    {
+        return $response = App::get('db')->contratosAtuais();
+    }
+
     public static function delete($campos = ["id", 0])
     {
         $response = App::get('db')->delete(static::$table, $campos);

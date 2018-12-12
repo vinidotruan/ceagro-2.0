@@ -86,15 +86,28 @@ class QueryBuilder
         }
     }
 
-    public function contratosFuturos($tabela, $classe)
+    public function contratosFuturos()
     {
-        $query = "select count(*) from contratos where futuro = 1";
+        $query = "select count(*) as futuros from contratos where futuro = 1";
+        try {
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
+            return $statement->fetch(PDO::FETCH_LAZY);
+        } catch (PDOException $exception) {
+            http_response_code(500);
+            die($exception);
+        }
+    }
+
+    public function contratosAtuais()
+    {
+        $query = "select count(*) as atuais from contratos where futuro != 1";
 
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();
 
-            return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
+            return $statement->fetch(PDO::FETCH_LAZY);
         } catch (PDOException $exception) {
             http_response_code(500);
             die($exception);

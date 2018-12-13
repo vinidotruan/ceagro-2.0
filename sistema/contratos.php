@@ -374,7 +374,13 @@
 
                                 <label for="tipo_embarque">Tipo de Embarque</label>
 
-                                <input type="text" class="form-control" name="tipo_embarque" placeholder="Digite o tipo de embarque" autocomplete="off" required>
+                                <select name="tipo_embarque" class="form-control">
+
+                                  <option value="retirada">Retirada</option>
+
+                                  <option value="entrega">Entrega</option>
+
+                                </select>
 
                               </div>
 
@@ -386,13 +392,7 @@
 
                                 <label for="local">Local</label>
 
-                                <select name="local" class="form-control">
-
-                                  <option value="retirada">Retirada</option>
-
-                                  <option value="entrega">Entrega</option>
-
-                                </select>
+                                <input type="text" class="form-control" name="local" placeholder="Digite o local" autocomplete="off" required>
 
                               </div>
 
@@ -575,6 +575,12 @@
       </div>
 
     </div>
+    <footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<i class="fab fa-optin-monster"></i>
+			</div>
+			 Copyright © 2018 CEAGRO - Todos os Direitos Reservados. Feito com  <img src="http://dom.com.vc/dom.com.vc.gif" alt="DOM Creative Consulting" height="20" width="20">  por <a href="https://dom.com.vc">DOM</a>
+		</footer>
 
     <?php include 'partials/imports.html' ?>
 

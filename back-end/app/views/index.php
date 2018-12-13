@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contrato</title>
@@ -52,6 +52,10 @@
     .linha {
         padding-top: 50px;
     }
+    .center{
+        padding-left:33.33%;
+        text-align:center;
+    }
 </style>
 
 <body>
@@ -65,7 +69,7 @@
     </header>
     <section>
         <div class="confirmacao">
-            <span>Confirmação número: <?= $contrato->numero_confirmacao ?></span>
+            <span style="font-weight:900;">Confirmação número: <?= $contrato->numero_confirmacao ?></span>
         </div>
     </section>
     <section>
@@ -134,12 +138,11 @@
                         <?=$contrato->produto->nome ?></td>
                     <td>Safra:
                         <?=$contrato->safra ?? "Nenhum" ?></td>
+                        <td class="paddingTop20">Unidade: <?=$contrato->unidade()->titulo ?></td>
                 </tr>
                 <tr>
                     <td class="paddingTop20">Quantidade:
                         <?=$contrato->quantidade ?></td>
-                    <td class="paddingTop20">un:
-                        <?=$contrato->unidade()->titulo ?></td>
                 </tr>
                 <tr>
                     <td class="paddingTop20"> Descrição: <?= $contrato->produto()->descricao ?></td>
@@ -148,9 +151,9 @@
                     <td class="paddingTop20"> Preço: R$
                         <?= $contrato->preco ?>. Local: <?= $contrato->local?>
                     </td>
-                    <td> Tipo Embarque:
-                    <?= $contrato->tipo_embarque?>
-                    </td>
+                </tr>
+                <tr>
+                    <td class="paddingTop20"> Tipo Embarque: <?= $contrato->tipo_embarque?></td>
                 </tr>
                 <tr>
                     <td class="paddingTop20"> Data embarque:
@@ -170,7 +173,7 @@
                         <?=$contrato->peso_qualidade ?? " - " ?></td>
                 </tr>
                 <tr>
-                    <td class="paddingTop20">CFOP:
+                    <td class="paddingTop20">
                         <?=$contrato->cfop ?? "Nenhum" ?></td>
                 </tr>
                 <tr>
@@ -203,6 +206,12 @@
                         <br>
                         <?=$contrato->vendedor->cnpj ?></td>
                     </td>
+                </tr>
+                <tr>
+                    <td class="linha center">______________________________________</td>
+                </tr>
+                <tr>
+                    <td class="center">90.880.204/0001-57</td>
                 </tr>
             </table>
     </section>

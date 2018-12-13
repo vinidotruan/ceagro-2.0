@@ -200,6 +200,7 @@ function popularContasBancarias(contas) {
     });
 
     selecionarConta();
+
     if (temContrato()) {
         mudarSelectConta(conta);
     }
@@ -306,6 +307,7 @@ function selecionarConta() {
         'id': $(`#contas`).val()
     });
 }
+
 
 function mudarSelectConta(conta) {
     contaT = `${conta.conta} | ${conta.agencia} - ${conta.banco}`;

@@ -69,14 +69,14 @@
     </header>
     <section>
         <div class="confirmacao">
-            <span style="font-weight:900;">Confirmação número: <?= $contrato->numero_confirmacao ?></span>
+            <span >Confirmação número: <strong><?= $contrato->numero_confirmacao ?></strong></span>
         </div>
     </section>
     <section>
         <div class="vendedor">
             <table>
                 <tr>
-                    <td>Vendedor:
+                    <td colspan="2">Vendedor:
                         <?=$contrato->vendedor->razao_social ?></td>
                     <td>A/C:
                         <?=$contrato->assinatura_vendedor ?></td>
@@ -93,8 +93,16 @@
                 <tr>
                     <td>
                         CNPJ:
-                        <?=$contrato->vendedor->cnpj ?> 
-                        Inscrição Estadual:
+                        <?=$contrato->vendedor->cnpj ?>
+                    </td>
+                    <td>
+                       Logística/Cotas Vendedor:
+                       <?= ($contrato->vendedor->responsavel_logistica_cotas && strlen($contrato->vendedor->responsavel_logistica_cotas) > 0) ? $contrato->vendedor->responsavel_logistica_cotas : "-"?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    Inscrição Estadual:
                         <?=($contrato->vendedor->inscricao_estadual && strlen($contrato->vendedor->inscricao_estadual) > 0) ? $contrato->vendedor->inscricao_estadual : "-" ?>
                     </td>
                 </tr>
@@ -105,7 +113,7 @@
         <div class="comprador">
             <table>
                 <tr>
-                    <td>Comprador:
+                    <td colspan="2">Comprador:
                         <?=$contrato->comprador->razao_social ?></td>
                     <td>A/C:
                         <?=$contrato->assinatura_comprador ?></td>
@@ -122,8 +130,16 @@
                 <tr>
                     <td>
                         CNPJ:
-                        <?=$contrato->comprador->cnpj ?> 
-                        Inscrição Estadual:
+                        <?=$contrato->comprador->cnpj ?>
+                    </td>
+                    <td>
+                       Logística/Cotas Comprador:
+                       <?= ($contrato->comprador->responsavel_logistica_cotas && strlen($contrato->comprador->responsavel_logistica_cotas) > 0) ? $contrato->comprador->responsavel_logistica_cotas : "-"?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    Inscrição Estadual:
                         <?=($contrato->comprador->inscricao_estadual && strlen($contrato->comprador->inscricao_estadual) > 0) ? $contrato->comprador->inscricao_estadual : "-" ?>
                     </td>
                 </tr>
@@ -145,7 +161,7 @@
                         <?=$contrato->quantidade ?></td>
                 </tr>
                 <tr>
-                    <td class="paddingTop20"> Descrição: <?= $contrato->produto()->descricao ?></td>
+                    <td class="paddingTop20" colspan="3"> Descrição: <?= $contrato->produto()->descricao ?></td>
                 </tr>
                 <tr>
                     <td class="paddingTop20"> Preço: R$
@@ -156,8 +172,8 @@
                     <td class="paddingTop20"> Tipo Embarque: <?= $contrato->tipo_embarque?></td>
                 </tr>
                 <tr>
-                    <td class="paddingTop20"> Data embarque:
-                        <?= $contrato->data_embarque ?>
+                    <td class="paddingTop20"> Embarque:
+                        <?= $contrato->retirada_entrega." ".$contrato->data_embarque ?>
                     </td>
                 </tr>
                 <tr>
@@ -173,17 +189,8 @@
                         <?=$contrato->peso_qualidade ?? " - " ?></td>
                 </tr>
                 <tr>
-                    <td class="paddingTop20">
-                        <?=$contrato->cfop ?? "Nenhum" ?></td>
-                </tr>
-                <tr>
-                    <td class="paddingTop20">Solicitação de Cotas:
-                        <?=$contrato->solicitacao_cotas ?? "Não há registros" ?></td>
-                </tr>
-                <tr>
-                    <td class="paddingTop20" colspan="2"> Informações sobre o carregamento: 
-                        <?=( strlen($contrato->carregamento) > 0) ? $contrato->carregamento:"*A empresa compradora enviará a instrução de carregamento por e-mail.*"?>
-                    </td>
+                    <td class="paddingTop20"> CFOP: 
+                        <?=$contrato->cfop()->descricao ?? "Nenhum" ?></td>
                 </tr>
                 <tr>
                     <td class="paddingTop20">Observações:
@@ -194,7 +201,7 @@
                         <?=$contrato->comissao ?></td>
                 </tr>
                 <tr>
-                    <td class="paddingTop20" colspan="2">*Nós, como intermediadores, confirmamos que realizamos nesta data esta transação em seu nome com base nas leis e regulamentos. Qualquer discrepância deverá ser comunicada imediatamente*</td>
+                    <td class="paddingTop20" colspan="3">*Nós, como intermediadores, confirmamos que realizamos nesta data esta transação em seu nome com base nas leis e regulamentos. Qualquer discrepância deverá ser comunicada imediatamente*</td>
                 </tr>
                 <tr>
                     <td class="linha">_________________________

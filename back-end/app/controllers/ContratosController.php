@@ -74,10 +74,12 @@ class ContratosController extends Controller
     {   
         $reflection = new \ReflectionClass("App\Models\Contrato");
         $instance = $reflection->newInstanceWithoutConstructor();
-        $data = "-".date('Y');
-        $data =  str_replace("-","/",$data);
-        $futuro = $instance->ultimoFuturo().$data;
-        $atual = $instance->ultimoAtual().$data;
+
+        $data = date('Y');
+        $dataFutura = $data+1;
+
+        $futuro = $instance->ultimoFuturo()."/".$dataFutura;
+        $atual = $instance->ultimoAtual()."/".$data;
 
         return $this->responderJSON([$atual, $futuro]);
     }

@@ -23,6 +23,7 @@ return array(
     'App\\Core\\Request' => $baseDir . '/core/Request.php',
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
     'App\\Models\\Banco' => $baseDir . '/app/models/Banco.php',
+    'App\\Models\\Cfop' => $baseDir . '/app/models/Cfop.php',
     'App\\Models\\Cliente' => $baseDir . '/app/models/Cliente.php',
     'App\\Models\\ContaBancaria' => $baseDir . '/app/models/ContaBancaria.php',
     'App\\Models\\Contato' => $baseDir . '/app/models/Contato.php',

@@ -6,6 +6,7 @@ use App\Core\App;
 use App\Models\Cliente;
 use App\Models\Produto;
 use App\Models\Estabelecimento;
+use App\Models\Cfop;
 
 class Contrato extends Model
 {
@@ -37,6 +38,7 @@ class Contrato extends Model
     public $vendedor_conta_bancaria_id;
     public $vendedor_estabelecimento_id;
     public $comprador_estabelecimento_id;
+    public $retirada_entrega;
 
     public $comprador;
     public $compradorEstabelecimento;
@@ -95,5 +97,10 @@ class Contrato extends Model
     public function ultimoAtual()
     {
         return static::contratosAtuais()->atuais + $this->atual;
+    }
+
+    public function cfop()
+    {
+        return Cfop::find(['id', $this->cfop]);
     }
 }

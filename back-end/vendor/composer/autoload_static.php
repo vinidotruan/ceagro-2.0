@@ -60,6 +60,7 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
         'App\\Models\\Banco' => __DIR__ . '/../..' . '/app/models/Banco.php',
+        'App\\Models\\Cfop' => __DIR__ . '/../..' . '/app/models/Cfop.php',
         'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/models/Cliente.php',
         'App\\Models\\ContaBancaria' => __DIR__ . '/../..' . '/app/models/ContaBancaria.php',
         'App\\Models\\Contato' => __DIR__ . '/../..' . '/app/models/Contato.php',

@@ -26,22 +26,28 @@
                                                 <input type="text" class="form-control" name="nome_fantasia" placeholder="Digite o nome fantasia do seu cliente" autocomplete="off" required>
                                             </div>
                                         </div>
-                                        <div class="col-xs-4">
+                                        <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="razao_social">Razão Social</label>
                                                 <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" autocomplete="off">
                                             </div>
                                         </div>
-                                        <div class="col-xs-4">
+                                        <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="cnpj">CNPJ</label>
                                                 <input type="text" class="form-control" name="cnpj" placeholder="Digite o cnpj do estabelecimento" autocomplete="off"  data-inputmask='"mask": "99.999.999/9999-99"' data-mask>
                                             </div>
                                         </div>
-                                        <div class="col-xs-4">
+                                        <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="inscricao_estadual">Inscrição Estadual</label>
                                                 <input type="text" class="form-control" name="inscricao_estadual" placeholder="Digite a inscrição estadual do estabelecimento" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="responsavel_logistica_cotas">Responsável Logística/Cotas</label>
+                                                <input type="text" class="form-control" name="responsavel_logistica_cotas" placeholder="Digite a inscrição estadual do estabelecimento" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>

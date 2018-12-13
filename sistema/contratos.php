@@ -367,19 +367,32 @@
                               </div>
 
                             </div>
+                            
 
                             <div class="col-xs-12 col-lg-4">
 
                               <div class="form-group">
 
-                                <label for="tipo_embarque">Tipo de Embarque</label>
+                                <label for="data_embarque">Data do Embarque</label>
 
-                                <select name="tipo_embarque" class="form-control">
+                                <input type="text" class="form-control" name="data_embarque" placeholder="Digite a data do contrato" autocomplete="off" required>
+
+                              </div>
+
+                            </div>
+                            
+
+                            <div class="col-xs-12 col-lg-4">
+
+                              <div class="form-group">
+
+                                <label for="retirada_entrega">Retirada/Entrega</label>
+
+                                <select name="retirada_entrega" class="form-control">
 
                                   <option value="retirada">Retirada</option>
 
                                   <option value="entrega">Entrega</option>
-
                                 </select>
 
                               </div>
@@ -390,22 +403,10 @@
 
                               <div class="form-group">
 
-                                <label for="local">Local</label>
+                                <label for="tipo_embarque">Tipo de Embarque</label>
 
-                                <input type="text" class="form-control" name="local" placeholder="Digite o local" autocomplete="off" required>
-
-                              </div>
-
-                            </div>
-
-                            <div class="col-xs-12 col-lg-4">
-
-                              <div class="form-group">
-
-                                <label for="data_embarque">Data do Embarque</label>
-
-                                <input type="text" class="form-control" name="data_embarque" placeholder="Digite a data do contrato" autocomplete="off" required>
-
+                                <input type="text" class="form-control" name="tipo_embarque" placeholder="Digite o tipo de retirada" autocomplete="off" required>
+                                
                               </div>
 
                             </div>
@@ -458,9 +459,9 @@
 
                                 <select name="cfop" class="form-control">
 
-                                  <option value="1">CFOP 5102 - mercadoria destinada para industrialização</option>
+                                  <option value="1">5102 - mercadoria destinada para industrialização</option>
 
-                                  <option value="2">CFOP 5502 - mercadoria destinada para exportação</option>
+                                  <option value="2">5502 - mercadoria destinada para exportação</option>
 
                                 </select>
 
@@ -479,30 +480,6 @@
                                 <label for="comissao">Comissão</label>
 
                                 <input type="text" class="form-control" name="comissao" placeholder="Informe sobre a comissao do contrato" autocomplete="off" required>
-
-                              </div>
-
-                            </div>
-
-                            <div class="col-xs-12 col-lg-4">
-
-                              <div class="form-group">
-
-                                <label for="solicitacao_cotas">Solicitação de Cotas</label>
-
-                                <input type="text" class="form-control" name="solicitacao_cotas" placeholder="Solicitação de cotas" autocomplete="off" required>
-
-                              </div>
-
-                            </div>
-
-                            <div class="col-xs-12 col-lg-12">
-
-                              <div class="form-group">
-
-                                <label for="carregamento">Informações sobre o Carregamento</label>
-
-                                <textarea type="text" class="form-control" name="carregamento" placeholder="Informações sobre o carregamento" autocomplete="off" rows='5'></textarea>
 
                               </div>
 
@@ -569,8 +546,6 @@
           </div>
 
         </div>
-
-        <!-- /.modal-content -->
 
       </div>
 

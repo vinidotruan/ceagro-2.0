@@ -56,8 +56,6 @@ class ContratosController extends Controller
         }
     }
 
-    
-
     public function contratosFuturos() {
         $reflection = new \ReflectionClass("App\Models\Contrato");
         $instance = $reflection->newInstanceWithoutConstructor();
@@ -101,7 +99,6 @@ class ContratosController extends Controller
             },
         array_count_values($clientesIds)
         );
-
 
         foreach ($a as $k => &$b) {
             $val = Cliente::find(['id',$k]);

@@ -575,6 +575,12 @@
       </div>
 
     </div>
+    <footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<i class="fab fa-optin-monster"></i>
+			</div>
+			 Copyright © 2018 CEAGRO - Todos os Direitos Reservados. Feito com  <img src="http://dom.com.vc/dom.com.vc.gif" alt="DOM Creative Consulting" height="20" width="20">  por <a href="https://dom.com.vc">DOM</a>
+		</footer>
 
     <?php include 'partials/imports.html' ?>
 

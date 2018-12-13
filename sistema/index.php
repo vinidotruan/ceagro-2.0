@@ -22,7 +22,7 @@
 
     <section class="content">
       <div class="row">
-        <div class="col-lg-4 col-xs-8">
+        <div class="col-lg-4 col-xs-12">
           <div class="small-box bg-aqua">
             <div class="inner" id="contratos">
               <h3></h3>
@@ -35,7 +35,7 @@
             <a href="https://ceagro.com.br/sistema/contratosLista.php" class="small-box-footer">Ver contratos <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <div class="col-lg-4 col-xs-8">
+        <div class="col-lg-4 col-xs-12">
           <div class="small-box bg-green">
             <div class="inner" id="contratos_fut">
               <h3>-</h3>
@@ -48,7 +48,7 @@
             <a href="https://ceagro.com.br/sistema/contratosLista.php" class="small-box-footer">Ver contratos <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <div class="col-lg-4 col-xs-8">
+        <div class="col-lg-4 col-xs-12">
           <div class="small-box bg-yellow">
             <div class="inner" id="clientes">
               <h3></h3>
@@ -63,7 +63,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-12 col-lg-6">
           <div class="box box-danger">
               <div class="box-header with-border">
                 <h3 class="box-title">Seus principais Compradores</h3>
@@ -87,7 +87,7 @@
 			<div class="pull-right hidden-xs">
 				<i class="fab fa-optin-monster"></i>
 			</div>
-			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
+			 Copyright © 2018 CEAGRO - Todos os Direitos Reservados. Feito com  <img src="http://dom.com.vc/dom.com.vc.gif" alt="DOM Creative Consulting" height="20" width="20">  por <a href="https://dom.com.vc">DOM</a>
 		</footer>
 		<div class="control-sidebar-bg"></div>
 	</div>

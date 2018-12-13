@@ -374,7 +374,13 @@
 
                                 <label for="tipo_embarque">Tipo de Embarque</label>
 
-                                <input type="text" class="form-control" name="tipo_embarque" placeholder="Digite o tipo de embarque" autocomplete="off" required>
+                                <select name="tipo_embarque" class="form-control">
+
+                                  <option value="retirada">Retirada</option>
+
+                                  <option value="entrega">Entrega</option>
+
+                                </select>
 
                               </div>
 
@@ -386,13 +392,7 @@
 
                                 <label for="local">Local</label>
 
-                                <select name="local" class="form-control">
-
-                                  <option value="retirada">Retirada</option>
-
-                                  <option value="entrega">Entrega</option>
-
-                                </select>
+                                <input type="text" class="form-control" name="local" placeholder="Digite o local" autocomplete="off" required>
 
                               </div>
 

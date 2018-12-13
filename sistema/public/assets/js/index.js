@@ -16,9 +16,25 @@ $.get("../back-end/clientes", function (response) {
     });
 });
 
-$.get("../back-end/contratos", function (response) {
-    contratos = JSON.parse(response);
-    $('#contratos h3').text(contratos.length);
+$.get("../back-end/contratos/futuros", function (response) {
+    contratosFuturos = JSON.parse(response);
+    $('#contratos_fut h3').text(contratosFuturos);
+    $('#contratos_fut.inner h3').each(function () {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+        }, {
+                duration: 4000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+    });
+});
+
+$.get("../back-end/contratos/atuais", function (response) {
+    contratosFuturos = JSON.parse(response);
+    $('#contratos h3').text(contratosFuturos);
     $('#contratos.inner h3').each(function () {
         $(this).prop('Counter', 0).animate({
             Counter: $(this).text()

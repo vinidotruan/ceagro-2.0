@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use App\Core\App;
+use App\Models\Cliente;
 use App\Models\Contrato;
-use App\Models\Adendo;
 
 class ContratosController extends Controller
 {
@@ -26,7 +26,7 @@ class ContratosController extends Controller
         try {
             $contratoId = Contrato::store($contrato);
 
-            // $ultimoContrato = Contrato::find(["id", $contratoId]);
+            $ultimoContrato = Contrato::find(["id", $contratoId]);
 
             return $this->responderJSON($ultimoContrato);
 
@@ -44,9 +44,8 @@ class ContratosController extends Controller
 
             $contrato = Contrato::update(
                 $contrato,
-                ["id", $contrato]
+                ["id", $contratoId]
             );
-
             
             $contrato = Contrato::find(["id", $contratoId]);
 
@@ -57,31 +56,58 @@ class ContratosController extends Controller
         }
     }
 
-    public function adicionarAdendos($adendo)
-    {
-        try {
-            $adendoId = App::get('db')->insert('adendos', [
-                'descricao' => $adendo['descricao'],
-                'contrato_id' => $adendo['contrato_id']
-            ]);
+    
 
-            $adendos = Adendo::get(["contrato_id", $adendo['contrato_id']]);
-
-            return $this->responderJSON($adendos);
-        } catch (\Exception $e) {
-            die($e);
-        }
+    public function contratosFuturos() {
+        $reflection = new \ReflectionClass("App\Models\Contrato");
+        $instance = $reflection->newInstanceWithoutConstructor();
+        $futuros = $instance->ultimoFuturo();
+        return $this->responderJSON($futuros);
+    }
+    
+    public function contratosAtuais() {
+        $reflection = new \ReflectionClass("App\Models\Contrato");
+        $instance = $reflection->newInstanceWithoutConstructor();
+        $atuais = $instance->ultimoAtual();
+        return $this->responderJSON($atuais);
     }
 
-    public function removerAdendo($contratoId, $adendo)
-    {
-        try {
-            $mensagem = Adendo::delete(["id", $adendo]);
+    public function numeroConfirmacao()
+    {   
+        $reflection = new \ReflectionClass("App\Models\Contrato");
+        $instance = $reflection->newInstanceWithoutConstructor();
+        $data = "-".date('Y');
+        $data =  str_replace("-","/",$data);
+        $futuro = $instance->ultimoFuturo().$data;
+        $atual = $instance->ultimoAtual().$data;
 
-            $adendos = Adendo::get(['contrato_id', $contratoId]);
-            return $this->responderJSON($adendos);
-        } catch (\Exception $e) {
-            die($e);
-        }
+        return $this->responderJSON([$atual, $futuro]);
     }
+
+    public function dados()
+    {
+        $contratos = Contrato::get();
+        $clientesIds;
+
+        foreach ($contratos as $contrato) {
+            $clientesIds[] = $contrato->comprador_id;
+        }
+
+        $num = count($clientesIds);
+
+        $a = array_map(
+            function($val) use ($num){
+                return array('count'=>$val,'avg'=>round($val/$num*100, 1));
+            },
+        array_count_values($clientesIds)
+        );
+
+
+        foreach ($a as $k => &$b) {
+            $val = Cliente::find(['id',$k]);
+            $b['cliente'] =  ($val->razao_social)? $val->razao_social : $val->cnpj;
+        }
+        return $this->responderJSON($a);
+    }
+
 }

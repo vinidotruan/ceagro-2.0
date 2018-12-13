@@ -22,6 +22,16 @@ class Model
         return $a = array_shift($response);
     }
 
+    public static function contratosFuturos()
+    {
+        return $response = App::get('db')->contratosFuturos();
+    }
+
+    public static function contratosAtuais()
+    {
+        return $response = App::get('db')->contratosAtuais();
+    }
+
     public static function delete($campos = ["id", 0])
     {
         $response = App::get('db')->delete(static::$table, $campos);
@@ -50,6 +60,7 @@ class Model
 
     public static function update($dados, $campos = [])
     {
-        return App::get('db')->update(static::$table, $dados, $campos);
+        $data = self::verifyFields($dados);
+        return App::get('db')->update(static::$table, $data, $campos);
     }
 }

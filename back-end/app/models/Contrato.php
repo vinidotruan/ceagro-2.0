@@ -6,15 +6,15 @@ use App\Core\App;
 use App\Models\Cliente;
 use App\Models\Produto;
 use App\Models\Estabelecimento;
-use App\Models\Adendo;
 
 class Contrato extends Model
 {
     public $id;
-    public $id;
+    public $numero_confirmacao;
     public $vendedor_id;
     public $comprador_id;
     public $produto_id;
+    public $preco;
     public $unidade_medida_id;
     public $safra;
     public $quantidade;
@@ -38,7 +38,6 @@ class Contrato extends Model
     public $vendedor_estabelecimento_id;
     public $comprador_estabelecimento_id;
 
-    public $adendos;
     public $comprador;
     public $compradorEstabelecimento;
     public $vendedorEstabelecimento;
@@ -47,14 +46,16 @@ class Contrato extends Model
     public $produto;
     public $unidadeMedida;
 
+    public $futuro = 160;
+    public $atual = 1460;
     protected static $table = "contratos";
+
 
     public function __construct()
     {
         $this->comprador();
         $this->vendedor();
         $this->produto();
-        $this->adendos();
         $this->unidade();
         $this->contaBancaria();
     }
@@ -74,11 +75,7 @@ class Contrato extends Model
     {
         return $this->produto = Produto::find(["id", $this->produto_id]);
     }
-
-    public function adendos()
-    {
-        return $this->adendos = Adendo::get(['contrato_id', $this->id]);
-    }
+    
     public function unidade()
     {
 
@@ -88,5 +85,15 @@ class Contrato extends Model
     public function contaBancaria()
     {
         return $this->contaBancaria = ContaBancaria::find(['id', $this->vendedor_conta_bancaria_id]);
+    }
+
+    public function ultimoFuturo()
+    {
+        return static::contratosFuturos()->futuros + $this->futuro;
+    }
+
+    public function ultimoAtual()
+    {
+        return static::contratosAtuais()->atuais + $this->atual;
     }
 }

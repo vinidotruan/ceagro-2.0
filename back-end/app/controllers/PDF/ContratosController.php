@@ -15,7 +15,7 @@ class ContratosController
         date_default_timezone_set('America/Sao_Paulo');
         $data = strftime('%A, %d de %B de %Y', strtotime('today'));
         ob_start();
-
+        // header('Content-type: text/html; charset=UTF-8');
         include_once "app/views/index.php";
 
         $html = ob_get_contents();

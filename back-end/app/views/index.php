@@ -1,126 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contrato</title>
 </head>
 <style>
-*{
-    margin: 0;
-    padding:0;
-    font-family: Arial;
-    font-size: 11pt;
-    text-align: justify;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px !important;
+        text-align: justify;
+    }
+    body {
+        margin-top: 2.5cm;
+        margin-bottom: 2.5cm;
+        margin-left: 3cm;
+        margin-right: 3cm;
+    }
 
-body {
-    margin-top: 2.5cm;
-    margin-bottom: 2.5cm;
-    margin-left: 3cm;
-    margin-right: 3cm;
-}
-
-.data, .assinatura{
-    float:right;
-}
-
-.assinatura {
-    margin-right: 10%;
-}
-
-.confirmacao, .vendedor {
-    margin-top: 3%;
-}
-
-.nome {
-    float:left; background-color: red
-}
-
-td {
-    margin-top: 5%
-}
-
-.comprador{
-    margin-top:2%;
-}
-
-.produto{
-    margin-top:2%;
-}
-
-.tdproduto{
-    width:400px;
-}
-
-.tdquantidade{
-    padding-top:20px;
-}
-
-.tdpreco{
-    padding-top:20px;
-}
-
-.tdpagamento{
-    padding-top:20px;
-}
-
-.tdpesoequalidade{
-    padding-top:20px;
-}
-
-.aviso{
-    padding-top:20px;
-}
-
-.tdcomissao{
-    padding-top:20px;
-}
-
-.linha{
-    padding-top:50px;
-}
-
+    .data, .assinatura {
+        float: right;
+    }
+    .assinatura {
+        margin-right: 10%;
+    }
+    .confirmacao,
+    .vendedor {
+        margin-top: 3%;
+    }
+    .nome {
+        float: left;
+        background-color: red
+    }
+    .comprador {
+        margin-top: 2%;
+    }
+    .produto {
+        margin-top: 2%;
+    }
+    .tdproduto {
+        width: 400px;
+    }
+    .paddingTop20 {
+        padding-top: 10px;
+    }
+    .linha {
+        padding-top: 50px;
+    }
 </style>
+
 <body>
     <header>
         <div class="log">
             <img src="public/img/logo.png" alt="">
         </div>
-        <div class="data">
-            <?= $data ?>
+        <div class="data"> Porto Alegre
+            <?=$data ?>
         </div>
     </header>
     <section>
         <div class="confirmacao">
-            <span>Confirmação número: <?= $contrato->id ?></span>
+            <span>Confirmação número: <?= $contrato->numero_confirmacao ?></span>
         </div>
     </section>
     <section>
         <div class="vendedor">
             <table>
                 <tr>
-                    <td>Vendedor: <?= $contrato->vendedor->razao_social ?></td>
-                    <td>A/C: <?= $contrato->assinatura_vendedor ?></td>
+                    <td>Vendedor:
+                        <?=$contrato->vendedor->razao_social ?></td>
+                    <td>A/C:
+                        <?=$contrato->assinatura_vendedor ?></td>
                 </tr>
                 <tr>
                     <td>
-                        Rua <?= ($contrato->vendedor->endereco()->rua) ? $contrato->vendedor->endereco()->rua . ", " . $contrato->vendedor->endereco()->numero :
-                                $contrato->vendedor->endereco()->rua . ", " . $contrato->vendedor->endereco()->numero ?>
+                        Rua <?=( $contrato->vendedor->endereco()->rua && strlen($contrato->vendedor->endereco()->rua) > 0) ? "{$contrato->vendedor->endereco()->rua}, " : 'não cadastrada, ' ?>
+                        <?= ($contrato->vendedor->endereco()->numero && strlen($contrato->vendedor->endereco()->numero) > 0) ? "{$contrato->vendedor->endereco()->numero}, " : ' -,  ' ?>
+                    
+                        <?= ($contrato->vendedor->endereco()->cidade && strlen($contrato->vendedor->endereco()->cidade)) ? "{$contrato->vendedor->endereco()->cidade} - " : "" ?>
+                            <?=( $contrato->vendedor->endereco()->estado) ? $contrato->vendedor->endereco()->estado : " - " . $contrato->vendedor->endereco()->estado ?>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                    <?= ($contrato->vendedor->endereco()->cidade) ? $contrato->vendedor->endereco()->cidade : $contrato->vendedor->endereco()->cidade ?>
-<?= ($contrato->vendedor->endereco()->estado) ? " - " . $contrato->vendedor->endereco()->estado : " - " . $contrato->vendedor->endereco()->estado ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        CNPJ: <?= $contrato->vendedor->cnpj ?>
-                        Inscricao Estadual: <?= $contrato->vendedor->inscricao_estadual ?>
+                        CNPJ:
+                        <?=$contrato->vendedor->cnpj ?> 
+                        Inscrição Estadual:
+                        <?=($contrato->vendedor->inscricao_estadual && strlen($contrato->vendedor->inscricao_estadual) > 0) ? $contrato->vendedor->inscricao_estadual : "-" ?>
                     </td>
                 </tr>
             </table>
@@ -130,25 +101,26 @@ td {
         <div class="comprador">
             <table>
                 <tr>
-                    <td>Comprador: <?= $contrato->comprador->razao_social ?></td>
-                    <td>A/C: <?= $contrato->assinatura_comprador ?></td>
+                    <td>Comprador:
+                        <?=$contrato->comprador->razao_social ?></td>
+                    <td>A/C:
+                        <?=$contrato->assinatura_comprador ?></td>
                 </tr>
                 <tr>
                     <td>
-                        Rua <?= ($contrato->comprador->endereco()->rua) ? $contrato->comprador->endereco()->rua . ", " . $contrato->comprador->endereco()->numero :
-                                $contrato->comprador->endereco()->rua . ", " . $contrato->comprador->endereco()->numero ?>
+                        Rua <?=( $contrato->comprador->endereco()->rua && strlen($contrato->comprador->endereco()->rua) > 0) ? "{$contrato->comprador->endereco()->rua}, " : 'não cadastrada, ' ?>
+                        <?= ($contrato->comprador->endereco()->numero && strlen($contrato->comprador->endereco()->numero) > 0) ? "{$contrato->comprador->endereco()->numero}, " : ' -,  ' ?>
+                    
+                        <?= ($contrato->comprador->endereco()->cidade && strlen($contrato->comprador->endereco()->cidade)) ? "{$contrato->comprador->endereco()->cidade} - " : "" ?>
+                            <?=( $contrato->comprador->endereco()->estado) ? $contrato->comprador->endereco()->estado : " - " . $contrato->comprador->endereco()->estado ?>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                    <?= ($contrato->comprador->endereco()->cidade) ? $contrato->comprador->endereco()->cidade : $contrato->comprador->endereco()->cidade ?>
-<?= ($contrato->comprador->endereco()->estado) ? " - " . $contrato->comprador->endereco()->estado : " - " . $contrato->comprador->endereco()->estado ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        CNPJ: <?= $contrato->comprador->cnpj ?>
-                        Inscricao Estadual: <?= $contrato->comprador->inscricao_estadual ?>
+                        CNPJ:
+                        <?=$contrato->comprador->cnpj ?> 
+                        Inscrição Estadual:
+                        <?=($contrato->comprador->inscricao_estadual && strlen($contrato->comprador->inscricao_estadual) > 0) ? $contrato->comprador->inscricao_estadual : "-" ?>
                     </td>
                 </tr>
             </table>
@@ -158,42 +130,82 @@ td {
         <div class="produto">
             <table>
                 <tr>
-                    <td class="tdproduto">Produto: <?= $contrato->produto->nome ?></td>
-                    <td>Safra: <?= $contrato->safra ?? "Nenhum" ?></td>
+                    <td>Produto:
+                        <?=$contrato->produto->nome ?></td>
+                    <td>Safra:
+                        <?=$contrato->safra ?? "Nenhum" ?></td>
                 </tr>
                 <tr>
-                    <td class="tdquantidade">Quantidade: <?= $contrato->quantidade ?></td>
-                    <td class="tdquantidade">Descrição: <?= $contrato->descricao ?></td>
+                    <td class="paddingTop20">Quantidade:
+                        <?=$contrato->quantidade ?></td>
+                    <td class="paddingTop20">un:
+                        <?=$contrato->unidade()->titulo ?></td>
                 </tr>
                 <tr>
-                    <td class="tdpreco">Preço: <?= $contrato->preco ?></td>
-                    <td>Unidade de Medida: <?= $contrato->unidadeMedida->titulo ?></td>
+                    <td class="paddingTop20"> Descrição: <?= $contrato->produto()->descricao ?></td>
                 </tr>
                 <tr>
-                    <td class="tdpagamento">Pagamento: <?= $contrato->pagamento ?></td>
+                    <td class="paddingTop20"> Preço: R$
+                        <?= $contrato->preco ?>. Local: <?= $contrato->local?>
+                    </td>
+                    <td> Tipo Embarque:
+                    <?= $contrato->tipo_embarque?>
+                    </td>
                 </tr>
                 <tr>
-                    <td class="tdpesoequalidade">Peso e Qualidade: <?= $contrato->peso_qualidade ?? "Nenhum" ?></td>
+                    <td class="paddingTop20"> Data embarque:
+                        <?= $contrato->data_embarque ?>
+                    </td>
                 </tr>
                 <tr>
-                    <td class="aviso">*A empresa compradora enviará a instrução de carregamento por e-mail.*</td>
+                    <td class="paddingTop20">Pagamento:
+                        <?=$contrato->pagamento ?></td>
                 </tr>
                 <tr>
-                    <td class="tdcomissao">Comissão: <?= $contrato->comissao ?></td>
+                    <td class="paddingTop20">Dados Bancários: 
+                    <?= "{$contrato->contaBancaria()->banco}, conta {$contrato->contaBancaria()->conta} agência {$contrato->contaBancaria()->agencia}" ?></td>
                 </tr>
                 <tr>
-                    <td class="aviso">*Nós, como intermediadores, confirmamos que realizamos nesta data esta transação em seu nome com base nas leis e regulamentos. Qualquer discrepância deverá ser comunicada imediatamente*</td>
+                    <td class="paddingTop20">Peso e Qualidade:
+                        <?=$contrato->peso_qualidade ?? " - " ?></td>
                 </tr>
                 <tr>
-                    <td class="linha">_________________________<br>Assinatura do Comprador<br><?= $contrato->comprador->cnpj ?></td>
-                    <td class="linha">_________________________<br>Assinatura do Vendedor<br><?= $contrato->vendedor->cnpj ?></td>
-                </td>
+                    <td class="paddingTop20">CFOP:
+                        <?=$contrato->cfop ?? "Nenhum" ?></td>
+                </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                </td>
+                    <td class="paddingTop20">Solicitação de Cotas:
+                        <?=$contrato->solicitacao_cotas ?? "Não há registros" ?></td>
+                </tr>
+                <tr>
+                    <td class="paddingTop20" colspan="2"> Informações sobre o carregamento: 
+                        <?=( strlen($contrato->carregamento) > 0) ? $contrato->carregamento:"*A empresa compradora enviará a instrução de carregamento por e-mail.*"?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="paddingTop20">Observações:
+                        <?=$contrato->observacao ?></td>
+                </tr>
+                <tr>
+                    <td class="paddingTop20">Comissão:
+                        <?=$contrato->comissao ?></td>
+                </tr>
+                <tr>
+                    <td class="paddingTop20" colspan="2">*Nós, como intermediadores, confirmamos que realizamos nesta data esta transação em seu nome com base nas leis e regulamentos. Qualquer discrepância deverá ser comunicada imediatamente*</td>
+                </tr>
+                <tr>
+                    <td class="linha">_________________________
+                        <br>Assinatura do Comprador
+                        <br>
+                        <?=$contrato->comprador->cnpj ?></td>
+                    <td class="linha">_________________________
+                        <br>Assinatura do Vendedor
+                        <br>
+                        <?=$contrato->vendedor->cnpj ?></td>
+                    </td>
+                </tr>
             </table>
-        <div>
     </section>
 </body>
+
 </html>

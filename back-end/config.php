@@ -27,5 +27,5 @@ return [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         ],
     ],
-    'rotas' => 'back-end'
+    'rotas' => 'back-end/'
 ];

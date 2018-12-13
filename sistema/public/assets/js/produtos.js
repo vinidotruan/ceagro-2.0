@@ -47,6 +47,7 @@ function popular(produtos) {
         cols += `<td>${produto.codigo}</td>`;
         cols += `<td>${produto.nome}</td>`;
         cols += `<td>${produto.tipo.descricao}</td>`;
+        cols += `<td>${produto.descricao}</td>`;
         newRow.append(cols);
         $("#produtos_lista").append(newRow)
     }

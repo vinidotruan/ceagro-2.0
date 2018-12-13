@@ -35,7 +35,7 @@
                                         <div class="col-xs-4">
                                             <div class="form-group">
                                                 <label for="cnpj">CNPJ</label>
-                                                <input type="text" class="form-control" name="cnpj" placeholder="Digite o cnpj do estabelecimento" autocomplete="off">
+                                                <input type="text" class="form-control" name="cnpj" placeholder="Digite o cnpj do estabelecimento" autocomplete="off"  data-inputmask='"mask": "99.999.999/9999-99"' data-mask>
                                             </div>
                                         </div>
                                         <div class="col-xs-4">
@@ -115,7 +115,7 @@
                                         <div class="col-xs-12 col-lg-8">
                                             <div class="form-group">
                                                 <label for="cep">CEP</label>
-                                                <input type="text" class="form-control" name="cep" placeholder="Digite o código do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="cep" placeholder="Digite o código do produto" autocomplete="off" data-inputmask='"mask": "99999-999"' data-mask>
                                             </div>
                                         </div>
                                     </div>
@@ -208,5 +208,11 @@
     </div>
 	<?php include 'partials/imports.html'?>
     <script src="public/assets/js/clientes.js"></script>
+    <script src="adminlte/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="adminlte/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <script>
+        $('[data-mask]').inputmask();
+    </script>
 	<?php include 'partials/rodape.html'?>
 	</div>

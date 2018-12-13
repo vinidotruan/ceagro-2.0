@@ -63,25 +63,24 @@
         </div>
       </div>
       <div class="row">
-        <section class="col-lg-12 connectedSortable">
-          <div class="box box-solid bg-green-gradient">
-            <div class="box-header">
-              <i class="fa fa-calendar"></i>
-			  <h3 class="box-title">Calendário</h3>
-              <div class="pull-right box-tools">
+        <div class="col-xs-6">
+          <div class="box box-danger">
+              <div class="box-header with-border">
+                <h3 class="box-title">Seus principais Compradores</h3>
+  
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
               </div>
-            </div>
-            <div class="box-body no-padding">
-              <div id="calendar" style="width: 100%"></div>
-            </div>
+              <div class="box-body">
+                <canvas id="pieChart" style="height:250px"></canvas>
+              </div>
           </div>
-        </section>
-		
-        <section class="col-lg-5 connectedSortable">
-        </section>
-      </div>
-    </section>
         </div>
+      </div>
+    </div>
 		<div class="control-sidebar-bg"></div>
 	</div>
 	<footer class="main-footer">
@@ -95,5 +94,65 @@
 	<?php include 'partials/imports.html'?>
 	<script>
 </script>
-	<script src="public/assets/js/index.js"></script>
+  <script src="public/assets/js/index.js"></script>
+  <script src="adminlte/bower_components/chart.js/Chart.js"></script>
+  <script>
+    function getRandomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+   //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
+    var pieChart       = new Chart(pieChartCanvas);
+    var dados;
+    var PieData;
+$.get("../back-end/contratos/a", function (response) {
+    dados = JSON.parse(response);
+}).done(() => {
+  for(dado in dados) {
+    dados[dado].value = dados[dado].avg;
+    dados[dado].color = getRandomColor();
+    dados[dado].highlight = dados[dado].color;
+    dados[dado].label = dados[dado].cliente;
+  }
+  PieData = dados;
+  var pieOptions     = {
+    //Boolean - Whether we should show a stroke on each segment
+    segmentShowStroke    : true,
+    //String - The colour of each segment stroke
+    segmentStrokeColor   : '#fff',
+    //Number - The width of each segment stroke
+    segmentStrokeWidth   : 2,
+    //Number - The percentage of the chart that we cut out of the middle
+    percentageInnerCutout: 50, // This is 0 for Pie charts
+    //Number - Amount of animation steps
+    animationSteps       : 100,
+    //String - Animation easing effect
+    animationEasing      : 'easeOutBounce',
+    //Boolean - Whether we animate the rotation of the Doughnut
+    animateRotate        : true,
+    //Boolean - Whether we animate scaling the Doughnut from the centre
+    animateScale         : false,
+    //Boolean - whether to make the chart responsive to window resizing
+    responsive           : true,
+    // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+    maintainAspectRatio  : true,
+    //String - A legend template
+    legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+  }
+  //Create pie or douhnut chart
+  // You can switch between pie and douhnut using the method below.
+  pieChart.Doughnut(PieData, pieOptions)
+});
+
+
+    </script>
 	<?php include 'partials/rodape.html'?>

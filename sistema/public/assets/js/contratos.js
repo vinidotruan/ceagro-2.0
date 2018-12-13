@@ -1,5 +1,17 @@
 $('.select2').select2();
 
+$(document).ready(function () {
+    $('.minimal[name="futuro"]').on('ifChecked', function (event) {
+        setNumeroConfirmacao();
+    });
+
+    if (temContrato()) {
+        numeros_confirmacao[1] = contrato.numero_confirmacao;
+        $("input[name='futuro']:checked").val() == contrato.futuro;
+        setNumeroConfirmacao();
+    }
+});
+
 $("#contrato").submit(function (event) {
     event.preventDefault();
     if (temContrato()) {
@@ -14,21 +26,13 @@ $("#contrato").submit(function (event) {
 vendedores = [];
 compradores = [];
 contasBancarias = [{}]
-adendos = [];
 produtos = [];
 vendedor = {};
 comprador = {};
 produto = {};
 conta = {};
 contrato = {};
-
-function adicionarAdendo() {
-    $(`#adendos`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
-    var dados = $('#adendos').serialize();
-    $.post(`../back-end/adendos`, dados, (success) => {
-        popularAdendos(JSON.parse(success));
-    });
-}
+numeros_confirmacao = [{}];
 
 function verificarContrato() {
     buscarDados(() => {
@@ -39,12 +43,11 @@ function verificarContrato() {
             comprador = contrato.comprador;
             vendedor = contrato.vendedor;
             produto = contrato.produto;
-            adendos = contrato.adendos;
 
             compararContrato(contrato, "contrato");
             $('.select2').select2();
-            popularAdendos(adendos, mostrarAdendos());
         } else {
+            buscarNumeroConfirmacao();
             $("#enviar").append("Cadastrar");
         }
     }, erro => {
@@ -60,30 +63,6 @@ function buscarDados(callback) {
         buscarContasBancaria();
     });
 
-}
-
-function mostrarAdendos() {
-    $("#edit").show();
-}
-
-function popularAdendos(adendos, callback) {
-    $('#adendo tr').remove();
-    $.each(adendos, function (index, adendo) {
-        var adendos = '<tr><td colspan="1" value="' + adendo.id + '" class="item">' + adendo.descricao + '</td><td onclick="deletarAdendo(' + adendo.id + ')"><i class="fa fa-trash" aria-hidden="true"></i></td><tr>';
-        $("#adendo").append(adendos)
-    });
-
-    (callback) ? callback() : '';
-}
-
-function deletarAdendo(id) {
-    $.ajax({
-        url: `../back-end/contratos/${contrato.id}/adendos/${id}`,
-        type: 'DELETE',
-        success: function (adendos) {
-            popularAdendos(JSON.parse(adendos));
-        }
-    });
 }
 
 function temContrato() {
@@ -107,10 +86,12 @@ function compararContrato(contrato, formulario) {
 
 function cadastrar() {
     $('#modal-default').modal({ backdrop: 'static', keyboard: false });
+    numero_confirmacao = $(`:input[name='numero_confirmacao']`).val();
+    $(`#contrato`).append(`<input hidden name='numero_confirmacao' value=${numero_confirmacao}>`);
     $(`#contrato`).append(`<input hidden name='comprador_id' value=${comprador.id}>`);
     $(`#contrato`).append(`<input hidden name='vendedor_id' value=${vendedor.id}>`);
     $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);
-    $(`#contrato`).append(`<input hidden name='vendedor_conta_bancaria_Id' value=${conta.id}>`);
+    $(`#contrato`).append(`<input hidden name='vendedor_conta_bancaria_id' value=${conta.id}>`);
     var dados = $('#contrato').serialize();
     $.post('../back-end/contratos', dados, () => {
         alertCadastro();
@@ -140,6 +121,8 @@ function alertAtualizar() {
 }
 
 function atualizar() {
+    numero_confirmacao = $(`:input[name='numero_confirmacao']`).val();
+    $(`#contrato`).append(`<input hidden name='numero_confirmacao' value=${numero_confirmacao}>`);
     $('#modal-default').modal({ backdrop: 'static', keyboard: false });
     $(`#contrato`).append(`<input hidden name='comprador_id' value=${comprador.id}>`);
     $(`#contrato`).append(`<input hidden name='vendedor_id' value=${vendedor.id}>`);
@@ -183,6 +166,28 @@ function buscarContasBancaria() {
     });
 }
 
+function buscarNumeroConfirmacao() {
+    $.ajax({
+        url: `../back-end/numero-confirmacao`,
+        type: "get",
+        dataType: "json",
+        success: response => {
+            numeros_confirmacao = response;
+            setNumeroConfirmacao();
+        }
+    });
+}
+
+function setNumeroConfirmacao() {
+    if ($("input[name='futuro']:checked").val() == 1) {
+        $(`:input[name='numero_confirmacao']`).val(numeros_confirmacao[1]);
+    } else {
+        $(`:input[name='numero_confirmacao']`).val(numeros_confirmacao[0]);
+    }
+
+
+}
+
 function popularContasBancarias(contas) {
     $(`#contas`).val();
     $(`#contas option`).remove();
@@ -194,8 +199,8 @@ function popularContasBancarias(contas) {
         }
     });
 
+    selecionarConta();
     if (temContrato()) {
-        selecionarConta(contrato.vendedor_conta_bancaria_id);
         mudarSelectConta(conta);
     }
 }
@@ -210,7 +215,9 @@ function popularClientes(compradores) {
             var razoes = '<option value="' + comprador.razao_social + '">' + comprador.razao_social + '</option>';
             $(".cliente #razoes").append(razoes)
         }
-    })
+    });
+    selecionarComprador("cnpj");
+    selecionarVendedor("cnpj");
 }
 
 function popularVendedores(vendedores) {
@@ -263,6 +270,7 @@ function popularProdutos(produtos) {
         var option = '<option value="' + produto.id + '">' + produto.nome + '</option>';
         $("#produtos").append(option)
     });
+    selecionarProduto();
 }
 
 function selecionarVendedor(campo) {
@@ -288,14 +296,15 @@ function selecionarProduto() {
     produto = _.find(produtos, {
         'nome': $(`#produto select[name='produto_id'] option:selected`).text()
     });
+
+    $("#produto input[name='descricao']").text(produto.descricao);
+    $("#produto input[name='descricao']").val(produto.descricao);
 }
 
-function selecionarConta(id) {
+function selecionarConta() {
     conta = _.find(contasBancarias, {
-        'id': id
+        'id': $(`#contas`).val()
     });
-
-    contrato.contaBancaria = conta;
 }
 
 function mudarSelectConta(conta) {
@@ -331,3 +340,4 @@ function mudarSelectCnpjs(variavel) {
         $(`#comprador #select2-cnpjs-container`).append(comprador.cnpj);
     }
 }
+

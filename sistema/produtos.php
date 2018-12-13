@@ -40,6 +40,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label for="pagamento">Descrição</label>
+                                        <textarea type="text" class="form-control" name="descricao" rows="3" placeholder="Digite as informações sobre o produto" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="box-footer">
                             <button type="button" class="btn btn-primary pull-right" onclick="enviar()">Cadastrar</button>
@@ -55,6 +63,7 @@
                                     <th>Código</th>
                                     <th>Nome</th>
                                     <th>Tipo</th>
+                                    <th>Descrição</th>
                                 </tr>
                             </thead>
                             <tbody id="produtos_lista">

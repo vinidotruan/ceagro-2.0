@@ -43,6 +43,7 @@ function verificarContrato() {
             comprador = contrato.comprador;
             vendedor = contrato.vendedor;
             produto = contrato.produto;
+            $(".minimal").prop('disabled', true);
 
             compararContrato(contrato, "contrato");
             $('.select2').select2();

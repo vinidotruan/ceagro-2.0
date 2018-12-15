@@ -16,10 +16,11 @@
 								<table id="clientes" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>id</th>
 											<th>Razão Social</th>
+											<th>Nome Fantasia</th>
 											<th>CNPJ</th>
 											<th>Inscrição Estadual</th>
+											<th>Cidade</th>
 										</tr>
 									</thead>
 									<tbody>

@@ -14,10 +14,11 @@ function buscar() {
 function popularPesquisa(clientes, callback) {
     $.each(clientes, function (index, cliente) {
         var linha = `<tr id="${cliente.id}" class="clicavel">
-            <td>${cliente.id}</td>
             <td>${cliente.razao_social}</td>
-            <td>${cliente.cnpj}</td>
-            <td>${cliente.inscricao_estadual}</td>
+            <td>${cliente.nome_fantasia || 'Não há Registros'}</td>
+            <td>${cliente.cnpj || 'Não há Registros'}</td>
+            <td>${cliente.inscricao_estadual || 'Não há Registros'}</td>
+            <td>${cliente.endereco.cidade || 'Não há Registros'}</td>
         </tr>`;
 
         $("#clientes tbody").append(linha);

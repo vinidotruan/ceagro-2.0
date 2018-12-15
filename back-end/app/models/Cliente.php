@@ -15,6 +15,11 @@ class Cliente extends Model
 
     public static $table = "clientes";
 
+    public function __construct()
+    {
+        $this->endereco();
+    }
+
     public function contasBancarias()
     {
         return $this->contasBancarias = ContaBancaria::find(["cliente_id", $this->id]);
@@ -22,6 +27,6 @@ class Cliente extends Model
 
     public function endereco()
     {
-        return $this->enderco = Endereco::find(["cliente_id", $this->id]);
+        return $this->endereco = Endereco::find(["cliente_id", $this->id]);
     }
 }

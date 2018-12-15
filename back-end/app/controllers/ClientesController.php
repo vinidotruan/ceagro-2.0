@@ -6,7 +6,9 @@ use App\Core\App;
 use App\Models\Banco;
 use App\Models\Cliente;
 
-class ClientesController extends Controller {
+class ClientesController extends Controller 
+{
+
     public function index()
     {
         $clientes = Cliente::get(["razao_social", "!=", "' '"]);

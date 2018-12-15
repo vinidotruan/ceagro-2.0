@@ -222,8 +222,9 @@
                               <div class="form-group">
                                 <label for="cfop">CFOP</label>
                                 <select name="cfop" class="form-control">
-                                  <option value="1">5102 - mercadoria destinada para industrialização</option>
-                                  <option value="2">5502 - mercadoria destinada para exportação</option>
+                                  <option value="1">5101 - Mercadoria industrializada.</option>
+                                  <option value="2">5102 - Mercadoria destinada para industrialização.</option>
+                                  <option value="3">5502 - Mercadoria destinada para exportação.</option>
                                 </select>
                               </div>
                             </div>

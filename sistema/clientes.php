@@ -46,8 +46,8 @@
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
-                                                <label for="responsavel_logistica_cotas">Responsável Logística/Cotas</label>
-                                                <input type="text" class="form-control" name="responsavel_logistica_cotas" placeholder="Digite a inscrição estadual do estabelecimento" autocomplete="off">
+                                                <label for="responsavel_logistica_cotas">Logística/Cotas</label>
+                                                <input type="text" class="form-control" name="logistica_cotas" placeholder="Digite a inscrição estadual do estabelecimento" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>

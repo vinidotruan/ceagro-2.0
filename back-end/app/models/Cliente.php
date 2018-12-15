@@ -9,7 +9,7 @@ class Cliente extends Model
     public $razao_social;
     public $cnpj;
     public $inscricao_estadual;
-    public $responsavel_logistica_cotas;
+    public $logistica_cotas;
     public $contasBancarias;
     public $endereco;
 

@@ -75,6 +75,12 @@
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
+															<label for="razao_social">Nome Fantasia</label>
+															<select class="form-control select2" name="nome_fantasia" style="width: 100%;" id="nomesFantasias" onchange="selecionarComprador('nome_fantasia')" required></select>
+														</div>
+													</div>
+													<div class="col-xs-12">
+														<div class="form-group">
 															<label for="vendedor_conta_bancaria_id">Contas Bancárias</label>
 															<select class="form-control select2" name="vendedor_conta_bancaria_id contaBancaria" style="width: 100%;" id="contas" onchange="selecionarConta(this.value)" required></select>
 														</div>

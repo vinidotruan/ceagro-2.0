@@ -19,7 +19,6 @@ class QueryBuilder
         if (is_array($where) && count($where) === 3) {
             ($where) ? $query .= " where " . implode(" ", $where) : '';
             
-            // dd($query);
         } else {
             ($where) ? $query .= " where " . implode(" = ", $where) : '';
         }
@@ -151,7 +150,6 @@ class QueryBuilder
             $campos,
             implode(" = ", $where)
         );
-
         try {
             $statement = $this->pdo->prepare($sql)->execute($dados);
             return $where[1];

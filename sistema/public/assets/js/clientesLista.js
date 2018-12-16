@@ -28,12 +28,12 @@ function popularPesquisa(clientes, callback) {
 function popularPorUnidade(cliente) {
     $.each(cliente.unidades, (index, unidade) => {
         var linha = `<tr id="${cliente.id}" class="clicavel">
-            <td>${cliente.nome_fantasia || 'Não há Registros'}</td>
-            <td>${unidade.razao_social}</td>
-            <td>${unidade.cnpj || 'Não há Registros'}</td>
-            <td>${unidade.inscricao_estadual || 'Não há Registros'}</td>
-            <td>${cliente.endereco.cidade || 'Não há Registros'}</td>
-        </tr>`;
+                <td>${cliente.nome_fantasia || 'Não há Registros'}</td>
+                <td>${unidade.razao_social}</td>
+                <td>${unidade.cnpj || 'Não há Registros'}</td>
+                <td>${unidade.inscricao_estadual || 'Não há Registros'}</td>
+                <td>${(unidade.endereco) ? unidade.endereco.cidade : 'Não há Registros'}</td>
+            </tr>`;
 
         $("#clientes tbody").append(linha);
     });

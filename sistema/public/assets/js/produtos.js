@@ -39,7 +39,7 @@ function atualizar() {
         url: `../back-end/produtos/${produto.id}`,
         type: 'PUT',
         data: dados
-    }).always(() => esconderModal());
+    }).done(() => { limparCampos() }).always(() => { esconderModal(); buscar() });
 }
 
 /**
@@ -63,6 +63,17 @@ function buscarTipos() {
     });
 }
 
+
+/**
+ * Limpa os campos do formulário de unidade.
+ */
+function limparCampos() {
+    $("#produto :input,textarea").each((index, field) => {
+        $(field).val("");
+    });
+    produto = null;
+    return;
+}
 /**
  * Compara cada campo do formulário com um item do array
  * e verifica se são iguais.

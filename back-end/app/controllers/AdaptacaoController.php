@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Endereco;
 use App\Models\Unidade;
 
 class AdaptacaoController extends Controller
@@ -27,10 +28,14 @@ class AdaptacaoController extends Controller
                     $unidade1['cliente_id'] = $cliente->id;
                     $ids[$cliente->id][] = $cliente2->id;
                 }
-                
             }
             $unidade1['cliente_id'] = $cliente->id;
             $unidade = Unidade::store($unidade1);
+            $endereco = (array)Endereco::find(["cliente_id", $unidade1['cliente_id']]);
+            if($endereco) {
+                $endereco['unidade_id'] = $unidade;
+                Endereco::update($endereco, ["id", $endereco['id']]);
+            }
         }
 
         $unidades = Unidade::get();
@@ -43,5 +48,19 @@ class AdaptacaoController extends Controller
                 }
             }
         }
+    }
+
+    public function enderecos()
+    {
+        $clientes = Cliente::get();
+
+        foreach ($clientes as $key => $cliente) {
+            if($cliente->endereco) {
+                $endereco = Endereco::find(["id", $cliente->endereco->id]);
+                // Endereco::update();
+                dd(count($cliente->unidades));
+            }
+        }
+        return $enderecos;
     }
 }

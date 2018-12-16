@@ -213,6 +213,10 @@ function popularClientes(compradores) {
             var cnpjs = '<option value="' + comprador.cnpj + '">' + comprador.cnpj + '</option>';
             $(".cliente #cnpjs").append(cnpjs)
         }
+        if (comprador.nome_fantasia) {
+            var nomes = '<option value="' + comprador.nome_fantasia + '">' + comprador.nome_fantasia + '</option>';
+            $(".cliente #nomesFantasias").append(nomes)
+        }
         if (comprador.razao_social) {
             var razoes = '<option value="' + comprador.razao_social + '">' + comprador.razao_social + '</option>';
             $(".cliente #razoes").append(razoes)

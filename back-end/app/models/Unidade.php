@@ -9,11 +9,17 @@ class Unidade extends Model{
     public $razao_social;
     public $cnpj;
     public $inscricao_estadual;
+    public $endereco;
     
     public static $table = "unidades";
 
+    public function __construct()
+    {
+        $this->endereco();
+    }
+
     public function endereco()
     {
-        return $this->enderco = Endereco::find(["cliente_id", $this->id]);
+        return $this->endereco = Endereco::find(["unidade_id", $this->id]);
     }
 }

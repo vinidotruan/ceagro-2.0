@@ -16,5 +16,5 @@ function dd($dados)
     echo "<pre>";
     var_dump($dados);
     echo "</pre>";
-    // die();C
+    die();
 }

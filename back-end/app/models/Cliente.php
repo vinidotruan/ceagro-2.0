@@ -19,8 +19,8 @@ class Cliente extends Model
 
     public function __construct()
     {
-        // $this->endereco();
-        // $this->unidades();
+        $this->endereco();
+        $this->unidades();
     }
 
     public function contasBancarias()

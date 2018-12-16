@@ -46,6 +46,7 @@ class Model
 
     private static function verifyFields($data)
     {
+        $data = (array) $data;
         $reflection = new \ReflectionClass(static::class);
         $instance = (array) $reflection->newInstanceWithoutConstructor();
         foreach ($instance as $instanceKey => $field) {

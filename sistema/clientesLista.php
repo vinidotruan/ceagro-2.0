@@ -16,8 +16,8 @@
 								<table id="clientes" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>Razão Social</th>
 											<th>Nome Fantasia</th>
+											<th>Razão Social</th>
 											<th>CNPJ</th>
 											<th>Inscrição Estadual</th>
 											<th>Cidade</th>

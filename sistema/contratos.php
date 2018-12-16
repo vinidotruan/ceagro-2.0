@@ -112,6 +112,12 @@
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
+															<label for="razao_social">Nome Fantasia</label>
+															<select class="form-control select2" name="nome_fantasia" style="width: 100%;" id="nomesFantasias" onchange="selecionarComprador('nome_fantasia')" required></select>
+														</div>
+													</div>
+													<div class="col-xs-12">
+														<div class="form-group">
 															<label for="razao_social">Razão Social</label>
 															<select class="form-control select2" name="razao_social" style="width: 100%;" id="razoes" onchange="selecionarComprador('razao_social')" required></select>
 														</div>

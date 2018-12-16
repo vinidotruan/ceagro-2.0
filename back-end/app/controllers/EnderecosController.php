@@ -8,10 +8,10 @@ use App\Models\Cliente;
 
 class EnderecosController
 {
-    public function index($cliente)
+    public function index($clienteId)
     {
-        if ($cliente) {
-            $endereco = Endereco::find(["cliente_id", $cliente]);
+        if ($clienteId) {
+            $endereco = Endereco::find(["cliente_id", $clienteId]);
         } else {
             $endereco = Endereco::get();
         }

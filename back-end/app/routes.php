@@ -9,9 +9,9 @@ $router->post("{$urlBase}clientes", "ClientesController@store");
 $router->get("{$urlBase}clientes/{cliente}", "ClientesController@show");
 $router->put("{$urlBase}clientes/{cliente}", "ClientesController@update");
 
-$router->get("{$urlBase}clientes/contatos", "ContatosController@index");
-$router->get("{$urlBase}clientes/{cliente}/contatos", "ContatosController@index");
-$router->post("{$urlBase}clientes/contatos", "ContatosController@store");
+$router->get("{$urlBase}clientes/{cliente}/unidades", "UnidadesController@index");
+$router->post("{$urlBase}unidades", "UnidadesController@store");
+$router->put("{$urlBase}unidades/{unidade}", "UnidadesController@update");
 
 $router->get("{$urlBase}clientes/{cliente}/enderecos", "EnderecosController@index");
 $router->post("{$urlBase}clientes/enderecos", "EnderecosController@store");

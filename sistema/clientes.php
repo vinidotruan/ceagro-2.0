@@ -1,13 +1,12 @@
 <?php include 'partials/cabecalho.html'?>
-<body class="hold-transition skin-blue sidebar-mini" onload="verificarCliente()">
+<body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 	<?php include "partials/header.html";?>
 	<?php include "partials/menu.html";?>
     <div class="wrapper">
         <div class="content-wrapper">
-            <br>
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-6">
                     <section class="invoice">
                         <div class="row">
                             <div class="col-xs-12">
@@ -26,37 +25,82 @@
                                                 <input type="text" class="form-control" name="nome_fantasia" placeholder="Digite o nome fantasia do seu cliente" autocomplete="off" required>
                                             </div>
                                         </div>
-                                        <div class="col-xs-12 col-lg-4">
-                                            <div class="form-group">
-                                                <label for="razao_social">Razão Social</label>
-                                                <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" autocomplete="off">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-lg-4">
-                                            <div class="form-group">
-                                                <label for="cnpj">CNPJ</label>
-                                                <input type="text" class="form-control" name="cnpj" placeholder="Digite o cnpj do estabelecimento" autocomplete="off"  data-inputmask='"mask": "99.999.999/9999-99"' data-mask>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-lg-4">
-                                            <div class="form-group">
-                                                <label for="inscricao_estadual">Inscrição Estadual</label>
-                                                <input type="text" class="form-control" name="inscricao_estadual" placeholder="Digite a inscrição estadual do estabelecimento" autocomplete="off">
-                                            </div>
-                                        </div>
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <label for="responsavel_logistica_cotas">Logística/Cotas</label>
-                                                <input type="text" class="form-control" name="logistica_cotas" placeholder="Digite as informações necessárias" autocomplete="off">
+                                                <input type="text" class="form-control" name="logistica_cotas" placeholder="Digite as informações necessárias" autocomplete="off" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="box-footer">
                                     <?php require ('partials/components/erro.html') ?>
-                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrar()"></button>
+                                    <button type="submit" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-xs-6">
+                    <section class="invoice">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="page-header">
+                                <i class="fa fa-address-card"></i> Unidade
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row invoice-info">
+                            <form role="form" id="unidade">
+                                <div class="box-body">
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="cnpj">CNPJ</label>
+                                                <input type="text" class="form-control" name="cnpj" placeholder="Digite o cnpj" autocomplete="off"  data-inputmask='"mask": "99.999.999/9999-99"' data-mask>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="inscricao_estadual">Inscrição Estadual</label>
+                                                <input type="text" class="form-control" name="inscricao_estadual" placeholder="Digite a inscrição estadual" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <label for="razao_social">Razão Social</label>
+                                                    <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" autocomplete="off" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <?php require ('partials/components/erro.html') ?>
+                                    <button type="submit" class="btn btn-primary pull-right"></button>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+
+                <div class="col-xs-12">
+                    <section class="invoice">
+                        <div class="row">
+                            <div class="col-xs-12 table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>CNPJ</th>
+                                            <th>Inscrição Estadual</th>
+                                            <th>Razão Social</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="unidades">
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -78,13 +122,13 @@
                                         <div class="col-xs-12 col-lg-8">
                                             <div class="form-group">
                                                 <label for="rua">Rua</label>
-                                                <input type="text" class="form-control" name="rua" placeholder="Digite o nome do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="rua" placeholder="Digite o nome do produto" autocomplete="off" required>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="numero">Número</label>
-                                                <input type="text" class="form-control" name="numero" placeholder="Digite o código do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="numero" placeholder="Digite o código do produto" autocomplete="off" required>
                                             </div>
                                         </div>
                                     </div>
@@ -92,14 +136,14 @@
                                         <div class="col-xs-12 col-lg-6">
                                             <div class="form-group">
                                                 <label for="cidade">Cidade</label>
-                                                <input type="text" class="form-control" name="cidade" placeholder="Digite o código do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="cidade" placeholder="Digite o código do produto" autocomplete="off" required>
                                             </div>
                                         </div>
 
                                         <div class="col-xs-12 col-lg-6">
                                             <div class="form-group">
                                                 <label for="bairro">Bairro</label>
-                                                <input type="text" class="form-control" name="bairro" placeholder="Digite o código do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="bairro" placeholder="Digite o código do produto" autocomplete="off" required>
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +151,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <label for="complemento">Complemento</label>
-                                                <input type="text" class="form-control" name="complemento" placeholder="Digite o código do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="complemento" placeholder="Digite o código do produto" autocomplete="off" required>
                                             </div>
                                         </div>
                                     </div>
@@ -115,13 +159,13 @@
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="estado">Estado</label>
-                                                <input type="text" class="form-control" name="estado" placeholder="Digite o código do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="estado" placeholder="Digite o código do produto" autocomplete="off" required>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-lg-8">
                                             <div class="form-group">
                                                 <label for="cep">CEP</label>
-                                                <input type="text" class="form-control" name="cep" placeholder="Digite o código do produto" autocomplete="off" data-inputmask='"mask": "99999-999"' data-mask>
+                                                <input type="text" class="form-control" name="cep" placeholder="Digite o código do produto" autocomplete="off" required data-inputmask='"mask": "99999-999"' data-mask>
                                             </div>
                                         </div>
                                     </div>
@@ -129,7 +173,7 @@
                                 
                                 <div class="box-footer">
                                     <?php require ('partials/components/erro.html') ?>
-                                    <button type="button" class="btn btn-primary pull-right" onclick="cadastrarEndereco()"></button>
+                                    <button type="submit" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
                         </div>
@@ -138,7 +182,6 @@
 
                
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 contasBancarias">
-
                     <section class="invoice">
                         <div class="row">
                             <div class="col-xs-12">
@@ -174,7 +217,7 @@
                                 
                                 <div class="box-footer">
                                     <?php require ('partials/components/erro.html') ?>
-                                    <button type="button" class="btn btn-primary pull-right"></button>
+                                    <button type="submit" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
                         </div>
@@ -198,7 +241,8 @@
                 </div>
             </div>
 
-        <div class="clearfix"></div>
+            <div class="clearfix"></div>
+            </div>
         </div>
         <div class="control-sidebar-bg"></div>
     </div>

@@ -11,7 +11,7 @@ class ClientesController extends Controller
 
     public function index()
     {
-        $clientes = Cliente::get(["razao_social", "!=", "' '"]);
+        $clientes = Cliente::get();
         echo json_encode($clientes);
     }
 

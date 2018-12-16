@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Core\App;
 use App\Models\Cliente;
 use App\Models\Produto;
-use App\Models\Estabelecimento;
+use App\Models\Unidade;
 use App\Models\Cfop;
 
 class Contrato extends Model

@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
-class Estabelecimento extends Model{
+class Unidade extends Model{
 
     public $id;
     public $cliente_id;
+    public $razao_social;
+    public $cnpj;
+    public $inscricao_estadual;
     
-    public static $table = "estabelecimentos";
+    public static $table = "unidades";
 
     public function endereco()
     {

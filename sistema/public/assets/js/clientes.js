@@ -1,4 +1,5 @@
-var cliente = {};
+var cliente = null;
+var unidade = null;
 
 function temCliente() {
     if (cliente) {
@@ -7,33 +8,111 @@ function temCliente() {
     return false;
 }
 
-function formsDisable() {
-    $("#estabelecimento :input").prop("disabled", true);
-    $("#estabelecimento :button").hide();
-    $("#endereco :input").prop("disabled", true);
-    $("#endereco :button").hide();
-    $("#endereco :input").prop("disabled", true);
-    $("#endereco :button").hide();
-    $("#contasBancarias :input").prop("disabled", true);
-    $("#contasBancarias :button").hide();
+function temUnidade() {
+    if (unidade) {
+        return true;
+    }
+    return false;
 }
 
-function habilitarForm(formulario) {
-    $(`#${formulario} :input`).prop("disabled", false);
-    $(`#${formulario} :button`).show();
+function temEndereco() {
+    if (cliente.endereco) {
+        return true;
+    }
+    return false;
 }
 
-function desabilitarForm(formulario) {
-    $(`#${formulario} :input`).prop("disabled", true);
-    $(`#${formulario} :button`).prop("disabled", true);
+/**
+ * AJAX
+ */
+
+/**
+ * Verifica se há um cliente no localStorage
+ * caso haja ele pega esse cliente e depois excluí do
+ * localStorage
+ */
+$(document).ready(() => {
+    if (localStorage.hasOwnProperty('cliente')) {
+
+        cliente = JSON.parse(localStorage.getItem("cliente"));
+        localStorage.removeItem("cliente");
+
+        buscarContas(cliente.id, () => {
+            compararFormCliente(cliente, "cliente");
+        });
+
+        buscarEndereco(cliente.id, () => {
+            compararFormCliente(cliente, "cliente");
+        });
+
+        buscarUnidades(cliente.id);
+
+    } else {
+        desabilitarForm();
+    }
+});
+
+/**
+ * Adiciona o texto: Salvar a todos os botões
+ */
+$(".btn").text("Salvar");
+/**
+ * Verifica se há cliente, caso haja
+ * atualiza, do contrário, cadastra um.
+ */
+$("#cliente").submit(function (event) {
+    event.preventDefault();
+    (temCliente()) ? atualizar() : cadastrar();
+});
+
+/**
+ * Verifica se há uma unidade, caso haja
+ * atualiza, do contrário, cadastra uma.
+ */
+$("#unidade").submit(function (event) {
+    event.preventDefault();
+    (temUnidade()) ? atualizarUnidade() : cadastrarUnidade();
+});
+
+/**
+ * Verifica se há cliente, caso haja
+ * atualiza o endereço, do contrário, cadastra um.
+ */
+$("#endereco").submit(function (event) {
+    event.preventDefault();
+    (temCliente() && temEndereco()) ? atualizarEndereco() : cadastrarEndereco();
+});
+
+/**
+ * Verifica se há cliente, caso haja
+ * atualiza o endereço, do contrário, cadastra um.
+ */
+$("#contasBancarias").submit(function (event) {
+    event.preventDefault();
+    cadastrarContaBancaria();
+});
+
+/**
+ *  FIM AJAX
+ */
+
+function habilitarForm() {
+    $(`form *`).prop("disabled", false);
+    $(`.btn`).prop("disabled", false);
 }
 
-function irPara(formulario) {
-    $([document.documentElement, document.body]).animate({
-        scrollTop: $(`.${formulario}`).position().top
-    }, 2000);
+function desabilitarForm() {
+    $('form *').prop('disabled', true);
+    $('.btn').prop('disabled', true);
+    $("#cliente *").prop("disabled", false);
 }
 
+/**
+ * Preenche o formulário de acordo com o objeto passado.
+ * 
+ * @param {object} cliente 
+ * @param {dom element} formulario 
+ */
 function compararFormCliente(cliente, formulario) {
     $.each(cliente, function (campo, valor) {
         $(`#${formulario}`).find('select, input, textarea').each(function (index, formObj) {
@@ -47,43 +126,17 @@ function compararFormCliente(cliente, formulario) {
     });
 }
 
-function atualizarBotoes() {
-    $("#cliente :button").text("");
-    $("#endereco :button").text("");
-    $("#estabelecimento :button").text("");
-    $("#cliente :button").append("Atualizar").attr("onclick", "atualizar()");
-    $("#contasBancarias :button").text("");
-    //$("#estabelecimento :button").append("Cadastrar").attr("onclick", "cadastrarEstabelecimento()");
-    $("#contasBancarias :button").append("Cadastrar").attr("onclick", "cadastrarEstabelecimento()");
-    $("#contasBancarias :button").attr("onclick", "cadastrarContaBancaria()");
-
-    if (cliente.endereco !== null) {
-        $("#endereco :button").append("Atualizar").attr("onclick", "atualizarEndereco()");
-    } else {
-        $("#endereco :button").append("Cadastrar").attr("onclick", "cadastrarEndereco()");
-
-    }
-}
-
-function verificarCliente() {
-    cliente = JSON.parse(localStorage.getItem("cliente"));
-    localStorage.removeItem("cliente");
-
-    if (temCliente()) {
-        atualizarBotoes();
-        buscarContas(cliente.id, () => {
-            compararFormCliente(cliente, "cliente");
-        });
-
-        buscarEndereco(cliente.id, () => {
-            compararFormCliente(cliente, "cliente");
-            atualizarBotoes();
-        });
-
-    } else {
-        formsDisable();
-        $(".btn").append("Salvar");
-    }
+/**
+ * Busca as unidades do cliente.
+ * 
+ * @param {int} clienteId - Id do cliente.
+ */
+function buscarUnidades(clienteId) {
+    $.get(`../back-end/clientes/${clienteId}/unidades`, function (response) {
+        cliente.unidades = JSON.parse(response);
+    }).done(response => { popularUnidades(cliente.unidades) })
+        .always(() => esconderModal())
+        .fail(() => exibirErro("unidade"));
 }
 
 function buscarEndereco(clienteId, callback = null) {
@@ -113,6 +166,72 @@ function buscarContas(clienteId, callback = null) {
             callback();
         }
     });
+}
+
+/**
+ * Preenche a tabela de unidades e atribui o click a cada linha.
+ * 
+ * @param {Array} unidades - Array de unidades do cliente.
+ */
+function popularUnidades(unidades) {
+    $('#unidades tr').remove();
+    for (const unidade of unidades) {
+        var newRow = $(`<tr class='item' id=${unidade.id}>`);
+        var cols = "";
+        cols += `<td>${unidade.cnpj}</td>`;
+        cols += `<td>${unidade.inscricao_estadual}</td>`;
+        cols += `<td>${unidade.razao_social}</td>`;
+        newRow.append(cols);
+        $("#unidades").append(newRow)
+    }
+    $('#unidades tr').each((index, linha) => {
+        $(linha).attr('onclick', `selecionarUnidade(${linha.id})`)
+    });
+}
+
+function atualizarUnidade() {
+
+    mostrarModal();
+
+    $(`#unidade`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    dados = $("#unidade").serialize();
+
+    $.ajax({
+        url: `../back-end/unidades/${unidade.id}`,
+        type: 'PUT',
+        data: dados
+    }).done(() => {
+        unidade = null;
+        limparCamposUnidade();
+        buscarUnidades(cliente.id);
+    }).fail(() => exibirErro("unidade"))
+        .always(() => esconderModal());
+}
+
+function limparCamposUnidade() {
+    $("#unidade :input").each((index, field) => {
+        $(field).val("");
+    });
+    return;
+}
+/**
+ * Popula o formulário com uma unidade escolhida.
+ * 
+ * @param {Object} unidade - Unidade do estabelecimento.
+ */
+function pupularUnidade(unidadeCliente) {
+    unidade = unidadeCliente;
+    compararFormCliente(unidadeCliente, "unidade");
+}
+
+/**
+ * Seleciona uma unidade no array de unidades
+ * 
+ * @param {*} unidadeId - Id da unidade do estabelecimento. 
+ */
+function selecionarUnidade(unidadeId) {
+    const unidade = _.find(cliente.unidades, { 'id': `${unidadeId}` });
+    pupularUnidade(unidade);
 }
 
 function popularContas(contas) {
@@ -148,35 +267,30 @@ function cadastrar() {
     var dados = $('#cliente').serialize();
     $.post("../back-end/clientes", dados, response => {
         cliente = JSON.parse(response);
-        $("#contatos").show();
-        irPara("endereco");
-        habilitarForm("endereco");
     }).done(
-        () => desabilitarForm("cliente")
+        () => { habilitarForm() }
     ).always(
         () => esconderModal()
     ).fail(
-        () => exibirErro("endereco")
+        () => exibirErro("cliente")
     );
 }
 
-function cadastrarEstabelecimento() {
-    $(`#estabelecimento`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
-    mostrarModal();
-    var dados = $("#estabelecimento").serialize();
+function cadastrarUnidade() {
 
-    $.post("../back-end/estabelecimentos", dados, function (response) {
-        esconderModal();
-        estabelecimentos = JSON.parse(response);
-        buscarEstabelecimento(cliente.id);
-    }).done(() => {
-        desabilitarForm("estabelecimento");
-        habilitarForm("contasBancarias");
-    }).always(
-        () => esconderModal()
-    ).fail(
-        () => exibirErro("estabelecimento")
-    );
+    mostrarModal();
+    $(`#unidade`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    var dados = $("#unidade").serialize();
+
+    $.post("../back-end/unidades", dados)
+        .done(() => {
+            buscarUnidades(cliente.id);
+            limparCamposUnidade();
+        }).always(
+            () => esconderModal()
+        ).fail(
+            () => exibirErro("unidades")
+        );
 }
 
 function popularEstabelecimentos(estabelecimentos) {
@@ -193,17 +307,14 @@ function popularEstabelecimentos(estabelecimentos) {
 }
 
 function cadastrarEndereco() {
-    $(`#endereco`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     mostrarModal();
+    $(`#endereco`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     var dados = $("#endereco").serialize();
 
     $.post("../back-end/clientes/enderecos", dados, function (response) {
-        esconderModal();
         faturamento = JSON.parse(response);
-        irPara("contasBancarias");
-        habilitarForm("contasBancarias");
     }).done(
-        () => desabilitarForm("endereco")
+
     ).always(
         () => esconderModal()
     ).fail(

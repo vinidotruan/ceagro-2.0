@@ -2,24 +2,15 @@ var cliente = null;
 var unidade = null;
 
 function temCliente() {
-    if (cliente) {
-        return true;
-    }
-    return false;
+    return (cliente) ? true : false;
 }
 
 function temUnidade() {
-    if (unidade) {
-        return true;
-    }
-    return false;
+    return (unidade) ? true : false;
 }
 
 function temEndereco() {
-    if (cliente.endereco) {
-        return true;
-    }
-    return false;
+    return (cliente.endereco) ? true : false;
 }
 
 /**
@@ -139,6 +130,12 @@ function buscarUnidades(clienteId) {
         .fail(() => exibirErro("unidade"));
 }
 
+/**
+ * Busca o endereço do cliente.
+ * 
+ * @param {*} clienteId - Id do cliente.
+ * @param {*} callback - Callback para poder realizar uma ação após o término do processo.
+ */
 function buscarEndereco(clienteId, callback = null) {
     $.get(`../back-end/clientes/${clienteId}/enderecos`, function (response) {
         cliente.endereco = JSON.parse(response);
@@ -148,16 +145,13 @@ function buscarEndereco(clienteId, callback = null) {
     });
 }
 
-function buscarEstabelecimento(clienteId, callback = null) {
-    $.get(`../back-end/clientes/${clienteId}/estabelecimentos`, function (response) {
-        cliente.estabelecimentos = JSON.parse(response);
-        popularEstabelecimentos(cliente.estabelecimentos);
-        if (callback) {
-            callback();
-        }
-    });
-}
-
+/**
+ * Busca as contas bancárias do cliente.
+ * 
+ * 
+ * @param {*} clienteId - Id do cliente.
+ * @param {*} callback - Um callback para realizar uma ação após o término da função.
+ */
 function buscarContas(clienteId, callback = null) {
     $.get(`../back-end/clientes/${clienteId}/contas-bancarias`, function (response) {
         cliente.contasBancarias = JSON.parse(response);
@@ -208,12 +202,16 @@ function atualizarUnidade() {
         .always(() => esconderModal());
 }
 
+/**
+ * Limpa os campos do formulário de unidade.
+ */
 function limparCamposUnidade() {
     $("#unidade :input").each((index, field) => {
         $(field).val("");
     });
     return;
 }
+
 /**
  * Popula o formulário com uma unidade escolhida.
  * 
@@ -234,6 +232,12 @@ function selecionarUnidade(unidadeId) {
     pupularUnidade(unidade);
 }
 
+
+/**
+ * Cria uma tabela com as contas bancárias.
+ * 
+ * @param {*} contas - Array de contas bancárias.
+ */
 function popularContas(contas) {
     $('#contas_bancarias tr').remove();
     for (const conta of contas) {
@@ -247,21 +251,14 @@ function popularContas(contas) {
     }
 }
 
-
-function esconderModal() {
-    $('#modal-default').modal('hide');
-}
-
-function mostrarModal() {
-    $('#modal-default').modal({ backdrop: 'static', keyboard: false });
-
-}
-
 /**
  * 
  * Cadastros e Updates
  */
 
+/**
+ * Cadastra um cliente.
+ */
 function cadastrar() {
     mostrarModal();
     var dados = $('#cliente').serialize();
@@ -276,6 +273,9 @@ function cadastrar() {
     );
 }
 
+/**
+ * Cadastra uma unidade para o cliente.
+ */
 function cadastrarUnidade() {
 
     mostrarModal();
@@ -293,19 +293,9 @@ function cadastrarUnidade() {
         );
 }
 
-function popularEstabelecimentos(estabelecimentos) {
-    $('#estabelecimentos tr').remove();
-    for (const estabelecimento of estabelecimentos) {
-        var newRow = $("<tr class='item'>");
-        var cols = "";
-        cols += `<td>${estabelecimento.razao_social}</td>`;
-        cols += `<td>${estabelecimento.cnpj}</td>`;
-        cols += `<td>${estabelecimento.inscricao_estadual}</td>`;
-        newRow.append(cols);
-        $("#estabelecimentos").append(newRow)
-    }
-}
-
+/**
+ * Cadastra o endereço da unidade.
+ */
 function cadastrarEndereco() {
     mostrarModal();
     $(`#endereco`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
@@ -313,15 +303,16 @@ function cadastrarEndereco() {
 
     $.post("../back-end/clientes/enderecos", dados, function (response) {
         faturamento = JSON.parse(response);
-    }).done(
-
-    ).always(
+    }).always(
         () => esconderModal()
     ).fail(
         () => exibirErro("endereco")
     );
 }
 
+/**
+ * Cadastra uma conta bancária.
+ */
 function cadastrarContaBancaria() {
     $(`#contasBancarias`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     mostrarModal();
@@ -332,17 +323,21 @@ function cadastrarContaBancaria() {
     });
 }
 
+/**
+ * Atualiza um cliente.
+ */
 function atualizar() {
     var dados = $('#cliente').serialize();
     $.ajax({
         url: `../back-end/clientes/${cliente.id}`,
         type: 'PUT',
-        data: dados,
-        success: function (response) {
-        }
+        data: dados
     });
 }
 
+/**
+ * Atualiza o endereco do cliente.
+ */
 function atualizarEndereco() {
     $(`#endereco`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     $(`#endereco`).append(`<input hidden name='id' value=${cliente.endereco.id}>`);
@@ -363,3 +358,13 @@ function exibirErro(form) {
         $(".erro").hide("slow");
     }, 2000);
 }
+
+function esconderModal() {
+    $('#modal-default').modal('hide');
+}
+
+function mostrarModal() {
+    $('#modal-default').modal({ backdrop: 'static', keyboard: false });
+
+}
+

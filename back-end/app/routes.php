@@ -27,6 +27,9 @@ $router->post("{$urlBase}estabelecimentos", "EstabelecimentosController@store");
 
 $router->get("{$urlBase}produtos", "ProdutosController@index");
 $router->post("{$urlBase}produtos", "ProdutosController@store");
+$router->put("{$urlBase}produtos/{produto}", "ProdutosController@update");
+$router->delete("{$urlBase}produtos/{produto}", "ProdutosController@destroy");
+
 $router->get("{$urlBase}produtos/tipos", "ProdutosController@tipos");
 
 $router->get("{$urlBase}contratos", "ContratosController@index");

@@ -4,6 +4,7 @@ use App\Core\App;
 $urlBase = App::get('config')['rotas'];
 $router->get("{$urlBase}numero-confirmacao", "ContratosController@numeroConfirmacao");
 
+$router->get("{$urlBase}adaptar", "AdaptacaoController@index");
 $router->get("{$urlBase}clientes", "ClientesController@index");
 $router->post("{$urlBase}clientes", "ClientesController@store");
 $router->get("{$urlBase}clientes/{cliente}", "ClientesController@show");

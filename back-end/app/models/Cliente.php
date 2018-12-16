@@ -7,6 +7,9 @@ class Cliente extends Model
     public $id;
     public $nome_fantasia;
     public $logistica_cotas;
+    public $razao_social;
+    public $cnpj;
+    public $inscricao_estadual;
     
     public $contasBancarias;
     public $endereco;
@@ -16,8 +19,8 @@ class Cliente extends Model
 
     public function __construct()
     {
-        $this->endereco();
-        $this->unidades();
+        // $this->endereco();
+        // $this->unidades();
     }
 
     public function contasBancarias()

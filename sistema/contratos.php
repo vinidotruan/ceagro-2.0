@@ -1,6 +1,6 @@
 <?php include 'partials/cabecalho.html' ?>
 
-<body class="hold-transition skin-blue sidebar-mini" onload="verificarContrato()">
+<body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 		<?php include "partials/header.html"; ?>
 		<?php include "partials/menu.html"; ?>
@@ -19,7 +19,6 @@
 												<h2 class="page-header">
 
 <i class="fa fa-file"></i> Número do Contrato
-
 </h2> </div>
 										</div>
 										<div class="row invoice-info">
@@ -28,16 +27,16 @@
 													<div class="col-xs-12 col-lg-8">
 														<div class="form-group">
 															<label for="numero_confirmacao">Numero de Confirmação</label>
-															<input type="text" class="form-control" name="numero_confirmacao" placeholder="Digite o numero de confirmacao" autocomplete="off" disabled> </div>
+															<input type="text" class="form-control" name="numero_confirmacao" id="numero_confirmacao" placeholder="Digite o numero de confirmacao" autocomplete="off" readonly> </div>
 													</div>
 													<div class="col-xs-12 col-lg-4">
 														<div class="form-group">
 															<label>
-																<input type="radio" name="futuro" class="minimal" onClick="setNumeroConfirmacao()" value="0" checked> Atual </label>
+																<input type="radio" name="futuro" class="minimal" value="0" checked> Atual </label>
 														</div>
 														<div class="form-group">
 															<label>
-																<input type="radio" name="futuro" class="minimal" onClick="setNumeroConfirmacao()" value="1"> Futuro </label>
+																<input type="radio" name="futuro" class="minimal" value="1"> Futuro </label>
 														</div>
 													</div>
 												</div>
@@ -63,26 +62,26 @@
 												<div class="form-row">
 													<div class="col-xs-12">
 														<div class="form-group">
+															<label for="razao_social">Nome Fantasia</label>
+															<select class="form-control select2" name="vendedor_id" style="width: 100%;" id="nomesFantasias" required></select>
+														</div>
+													</div>
+													<div class="col-xs-12">
+														<div class="form-group">
 															<label for="cnpj">Cnpj</label>
-															<select class="form-control select2" name="cnpj" style="width: 100%;" id="cnpjs" onchange="selecionarVendedor('cnpj')" required></select>
+															<select class="form-control select2" name="unidade_vendedor_id" style="width: 100%;" id="cnpjs" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
 															<label for="razao_social">Razão Social</label>
-															<select class="form-control select2" name="razao_social" style="width: 100%;" id="razoes" onchange="selecionarVendedor('razao_social')" required></select>
-														</div>
-													</div>
-													<div class="col-xs-12">
-														<div class="form-group">
-															<label for="razao_social">Nome Fantasia</label>
-															<select class="form-control select2" name="nome_fantasia" style="width: 100%;" id="nomesFantasias" onchange="selecionarComprador('nome_fantasia')" required></select>
+															<select class="form-control select2" name="unidade_vendedor_id" style="width: 100%;" id="razoes" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
 															<label for="vendedor_conta_bancaria_id">Contas Bancárias</label>
-															<select class="form-control select2" name="vendedor_conta_bancaria_id contaBancaria" style="width: 100%;" id="contas" onchange="selecionarConta(this.value)" required></select>
+															<select class="form-control select2" name="vendedor_conta_bancaria_id" style="width: 100%;" id="contas" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
@@ -112,20 +111,20 @@
 												<div class="form-row">
 													<div class="col-xs-12">
 														<div class="form-group">
-															<label for="cnpj">Cnpj</label>
-															<select class="form-control select2" name="cnpj" style="width: 100%;" id="cnpjs" onchange="selecionarComprador('cnpj')" required></select>
+															<label for="razao_social">Nome Fantasia</label>
+															<select class="form-control select2" name="comprador_id" style="width: 100%;" id="nomesFantasias" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
-															<label for="razao_social">Nome Fantasia</label>
-															<select class="form-control select2" name="nome_fantasia" style="width: 100%;" id="nomesFantasias" onchange="selecionarComprador('nome_fantasia')" required></select>
+															<label for="cnpj">Cnpj</label>
+															<select class="form-control select2" name="unidade_comprador_id" style="width: 100%;" id="cnpjs" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
 															<label for="razao_social">Razão Social</label>
-															<select class="form-control select2" name="razao_social" style="width: 100%;" id="razoes" onchange="selecionarComprador('razao_social')" required></select>
+															<select class="form-control select2" name="unidade_comprador_id" style="width: 100%;" id="razoes" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
@@ -158,7 +157,7 @@
 														<div class="col-xs-12 col-lg-4">
 															<div class="form-group">
 																<label for="cnpj">Produto</label>
-																<select class="form-control select2" name="produto_id" style="width: 100%;" id="produtos" onchange="selecionarProduto()" required></select>
+																<select class="form-control select2" name="produto_id" style="width: 100%;" id="produtos" required></select>
 															</div>
 														</div>
 														<div class="col-xs-12 col-lg-4">
@@ -170,18 +169,17 @@
 														<div class="col-xs-12 col-lg-4">
 															<div class="form-group">
 																<label for="">Safra</label>
-																<input type="text" class="form-control" name="safra" placeholder="Digite a safra do produto" required> </div>
+																<input type="text" class="form-control" name="safra" placeholder="Digite a safra do produto" autocomplete="off" required> </div>
 														</div>
 														<div class="col-xs-12 col-lg-4">
 															<div class="form-group">
 																<label for="">Quantidade</label>
-																<input type="text" class="form-control" name="quantidade" placeholder="Digite a quantidade do produto" required> </div>
+																<input type="text" class="form-control" name="quantidade" placeholder="Digite a quantidade do produto" autocomplete="off" required> </div>
 														</div>
 														<div class="col-xs-12 col-lg-4">
 															<div class="form-group">
 																<label for="descricao">Descricao</label>
-																<input type="text" class="form-control" name="descricao" placeholder="Digite a descrição" autocomplete="off" disabled>
-																<!-- <textarea type="text" class="form-control" name="descricao" id="descricao" placeholder="Descricao do contrato" rows="3"></textarea> -->
+																<textarea type="text" class="form-control" name="descricao" id="descricao" placeholder="Descricao do contrato" rows="1" disabled></textarea>
 															</div>
 														</div>
 														<div class="col-xs-12 col-lg-4">
@@ -248,7 +246,7 @@
                             <div class="col-xs-12 col-lg-4">
                               <div class="form-group">
                                 <label for="local">Local</label>
-                                <input type="text" class="form-control" name="Local" placeholder="Informe o local do contrato" autocomplete="off" required> </div>
+                                <input type="text" class="form-control" name="local" placeholder="Informe o local do contrato" autocomplete="off" required> </div>
                             </div>
                           </div>
 											  </div>
@@ -261,6 +259,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
                   <section class="invoice" id="button">
                     <div class="box-footer">
+										<?php require ('partials/components/erro.html') ?>
                       <button type="submit" class="btn btn-primary pull-right" id="enviar"></button>
                     </div>
                   </section>
@@ -283,6 +282,7 @@
     <footer class="main-footer">
       <div class="pull-right hidden-xs"> <i class="fab fa-optin-monster"></i> </div> Copyright © 2018 CEAGRO - Todos os Direitos Reservados. Feito com <img src="http://dom.com.vc/dom.com.vc.gif" alt="DOM Creative Consulting" height="20" width="20"> por <a href="https://dom.com.vc">DOM</a> </footer>
     <?php include 'partials/imports.html' ?>
+    <script src="public/assets/js/comprador_vendedor.js"></script>
     <script src="public/assets/js/contratos.js"></script>
     <script src="adminlte/plugins/iCheck/icheck.min.js"></script>
     <script>

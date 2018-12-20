@@ -2,7 +2,7 @@
 
 function view($pagina, $dados = [])
 {
-    extract((array) $dados);
+    extract((array)$dados);
     require "app/views/{$pagina}.php";
 }
 

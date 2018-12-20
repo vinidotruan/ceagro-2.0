@@ -1,3 +1,4 @@
+enderecos = null;
 function buscar() {
     $.get("../back-end/clientes", function (response) {
         clientes = JSON.parse(response);
@@ -16,7 +17,7 @@ function popularPesquisa(clientes, callback) {
         if (cliente.unidades.length > 0) {
             popularPorUnidade(cliente);
         } else {
-            popularPorCliente(cliente);
+            enderecos += `${cliente.id},`;
         }
     });
     $(`#clientes tbody tr`).on("click", function () {
@@ -45,7 +46,7 @@ function popularPorCliente(cliente) {
         <td>${cliente.razao_social || 'Não há unidades cadastradas'}</td>
         <td>${cliente.cnpj || 'Não há Registros'}</td>
         <td>${cliente.inscricao_estadual || 'Não há Registros'}</td>
-        <td>${cliente.endereco.cidade || 'Não há Registros'}</td>
+        <td>${cliente.unidade.endereco.cidade || 'Não há Registros'}</td>
     </tr>`;
 
     $("#clientes tbody").append(linha);

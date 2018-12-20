@@ -62,22 +62,36 @@
 												<div class="form-row">
 													<div class="col-xs-12">
 														<div class="form-group">
-															<label for="razao_social">Nome Fantasia</label>
-															<select class="form-control select2" name="vendedor_id" style="width: 100%;" id="nomesFantasias" required></select>
+															<label for="vendedor_id">Nome Fantasia</label>
+															<select class="form-control select2 nomesFantasias" name="vendedor_id" style="width: 100%;" id="nome_fantasia" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
-															<label for="cnpj">Cnpj</label>
-															<select class="form-control select2" name="unidade_vendedor_id" style="width: 100%;" id="cnpjs" required></select>
+															<label for="unidade_vendedor_id">Cnpj</label>
+															<select class="form-control select2 cnpjs" name="unidade_vendedor_id" style="width: 100%;" id="cnpj" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
-															<label for="razao_social">Razão Social</label>
-															<select class="form-control select2" name="unidade_vendedor_id" style="width: 100%;" id="razoes" required></select>
+															<label for="unidade_vendedor_id">Razão Social</label>
+															<select class="form-control select2 razoes" name="unidade_vendedor_id" style="width: 100%;" id="razao_social" required></select>
 														</div>
 													</div>
+													<div class="col-xs-12">
+														<div class="form-group">
+															<label for="unidade_vendedor_id">Inscrição Estadual</label>
+															<select class="form-control select2 inscricoes" name="unidade_vendedor_id" style="width: 100%;" id="inscricao_estadual" required disabled></select>
+														</div>
+													</div>
+
+													<div class="col-xs-12">
+														<div class="form-group">
+															<label for="unidade_vendedor_id">Endereços</label>
+															<select class="form-control select2 enderecos" name="unidade_vendedor_id" style="width: 100%;" id="endereco" required disabled></select>
+														</div>
+													</div>
+
 													<div class="col-xs-12">
 														<div class="form-group">
 															<label for="vendedor_conta_bancaria_id">Contas Bancárias</label>
@@ -112,19 +126,32 @@
 													<div class="col-xs-12">
 														<div class="form-group">
 															<label for="razao_social">Nome Fantasia</label>
-															<select class="form-control select2" name="comprador_id" style="width: 100%;" id="nomesFantasias" required></select>
+															<select class="form-control select2 nomesFantasias" name="comprador_id" style="width: 100%;" id="nome_fantasia" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
 															<label for="cnpj">Cnpj</label>
-															<select class="form-control select2" name="unidade_comprador_id" style="width: 100%;" id="cnpjs" required></select>
+															<select class="form-control select2 cnpjs" name="unidade_comprador_id" style="width: 100%;" id="cnpj" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
 															<label for="razao_social">Razão Social</label>
-															<select class="form-control select2" name="unidade_comprador_id" style="width: 100%;" id="razoes" required></select>
+															<select class="form-control select2 razoes" name="unidade_comprador_id" style="width: 100%;" id="razao_social" required></select>
+														</div>
+													</div>
+													<div class="col-xs-12">
+														<div class="form-group">
+															<label for="unidade_vendedor_id">Inscrição Estadual</label>
+															<select class="form-control select2 inscricoes" name="unidade_vendedor_id" style="width: 100%;" id="inscricao_estadual" required disabled></select>
+														</div>
+													</div>
+
+													<div class="col-xs-12">
+														<div class="form-group">
+															<label for="unidade_vendedor_id">Endereços</label>
+															<select class="form-control select2 enderecos" name="unidade_vendedor_id" style="width: 100%;" id="endereco" required disabled></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
@@ -259,7 +286,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
                   <section class="invoice" id="button">
                     <div class="box-footer">
-										<?php require ('partials/components/erro.html') ?>
+										<?php require('partials/components/erro.html') ?>
+										<?php require('partials/components/success.html') ?>
                       <button type="submit" class="btn btn-primary pull-right" id="enviar"></button>
                     </div>
                   </section>

@@ -5,10 +5,6 @@ $(document).ready(() => {
     buscarUnidadesDeMedidas();
     buscarNumeroConfirmacao();
 
-    if (localStorage.hasOwnProperty('contrato')) {
-        contrato = localStorage.getItem('contrato');
-        compararContrato();
-    };
 });
 
 $("#contrato").submit(() => {
@@ -105,25 +101,25 @@ function setNumeroConfirmacao() {
  * FIM NUMERO CONFIRMACAO
  */
 
-
-function compararContrato(contrato, formulario) {
-    console.log("teste");
-    $.each(contrato, function (campo, valor) {
-        $(`#${formulario}`).find('select, input, textarea').each(function (index, formObj) {
-            if (typeof valor === "object" && valor) {
-                compararContrato(valor, campo);
-            }
-            (formObj.name === campo) ? $(formObj).val(valor) : "";
-        });
-    });
-}
-
 function cadastrar() {
     mostrarModal();
     const dados = $("#contrato").serialize();
     $.post('../back-end/contratos', dados)
         .done(() => {
             alertCadastro();
+            exibirSucesso();
+        })
+        .always(() => esconderModal())
+        .fail(() => exibirErro());
+}
+
+function atualizar() {
+    mostrarModal();
+    const dados = $("#contrato").serialize();
+    $.ajax({ type: 'PUT', url: `../back-end/contratos/${contrato.id}`, data: dados })
+        .done(() => {
+            alertCadastro();
+            exibirSucesso();
         })
         .always(() => esconderModal())
         .fail(() => exibirErro());
@@ -152,5 +148,12 @@ function exibirErro() {
     $(`#contrato .erro`).show("slow");
     setTimeout(() => {
         $(".erro").hide("slow");
+    }, 2000);
+}
+
+function exibirSucesso() {
+    $(`#contrato .success`).show("slow");
+    setTimeout(() => {
+        $(".success").hide("slow");
     }, 2000);
 }

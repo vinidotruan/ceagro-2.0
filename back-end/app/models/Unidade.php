@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-class Unidade extends Model{
+class Unidade extends Model
+{
 
     public $id;
     public $cliente_id;
@@ -10,12 +11,19 @@ class Unidade extends Model{
     public $cnpj;
     public $inscricao_estadual;
     public $endereco;
-    
+
+    public $cliente;
+
     public static $table = "unidades";
 
     public function __construct()
     {
         $this->endereco();
+    }
+
+    public function cliente()
+    {
+        return $this->cliente = Cliente::find(['id', $this->cliente_id]);
     }
 
     public function endereco()

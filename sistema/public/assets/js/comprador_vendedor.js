@@ -1,13 +1,23 @@
 $(document).ready(() => {
     buscarClientes();
+
+    if (localStorage.hasOwnProperty('contrato')) {
+        contrato = JSON.parse(localStorage.getItem('contrato'));
+        localStorage.removeItem('contrato');
+        compararContrato(contrato, 'contrato');
+    };
 });
 
-$("#comprador #nomesFantasias").change(event => {
-    selecionarComprador(event.target.value);
+function temContrato() {
+    return (localStorage.hasOwnProperty('contrato')) ? true : false;
+}
+
+$("#comprador .nomesFantasias").change(event => {
+    selecionarComprador(event.target.value, cmp => popularUnidadesComprador(cmp));
 });
 
-$("#vendedor #nomesFantasias").change(event => {
-    selecionarVendedor(event.target.value);
+$("#vendedor .nomesFantasias").change(event => {
+    selecionarVendedor(event.target.value, vnd => popularUnidadesVendedor(vnd));
 });
 
 let clientes = null;
@@ -20,6 +30,19 @@ function buscarClientes() {
             clientes = JSON.parse(response);
             popularCompradores(clientes);
             popularVendedores(clientes);
+
+            if (temContrato()) {
+                selecionarComprador(contrato.comprador_id, cmp => {
+                    contrato.comprador = cmp;
+                    compararContrato(contrato, 'contrato');
+                    popularUnidadesComprador(cmp);
+                });
+                selecionarVendedor(contrato.vendedor_id, vnd => {
+                    popularUnidadesVendedor(vnd);
+                    popularUnidadesComprador(vnd);
+
+                });
+            }
         })
         .always(() => $(".overlay").remove());
 }
@@ -30,25 +53,29 @@ function buscarClientes() {
 function popularCompradores(compradores) {
     $.each(compradores, (index, comprador) => {
         const cliente = `<option value=${comprador.id}> ${comprador.nome_fantasia || comprador.razao_social}</option>`;
-        $("#comprador #nomesFantasias").append(cliente);
+        $("#comprador .nomesFantasias").append(cliente);
     });
 }
 
-function selecionarComprador(compradorId) {
+function selecionarComprador(compradorId, callback) {
     comprador = _.find(clientes, {
         'id': compradorId
     });
-    popularUnidadesComprador(comprador);
+    callback(comprador);
 }
 
 function popularUnidadesComprador(comprador) {
-    $("#comprador #cnpjs option").remove();
-    $("#comprador #razoes option").remove();
+    $("#comprador .cnpjs option").remove();
+    $("#comprador .razoes option").remove();
     $.each(comprador.unidades, (index, unidade) => {
         const cnpj = `<option value=${unidade.id}>${unidade.cnpj || "-"}</option>`;
-        $("#comprador #cnpjs").append(cnpj);
         const razaoSocial = `<option value=${unidade.id}>${unidade.razao_social || "-"}</option>`;
-        $("#comprador #razoes").append(razaoSocial);
+        const inscricao_estadual = `<option value=${unidade.id} >${unidade.inscricao_estadual || "Não Cadastrada"}</option>`;
+        const endereco = `<option value=${unidade.id}>${unidade.endereco.cidade}(${unidade.endereco.estado}) | ${unidade.endereco.rua}</option>`;
+        $("#comprador .razoes").append(razaoSocial);
+        $("#comprador .inscricoes").append(inscricao_estadual);
+        $("#comprador .cnpjs").append(cnpj);
+        $("#comprador .enderecos").append(endereco);
     });
 }
 /**
@@ -61,26 +88,31 @@ function popularUnidadesComprador(comprador) {
 function popularVendedores(vendedores) {
     $.each(vendedores, (index, vendedor) => {
         const cliente = `<option value=${vendedor.id}> ${vendedor.nome_fantasia || vendedor.razao_social}</option>`;
-        $("#vendedor #nomesFantasias").append(cliente);
+        $("#vendedor .nomesFantasias").append(cliente);
     });
 }
 
-function selecionarVendedor(vendedorId) {
+function selecionarVendedor(vendedorId, callback) {
     vendedor = _.find(clientes, {
         'id': vendedorId
     });
-    popularUnidadesVendedor(vendedor);
+    callback(vendedor);
     buscarContasBancarias(vendedor.id);
 }
 
 function popularUnidadesVendedor(vendedor) {
-    $("#vendedor #cnpjs option").remove();
-    $("#vendedor #razoes option").remove();
+    $("#vendedor .cnpjs option").remove();
+    $("#vendedor .razoes option").remove();
+    $("#vendedor .inscricoes option").remove();
     $.each(vendedor.unidades, (index, unidade) => {
         const cnpj = `<option value=${unidade.id}>${unidade.cnpj || "-"}</option>`;
-        $("#vendedor #cnpjs").append(cnpj);
         const razaoSocial = `<option value=${unidade.id}>${unidade.razao_social || "-"}</option>`;
-        $("#vendedor #razoes").append(razaoSocial);
+        const inscricao_estadual = `<option value=${unidade.id} >${unidade.inscricao_estadual || "Não Cadastrada"}</option>`;
+        const endereco = `<option value=${unidade.id}>${unidade.endereco.cidade}(${unidade.endereco.estado}) | ${unidade.endereco.rua}</option>`;
+        $("#vendedor .razoes").append(razaoSocial);
+        $("#vendedor .inscricoes").append(inscricao_estadual);
+        $("#vendedor .cnpjs").append(cnpj);
+        $("#vendedor .enderecos").append(endereco);
     });
 }
 /**
@@ -107,4 +139,21 @@ function popularContasBancarias(contas) {
         $("#contas").append(contas);
     });
 
+}
+
+/**
+ * 
+ * 
+ */
+
+function compararContrato(contrato, formulario) {
+    $.each(contrato, function (campo, valor) {
+        form = $(`#${formulario}`).find('select, input, textarea');
+        $(form).each(function (index, formObj) {
+            if (typeof valor === "object" && valor) {
+                compararContrato(valor, campo);
+            }
+            (formObj.name === campo) ? $(formObj).val(valor) : "";
+        });
+    });
 }

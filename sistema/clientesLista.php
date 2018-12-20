@@ -16,10 +16,11 @@
 								<table id="clientes" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>id</th>
+											<th>Nome Fantasia</th>
 											<th>Razão Social</th>
 											<th>CNPJ</th>
 											<th>Inscrição Estadual</th>
+											<th>Cidade</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -40,7 +41,7 @@
 			<div class="pull-right hidden-xs">
 				<i class="fab fa-optin-monster"></i>
 			</div>
-			Copyright &copy; 2018 - 2019 - ektech.com.br - Todos Direitos Reservados.
+			 Copyright © 2018 CEAGRO - Todos os Direitos Reservados. Feito com  <img src="http://dom.com.vc/dom.com.vc.gif" alt="DOM Creative Consulting" height="20" width="20">  por <a href="https://dom.com.vc">DOM</a>
 		</footer>
 		<div class="control-sidebar-bg"></div>
 	</div>

@@ -4,15 +4,18 @@ use App\Core\App;
 $urlBase = App::get('config')['rotas'];
 $router->get("{$urlBase}numero-confirmacao", "ContratosController@numeroConfirmacao");
 
+$router->get("{$urlBase}adaptar", "AdaptacaoController@index");
+
 $router->get("{$urlBase}clientes", "ClientesController@index");
 $router->post("{$urlBase}clientes", "ClientesController@store");
 $router->get("{$urlBase}clientes/{cliente}", "ClientesController@show");
 $router->put("{$urlBase}clientes/{cliente}", "ClientesController@update");
 
-$router->get("{$urlBase}clientes/contatos", "ContatosController@index");
-$router->get("{$urlBase}clientes/{cliente}/contatos", "ContatosController@index");
-$router->post("{$urlBase}clientes/contatos", "ContatosController@store");
+$router->get("{$urlBase}clientes/{cliente}/unidades", "UnidadesController@index");
+$router->post("{$urlBase}unidades", "UnidadesController@store");
+$router->put("{$urlBase}unidades/{unidade}", "UnidadesController@update");
 
+$router->get("{$urlBase}enderecos", "EnderecosController@index");
 $router->get("{$urlBase}clientes/{cliente}/enderecos", "EnderecosController@index");
 $router->post("{$urlBase}clientes/enderecos", "EnderecosController@store");
 $router->put("{$urlBase}clientes/enderecos/{endereco}", "EnderecosController@update");
@@ -27,6 +30,9 @@ $router->post("{$urlBase}estabelecimentos", "EstabelecimentosController@store");
 
 $router->get("{$urlBase}produtos", "ProdutosController@index");
 $router->post("{$urlBase}produtos", "ProdutosController@store");
+$router->put("{$urlBase}produtos/{produto}", "ProdutosController@update");
+$router->delete("{$urlBase}produtos/{produto}", "ProdutosController@destroy");
+
 $router->get("{$urlBase}produtos/tipos", "ProdutosController@tipos");
 
 $router->get("{$urlBase}contratos", "ContratosController@index");
@@ -38,6 +44,5 @@ $router->get("{$urlBase}contratos/futuros", "ContratosController@contratosFuturo
 $router->get("{$urlBase}contratos/atuais", "ContratosController@contratosAtuais");
 $router->get("{$urlBase}contratos/a", "ContratosController@dados");
 
-$router->get("{$urlBase}adaptacao", "Adaptacao\AdaptacaoController@adaptarClientes");
 $router->get("{$urlBase}pdfs/contratos/{contrato}", "PDF\ContratosController@index");
 $router->get("{$urlBase}unidades-medidas", "UnidadesMedidasController@index");

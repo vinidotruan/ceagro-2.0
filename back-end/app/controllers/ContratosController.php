@@ -56,8 +56,6 @@ class ContratosController extends Controller
         }
     }
 
-    
-
     public function contratosFuturos() {
         $reflection = new \ReflectionClass("App\Models\Contrato");
         $instance = $reflection->newInstanceWithoutConstructor();
@@ -76,10 +74,12 @@ class ContratosController extends Controller
     {   
         $reflection = new \ReflectionClass("App\Models\Contrato");
         $instance = $reflection->newInstanceWithoutConstructor();
-        $data = "-".date('Y');
-        $data =  str_replace("-","/",$data);
-        $futuro = $instance->ultimoFuturo().$data;
-        $atual = $instance->ultimoAtual().$data;
+
+        $data = date('Y');
+        $dataFutura = $data+1;
+
+        $futuro = $instance->ultimoFuturo()."/".$dataFutura;
+        $atual = $instance->ultimoAtual()."/".$data;
 
         return $this->responderJSON([$atual, $futuro]);
     }
@@ -101,7 +101,6 @@ class ContratosController extends Controller
             },
         array_count_values($clientesIds)
         );
-
 
         foreach ($a as $k => &$b) {
             $val = Cliente::find(['id',$k]);

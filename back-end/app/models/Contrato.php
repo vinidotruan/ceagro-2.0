@@ -5,7 +5,8 @@ namespace App\Models;
 use App\Core\App;
 use App\Models\Cliente;
 use App\Models\Produto;
-use App\Models\Estabelecimento;
+use App\Models\Unidade;
+use App\Models\Cfop;
 
 class Contrato extends Model
 {
@@ -35,14 +36,16 @@ class Contrato extends Model
     public $valor_contrato;
     public $peso_total;
     public $vendedor_conta_bancaria_id;
-    public $vendedor_estabelecimento_id;
-    public $comprador_estabelecimento_id;
+    public $unidade_vendedor_id;
+    public $unidade_comprador_id;
+    public $retirada_entrega;
 
-    public $comprador;
-    public $compradorEstabelecimento;
-    public $vendedorEstabelecimento;
-    public $contaBancaria;
+
+    public $unidadeComprador;
+    public $unidadeVendedor;
     public $vendedor;
+    public $comprador;
+    public $contaBancaria;
     public $produto;
     public $unidadeMedida;
 
@@ -53,6 +56,8 @@ class Contrato extends Model
 
     public function __construct()
     {
+        $this->unidadeComprador();
+        $this->unidadeVendedor();
         $this->comprador();
         $this->vendedor();
         $this->produto();
@@ -61,21 +66,35 @@ class Contrato extends Model
     }
 
 
+    public function unidadeComprador()
+    {
+        return $this->unidadeComprador = Unidade::find(["id", $this->unidade_comprador_id]);
+    }
+
+    public function unidadeVendedor()
+    {
+        return $this->unidadeVendedor = Unidade::find(["id", $this->unidade_vendedor_id]);
+    }
+
     public function comprador()
     {
-        return $this->comprador = Cliente::find(["id", $this->comprador_id]);
+        $reflection = new \ReflectionClass("App\Models\Cliente");
+        $instance = $reflection->newInstanceWithoutConstructor();
+        return $this->comprador = $instance::find(["id", $this->comprador_id]);
     }
 
     public function vendedor()
     {
-        return $this->vendedor = Cliente::find(["id", $this->vendedor_id]);
+        $reflection = new \ReflectionClass("App\Models\Cliente");
+        $instance = $reflection->newInstanceWithoutConstructor();
+        return $this->vendedor = $instance::find(["id", $this->comprador_id]);
     }
 
     public function produto()
     {
         return $this->produto = Produto::find(["id", $this->produto_id]);
     }
-    
+
     public function unidade()
     {
 
@@ -95,5 +114,10 @@ class Contrato extends Model
     public function ultimoAtual()
     {
         return static::contratosAtuais()->atuais + $this->atual;
+    }
+
+    public function cfop()
+    {
+        return Cfop::find(['id', $this->cfop]);
     }
 }

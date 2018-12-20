@@ -6,17 +6,19 @@ use App\Core\App;
 use App\Models\Endereco;
 use App\Models\Cliente;
 
-class EnderecosController
+class EnderecosController extends Controller
 {
-    public function index($cliente)
+    public function index($clienteId = null)
     {
-        if ($cliente) {
-            $endereco = Endereco::find(["cliente_id", $cliente]);
+        if ($clienteId) {
+            $endereco = Endereco::find(["cliente_id", $clienteId]);
         } else {
             $endereco = Endereco::get();
         }
-        echo json_encode($endereco);
+
+        return $this->responderJSON($endereco);
     }
+    
     public function store($endereco)
     {
         $enderecoId = Endereco::store($endereco);

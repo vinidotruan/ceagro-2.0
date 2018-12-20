@@ -18,6 +18,7 @@ class QueryBuilder
         $query = "select * from {$tabela}";
         if (is_array($where) && count($where) === 3) {
             ($where) ? $query .= " where " . implode(" ", $where) : '';
+
         } else {
             ($where) ? $query .= " where " . implode(" = ", $where) : '';
         }
@@ -115,6 +116,7 @@ class QueryBuilder
 
     public function insert($tabela, $dados)
     {
+        $dados = (array)$dados;
         $sql = sprintf(
             "INSERT INTO %s(%s) values(%s)",
             $tabela,
@@ -137,6 +139,7 @@ class QueryBuilder
 
     public function update($tabela, $dados, $where)
     {
+        $dados = (array)$dados;
         $campos = '';
         foreach ($dados as $key => $valor) {
             $campos .= "\n $key=:$key,";
@@ -148,7 +151,6 @@ class QueryBuilder
             $campos,
             implode(" = ", $where)
         );
-        
         try {
             $statement = $this->pdo->prepare($sql)->execute($dados);
             return $where[1];

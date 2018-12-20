@@ -414,7 +414,7 @@
 
                           <div class="form-row">
 
-                            <div class="col-xs-6 col-lg-4">
+                            <div class="col-xs-6 col-lg-6">
 
                               <div class="form-group">
 
@@ -426,19 +426,7 @@
 
                             </div>
 
-                            <div class="col-xs-6 col-lg-4">
-
-                              <div class="form-group">
-
-                                <label for="observacao">Observações</label>
-
-                                <textarea type="text" class="form-control" name="observacao" rows="3" placeholder="Digite as observações"></textarea>
-
-                              </div>
-
-                            </div>
-
-                            <div class="col-xs-12 col-lg-4">
+                            <div class="col-xs-12 col-lg-6">
 
                               <div class="form-group">
 
@@ -450,7 +438,7 @@
 
                             </div>
 
-                            <div class="col-xs-12 col-lg-4">
+                            <div class="col-xs-12 col-lg-6">
 
                               <div class="form-group">
 
@@ -472,7 +460,7 @@
 
                           <div class="form-row">
 
-                            <div class="col-xs-12 col-lg-4">
+                            <div class="col-xs-12 col-lg-6">
 
                               <div class="form-group">
 
@@ -484,27 +472,15 @@
 
                             </div>
 
-                            <div class="col-xs-12 col-lg-4">
-
-                              <div class="form-group">
-
-                                <label for="solicitacao_cotas">Solicitação de Cotas</label>
-
-                                <input type="text" class="form-control" name="solicitacao_cotas" placeholder="Solicitação de cotas" autocomplete="off" required>
-
-                              </div>
-
-                            </div>
-
                             <div class="col-xs-12 col-lg-12">
 
-                              <div class="form-group">
+                            <div class="form-group">
 
-                                <label for="carregamento">Informações sobre o Carregamento</label>
+                            <label for="observacao">Observações</label>
 
-                                <textarea type="text" class="form-control" name="carregamento" placeholder="Informações sobre o carregamento" autocomplete="off" rows='5'></textarea>
+                            <textarea type="text" class="form-control" name="observacao" rows="5" placeholder="Digite as observações"></textarea>
 
-                              </div>
+                            </div>
 
                             </div>
 

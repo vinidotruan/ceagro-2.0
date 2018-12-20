@@ -54,7 +54,9 @@
     }
     .center{
         padding-left:33.33%;
-        text-align:center;
+    }
+    .cnpjCeagro{
+        padding-left:60%;
     }
 </style>
 
@@ -208,10 +210,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="linha center">______________________________________</td>
+                    <td class="linha center"><pre>____________________________________________</pre></td>
                 </tr>
                 <tr>
-                    <td class="center">90.880.204/0001-57</td>
+                    <td class="center"><pre><b> CEAGRO CORRETORA DE MERCADORIAS LTDA</b></pre></td>
+                </tr>
+                <tr>
+                    <td class="cnpjCeagro"><pre>90.880.204/0001-57</pre></td>
                 </tr>
             </table>
     </section>

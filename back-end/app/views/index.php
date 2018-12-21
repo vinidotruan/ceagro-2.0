@@ -97,10 +97,6 @@
                         CNPJ:
                         <?= $contrato->unidadeVendedor->cnpj ?>
                     </td>
-                    <td>
-                       Logística/Cotas Vendedor:
-                       <?= ($contrato->vendedor->logistica_cotas && strlen($contrato->vendedor->logistica_cotas) > 0) ? $contrato->vendedor->logistica_cotas : "-" ?>
-                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -134,10 +130,6 @@
                         CNPJ:
                         <?= $contrato->unidadeComprador->cnpj ?>
                     </td>
-                    <td>
-                       Logística/Cotas Comprador:
-                       <?= ($contrato->comprador->logistica_cotas && strlen($contrato->comprador->logistica_cotas) > 0) ? $contrato->comprador->logistica_cotas : "-" ?>
-                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -156,11 +148,11 @@
                         <?= $contrato->produto->nome ?></td>
                     <td>Safra:
                         <?= $contrato->safra ?? "Nenhum" ?></td>
-                        <td class="paddingTop20">Unidade: <?= $contrato->unidade()->titulo ?></td>
                 </tr>
                 <tr>
                     <td class="paddingTop20">Quantidade:
                         <?= $contrato->quantidade ?></td>
+                        <td class="paddingTop20">Unidade: <?= $contrato->unidade()->titulo ?></td>
                 </tr>
                 <tr>
                     <td class="paddingTop20" colspan="3"> Descrição: <?= $contrato->produto()->descricao ?></td>
@@ -193,6 +185,14 @@
                 <tr>
                     <td class="paddingTop20" colspan="3"> CFOP: 
                         <?= $contrato->cfop()->descricao ?? "Nenhum" ?></td>
+                </tr>
+                <tr>
+                <td class="paddingTop20">Logística/Cotas Vendedor:
+                       <?= ($contrato->vendedor->logistica_cotas && strlen($contrato->vendedor->logistica_cotas) > 0) ? $contrato->vendedor->logistica_cotas : "-" ?></td>
+                </tr>
+                <tr>
+                <td class="paddingTop10">Logística/Cotas Comprador:
+                       <?= ($contrato->comprador->logistica_cotas && strlen($contrato->comprador->logistica_cotas) > 0) ? $contrato->comprador->logistica_cotas : "-" ?></td>
                 </tr>
                 <tr>
                     <td class="paddingTop20" colspan="3">Observações:

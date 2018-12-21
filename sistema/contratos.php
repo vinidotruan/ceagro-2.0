@@ -235,19 +235,19 @@
 														</div>
 													</div>
 													<div class="form-row">
-														<div class="col-xs-6 col-lg-4">
+														<div class="col-xs-6 col-lg-12">
 															<div class="form-group">
 																<label for="pagamento">Pagamento</label>
 																<textarea type="text" class="form-control" name="pagamento" rows="3" placeholder="Digite as informações sobre o pagamento" required></textarea>
 															</div>
 														</div>
-														<div class="col-xs-6 col-lg-4">
+														<div class="col-xs-6 col-lg-12">
 															<div class="form-group">
 																<label for="observacao">Observações</label>
 																<textarea type="text" class="form-control" name="observacao" rows="3" placeholder="Digite as observações"></textarea>
 															</div>
 														</div>
-														<div class="col-xs-12 col-lg-4">
+														<div class="col-xs-12 col-lg-12">
 															<div class="form-group">
 																<label for="peso_qualidade">Peso & Qualidade</label>
 																<textarea type="text" class="form-control" name="peso_qualidade" placeholder="Digite o peso e qualidade" rows="3" required></textarea>

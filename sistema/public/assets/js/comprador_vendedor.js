@@ -50,6 +50,13 @@ function buscarClientes() {
 /**
  * COMPRADOR
  */
+
+/**
+ * Monta o datalist de compradores.
+ * 
+ * 
+ * @param {obj} compradores - lista de compradores.
+ */
 function popularCompradores(compradores) {
     $.each(compradores, (index, comprador) => {
         const cliente = `<option value=${comprador.id}> ${comprador.nome_fantasia || comprador.razao_social}</option>`;
@@ -57,6 +64,13 @@ function popularCompradores(compradores) {
     });
 }
 
+/**
+ * Filtra um dentre os clientes para ser um comprador.
+ * 
+ * 
+ * @param {int} compradorId - Id do comprador clicado.
+ * @param {any} callback - um callback qualquer.
+ */
 function selecionarComprador(compradorId, callback) {
     comprador = _.find(clientes, {
         'id': compradorId
@@ -64,6 +78,11 @@ function selecionarComprador(compradorId, callback) {
     callback(comprador);
 }
 
+/**
+ * Muda os calmpos de inscrição estadual, cnpj , razão social e endereço.
+ * 
+ * @param {} comprador - Um objeto de comprador.
+ */
 function popularUnidadesComprador(comprador) {
     $("#comprador .cnpjs option").remove();
     $("#comprador .razoes option").remove();

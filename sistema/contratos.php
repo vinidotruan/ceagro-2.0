@@ -125,33 +125,14 @@
 												<div class="form-row">
 													<div class="col-xs-12">
 														<div class="form-group">
-															<label for="razao_social">Nome Fantasia</label>
-															<select class="form-control select2 nomesFantasias" name="comprador_id" style="width: 100%;" id="nome_fantasia" required></select>
+															<label for="clientes">Clientes</label>
+															<select class="form-control select2 clientes" name="comprador_id" style="width: 100%;" id="nome_fantasia" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
-															<label for="cnpj">Cnpj</label>
-															<select class="form-control select2 cnpjs" name="unidade_comprador_id" style="width: 100%;" id="cnpj" required></select>
-														</div>
-													</div>
-													<div class="col-xs-12">
-														<div class="form-group">
-															<label for="razao_social">Razão Social</label>
-															<select class="form-control select2 razoes" name="unidade_comprador_id" style="width: 100%;" id="razao_social" required></select>
-														</div>
-													</div>
-													<div class="col-xs-12">
-														<div class="form-group">
-															<label for="unidade_vendedor_id">Inscrição Estadual</label>
-															<select class="form-control select2 inscricoes" name="unidade_vendedor_id" style="width: 100%;" id="inscricao_estadual" required disabled></select>
-														</div>
-													</div>
-
-													<div class="col-xs-12">
-														<div class="form-group">
-															<label for="unidade_vendedor_id">Endereços</label>
-															<select class="form-control select2 enderecos" name="unidade_vendedor_id" style="width: 100%;" id="endereco" required disabled></select>
+															<label for="unidade_comprador_id">Unidades</label>
+															<select class="form-control select2 unidades" name="unidade_comprador_id" style="width: 100%;" id="cnpj" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">

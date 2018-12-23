@@ -12,7 +12,7 @@ function temContrato() {
     return (localStorage.hasOwnProperty('contrato')) ? true : false;
 }
 
-$("#comprador .nomesFantasias").change(event => {
+$("#comprador .clientes").change(event => {
     selecionarComprador(event.target.value, cmp => popularUnidadesComprador(cmp));
 });
 
@@ -60,7 +60,7 @@ function buscarClientes() {
 function popularCompradores(compradores) {
     $.each(compradores, (index, comprador) => {
         const cliente = `<option value=${comprador.id}> ${comprador.nome_fantasia || comprador.razao_social}</option>`;
-        $("#comprador .nomesFantasias").append(cliente);
+        $("#comprador .clientes").append(cliente);
     });
 }
 
@@ -84,17 +84,13 @@ function selecionarComprador(compradorId, callback) {
  * @param {} comprador - Um objeto de comprador.
  */
 function popularUnidadesComprador(comprador) {
-    $("#comprador .cnpjs option").remove();
-    $("#comprador .razoes option").remove();
+    $("#comprador .unidades option").remove();
     $.each(comprador.unidades, (index, unidade) => {
-        const cnpj = `<option value=${unidade.id}>${unidade.cnpj || "-"}</option>`;
-        const razaoSocial = `<option value=${unidade.id}>${unidade.razao_social || "-"}</option>`;
-        const inscricao_estadual = `<option value=${unidade.id} >${unidade.inscricao_estadual || "Não Cadastrada"}</option>`;
-        const endereco = `<option value=${unidade.id}>${unidade.endereco.cidade}(${unidade.endereco.estado}) | ${unidade.endereco.rua}</option>`;
-        $("#comprador .razoes").append(razaoSocial);
-        $("#comprador .inscricoes").append(inscricao_estadual);
-        $("#comprador .cnpjs").append(cnpj);
-        $("#comprador .enderecos").append(endereco);
+        const cnpj = `<option value=${unidade.id}>
+            <span>${unidade.razao_social || "-"} | ${unidade.cnpj || "-"}, inscrição: ${unidade.inscricao_estadual || ' - '}</span>
+            <span style="font-size: 12px; font-color: gray; margin-top: 10px !important"> ${unidade.endereco.cidade}(${unidade.endereco.estado}) | ${unidade.endereco.rua} </span>
+        </option>`;
+        $("#comprador .unidades").append(cnpj);
     });
 }
 /**

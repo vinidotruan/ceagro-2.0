@@ -16,9 +16,17 @@ $("#comprador .nomesFantasias").change(event => {
     selecionarComprador(event.target.value, cmp => popularUnidadesComprador(cmp));
 });
 
+$("#vendedor #cnpj,#razao_social").change(event => {
+    selecionarUnidadeVendedor(event.target.value, unidadeVendedor => {
+        popularEnderecoUnidadeVendedor(unidadeVendedor);
+        popularInscEstUnidadeVendedor(unidadeVendedor);
+    });
+});
+
 $("#vendedor .nomesFantasias").change(event => {
     selecionarVendedor(event.target.value, vnd => popularUnidadesVendedor(vnd));
 });
+
 
 let clientes = null;
 let comprador = null;
@@ -78,6 +86,13 @@ function selecionarComprador(compradorId, callback) {
     callback(comprador);
 }
 
+function selecionarUnidadeVendedor(compradorId, callback) {
+    unidadeVendedor = _.find(vendedor.unidades, {
+        'id': compradorId
+    });
+    callback(unidadeVendedor);
+}
+
 /**
  * Muda os calmpos de inscrição estadual, cnpj , razão social e endereço.
  * 
@@ -122,17 +137,26 @@ function selecionarVendedor(vendedorId, callback) {
 function popularUnidadesVendedor(vendedor) {
     $("#vendedor .cnpjs option").remove();
     $("#vendedor .razoes option").remove();
-    $("#vendedor .inscricoes option").remove();
+    popularEnderecoUnidadeVendedor(vendedor.unidades[0]);
+    popularInscEstUnidadeVendedor(vendedor.unidades[0]);
     $.each(vendedor.unidades, (index, unidade) => {
         const cnpj = `<option value=${unidade.id}>${unidade.cnpj || "-"}</option>`;
         const razaoSocial = `<option value=${unidade.id}>${unidade.razao_social || "-"}</option>`;
-        const inscricao_estadual = `<option value=${unidade.id} >${unidade.inscricao_estadual || "Não Cadastrada"}</option>`;
-        const endereco = `<option value=${unidade.id}>${unidade.endereco.cidade}(${unidade.endereco.estado}) | ${unidade.endereco.rua}</option>`;
         $("#vendedor .razoes").append(razaoSocial);
-        $("#vendedor .inscricoes").append(inscricao_estadual);
         $("#vendedor .cnpjs").append(cnpj);
-        $("#vendedor .enderecos").append(endereco);
     });
+}
+
+function popularEnderecoUnidadeVendedor(unidade) {
+    $("#vendedor .enderecos option").remove();
+    const endereco = `<option value=${unidade.id}>${unidade.endereco.cidade}(${unidade.endereco.estado}) | ${unidade.endereco.rua}</option>`;
+    $("#vendedor .enderecos").append(endereco);
+}
+
+function popularInscEstUnidadeVendedor(unidade) {
+    $("#vendedor .inscricoes option").remove();
+    const inscricao_estadual = `<option value=${unidade.id} >${unidade.inscricao_estadual || "Não Cadastrada"}</option>`;
+    $("#vendedor .inscricoes").append(inscricao_estadual);
 }
 /**
  * FIM VENDEDOR

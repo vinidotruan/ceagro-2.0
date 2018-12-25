@@ -3,19 +3,21 @@ $(document).ready(() => {
 
     if (localStorage.hasOwnProperty('contrato')) {
         contrato = JSON.parse(localStorage.getItem('contrato'));
-        localStorage.removeItem('contrato');
-        compararContrato(contrato, 'contrato');
+        // localStorage.removeItem('contrato');
     };
 });
-
-function temContrato() {
-    return (localStorage.hasOwnProperty('contrato')) ? true : false;
-}
 
 $("#comprador .nomesFantasias").change(event => {
     selecionarComprador(event.target.value, cmp => popularUnidadesComprador(cmp));
 });
 
+$("#vendedor .nomesFantasias").change(event => {
+    selecionarVendedor(event.target.value, vnd => popularUnidadesVendedor(vnd));
+});
+
+/**
+ * 
+ */
 $("#vendedor #cnpj,#razao_social").change(event => {
     selecionarUnidadeVendedor(event.target.value, unidadeVendedor => {
         popularEnderecoUnidadeVendedor(unidadeVendedor);
@@ -23,14 +25,13 @@ $("#vendedor #cnpj,#razao_social").change(event => {
     });
 });
 
-$("#vendedor .nomesFantasias").change(event => {
-    selecionarVendedor(event.target.value, vnd => popularUnidadesVendedor(vnd));
-});
-
-
 let clientes = null;
 let comprador = null;
 let vendedor = null;
+
+function temContrato() {
+    return (localStorage.hasOwnProperty('contrato')) ? true : false;
+}
 
 function buscarClientes() {
     $.get('../back-end/clientes')
@@ -38,21 +39,19 @@ function buscarClientes() {
             clientes = JSON.parse(response);
             popularCompradores(clientes);
             popularVendedores(clientes);
-
             if (temContrato()) {
                 selecionarComprador(contrato.comprador_id, cmp => {
-                    contrato.comprador = cmp;
-                    compararContrato(contrato, 'contrato');
                     popularUnidadesComprador(cmp);
                 });
                 selecionarVendedor(contrato.vendedor_id, vnd => {
                     popularUnidadesVendedor(vnd);
-                    popularUnidadesComprador(vnd);
-
                 });
             }
         })
-        .always(() => $(".overlay").remove());
+        .always(() => {
+            $(".overlay").remove();
+            compararContrato(contrato, 'contrato');
+        });
 }
 
 /**
@@ -185,10 +184,11 @@ function popularContasBancarias(contas) {
 }
 
 /**
+ * Verifica e preenche os campos do contrato de acordo com um objeto.
  * 
- * 
+ * @param {*} contrato - Objeto do contrato, ou um campo qualquer.
+ * @param {*} formulario - Id do formulário referente.
  */
-
 function compararContrato(contrato, formulario) {
     $.each(contrato, function (campo, valor) {
         form = $(`#${formulario}`).find('select, input, textarea');
@@ -196,7 +196,10 @@ function compararContrato(contrato, formulario) {
             if (typeof valor === "object" && valor) {
                 compararContrato(valor, campo);
             }
-            (formObj.name === campo) ? $(formObj).val(valor) : "";
+            (formObj.name === campo) ? $(formObj).val(valor) : null;
+            if (campo == "unidade_comprador_id" && (formObj.name === campo)) {
+                console.log(valor);
+            }
         });
     });
 }

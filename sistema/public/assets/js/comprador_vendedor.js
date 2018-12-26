@@ -15,9 +15,6 @@ $("#vendedor .nomesFantasias").change(event => {
     selecionarVendedor(event.target.value, vnd => popularUnidadesVendedor(vnd));
 });
 
-/**
- * 
- */
 $("#vendedor #cnpj,#razao_social").change(event => {
     selecionarUnidadeVendedor(event.target.value, unidadeVendedor => {
         popularEnderecoUnidadeVendedor(unidadeVendedor);
@@ -36,21 +33,23 @@ function temContrato() {
 function buscarClientes() {
     $.get('../back-end/clientes')
         .done(response => {
+
             clientes = JSON.parse(response);
             popularCompradores(clientes);
             popularVendedores(clientes);
+
             if (temContrato()) {
-                selecionarComprador(contrato.comprador_id, cmp => {
-                    popularUnidadesComprador(cmp);
-                });
+                compararContrato(contrato, 'contrato');
                 selecionarVendedor(contrato.vendedor_id, vnd => {
                     popularUnidadesVendedor(vnd);
+                });
+                selecionarComprador(contrato.comprador_id, cmp => {
+                    popularUnidadesComprador(cmp);
                 });
             }
         })
         .always(() => {
             $(".overlay").remove();
-            compararContrato(contrato, 'contrato');
         });
 }
 
@@ -93,7 +92,7 @@ function selecionarUnidadeVendedor(compradorId, callback) {
 }
 
 /**
- * Muda os calmpos de inscrição estadual, cnpj , razão social e endereço.
+ * Muda os campos de inscrição estadual, cnpj , razão social e endereço.
  * 
  * @param {} comprador - Um objeto de comprador.
  */
@@ -103,13 +102,34 @@ function popularUnidadesComprador(comprador) {
     $.each(comprador.unidades, (index, unidade) => {
         const cnpj = `<option value=${unidade.id}>${unidade.cnpj || "-"}</option>`;
         const razaoSocial = `<option value=${unidade.id}>${unidade.razao_social || "-"}</option>`;
-        const inscricao_estadual = `<option value=${unidade.id} >${unidade.inscricao_estadual || "Não Cadastrada"}</option>`;
-        const endereco = `<option value=${unidade.id}>${unidade.endereco.cidade}(${unidade.endereco.estado}) | ${unidade.endereco.rua}</option>`;
         $("#comprador .razoes").append(razaoSocial);
-        $("#comprador .inscricoes").append(inscricao_estadual);
         $("#comprador .cnpjs").append(cnpj);
-        $("#comprador .enderecos").append(endereco);
     });
+    popularEnderecoUnidadeComprador(comprador.unidades[0]);
+    popularInscEstUnidadeComprador(comprador.unidades[0]);
+
+}
+
+/**
+ * Seleciona uma unidade no select de enderecos.
+ * 
+ * @param {*} unidade - Uma unidade do comprador.
+ */
+function popularEnderecoUnidadeComprador(unidade) {
+    $("#comprador .enderecos option").remove();
+    const endereco = `<option value=${unidade.id}>${unidade.endereco.cidade}(${unidade.endereco.estado}) | ${unidade.endereco.rua}</option>`;
+    $("#comprador .enderecos").append(endereco);
+}
+
+/**
+ * Seleciona uma unidade no select de inscrições.
+ * 
+ * @param {*} unidade - Uma unidade do comprador.
+ */
+function popularInscEstUnidadeComprador(unidade) {
+    $("#comprador .inscricoes option").remove();
+    const inscricao_estadual = `<option value=${unidade.id}>${unidade.inscricao_estadual || "Não Cadastrada"}</option>`;
+    $("#comprador .inscricoes").append(inscricao_estadual);
 }
 /**
  * FIM COMPRADOR
@@ -129,6 +149,7 @@ function selecionarVendedor(vendedorId, callback) {
     vendedor = _.find(clientes, {
         'id': vendedorId
     });
+
     callback(vendedor);
     buscarContasBancarias(vendedor.id);
 }
@@ -197,9 +218,6 @@ function compararContrato(contrato, formulario) {
                 compararContrato(valor, campo);
             }
             (formObj.name === campo) ? $(formObj).val(valor) : null;
-            if (campo == "unidade_comprador_id" && (formObj.name === campo)) {
-                console.log(valor);
-            }
         });
     });
 }

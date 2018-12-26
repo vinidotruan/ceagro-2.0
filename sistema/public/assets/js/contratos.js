@@ -24,12 +24,12 @@ $("#produtos").change((event) => {
     selecionarProduto(event.target.value);
 })
 
-$('.minimal[name="futuro"]').on('ifChecked', () => {
+$('.minimal[name="futuro"]').on('ifChecked', event => {
     setNumeroConfirmacao();
 });
 
 function temContrato() {
-    return (contrato) ? true : false;
+    return (localStorage.hasOwnProperty('contrato')) ? true : false;
 }
 /**
  * PRODUTOS
@@ -86,6 +86,9 @@ function popularUnidadesMedidades(unidades) {
 function buscarNumeroConfirmacao() {
     $.get('../back-end/numero-confirmacao').done(response => {
         numeros_confirmacao = JSON.parse(response);
+        if (temContrato()) {
+            (contrato.futuro) ? numero_confirmacao[1] = contrato.numero_confirmacao : numero_confirmacao[0] = contrato.numero_confirmacao;
+        }
         setNumeroConfirmacao();
     })
 }

@@ -26,6 +26,9 @@ let clientes = null;
 let comprador = null;
 let vendedor = null;
 
+/**
+ * Verifica se há um contrato no localstorage.
+ */
 function temContrato() {
     return (localStorage.hasOwnProperty('contrato')) ? true : false;
 }

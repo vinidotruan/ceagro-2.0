@@ -1,5 +1,6 @@
 var cliente = null;
 var unidade = null;
+var conta = null;
 
 function temCliente() {
     return (cliente) ? true : false;
@@ -11,6 +12,10 @@ function temUnidade() {
 
 function temEndereco() {
     return (cliente.endereco) ? true : false;
+}
+
+function temConta() {
+    return (conta) ? true : false;
 }
 
 /**
@@ -26,7 +31,7 @@ $(document).ready(() => {
     if (localStorage.hasOwnProperty('cliente')) {
 
         cliente = JSON.parse(localStorage.getItem("cliente"));
-        localStorage.removeItem("cliente");
+        // localStorage.removeItem("cliente");
 
         buscarContas(cliente.id, () => {
             compararFormCliente(cliente, "cliente");
@@ -80,18 +85,24 @@ $("#endereco").submit(function (event) {
  */
 $("#contasBancarias").submit(function (event) {
     event.preventDefault();
-    cadastrarContaBancaria();
+    (temConta()) ? atualizarContaBancaria() : cadastrarContaBancaria();
 });
 
 /**
  *  FIM AJAX
  */
 
+/**
+ * Habilita todos os campos dos formulários;
+ */
 function habilitarForm() {
     $(`form *`).prop("disabled", false);
     $(`.btn`).prop("disabled", false);
 }
 
+/**
+ * Desabilita todos os campos dos formulários com exceção de cliente;
+ */
 function desabilitarForm() {
     $('form *').prop('disabled', true);
     $('.btn').prop('disabled', true);
@@ -183,6 +194,9 @@ function popularUnidades(unidades) {
     });
 }
 
+/**
+ * Atualiza a unidade do cliente.
+ */
 function atualizarUnidade() {
 
     mostrarModal();
@@ -232,7 +246,6 @@ function selecionarUnidade(unidadeId) {
     pupularUnidade(unidade);
 }
 
-
 /**
  * Cria uma tabela com as contas bancárias.
  * 
@@ -241,7 +254,7 @@ function selecionarUnidade(unidadeId) {
 function popularContas(contas) {
     $('#contas_bancarias tr').remove();
     for (const conta of contas) {
-        var newRow = $("<tr class='item'>");
+        var newRow = $(`<tr class='item' id=${conta.id}>`);
         var cols = "";
         cols += `<td>${conta.banco}</td>`;
         cols += `<td>${conta.agencia}</td>`;
@@ -249,7 +262,56 @@ function popularContas(contas) {
         newRow.append(cols);
         $("#contas_bancarias").append(newRow)
     }
+    $("#contas_bancarias tr").each((index, linha) => {
+        $(linha).attr('onclick', `selecionarContaBancaria(${linha.id})`)
+    });
 }
+
+
+/**
+ * Atualiza a conta do cliente.
+ */
+function atualizarContaBancaria() {
+    mostrarModal();
+
+    $(`#contasBancarias`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    $(`#contasBancarias`).append(`<input hidden name='id' value=${conta.id}>`);
+    dados = $("#contasBancarias").serialize();
+    $.ajax({
+        url: `../back-end/contas-bancarias/${conta.id}`,
+        type: 'PUT',
+        data: dados
+    }).done(() => {
+        conta = null;
+        limparCamposUnidade();
+        buscarContas(cliente.id);
+    }).fail(() => exibirErro("contasBancarias"))
+        .always(() => esconderModal());
+}
+
+
+
+/**
+ * Seleciona uma conta no array de contas
+ * 
+ * @param {*} contaId - Id da conta do cliente. 
+ */
+function selecionarContaBancaria(contaId) {
+    const conta = _.find(cliente.contasBancarias, { 'id': `${contaId}` });
+    popularConta(conta);
+
+}
+
+/**
+ * Popula o formulário com uma conta escolhida.
+ * 
+ * @param {Object} conta - Unidade do estabelecimento.
+ */
+function popularConta(contasBancarias) {
+    conta = contasBancarias;
+    compararFormCliente(contasBancarias, "contasBancarias");
+}
+
 
 /**
  * 

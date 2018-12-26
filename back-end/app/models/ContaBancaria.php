@@ -8,7 +8,7 @@ class ContaBancaria extends Model
     public $cliente_id;
     public $conta;
     public $agencia;
-    public $digito;
+    public $banco;
 
     public static $table = "contas_bancarias";
 }

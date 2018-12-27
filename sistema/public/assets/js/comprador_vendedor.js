@@ -1,15 +1,7 @@
 $(document).ready(() => {
+    contrato = JSON.parse(localStorage.getItem('contrato'));
     buscarClientes();
-
-    if (localStorage.hasOwnProperty('contrato')) {
-        contrato = JSON.parse(localStorage.getItem('contrato'));
-        // localStorage.removeItem('contrato');
-    };
 });
-
-function temContrato() {
-    return (localStorage.hasOwnProperty('contrato')) ? true : false;
-}
 
 $("#comprador .clientes").change(event => {
     selecionarComprador(event.target.value, cmp => popularUnidadesComprador(cmp));
@@ -27,7 +19,8 @@ let vendedor = null;
  * Verifica se há um contrato no localstorage.
  */
 function temContrato() {
-    return (localStorage.hasOwnProperty('contrato')) ? true : false;
+    localStorage.removeItem('contrato');
+    return (contrato != null) ? true : false;
 }
 
 function buscarClientes() {

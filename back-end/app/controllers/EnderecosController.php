@@ -11,14 +11,14 @@ class EnderecosController extends Controller
     public function index($clienteId = null)
     {
         if ($clienteId) {
-            $endereco = Endereco::find(["cliente_id", $clienteId]);
+            $endereco = Endereco::get(["cliente_id", '=', $clienteId]);
         } else {
             $endereco = Endereco::get();
         }
 
         return $this->responderJSON($endereco);
     }
-    
+
     public function store($endereco)
     {
         $enderecoId = Endereco::store($endereco);
@@ -29,9 +29,9 @@ class EnderecosController extends Controller
 
     public function update($endereco)
     {
-        $enderecoId= $endereco['id'];
+        $enderecoId = $endereco['id'];
         unset($endereco['endereco']);
-        $enderecoId = Endereco::update($endereco,["id", $enderecoId]);
+        $enderecoId = Endereco::update($endereco, ["id", $enderecoId]);
 
         $endereco = endereco::find(["id", $enderecoId]);
         echo json_encode($endereco);

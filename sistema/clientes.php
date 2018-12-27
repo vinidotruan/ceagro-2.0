@@ -1,8 +1,8 @@
-<?php include 'partials/cabecalho.html'?>
+<?php include 'partials/cabecalho.html' ?>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
-	<?php include "partials/header.html";?>
-	<?php include "partials/menu.html";?>
+	<?php include "partials/header.html"; ?>
+	<?php include "partials/menu.html"; ?>
     <div class="wrapper">
         <div class="content-wrapper">
             <div class="row">
@@ -34,13 +34,15 @@
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <?php require ('partials/components/erro.html') ?>
+                                    <?php require('partials/components/erro.html') ?>
+                                    <?php require('partials/components/success.html') ?>
                                     <button type="submit" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
                         </div>
                     </section>
                 </div>
+
                 <div class="col-xs-6">
                     <section class="invoice">
                         <div class="row">
@@ -69,30 +71,34 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-xs-12">
-                                                <div class="form-group">
-                                                    <label for="razao_social">Razão Social</label>
-                                                    <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" autocomplete="off" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12">
                                             <div class="form-group">
-                                            <label for="carregamento">Responsável Logística/Cotas</label>
-                                            <textarea type="text" class="form-control" name="carregamento" placeholder="Informações sobre o carregamento" autocomplete="off" rows='5'></textarea>
+                                                <label for="razao_social">Razão Social</label>
+                                                <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" autocomplete="off" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <?php require ('partials/components/erro.html') ?>
+                                    <?php require('partials/components/erro.html') ?>
+                                    <?php require('partials/components/success.html') ?>
                                     <button type="submit" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
-                        </section>
-                    </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
 
                 <div class="col-xs-12">
                     <section class="invoice">
+                    <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="page-header">
+                                    <i class="fa fa-address-book-o"></i> Lista de Unidades
+                                </h2>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-xs-12 table-responsive">
                                 <table class="table table-striped">
@@ -177,8 +183,10 @@
                                     </div>
                                 </div>
                                 
-                                <div class="box-footer">
-                                    <?php require ('partials/components/erro.html') ?>
+                                <div class="box-footer"> 
+                                    <?php require('partials/components/erro.html') ?>
+                                    <?php require('partials/components/unidade.html') ?>
+                                    <?php require('partials/components/success.html') ?>
                                     <button type="submit" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
@@ -186,7 +194,34 @@
                     </section>
                 </div>
 
-               
+                <div class="col-xs-12">
+                    <section class="invoice">
+                    <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="page-header">
+                                <i class="fa fa-map-o"></i> Endereços
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Estado</th>
+                                            <th>Cidade</th>
+                                            <th>Rua</th>
+                                            <th>CEP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="enderecos">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 contasBancarias">
                     <section class="invoice">
                         <div class="row">
@@ -222,7 +257,8 @@
                                 </div>
                                 
                                 <div class="box-footer">
-                                    <?php require ('partials/components/erro.html') ?>
+                                    <?php require('partials/components/erro.html') ?>
+                                    <?php require('partials/components/success.html') ?>
                                     <button type="submit" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
@@ -258,17 +294,21 @@
                 <div class="modal-body" style="background: rgba(0,0,0,0)">
                 </div>
             </div>
-        <!-- /.modal-content -->
         </div>
-          <!-- /.modal-dialog -->
     </div>
     <footer class="main-footer">
 			<div class="pull-right hidden-xs">
 				<i class="fab fa-optin-monster"></i>
 			</div>
 			 Copyright © 2018 CEAGRO - Todos os Direitos Reservados. Feito com  <img src="http://dom.com.vc/dom.com.vc.gif" alt="DOM Creative Consulting" height="20" width="20">  por <a href="https://dom.com.vc">DOM</a>
-		</footer>
-	<?php include 'partials/imports.html'?>
+    </footer>
+    <style>
+        .ativado {
+            background-color : #3c8dbc  !important;
+            color: #ffffff;
+        }
+    </style>
+	<?php include 'partials/imports.html' ?>
     <script src="public/assets/js/clientes.js"></script>
     <script src="adminlte/plugins/input-mask/jquery.inputmask.js"></script>
     <script src="adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
@@ -276,5 +316,5 @@
     <script>
         $('[data-mask]').inputmask();
     </script>
-	<?php include 'partials/rodape.html'?>
+	<?php include 'partials/rodape.html' ?>
 	</div>

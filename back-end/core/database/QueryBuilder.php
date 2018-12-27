@@ -134,7 +134,7 @@ class QueryBuilder
 
         } catch (\Exception $e) {
             http_response_code(500);
-            die($e->getMessage());
+            die([$e->getMessage(), $e->errorInfo]);
         }
     }
 

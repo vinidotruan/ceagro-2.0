@@ -75,6 +75,12 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                            <label for="carregamento">Responsável Logística/Cotas</label>
+                                            <textarea type="text" class="form-control" name="carregamento" placeholder="Informações sobre o carregamento" autocomplete="off" rows='5'></textarea>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="box-footer">

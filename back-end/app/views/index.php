@@ -54,7 +54,9 @@
     }
     .center{
         padding-left:33.33%;
-        text-align:center;
+    }
+    .cnpjCeagro{
+        padding-left:60%;
     }
 </style>
 
@@ -95,10 +97,6 @@
                         CNPJ:
                         <?= $contrato->unidadeVendedor->cnpj ?>
                     </td>
-                    <td>
-                       Logística/Cotas Vendedor:
-                       <?= ($contrato->vendedor->logistica_cotas && strlen($contrato->vendedor->logistica_cotas) > 0) ? $contrato->vendedor->logistica_cotas : "-" ?>
-                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -132,10 +130,6 @@
                         CNPJ:
                         <?= $contrato->unidadeComprador->cnpj ?>
                     </td>
-                    <td>
-                       Logística/Cotas Comprador:
-                       <?= ($contrato->comprador->logistica_cotas && strlen($contrato->comprador->logistica_cotas) > 0) ? $contrato->comprador->logistica_cotas : "-" ?>
-                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -154,11 +148,11 @@
                         <?= $contrato->produto->nome ?></td>
                     <td>Safra:
                         <?= $contrato->safra ?? "Nenhum" ?></td>
-                        <td class="paddingTop20">Unidade: <?= $contrato->unidade()->titulo ?></td>
                 </tr>
                 <tr>
                     <td class="paddingTop20">Quantidade:
                         <?= $contrato->quantidade ?></td>
+                        <td class="paddingTop20">Unidade: <?= $contrato->unidade()->titulo ?></td>
                 </tr>
                 <tr>
                     <td class="paddingTop20" colspan="3"> Descrição: <?= $contrato->produto()->descricao ?></td>
@@ -193,6 +187,14 @@
                         <?= $contrato->cfop()->descricao ?? "Nenhum" ?></td>
                 </tr>
                 <tr>
+                <td class="paddingTop20">Logística/Cotas Vendedor:
+                       <?= ($contrato->vendedor->logistica_cotas && strlen($contrato->vendedor->logistica_cotas) > 0) ? $contrato->vendedor->logistica_cotas : "-" ?></td>
+                </tr>
+                <tr>
+                <td class="paddingTop10">Logística/Cotas Comprador:
+                       <?= ($contrato->comprador->logistica_cotas && strlen($contrato->comprador->logistica_cotas) > 0) ? $contrato->comprador->logistica_cotas : "-" ?></td>
+                </tr>
+                <tr>
                     <td class="paddingTop20" colspan="3">Observações:
                         <?= $contrato->observacao ?></td>
                 </tr>
@@ -215,10 +217,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="linha center">______________________________________</td>
+                    <td class="linha center"><pre>____________________________________________</pre></td>
                 </tr>
                 <tr>
-                    <td class="center">90.880.204/0001-57</td>
+                    <td class="center"><pre><b> CEAGRO CORRETORA DE MERCADORIAS LTDA</b></pre></td>
+                </tr>
+                <tr>
+                    <td class="cnpjCeagro"><pre>90.880.204/0001-57</pre></td>
                 </tr>
             </table>
     </section>

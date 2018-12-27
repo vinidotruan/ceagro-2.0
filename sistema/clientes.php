@@ -134,13 +134,13 @@
                                         <div class="col-xs-12 col-lg-8">
                                             <div class="form-group">
                                                 <label for="rua">Rua</label>
-                                                <input type="text" class="form-control" name="rua" placeholder="Digite o nome do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="rua" placeholder="Digite a rua" autocomplete="off" required>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="numero">Número</label>
-                                                <input type="text" class="form-control" name="numero" placeholder="Digite o código do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="numero" placeholder="Digite o número" autocomplete="off" required>
                                             </div>
                                         </div>
                                     </div>
@@ -148,14 +148,14 @@
                                         <div class="col-xs-12 col-lg-6">
                                             <div class="form-group">
                                                 <label for="cidade">Cidade</label>
-                                                <input type="text" class="form-control" name="cidade" placeholder="Digite o código do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="cidade" placeholder="Digite a cidade" autocomplete="off" required>
                                             </div>
                                         </div>
 
                                         <div class="col-xs-12 col-lg-6">
                                             <div class="form-group">
                                                 <label for="bairro">Bairro</label>
-                                                <input type="text" class="form-control" name="bairro" placeholder="Digite o código do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="bairro" placeholder="Digite o bairro" autocomplete="off" required>
                                             </div>
                                         </div>
                                     </div>
@@ -163,7 +163,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <label for="complemento">Complemento</label>
-                                                <input type="text" class="form-control" name="complemento" placeholder="Digite o código do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="complemento" placeholder="Digite o complemento" autocomplete="off" >
                                             </div>
                                         </div>
                                     </div>
@@ -171,13 +171,13 @@
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="estado">Estado</label>
-                                                <input type="text" class="form-control" name="estado" placeholder="Digite o código do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="estado" placeholder="Digite o Estado" autocomplete="off" required>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-lg-8">
                                             <div class="form-group">
                                                 <label for="cep">CEP</label>
-                                                <input type="text" class="form-control" name="cep" placeholder="Digite o código do produto" autocomplete="off" required data-inputmask='"mask": "99999-999"' data-mask>
+                                                <input type="text" class="form-control" name="cep" placeholder="Digite o CEP" autocomplete="off" required data-inputmask='"mask": "99999-999"' data-mask>
                                             </div>
                                         </div>
                                     </div>
@@ -238,19 +238,19 @@
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="banco">Banco</label>
-                                                <input type="text" class="form-control" name="banco" placeholder="Digite o nome do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="banco" placeholder="Digite o banco" autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="agencia">Agência</label>
-                                                <input type="text" class="form-control" name="agencia" placeholder="Digite o código do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="agencia" placeholder="Digite a agência autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="conta">Conta</label>
-                                                <input type="text" class="form-control" name="conta" placeholder="Digite o código do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="conta" placeholder="Digite a conta" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>

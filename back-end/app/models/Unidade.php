@@ -18,7 +18,7 @@ class Unidade extends Model
 
     public function __construct()
     {
-        $this->endereco();
+        // $this->endereco();
     }
 
     public function cliente()

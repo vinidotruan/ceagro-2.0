@@ -8,7 +8,7 @@ if (!$producao) {
             'dbname' => "ceagro",
             'charset' => "utf8",
             'username' => "root",
-            'password' => "",
+            'password' => "root",
             'options' => [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             ],
@@ -17,14 +17,14 @@ if (!$producao) {
     ];
 }
 
-return [ 
+return [
     'database' => [
-        'connection' => "mysql:host=mysql.ceagro.com.br", 
-        'dbname' => "ceagro01", 
-        'charset' => "utf8", 
-        'username' => "ceagro01", 
-        'password' => "saopio18", 
-        'options' => [ 
+        'connection' => "mysql:host=mysql.ceagro.com.br",
+        'dbname' => "ceagro01",
+        'charset' => "utf8",
+        'username' => "ceagro01",
+        'password' => "saopio18",
+        'options' => [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ],
     ],

@@ -1,4 +1,5 @@
 $(document).ready(() => {
+    contrato = JSON.parse(localStorage.getItem('contrato'));
     $('.select2').select2();
     $(".btn").text("Salvar");
     buscarProdutos();
@@ -9,7 +10,7 @@ $(document).ready(() => {
 
 $("#contrato").submit(() => {
     event.preventDefault();
-    if (temContrato()) {
+    if (temContratoL()) {
         atualizar();
     } else {
         cadastrar();
@@ -28,8 +29,8 @@ $('.minimal[name="futuro"]').on('ifChecked', event => {
     setNumeroConfirmacao();
 });
 
-function temContrato() {
-    return (localStorage.hasOwnProperty('contrato')) ? true : false;
+function temContratoL() {
+    return (contrato) ? true : false;
 }
 /**
  * PRODUTOS
@@ -86,7 +87,7 @@ function popularUnidadesMedidades(unidades) {
 function buscarNumeroConfirmacao() {
     $.get('../back-end/numero-confirmacao').done(response => {
         numeros_confirmacao = JSON.parse(response);
-        if (temContrato()) {
+        if (temContratoL()) {
             (contrato.futuro) ? numero_confirmacao[1] = contrato.numero_confirmacao : numero_confirmacao[0] = contrato.numero_confirmacao;
         }
         setNumeroConfirmacao();

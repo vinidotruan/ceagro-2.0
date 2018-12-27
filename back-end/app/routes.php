@@ -21,6 +21,7 @@ $router->post("{$urlBase}clientes/enderecos", "EnderecosController@store");
 $router->put("{$urlBase}clientes/enderecos/{endereco}", "EnderecosController@update");
 
 $router->post("{$urlBase}clientes/contas-bancarias", "ContasBancariasController@store");
+$router->put("{$urlBase}contas-bancarias/{contaBancaria}", "ContasBancariasController@update");
 $router->get("{$urlBase}clientes/{cliente}/contas-bancarias", "ContasBancariasController@show");
 
 $router->get("{$urlBase}clientes/{cliente}/estabelecimentos", "EstabelecimentosController@index");

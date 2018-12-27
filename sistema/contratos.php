@@ -63,32 +63,13 @@
 													<div class="col-xs-12">
 														<div class="form-group">
 															<label for="vendedor_id">Nome Fantasia</label>
-															<select class="form-control select2 nomesFantasias" name="vendedor_id" style="width: 100%;" id="nome_fantasia" required></select>
+															<select class="form-control select2 clientes" name="vendedor_id" style="width: 100%;" id="nome_fantasia" required></select>
 														</div>
 													</div>
 													<div class="col-xs-12">
 														<div class="form-group">
-															<label for="unidade_vendedor_id">Cnpj</label>
-															<select class="form-control select2 cnpjs" name="unidade_vendedor_id" style="width: 100%;" id="cnpj" required></select>
-														</div>
-													</div>
-													<div class="col-xs-12">
-														<div class="form-group">
-															<label for="unidade_vendedor_id">Razão Social</label>
-															<select class="form-control select2 razoes" name="unidade_vendedor_id" style="width: 100%;" id="razao_social" required></select>
-														</div>
-													</div>
-													<div class="col-xs-12">
-														<div class="form-group">
-															<label for="unidade_vendedor_id">Inscrição Estadual</label>
-															<select class="form-control select2 inscricoes" name="unidade_vendedor_id" style="width: 100%;" id="inscricao_estadual" required disabled></select>
-														</div>
-													</div>
-
-													<div class="col-xs-12">
-														<div class="form-group">
-															<label for="unidade_vendedor_id">Endereços</label>
-															<select class="form-control select2 enderecos" name="unidade_vendedor_id" style="width: 100%;" id="endereco" required disabled></select>
+															<label for="unidade_comprador_id">Unidades</label>
+															<select class="form-control select2 unidades" name="unidade_vendedor_id" style="width: 100%;" id="cnpj" required></select>
 														</div>
 													</div>
 
@@ -289,7 +270,11 @@
       </div>
 	  </div>
     <footer class="main-footer">
-      <div class="pull-right hidden-xs"> <i class="fab fa-optin-monster"></i> </div> Copyright © 2018 CEAGRO - Todos os Direitos Reservados. Feito com <img src="http://dom.com.vc/dom.com.vc.gif" alt="DOM Creative Consulting" height="20" width="20"> por <a href="https://dom.com.vc">DOM</a> </footer>
+      <div class="pull-right hidden-xs"> 
+				<i class="fab fa-optin-monster"></i> 
+			</div> 
+			Copyright © 2018 CEAGRO - Todos os Direitos Reservados. Feito com <img src="http://dom.com.vc/dom.com.vc.gif" alt="DOM Creative Consulting" height="20" width="20"> por <a href="https://dom.com.vc">DOM</a>
+		</footer>
     <?php include 'partials/imports.html' ?>
     <script src="public/assets/js/comprador_vendedor.js"></script>
     <script src="public/assets/js/contratos.js"></script>

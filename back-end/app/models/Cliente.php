@@ -11,16 +11,16 @@ class Cliente extends Model
     public $cnpj;
     public $inscricao_estadual;
 
-    // public $contasBancarias;
-    // public $endereco;
-    // public $unidades;
+    public $contasBancarias;
+    public $endereco;
+    public $unidades;
 
     public static $table = "clientes";
 
     public function __construct()
     {
-        // $this->endereco();
-        // $this->unidades();
+        $this->endereco();
+        $this->unidades();
     }
 
     public function contasBancarias()

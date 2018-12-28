@@ -134,7 +134,7 @@ class QueryBuilder
 
         } catch (\Exception $e) {
             http_response_code(500);
-            die([$e->getMessage(), $e->errorInfo]);
+            die($e->getMessage());
         }
     }
 
@@ -152,6 +152,7 @@ class QueryBuilder
             $campos,
             implode(" = ", $where)
         );
+        // dd($);
         try {
             $statement = $this->pdo->prepare($sql)->execute($dados);
             return $where[1];

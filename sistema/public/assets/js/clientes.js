@@ -455,6 +455,7 @@ function atualizarEndereco() {
     mostrarModal();
     $(`#endereco`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     $(`#endereco`).append(`<input hidden name='id' value=${endereco.id}>`);
+    $(`#endereco`).append(`<input hidden name='unidade_id' value=${unidade.id}>`);
     var dados = $("#endereco").serialize();
     $.ajax({
         url: `../back-end/clientes/enderecos/${endereco.id}`,

@@ -176,12 +176,20 @@
 																<label for="preco">Preço</label>
 																<input type="text" class="form-control" name="preco" placeholder="Digite o preco" autocomplete="off" required> </div>
 														</div>
+														
 														<div class="col-xs-12 col-lg-4">
 															<div class="form-group">
-																<label for="data_embarque">Data do Embarque</label>
-																<input type="text" class="form-control" name="data_embarque" placeholder="Digite a data do contrato" autocomplete="off" required> </div>
+																<label for="tipo_embarque">Tipo de Embarque</label>
+																<input type="text" class="form-control" name="tipo_embarque" placeholder="Digite o tipo de retirada" autocomplete="off" required> </div>
 														</div>
-														<div class="col-xs-12 col-lg-4">
+
+                            <div class="col-xs-12 col-lg-4">
+                              <div class="form-group">
+                                <label for="local">Local</label>
+                                <input type="text" class="form-control" name="local" placeholder="Informe o local do contrato" autocomplete="off" required> </div>
+                            </div>
+
+														<div class="col-xs-12 col-lg-1">
 															<div class="form-group">
 																<label for="retirada_entrega">Retirada/Entrega</label>
 																<select name="retirada_entrega" class="form-control">
@@ -190,29 +198,39 @@
 																</select>
 															</div>
 														</div>
-														<div class="col-xs-12 col-lg-4">
+														
+														<div class="col-xs-12 col-lg-3">
 															<div class="form-group">
-																<label for="tipo_embarque">Tipo de Embarque</label>
-																<input type="text" class="form-control" name="tipo_embarque" placeholder="Digite o tipo de retirada" autocomplete="off" required> </div>
+																<label for="data_embarque">Data do Embarque</label>
+																<div class="input-group">
+																	<div class="input-group-addon">
+																		<i class="fa fa-calendar"></i>
+																	</div>
+																	<input type="text" class="form-control pull-right" id="reservation">
+																</div>
+																<!-- <input type="text" class="form-control" name="data_embarque" placeholder="Digite a data do contrato" autocomplete="off" required> </div> -->
 														</div>
 													</div>
 													<div class="form-row">
-														<div class="col-xs-6 col-lg-12">
+														<div class="col-xs-12">
 															<div class="form-group">
 																<label for="pagamento">Pagamento</label>
-																<textarea type="text" class="form-control" name="pagamento" rows="3" placeholder="Digite as informações sobre o pagamento" required></textarea>
+																<textarea type="text" class="form-control" name="pagamento" rows="4" placeholder="Digite as informações sobre o pagamento" required></textarea>
 															</div>
 														</div>
-														<div class="col-xs-6 col-lg-12">
+														<div class="col-xs-12">
 															<div class="form-group">
 																<label for="observacao">Observações</label>
-																<textarea type="text" class="form-control" name="observacao" rows="3" placeholder="Digite as observações"></textarea>
+																<textarea type="text" class="form-control" name="observacao" rows="4" placeholder="Digite as observações"></textarea>
 															</div>
 														</div>
-														<div class="col-xs-12 col-lg-12">
+														<div class="col-xs-12">
 															<div class="form-group">
 																<label for="peso_qualidade">Peso & Qualidade</label>
-																<textarea type="text" class="form-control" name="peso_qualidade" placeholder="Digite o peso e qualidade" rows="3" required></textarea>
+																<select name="peso_qualidade" class="form-control">
+																	<option value="Na Origem">Na Origem</option>
+																	<option value="No Destino">No Destino</option>
+																</select>
 															</div>
 														</div>
 													</div>
@@ -231,11 +249,6 @@
                               <div class="form-group">
                                 <label for="comissao">Comissão</label>
                                 <input type="text" class="form-control" name="comissao" placeholder="Informe sobre a comissao do contrato" autocomplete="off" required> </div>
-                            </div>
-                            <div class="col-xs-12 col-lg-4">
-                              <div class="form-group">
-                                <label for="local">Local</label>
-                                <input type="text" class="form-control" name="local" placeholder="Informe o local do contrato" autocomplete="off" required> </div>
                             </div>
                           </div>
 											  </div>
@@ -284,5 +297,14 @@
         checkboxClass: 'icheckbox_minimal-blue',
         radioClass: 'iradio_minimal-blue'
       });
+    </script>
+<script src="adminlte/bower_components/moment/min/moment.min.js"></script>
+<script src="adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script>
+    $('#reservation').daterangepicker({
+			locale: {
+            format: 'DD/MM/YYYY'
+        }
+		});
     </script>
     <?php include 'partials/rodape.html' ?>

@@ -483,7 +483,7 @@ function exibirSucesso(form) {
     $(`#${form} .success`).show("slow");
     setTimeout(() => {
         $(".success").hide("slow");
-    }, 1000);
+    }, 5000);
 }
 
 function mostrarSemUnidade() {

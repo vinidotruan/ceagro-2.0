@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary pull-right">Cadastrar</button>
+                            <button type="submit" class="btn btn-primary pull-right">Salvar</button>
                         </div>
                     </form>
                 </div>

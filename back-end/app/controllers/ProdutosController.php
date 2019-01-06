@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Core\App;
 use App\Models\Produto;
-use App\Models\TipoProduto;
 
 class ProdutosController extends Controller
 {

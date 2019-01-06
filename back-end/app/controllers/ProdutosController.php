@@ -20,17 +20,6 @@ class ProdutosController extends Controller
     }
 
     /**
-     * Retorna todos os tipos de produtos.
-     * 
-     * @return App\Models\TIpoProduto $tipos
-     */
-    public function tipos()
-    {
-        $tipos = TipoProduto::get();
-        return $this->responderJSON($tipos);
-    }
-
-    /**
      * Cadastra um novo produto.
      * 
      * @param Array $produto
@@ -51,13 +40,14 @@ class ProdutosController extends Controller
      */
     public function update($produto)
     {
-        $produtoId = Produto::update($produto,['id', $produto['produto']]);
+        $produtoId = Produto::update($produto, ['id', $produto['produto']]);
         $produto = Produto::find(['id', $produtoId]);
 
         return $this->responderJSON($produto);
     }
 
-    public function destroy($produto) {
+    public function destroy($produto)
+    {
         $delete = Produto::delete(["id", $produto]);
         return $this->responderJSON($delete);
     }

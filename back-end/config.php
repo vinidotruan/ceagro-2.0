@@ -1,6 +1,6 @@
 <?php
 // $producao = true;
-$producao = true;
+$producao = 0;
 if (!$producao) {
     return [
         'database' => [

@@ -140,7 +140,7 @@
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="numero">Número</label>
-                                                <input type="text" class="form-control" name="numero" placeholder="Digite o número" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="numero" placeholder="Digite o número" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>

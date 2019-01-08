@@ -26,7 +26,7 @@ class ProdutosController extends Controller
      */
     public function store($produto)
     {
-        $produtoId = Produto::store($produto);
+        $produtoId = Produto::create($produto);
         return $this->responderJSON($produtoId);
 
     }

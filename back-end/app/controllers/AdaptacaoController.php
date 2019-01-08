@@ -21,7 +21,7 @@ class AdaptacaoController extends Controller
             $unidade1 = (array)$cliente;
             unset($unidade1['id']);
             $unidade1['cliente_id'] = $cliente->id;
-            $unidade = Unidade::store($unidade1);
+            $unidade = Unidade::create($unidade1);
         }
 
         /**

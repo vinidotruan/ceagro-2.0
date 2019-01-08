@@ -26,7 +26,7 @@ class UnidadesController extends Controller
 
     public function store($unidade)
     {
-        $unidadeId = Unidade::store($unidade);
+        $unidadeId = Unidade::create($unidade);
         $unidade = Unidade::find(['id', $unidadeId]);
         return $this->responderJSON($unidade);
     }

@@ -196,7 +196,7 @@
 
                 <div class="col-xs-12">
                     <section class="invoice">
-                    <div class="row">
+                        <div class="row">
                             <div class="col-xs-12">
                                 <h2 class="page-header">
                                 <i class="fa fa-map-o"></i> Endereços

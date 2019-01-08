@@ -24,7 +24,7 @@ class ContratosController extends Controller
     public function store($contrato)
     {
         try {
-            $contratoId = Contrato::store($contrato);
+            $contratoId = Contrato::create($contrato);
 
             $ultimoContrato = Contrato::find(["id", $contratoId]);
 

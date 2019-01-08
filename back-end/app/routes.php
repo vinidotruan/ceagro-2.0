@@ -37,12 +37,14 @@ $router->delete("{$urlBase}produtos/{produto}", "ProdutosController@destroy");
 $router->get("{$urlBase}contratos", "ContratosController@index");
 $router->get("{$urlBase}contratos/{contrato}", "ContratosController@show");
 $router->post("{$urlBase}contratos", "ContratosController@store");
-
 $router->put("{$urlBase}contratos/{contrato}", "ContratosController@update");
 $router->get("{$urlBase}contratos/futuros", "ContratosController@contratosFuturos");
 $router->get("{$urlBase}contratos/atuais", "ContratosController@contratosAtuais");
 $router->get("{$urlBase}contratos/dados-compradores", "ContratosController@dados");
 $router->get("{$urlBase}contratos/dados-vendedores", "ContratosController@dados2");
+
+$router->get("{$urlBase}contratos/{contrato}/adendos", "AdendosController@index");
+$router->post("{$urlBase}contratos/adendos", "AdendosController@store");
 
 $router->get("{$urlBase}pdfs/contratos/{contrato}", "PDF\ContratosController@index");
 $router->get("{$urlBase}unidades-medidas", "UnidadesMedidasController@index");

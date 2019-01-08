@@ -21,7 +21,7 @@ class EnderecosController extends Controller
 
     public function store($endereco)
     {
-        $enderecoId = Endereco::store($endereco);
+        $enderecoId = Endereco::create($endereco);
         $endereco = Endereco::find(["id", $enderecoId]);
         echo json_encode($endereco);
 

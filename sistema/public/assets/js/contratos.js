@@ -147,6 +147,10 @@ function atualizar() {
 /** FIM CONTRATO */
 
 /** ADENDOS */
+function buscarAdendos() {
+    $.get(`../back-end/contratos/${contrato.id}/adendos/`)
+        .done(adendos => listarAdendos(JSON.parse(adendos)));
+}
 
 function cadastrarAdendo() {
     mostrarModal();
@@ -191,8 +195,7 @@ function excluirAdendo(adendoId) {
         url: `../back-end/adendos/${adendoId}`,
         type: 'DELETE'
     }).done(adendos => {
-        adendos = JSON.parse(adendos);
-        listarAdendos(adendos)
+        buscarAdendos();
     }).always(() => esconderModal());
 }
 

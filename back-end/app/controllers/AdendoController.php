@@ -20,10 +20,15 @@ class AdendosController extends Controller
 
     public function store($adendo)
     {
-        dd($adendo);
         $adendoId = Adendo::create($adendo);
-        $adendos = Adendo::get(['contrato_id', '=', $adendo['']]);
-        return $this->responderJson($adendo);
+        $adendos = Adendo::get(['contrato_id', '=', $adendo['contrato_id']]);
+        return $this->responderJson($adendos);
 
+    }
+
+    public function destroy($adendo)
+    {
+        $msg = Adendo::delete(['id', $adendo]);
+        return $this->responderJson($msg);
     }
 }

@@ -287,12 +287,12 @@
 								<div class="col-xs-12">
 									<div class="nav-tabs-custom">
 										<ul class="nav nav-tabs">
-											<li class="active"><a href="#tab_1" data-toggle="tab">Adendos</a></li>
+											<li class="active"><a href="#a" data-toggle="tab">Adendos</a></li>
 											<li><a href="#tab_2" data-toggle="tab">Fixações</a></li>
 										</ul>
 										
 										<div class="tab-content">
-											<div class="tab-pane active" id="tab_1">
+											<div class="tab-pane active" id="a">
 												<div class="row">
 													<div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
 														<div class="row invoice-info">
@@ -336,11 +336,12 @@
 													</div>
 												</div>
 											</div>
+
 											<div class="tab-pane" id="tab_2">
 												<div class="row">
 													<div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
 														<div class="row invoice-info">
-															<form role="form" id="adendo">
+															<form role="form" id="fixacao">
 																<div class="box-body">
 																	<div class="form-row">
 																		<div class="col-xs-12 col-lg-6">
@@ -354,7 +355,6 @@
 																				<label for="preco">Preço</label>
 																				<input type="text" class="form-control" name="preco" id="preco" placeholder="informe o preço" autocomplete="off">
 																			</div>
-																		</div>
 																		</div>
 																		<div class="col-xs-12 col-lg-6">
 																			<div class="form-group">

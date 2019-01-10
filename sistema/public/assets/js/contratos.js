@@ -5,6 +5,7 @@ $(document).ready(() => {
     buscarProdutos();
     buscarUnidadesDeMedidas();
     buscarNumeroConfirmacao();
+    buscarAdendos();
 
 });
 
@@ -28,7 +29,7 @@ $("#adendo").submit(() => {
 
 let contrato = null;
 let produtos = null;
-let adendos = null;
+let _adendos = null;
 
 let adendo = null;
 let numeros_confirmacao = null;
@@ -149,7 +150,10 @@ function atualizar() {
 /** ADENDOS */
 function buscarAdendos() {
     $.get(`../back-end/contratos/${contrato.id}/adendos/`)
-        .done(adendos => listarAdendos(JSON.parse(adendos)));
+        .done(adendos => {
+            _adendos = JSON.parse(adendos);
+            listarAdendos(JSON.parse(adendos));
+        });
 }
 
 function cadastrarAdendo() {
@@ -158,9 +162,9 @@ function cadastrarAdendo() {
     const dados = $("#adendo").serialize();
     $.post(`../back-end/contratos/adendos`, dados)
         .done(adendos => {
-            adendos = JSON.parse(adendos);
+            _adendos = JSON.parse(adendos);
             exibirSucesso();
-            listarAdendos(adendos);
+            listarAdendos(_adendos);
         })
         .fail(() => exibirErro())
         .always(() => esconderModal());
@@ -185,7 +189,7 @@ function listarAdendos(adendos) {
 }
 
 function selecionarAdendo(adendoId) {
-    adendo = _.find(adendos, { 'id': `${adendoId}` });
+    adendo = _.find(_adendos, { 'id': `${adendoId}` });
     compararForm(adendo, "adendo");
 }
 
@@ -202,11 +206,11 @@ function excluirAdendo(adendoId) {
 function atualizarAdendo() {
     mostrarModal();
     const dados = $("#adendo").serialize();
-    $.ajax({ type: 'PUT', url: `../back-end/contratos/${contrato.id}/adendos/${adendo}`, data: dados })
+    $.ajax({ type: 'PUT', url: `../back-end/adendos/${adendo.id}`, data: dados })
         .done(adendos => {
             alertCadastro();
             exibirSucesso();
-            adendos = JSON.parse(adendos);
+            buscarAdendos();
             listarAdendos(adendos);
         })
         .always(() => esconderModal())
@@ -250,12 +254,14 @@ function exibirSucesso() {
     }, 2000);
 }
 
-function compararContrato(contrato, formulario) {
+function compararForm(contrato, formulario) {
+    console.log(contrato, formulario);
     $.each(contrato, function (campo, valor) {
         form = $(`#${formulario}`).find('select, input, textarea');
         $(form).each(function (index, formObj) {
             if (typeof valor === "object" && valor) {
-                compararContrato(valor, campo);
+                compararForm(valor, campo);
+                console.log('valor: ', valor);
             }
             (formObj.name === campo) ? $(formObj).val(valor) : null;
         });

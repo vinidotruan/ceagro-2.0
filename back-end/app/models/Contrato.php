@@ -58,6 +58,7 @@ class Contrato extends Model
     {
         $this->unidadeComprador();
         $this->unidadeVendedor();
+        $this->adendos();
         $this->comprador();
         $this->vendedor();
         $this->produto();
@@ -71,6 +72,10 @@ class Contrato extends Model
         return $this->unidadeComprador = Unidade::find(["id", $this->unidade_comprador_id]);
     }
 
+    public function adendos()
+    {
+        return $this->adendos = Adendo::get(["contrato_id", '=', $this->id]);
+    }
     public function unidadeVendedor()
     {
         return $this->unidadeVendedor = Unidade::find(["id", $this->unidade_vendedor_id]);

@@ -18,6 +18,16 @@ class AdendosController extends Controller
         return $this->responderJson($adendos);
     }
 
+    public function update($adendo)
+    {
+        $adendoId = Adendo::update(
+            $adendo,
+            ['id', $adendo['adendo']]
+        );
+        $adendos = Adendo::get(['contrato_id', '=', $adendo['contrato_id']]);
+        return $this->responderJson($adendos);
+
+    }
     public function store($adendo)
     {
         $adendoId = Adendo::create($adendo);

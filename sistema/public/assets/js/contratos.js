@@ -5,7 +5,9 @@ $(document).ready(() => {
     buscarProdutos();
     buscarUnidadesDeMedidas();
     buscarNumeroConfirmacao();
-    buscarAdendos();
+    if (temContratoL()) {
+        buscarAdendos();
+    }
 
 });
 

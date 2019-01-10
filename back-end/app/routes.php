@@ -45,6 +45,7 @@ $router->get("{$urlBase}contratos/dados-vendedores", "ContratosController@dados2
 
 $router->get("{$urlBase}contratos/{contrato}/adendos", "AdendosController@index");
 $router->post("{$urlBase}contratos/adendos", "AdendosController@store");
+$router->put("{$urlBase}adendos/{adendo}", "AdendosController@update");
 $router->delete("{$urlBase}adendos/{adendo}", "AdendosController@destroy");
 
 $router->get("{$urlBase}pdfs/contratos/{contrato}", "PDF\ContratosController@index");

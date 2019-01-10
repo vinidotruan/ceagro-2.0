@@ -79,6 +79,7 @@ class QueryBuilder
         try {
             $statement = $this->pdo->prepare($query);
             $statement->execute();
+            $campos = null;
             return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
         } catch (PDOException $exception) {
             http_response_code(500);
@@ -151,6 +152,7 @@ class QueryBuilder
             $campos,
             implode(" = ", $where)
         );
+        // dd($);
         try {
             $statement = $this->pdo->prepare($sql)->execute($dados);
             return $where[1];

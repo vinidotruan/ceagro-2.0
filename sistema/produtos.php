@@ -19,23 +19,16 @@
                     <form role="form" id="produto">
                         <div class="box-body">
                             <div class="form-row">
-                                <div class="col-xs-12 col-lg-4">
+                                <div class="col-xs-12 col-lg-6">
                                     <div class="form-group">
                                         <label for="nome">Nome</label>
                                         <input type="text" class="form-control" name="nome" placeholder="Digite o nome do produto" autocomplete="off">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-lg-4">
+                                <div class="col-xs-12 col-lg-6">
                                     <div class="form-group">
                                         <label for="nome">Código</label>
                                         <input type="text" class="form-control" name="codigo" placeholder="Digite o código do produto" autocomplete="off">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-lg-4">
-                                    <div class="form-group">
-                                        <label>Categoria</label>
-                                        <select class="form-control select2" name="tipo_id" id="tipos" style="width: 100%;">
-                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +42,7 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary pull-right">Cadastrar</button>
+                            <button type="submit" class="btn btn-primary pull-right">Salvar</button>
                         </div>
                     </form>
                 </div>
@@ -61,7 +54,6 @@
                                 <tr>
                                     <th>Código</th>
                                     <th>Nome</th>
-                                    <th>Tipo</th>
                                     <th>Descrição</th>
                                     <th>Deletar</th>
                                 </tr>

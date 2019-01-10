@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Controllers\\AdaptacaoController' => $baseDir . '/app/controllers/AdaptacaoController.php',
+    'App\\Controllers\\AdendosController' => $baseDir . '/app/controllers/AdendoController.php',
     'App\\Controllers\\ClientesController' => $baseDir . '/app/controllers/ClientesController.php',
     'App\\Controllers\\ContasBancariasController' => $baseDir . '/app/controllers/ContasBancariasController.php',
     'App\\Controllers\\ContatosController' => $baseDir . '/app/controllers/ContatosController.php',
@@ -23,6 +24,7 @@ return array(
     'App\\Core\\Database\\QueryBuilder' => $baseDir . '/core/database/QueryBuilder.php',
     'App\\Core\\Request' => $baseDir . '/core/Request.php',
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
+    'App\\Models\\Adendo' => $baseDir . '/app/models/Adendo.php',
     'App\\Models\\Banco' => $baseDir . '/app/models/Banco.php',
     'App\\Models\\Cfop' => $baseDir . '/app/models/Cfop.php',
     'App\\Models\\Cliente' => $baseDir . '/app/models/Cliente.php',
@@ -32,7 +34,6 @@ return array(
     'App\\Models\\Endereco' => $baseDir . '/app/models/Endereco.php',
     'App\\Models\\Model' => $baseDir . '/app/models/Model.php',
     'App\\Models\\Produto' => $baseDir . '/app/models/Produto.php',
-    'App\\Models\\TipoProduto' => $baseDir . '/app/models/TipoProduto.php',
     'App\\Models\\Unidade' => $baseDir . '/app/models/Unidade.php',
     'App\\Models\\UnidadeMedida' => $baseDir . '/app/models/UnidadeMedida.php',
     'ComposerAutoloaderInit7af411bac7756e8562419bf7dd0e78b2' => $vendorDir . '/composer/autoload_real.php',

@@ -44,6 +44,7 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
 
     public static $classMap = array (
         'App\\Controllers\\AdaptacaoController' => __DIR__ . '/../..' . '/app/controllers/AdaptacaoController.php',
+        'App\\Controllers\\AdendosController' => __DIR__ . '/../..' . '/app/controllers/AdendoController.php',
         'App\\Controllers\\ClientesController' => __DIR__ . '/../..' . '/app/controllers/ClientesController.php',
         'App\\Controllers\\ContasBancariasController' => __DIR__ . '/../..' . '/app/controllers/ContasBancariasController.php',
         'App\\Controllers\\ContatosController' => __DIR__ . '/../..' . '/app/controllers/ContatosController.php',
@@ -60,6 +61,7 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
         'App\\Core\\Database\\QueryBuilder' => __DIR__ . '/../..' . '/core/database/QueryBuilder.php',
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
+        'App\\Models\\Adendo' => __DIR__ . '/../..' . '/app/models/Adendo.php',
         'App\\Models\\Banco' => __DIR__ . '/../..' . '/app/models/Banco.php',
         'App\\Models\\Cfop' => __DIR__ . '/../..' . '/app/models/Cfop.php',
         'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/models/Cliente.php',
@@ -69,7 +71,6 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
         'App\\Models\\Endereco' => __DIR__ . '/../..' . '/app/models/Endereco.php',
         'App\\Models\\Model' => __DIR__ . '/../..' . '/app/models/Model.php',
         'App\\Models\\Produto' => __DIR__ . '/../..' . '/app/models/Produto.php',
-        'App\\Models\\TipoProduto' => __DIR__ . '/../..' . '/app/models/TipoProduto.php',
         'App\\Models\\Unidade' => __DIR__ . '/../..' . '/app/models/Unidade.php',
         'App\\Models\\UnidadeMedida' => __DIR__ . '/../..' . '/app/models/UnidadeMedida.php',
         'ComposerAutoloaderInit7af411bac7756e8562419bf7dd0e78b2' => __DIR__ . '/..' . '/composer/autoload_real.php',

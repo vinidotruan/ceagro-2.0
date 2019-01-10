@@ -6,7 +6,7 @@ use App\Core\App;
 use App\Models\Banco;
 use App\Models\Cliente;
 
-class ClientesController extends Controller 
+class ClientesController extends Controller
 {
 
     public function index()
@@ -23,7 +23,7 @@ class ClientesController extends Controller
 
     public function store($cliente)
     {
-        $clienteId = Cliente::store($cliente);
+        $clienteId = Cliente::create($cliente);
         $cliente = Cliente::find(["id", $clienteId]);
 
         return $this->responderJSON($cliente);

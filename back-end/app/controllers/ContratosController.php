@@ -11,7 +11,7 @@ class ContratosController extends Controller
     public function index()
     {
         $contratos = Contrato::get();
-        
+
         return $this->responderJSON($contratos);
     }
 
@@ -24,7 +24,7 @@ class ContratosController extends Controller
     public function store($contrato)
     {
         try {
-            $contratoId = Contrato::store($contrato);
+            $contratoId = Contrato::create($contrato);
 
             $ultimoContrato = Contrato::find(["id", $contratoId]);
 
@@ -46,7 +46,7 @@ class ContratosController extends Controller
                 $contrato,
                 ["id", $contratoId]
             );
-            
+
             $contrato = Contrato::find(["id", $contratoId]);
 
             return $this->responderJSON($contrato);
@@ -56,14 +56,16 @@ class ContratosController extends Controller
         }
     }
 
-    public function contratosFuturos() {
+    public function contratosFuturos()
+    {
         $reflection = new \ReflectionClass("App\Models\Contrato");
         $instance = $reflection->newInstanceWithoutConstructor();
         $futuros = $instance->ultimoFuturo();
         return $this->responderJSON($futuros);
     }
-    
-    public function contratosAtuais() {
+
+    public function contratosAtuais()
+    {
         $reflection = new \ReflectionClass("App\Models\Contrato");
         $instance = $reflection->newInstanceWithoutConstructor();
         $atuais = $instance->ultimoAtual();
@@ -71,15 +73,15 @@ class ContratosController extends Controller
     }
 
     public function numeroConfirmacao()
-    {   
+    {
         $reflection = new \ReflectionClass("App\Models\Contrato");
         $instance = $reflection->newInstanceWithoutConstructor();
 
         $data = date('Y');
-        $dataFutura = $data+1;
+        $dataFutura = $data + 1;
 
-        $futuro = $instance->ultimoFuturo()."/".$dataFutura;
-        $atual = $instance->ultimoAtual()."/".$data;
+        $futuro = $instance->ultimoFuturo() . "/" . $dataFutura;
+        $atual = $instance->ultimoAtual() . "/" . $data;
 
         return $this->responderJSON([$atual, $futuro]);
     }
@@ -87,26 +89,52 @@ class ContratosController extends Controller
     public function dados()
     {
         $contratos = Contrato::get();
-        $clientesIds;
+        $compradoresIds = [];
 
         foreach ($contratos as $contrato) {
-            $clientesIds[] = $contrato->comprador_id;
+            $compradoresIds[] = $contrato->comprador_id;
         }
 
-        $num = count($clientesIds);
+        $num = count($compradoresIds);
 
-        $a = array_map(
-            function($val) use ($num){
-                return array('count'=>$val,'avg'=>round($val/$num*100, 1));
+        $compradores = array_map(
+            function ($val) use ($num) {
+                return array('count' => $val, 'avg' => round($val / $num * 100, 1));
             },
-        array_count_values($clientesIds)
+            array_count_values($compradoresIds)
         );
 
-        foreach ($a as $k => &$b) {
-            $val = Cliente::find(['id',$k]);
-            $b['cliente'] =  ($val->razao_social)? $val->razao_social : $val->cnpj;
+        foreach ($compradores as $k => &$item) {
+            $comprador = Cliente::find(['id', $k]);
+            $item['cliente'] = ($comprador->razao_social) ? $comprador->razao_social : $comprador->cnpj;
         }
-        return $this->responderJSON($a);
+
+        return $this->responderJSON($compradores);
+    }
+
+    public function dados2()
+    {
+        $contratos = Contrato::get();
+        $vendedoresIds = [];
+
+        foreach ($contratos as $contrato) {
+            $vendedoresIds[] = $contrato->vendedor_id;
+        }
+
+        $num = count($vendedoresIds);
+        $vendedores = array_map(
+            function ($val) use ($num) {
+                return array('count' => $val, 'avg' => round($val / $num * 100, 1));
+            },
+            array_count_values($vendedoresIds)
+        );
+
+        foreach ($vendedores as $k => &$item) {
+            $vendedor = Cliente::find(['id', $k]);
+            $item['cliente'] = ($vendedor->razao_social) ? $vendedor->razao_social : $vendedor->cnpj;
+        }
+
+        return $this->responderJSON($vendedores);
     }
 
 }

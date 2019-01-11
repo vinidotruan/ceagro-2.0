@@ -14,6 +14,8 @@ class Fixacao extends Model {
     public $conta_bancaria_vendedor_id;
     public $contaBancaria;
 
+    public static $table = "fixacoes";
+
     public function __construct()
     {
         $this->contasBancarias();

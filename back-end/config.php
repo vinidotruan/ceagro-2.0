@@ -1,10 +1,6 @@
 <?php
-<<<<<<< HEAD
-$producao = false;
-=======
 // $producao = true;
 $producao = 0;
->>>>>>> 8f03f74b1f6eda3944bf564afe85b10aee751a87
 if (!$producao) {
     return [
         'database' => [

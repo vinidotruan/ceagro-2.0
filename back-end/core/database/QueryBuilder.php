@@ -18,6 +18,7 @@ class QueryBuilder
         $query = "select * from {$tabela}";
         if (is_array($where) && count($where) === 3) {
             ($where) ? $query .= " where " . implode(" ", $where) : '';
+
         } else {
             ($where) ? $query .= " where " . implode(" = ", $where) : '';
         }
@@ -73,12 +74,41 @@ class QueryBuilder
 
     public function find($tabela, $campos, $classe)
     {
+        $campos = implode(' = ', $campos);
+        $query = "select * from {$tabela} where {$campos}";
         try {
-            $campos = implode(' = ', $campos);
-            $statement = $this->pdo->prepare("select * from {$tabela} where {$campos}");
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
+            $campos = null;
+            return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
+        } catch (PDOException $exception) {
+            http_response_code(500);
+            die($exception);
+        }
+    }
+
+    public function contratosFuturos()
+    {
+        $query = "select count(*) as futuros from contratos where futuro = 1";
+        try {
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
+            return $statement->fetch(PDO::FETCH_LAZY);
+        } catch (PDOException $exception) {
+            http_response_code(500);
+            die($exception);
+        }
+    }
+
+    public function contratosAtuais()
+    {
+        $query = "select count(*) as atuais from contratos where futuro != 1";
+
+        try {
+            $statement = $this->pdo->prepare($query);
             $statement->execute();
 
-            return $statement->fetchAll(PDO::FETCH_CLASS, $classe);
+            return $statement->fetch(PDO::FETCH_LAZY);
         } catch (PDOException $exception) {
             http_response_code(500);
             die($exception);
@@ -87,6 +117,7 @@ class QueryBuilder
 
     public function insert($tabela, $dados)
     {
+        $dados = (array)$dados;
         $sql = sprintf(
             "INSERT INTO %s(%s) values(%s)",
             $tabela,
@@ -109,11 +140,11 @@ class QueryBuilder
 
     public function update($tabela, $dados, $where)
     {
+        $dados = (array)$dados;
         $campos = '';
         foreach ($dados as $key => $valor) {
             $campos .= "\n $key=:$key,";
         }
-
         $campos = rtrim($campos, ",");
         $sql = sprintf(
             "UPDATE %s \n SET %s \n WHERE %s",
@@ -121,7 +152,7 @@ class QueryBuilder
             $campos,
             implode(" = ", $where)
         );
-
+        // dd($);
         try {
             $statement = $this->pdo->prepare($sql)->execute($dados);
             return $where[1];

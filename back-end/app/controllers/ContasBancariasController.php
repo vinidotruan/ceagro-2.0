@@ -5,31 +5,37 @@ namespace App\Controllers;
 use App\Core\App;
 use App\Models\ContaBancaria;
 
-class ContasBancariasController
+class ContasBancariasController extends Controller
 {
     public function index()
     {
-        $contas = App::get('db')->selectAll('contas_bancarias', ContaBancaria::class);
-        echo json_encode($contas);
+        $contas = ContaBancaria::get();
+        return $this->responderJSON($contas);
     }
 
     public function show($clienteId)
     {
-        $contas = ContaBancaria::get(["cliente_id", "=", $clienteId]);
-        echo json_encode($contas);
+        $contas = ContaBancaria::get(["cliente_id", '=', $clienteId]);
+        return $this->responderJSON($contas);
     }
 
     public function store($conta)
     {
-        $contaId = App::get('db')->insert('contas_bancarias', [
-            "cliente_id" => intval($conta["cliente_id"]),
-            "banco" => $conta["banco"] ?? "",
-            "agencia" => $conta["agencia"] ?? "",
-            "conta" => $conta["conta"] ?? "",
-        ]);
+        $contaId = ContaBancaria::create($conta);
+        $contas = ContaBancaria::find(["cliente_id", $conta['cliente_id']]);
 
-        $ultimaConta = ContaBancaria::find(["cliente_id", $conta['cliente_id']]);
+        return $this->responderJSON($contas);
+    }
 
-        echo json_encode($ultimaConta);
+    public function update($contaBancaria)
+    {
+        $contaId = ContaBancaria::update(
+            $contaBancaria,
+            ['id', $contaBancaria['id']]
+        );
+
+        $ultimaConta = ContaBancaria::get(["cliente_id", '=', $contaBancaria['cliente_id']]);
+
+        return $this->responderJSON($ultimaConta);
     }
 }

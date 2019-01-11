@@ -3,15 +3,15 @@
 namespace App\Controllers;
 
 use App\Core\App;
+use App\Models\Cliente;
 use App\Models\Contrato;
-use App\Models\Adendo;
 
 class ContratosController extends Controller
 {
     public function index()
     {
         $contratos = Contrato::get();
-        
+
         return $this->responderJSON($contratos);
     }
 
@@ -44,10 +44,9 @@ class ContratosController extends Controller
 
             $contrato = Contrato::update(
                 $contrato,
-                ["id", $contrato]
+                ["id", $contratoId]
             );
 
-            
             $contrato = Contrato::find(["id", $contratoId]);
 
             return $this->responderJSON($contrato);
@@ -57,31 +56,85 @@ class ContratosController extends Controller
         }
     }
 
-    public function adicionarAdendos($adendo)
+    public function contratosFuturos()
     {
-        try {
-            $adendoId = App::get('db')->insert('adendos', [
-                'descricao' => $adendo['descricao'],
-                'contrato_id' => $adendo['contrato_id']
-            ]);
-
-            $adendos = Adendo::get(["contrato_id", $adendo['contrato_id']]);
-
-            return $this->responderJSON($adendos);
-        } catch (\Exception $e) {
-            die($e);
-        }
+        $reflection = new \ReflectionClass("App\Models\Contrato");
+        $instance = $reflection->newInstanceWithoutConstructor();
+        $futuros = $instance->ultimoFuturo();
+        return $this->responderJSON($futuros);
     }
 
-    public function removerAdendo($contratoId, $adendo)
+    public function contratosAtuais()
     {
-        try {
-            $mensagem = Adendo::delete(["id", $adendo]);
-
-            $adendos = Adendo::get(['contrato_id', $contratoId]);
-            return $this->responderJSON($adendos);
-        } catch (\Exception $e) {
-            die($e);
-        }
+        $reflection = new \ReflectionClass("App\Models\Contrato");
+        $instance = $reflection->newInstanceWithoutConstructor();
+        $atuais = $instance->ultimoAtual();
+        return $this->responderJSON($atuais);
     }
+
+    public function numeroConfirmacao()
+    {
+        $reflection = new \ReflectionClass("App\Models\Contrato");
+        $instance = $reflection->newInstanceWithoutConstructor();
+
+        $data = date('Y');
+        $dataFutura = $data + 1;
+
+        $futuro = $instance->ultimoFuturo() . "/" . $dataFutura;
+        $atual = $instance->ultimoAtual() . "/" . $data;
+
+        return $this->responderJSON([$atual, $futuro]);
+    }
+
+    public function dados()
+    {
+        $contratos = Contrato::get();
+        $compradoresIds = [];
+
+        foreach ($contratos as $contrato) {
+            $compradoresIds[] = $contrato->comprador_id;
+        }
+
+        $num = count($compradoresIds);
+
+        $compradores = array_map(
+            function ($val) use ($num) {
+                return array('count' => $val, 'avg' => round($val / $num * 100, 1));
+            },
+            array_count_values($compradoresIds)
+        );
+
+        foreach ($compradores as $k => &$item) {
+            $comprador = Cliente::find(['id', $k]);
+            $item['cliente'] = ($comprador->razao_social) ? $comprador->razao_social : $comprador->cnpj;
+        }
+
+        return $this->responderJSON($compradores);
+    }
+
+    public function dados2()
+    {
+        $contratos = Contrato::get();
+        $vendedoresIds = [];
+
+        foreach ($contratos as $contrato) {
+            $vendedoresIds[] = $contrato->vendedor_id;
+        }
+
+        $num = count($vendedoresIds);
+        $vendedores = array_map(
+            function ($val) use ($num) {
+                return array('count' => $val, 'avg' => round($val / $num * 100, 1));
+            },
+            array_count_values($vendedoresIds)
+        );
+
+        foreach ($vendedores as $k => &$item) {
+            $vendedor = Cliente::find(['id', $k]);
+            $item['cliente'] = ($vendedor->razao_social) ? $vendedor->razao_social : $vendedor->cnpj;
+        }
+
+        return $this->responderJSON($vendedores);
+    }
+
 }

@@ -15,11 +15,21 @@ class Model
     public static function find($campos = ["id", 0])
     {
         $response = App::get('db')->find(
-            static::$table, 
-            $campos, 
+            static::$table,
+            $campos,
             static::class
         );
         return $a = array_shift($response);
+    }
+
+    public static function contratosFuturos()
+    {
+        return $response = App::get('db')->contratosFuturos();
+    }
+
+    public static function contratosAtuais()
+    {
+        return $response = App::get('db')->contratosAtuais();
     }
 
     public static function delete($campos = ["id", 0])
@@ -28,13 +38,30 @@ class Model
         return "deletado com sucesso";
     }
 
-    public static function store($dados)
+    public static function create($dados)
     {
-        return App::get('db')->insert(static::$table, $dados);
+        $data = self::verifyFields($dados);
+        return App::get('db')->insert(static::$table, $data);
+    }
+
+    private static function verifyFields($data)
+    {
+        $data = (array)$data;
+        $reflection = new \ReflectionClass(static::class);
+        $instance = (array)$reflection->newInstanceWithoutConstructor();
+        foreach ($instance as $instanceKey => $field) {
+            foreach ($data as $dataKey => $value) {
+                if (!array_key_exists($dataKey, $instance)) {
+                    unset($data[$dataKey]);
+                }
+            }
+        }
+        return $data;
     }
 
     public static function update($dados, $campos = [])
     {
-        return App::get('db')->update(static::$table, $dados, $campos);
+        $data = self::verifyFields($dados);
+        return App::get('db')->update(static::$table, $data, $campos);
     }
 }

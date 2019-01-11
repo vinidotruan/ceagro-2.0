@@ -8,19 +8,8 @@ class Produto extends Model
 {
     public $id;
     public $nome;
-    public $codigo;
-    public $tipo_id;
-    public $tipo;
+    public $descricao = null;
 
     public static $table = "produtos";
 
-    public function __construct()
-    {
-        $this->tipo();
-    }
-
-    public function tipo()
-    {
-        return $this->tipo = TipoProduto::find(["id", $this->tipo_id]);
-    }
 }

@@ -1,125 +1,237 @@
-$('.select2').select2();
+$(document).ready(() => {
+    contrato = JSON.parse(localStorage.getItem('contrato'));
+    $('.select2').select2();
+    $(".btn").text("Salvar");
+    buscarProdutos();
+    buscarUnidadesDeMedidas();
+    buscarNumeroConfirmacao();
+    if (temContratoL()) {
+        buscarAdendos();
+    }
 
-$("#contrato").submit(function (event) {
+});
+
+$("#contrato").submit(() => {
     event.preventDefault();
-    if (temContrato()) {
-        $(`#unidades`).val(contrato.unidade_medida_id);
-        $(`#select2-unidades-container`).append(contrato.unidade_medida_id);
+    if (temContratoL()) {
         atualizar();
     } else {
         cadastrar();
     }
 });
 
-vendedores = [];
-compradores = [];
-contasBancarias = [{}]
-adendos = [];
-produtos = [];
-vendedor = {};
-comprador = {};
-produto = {};
-conta = {};
-contrato = {};
-
-function adicionarAdendo() {
-    $(`#adendos`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
-    var dados = $('#adendos').serialize();
-    $.post(`../back-end/adendos`, dados, (success) => {
-        popularAdendos(JSON.parse(success));
-    });
-}
-
-function verificarContrato() {
-    buscarDados(() => {
-        contrato = JSON.parse(localStorage.getItem("contrato"));
-        localStorage.removeItem("contrato");
-        if (temContrato()) {
-            $("#enviar").append("Atualizar");
-            comprador = contrato.comprador;
-            vendedor = contrato.vendedor;
-            produto = contrato.produto;
-            adendos = contrato.adendos;
-
-            compararContrato(contrato, "contrato");
-            $('.select2').select2();
-            popularAdendos(adendos, mostrarAdendos());
-        } else {
-            $("#enviar").append("Cadastrar");
-        }
-    }, erro => {
-        console.log(erro);
-    });
-}
-
-function buscarDados(callback) {
-    buscarProdutos();
-    buscarUnidadesDeMedidas();
-    buscarVendedores();
-    buscarCompradores(_ => {
-        callback();
-        buscarContasBancaria();
-    });
-
-}
-
-function mostrarAdendos() {
-    $("#edit").show();
-}
-
-function popularAdendos(adendos, callback) {
-    $('#adendo tr').remove();
-    $.each(adendos, function (index, adendo) {
-        var adendos = '<tr><td colspan="1" value="' + adendo.id + '" class="item">' + adendo.descricao + '</td><td onclick="deletarAdendo(' + adendo.id + ')"><i class="fa fa-trash" aria-hidden="true"></i></td><tr>';
-        $("#adendo").append(adendos)
-    });
-
-    (callback) ? callback() : '';
-}
-
-function deletarAdendo(id) {
-    $.ajax({
-        url: `../back-end/contratos/${contrato.id}/adendos/${id}`,
-        type: 'DELETE',
-        success: function (adendos) {
-            popularAdendos(JSON.parse(adendos));
-        }
-    });
-}
-
-function temContrato() {
-    if (contrato) {
-        return true;
+$("#adendo").submit(() => {
+    event.preventDefault();
+    if (temAdendo()) {
+        atualizarAdendo();
+    } else {
+        cadastrarAdendo();
     }
-    return false;
+});
+
+let contrato = null;
+let produtos = null;
+let _adendos = null;
+
+let adendo = null;
+let numeros_confirmacao = null;
+
+$("#produtos").change((event) => {
+    selecionarProduto(event.target.value);
+})
+
+$('.minimal[name="futuro"]').on('ifChecked', event => {
+    setNumeroConfirmacao();
+});
+
+function temContratoL() {
+    return (contrato) ? true : false;
 }
 
-function compararContrato(contrato, formulario) {
-    $.each(contrato, function (campo, valor) {
-        $(`#${formulario}`).find('select, input, textarea').each(function (index, formObj) {
-            if (typeof valor === "object" && valor) {
-
-                compararContrato(valor, campo);
-            }
-            (formObj.name === campo) ? $(formObj).val(valor) : "";
+function temAdendo() {
+    return (adendo) ? true : false;
+}
+/**
+ * PRODUTOS
+ */
+function buscarProdutos() {
+    $.get('../back-end/produtos')
+        .done(response => {
+            produtos = JSON.parse(response)
+            popularProdutos(produtos);
         });
+}
+
+function popularProdutos(produtos) {
+    $.each(produtos, (index, produto) => {
+        const option = `<option value=${produto.id}>${produto.nome}</option>`;
+        $("#produtos").append(option);
+    })
+}
+
+function selecionarProduto(produtoId) {
+    produto = _.find(produtos, { "id": produtoId });
+    popularDescricao(produto);
+}
+
+function popularDescricao(produto) {
+    $("#descricao").val(produto.descricao);
+}
+
+/**
+ * FIM PRODUTOS
+ */
+
+/**
+ * UNIDADES DE MEDIDA
+ */
+function buscarUnidadesDeMedidas() {
+    $.get('../back-end/unidades-medidas')
+        .done(response => popularUnidadesMedidades(JSON.parse(response)));
+}
+
+function popularUnidadesMedidades(unidades) {
+    $.each(unidades, (index, unidade) => {
+        const option = `<option value=${unidade.id}>${unidade.titulo}</option>`;
+        $("#unidades").append(option);
     });
 }
+
+/**
+ * FIM UNIDADE DE MEDIDA
+ */
+/**
+ * NUMERO CONFIRMACAO
+ */
+function buscarNumeroConfirmacao() {
+    $.get('../back-end/numero-confirmacao').done(response => {
+        numeros_confirmacao = JSON.parse(response);
+        if (temContratoL()) {
+            (contrato.futuro) ? numero_confirmacao[1] = contrato.numero_confirmacao : numero_confirmacao[0] = contrato.numero_confirmacao;
+        }
+        setNumeroConfirmacao();
+    })
+}
+
+function setNumeroConfirmacao() {
+    if ($("input[name='futuro']:checked").val() == 1) {
+        $(`:input[name='numero_confirmacao']`).val(numeros_confirmacao[1]);
+    } else {
+        $(`:input[name='numero_confirmacao']`).val(numeros_confirmacao[0]);
+    }
+}
+/**
+ * FIM NUMERO CONFIRMACAO
+ */
 
 function cadastrar() {
-    $('#modal-default').modal({ backdrop: 'static', keyboard: false });
-    $(`#contrato`).append(`<input hidden name='comprador_id' value=${comprador.id}>`);
-    $(`#contrato`).append(`<input hidden name='vendedor_id' value=${vendedor.id}>`);
-    $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);
-    $(`#contrato`).append(`<input hidden name='vendedor_conta_bancaria_Id' value=${conta.id}>`);
-    var dados = $('#contrato').serialize();
-    $.post('../back-end/contratos', dados, () => {
-        alertCadastro();
+    mostrarModal();
+    const dados = $("#contrato").serialize();
+    $.post('../back-end/contratos', dados)
+        .done(() => {
+            alertCadastro();
+            exibirSucesso();
+        })
+        .always(() => esconderModal())
+        .fail(() => exibirErro());
+}
+
+function atualizar() {
+    mostrarModal();
+    const dados = $("#contrato").serialize();
+    $.ajax({ type: 'PUT', url: `../back-end/contratos/${contrato.id}`, data: dados })
+        .done(() => {
+            alertCadastro();
+            exibirSucesso();
+        })
+        .always(() => esconderModal())
+        .fail(() => exibirErro());
+}
+/** FIM CONTRATO */
+
+/** ADENDOS */
+function buscarAdendos() {
+    $.get(`../back-end/contratos/${contrato.id}/adendos/`)
+        .done(adendos => {
+            _adendos = JSON.parse(adendos);
+            listarAdendos(JSON.parse(adendos));
+        });
+}
+
+function cadastrarAdendo() {
+    mostrarModal();
+    $(`#adendo`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
+    const dados = $("#adendo").serialize();
+    $.post(`../back-end/contratos/adendos`, dados)
+        .done(adendos => {
+            _adendos = JSON.parse(adendos);
+            exibirSucesso();
+            listarAdendos(_adendos);
+        })
+        .fail(() => exibirErro())
+        .always(() => esconderModal());
+}
+
+function listarAdendos(adendos) {
+    $('#adendos tr').remove();
+    for (const adendo of adendos) {
+        var newRow = $(`<tr>`);
+        var cols = "";
+        cols += `<td class='item' id=${adendo.id}>${adendo.descricao}</td>`;
+        cols += `<td class='delete' id=${adendo.id}><i class="fa fa-trash-o" style="color: red"></i></td>`
+        newRow.append(cols);
+        $("#adendos").append(newRow)
+    }
+    $('.item').each((index, td) => {
+        $(td).attr('onclick', `selecionarAdendo(${td.id})`)
     });
+    $('.delete').each((index, td) => {
+        $(td).attr('onclick', `excluirAdendo(${td.id})`)
+    });
+}
+
+function selecionarAdendo(adendoId) {
+    adendo = _.find(_adendos, { 'id': `${adendoId}` });
+    compararForm(adendo, "adendo");
+}
+
+function excluirAdendo(adendoId) {
+    mostrarModal();
+    $.ajax({
+        url: `../back-end/adendos/${adendoId}`,
+        type: 'DELETE'
+    }).done(adendos => {
+        buscarAdendos();
+    }).always(() => esconderModal());
+}
+
+function atualizarAdendo() {
+    mostrarModal();
+    const dados = $("#adendo").serialize();
+    $.ajax({ type: 'PUT', url: `../back-end/adendos/${adendo.id}`, data: dados })
+        .done(adendos => {
+            alertCadastro();
+            exibirSucesso();
+            buscarAdendos();
+            listarAdendos(adendos);
+        })
+        .always(() => esconderModal())
+        .fail(() => exibirErro());
+}
+
+/**
+ * 
+ */
+
+function mostrarModal() {
+    $('#modal-default').modal({ backdrop: 'static', keyboard: false });
+}
+
+function esconderModal() {
+    $('#modal-default').modal('hide');
 }
 
 function alertCadastro() {
-    $('#modal-default').modal('hide');
     $('.alert i').append("Cadastrado");
     $('.alert span').append("Cadastrado com sucesso!");
     $('.alert').show("fast", () => {
@@ -129,219 +241,31 @@ function alertCadastro() {
     });
 }
 
-function alertAtualizar() {
-    $('#modal-default').modal('hide');
-    $('.alert i').append("Atualizado");
-    $('.alert span').append("Atualizado com sucesso!");
-    $('.alert').show("fast", () => {
-        setTimeout(() => {
-            $('.alert').hide("slow");
-        }, 5000);
+
+function exibirErro() {
+    $(`#contrato .erro`).show("slow");
+    setTimeout(() => {
+        $(".erro").hide("slow");
+    }, 2000);
+}
+
+function exibirSucesso() {
+    $(`#contrato .success`).show("slow");
+    setTimeout(() => {
+        $(".success").hide("slow");
+    }, 2000);
+}
+
+function compararForm(contrato, formulario) {
+    console.log(contrato, formulario);
+    $.each(contrato, function (campo, valor) {
+        form = $(`#${formulario}`).find('select, input, textarea');
+        $(form).each(function (index, formObj) {
+            if (typeof valor === "object" && valor) {
+                compararForm(valor, campo);
+                console.log('valor: ', valor);
+            }
+            (formObj.name === campo) ? $(formObj).val(valor) : null;
+        });
     });
-}
-
-function atualizar() {
-    $('#modal-default').modal({ backdrop: 'static', keyboard: false });
-    $(`#contrato`).append(`<input hidden name='comprador_id' value=${comprador.id}>`);
-    $(`#contrato`).append(`<input hidden name='vendedor_id' value=${vendedor.id}>`);
-    $(`#contrato`).append(`<input hidden name='vendedor_conta_bancaria_id' value=${conta.id}>`);
-    $(`#contrato`).append(`<input hidden name='produto_id' value=${produto.id}>`);
-    var dados = $('#contrato').serialize();
-    $.ajax({
-        url: `../back-end/contratos/${contrato.id}`,
-        type: 'PUT',
-        data: dados,
-        success: function () {
-            alertAtualizar();
-        }
-    });
-}
-
-function buscarVendedores() {
-    $.ajax({
-        url: "../back-end/vendedores",
-        type: "get",
-        dataType: "json",
-        success: response => {
-            vendedores = response;
-            popularVendedores(vendedores);
-            $(".overlay-vendedores").remove();
-        }
-    });
-}
-
-function buscarCompradores(callback) {
-    $.ajax({
-        url: "../back-end/compradores",
-        type: "get",
-        dataType: "json",
-        success: response => {
-            compradores = response;
-            popularCompradores(compradores);
-            $(".overlay-compradores").remove();
-            callback();
-
-        }
-    });
-}
-
-function buscarContasBancaria() {
-    $.ajax({
-        url: `../back-end/clientes/${vendedor.id}/contas-bancarias`,
-        type: "get",
-        dataType: "json",
-        success: response => {
-            contasBancarias = response;
-            popularContasBancarias(contasBancarias);
-        }
-    });
-}
-
-function popularContasBancarias(contas) {
-    $(`#contas`).val();
-    $(`#contas option`).remove();
-    $(`#select2-contas-container`).empty();
-    $.each(contas, function (index, conta) {
-        if (conta) {
-            var contas = `<option value="${conta.id}">${conta.conta} | ${conta.agencia} - ${conta.banco}</option>`;
-            $("#contas").append(contas)
-        }
-    });
-
-    if (temContrato()) {
-        selecionarConta(contrato.vendedor_conta_bancaria_id);
-        mudarSelectConta(conta);
-    }
-}
-
-function popularCompradores(compradores) {
-    $.each(compradores, function (index, comprador) {
-        if (comprador.cnpj) {
-            var cnpjs = '<option value="' + comprador.cnpj + '">' + comprador.cnpj + '</option>';
-            $("#comprador #cnpjs").append(cnpjs)
-        }
-        if (comprador.razao_social) {
-            var razoes = '<option value="' + comprador.razao_social + '">' + comprador.razao_social + '</option>';
-            $("#comprador #razoes").append(razoes)
-        }
-    })
-}
-
-function popularVendedores(vendedores) {
-    $.each(vendedores, function (index, vendedor) {
-        if (vendedor.cnpj) {
-            var cnpjs = '<option value="' + vendedor.cnpj + '">' + vendedor.cnpj + '</option>';
-            $("#vendedor #cnpjs").append(cnpjs)
-        }
-        if (vendedor.razao_social) {
-            var razoes = '<option value="' + vendedor.razao_social + '">' + vendedor.razao_social + '</option>';
-            $("#vendedor #razoes").append(razoes);
-        }
-    });
-}
-
-function buscarProdutos() {
-    $.ajax({
-        url: "../back-end/produtos",
-        type: "get",
-        dataType: "json",
-        success: function (data) {
-            produtos = data;
-            popularProdutos(produtos);
-
-        }
-    });
-}
-
-function buscarUnidadesDeMedidas() {
-    $.ajax({
-        url: "../back-end/unidades-medidas",
-        type: "get",
-        dataType: "json",
-        success: function (data) {
-            unidadesMedidas = data;
-            popularUnidadesMedidas(unidadesMedidas);
-        }
-    });
-}
-
-function popularUnidadesMedidas(unidades) {
-    $.each(unidades, function (index, unidade) {
-        var option = '<option value=' + unidade.id + '>' + unidade.titulo + '</option>';
-        $("#unidades").append(option)
-    });
-}
-
-function popularProdutos(produtos) {
-    $.each(produtos, function (index, produto) {
-        var option = '<option value="' + produto.id + '">' + produto.nome + '</option>';
-        $("#produtos").append(option)
-    });
-}
-
-function selecionarVendedor(campo) {
-    vendedor = _.find(vendedores, {
-        'cnpj': $(`#vendedor select[name='${campo}'] option:selected`).text()
-    }) || _.find(vendedores, {
-        'razao_social': $(`#vendedor select[name='${campo}'] option:selected`).text()
-    });
-    (campo === 'cnpj') ? mudarSelectRazoes('vendedor') : mudarSelectCnpjs('vendedor');
-    buscarContasBancaria(vendedor);
-}
-
-function selecionarComprador(campo) {
-    comprador = _.find(compradores, {
-        'cnpj': $(`#comprador select[name='${campo}'] option:selected`).text()
-    }) || _.find(compradores, {
-        'razao_social': $(`#comprador select[name='${campo}'] option:selected`).text()
-    });
-    (campo === 'cnpj') ? mudarSelectRazoes('comprador') : mudarSelectCnpjs('comprador');
-}
-
-function selecionarProduto() {
-    produto = _.find(produtos, {
-        'nome': $(`#produto select[name='produto_id'] option:selected`).text()
-    });
-}
-
-function selecionarConta(id) {
-    conta = _.find(contasBancarias, {
-        'id': id
-    });
-
-    contrato.contaBancaria = conta;
-}
-
-function mudarSelectConta(conta) {
-    contaT = `${conta.conta} | ${conta.agencia} - ${conta.banco}`;
-    $(`#contas`).val(contaT);
-    $(`#select2-contas-container`).append(contaT);
-}
-
-function mudarSelectRazoes(variavel) {
-    if (variavel == "vendedor") {
-        $(`#vendedor #razoes`).val();
-        $(`#vendedor #select2-razoes-container`).empty();
-        $(`#vendedor #razoes`).val(vendedor.razao_social);
-        $(`#vendedor #select2-razoes-container`).append(vendedor.razao_social);
-    } else {
-        $(`#comprador #razoes`).val();
-        $(`#comprador #select2-razoes-container`).empty();
-        $(`#comprador #razoes`).val(comprador.razao_social);
-        $(`#comprador #select2-razoes-container`).append(comprador.razao_social);
-    }
-}
-
-function mudarSelectCnpjs(variavel) {
-    if (variavel == "vendedor") {
-        $(`#vendedor #cnpjs`).val();
-        $(`#vendedor #select2-cnpjs-container`).empty();
-        $(`#vendedor #cnpjs`).val(vendedor.cnpj);
-        $(`#vendedor #select2-cnpjs-container`).append(vendedor.cnpj);
-    } else {
-        $(`#comprador #cnpjs`).val();
-        $(`#comprador #select2-cnpjs-container`).empty();
-        $(`#comprador #cnpjs`).val(comprador.cnpj);
-        $(`#comprador #select2-cnpjs-container`).append(comprador.cnpj);
-    }
 }

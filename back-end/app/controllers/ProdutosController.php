@@ -4,31 +4,50 @@ namespace App\Controllers;
 
 use App\Core\App;
 use App\Models\Produto;
-use App\Models\TipoProduto;
 
-class ProdutosController
+class ProdutosController extends Controller
 {
+    /**
+     * Retorna todos os de produtos.
+     * 
+     * @return App\Models\Produto $produtos
+     */
     public function index()
     {
         $produtos = Produto::get();
-        echo json_encode($produtos);
+        return $this->responderJSON($produtos);
     }
 
-    public function tipos()
-    {
-        $tipos = App::get('db')->selectAll('tipos_produtos', TipoProduto::class);
-        echo json_encode($tipos);
-    }
-
+    /**
+     * Cadastra um novo produto.
+     * 
+     * @param Array $produto
+     * @return JSON
+     */
     public function store($produto)
     {
-        $produtoId = App::get('db')->insert('produtos', [
-            'tipo_id' => $produto['tipo_id'],
-            'nome' => $produto['nome'],
-            'codigo' => $produto['codigo'],
-        ]);
+        $produtoId = Produto::create($produto);
+        return $this->responderJSON($produtoId);
 
-        echo json_encode($produtoId);
+    }
 
+    /**
+     * Atualiza um produto
+     * 
+     * @param Array $produto
+     * @return App\Models\Produto $produto
+     */
+    public function update($produto)
+    {
+        $produtoId = Produto::update($produto, ['id', $produto['produto']]);
+        $produto = Produto::find(['id', $produtoId]);
+
+        return $this->responderJSON($produto);
+    }
+
+    public function destroy($produto)
+    {
+        $delete = Produto::delete(["id", $produto]);
+        return $this->responderJSON($delete);
     }
 }

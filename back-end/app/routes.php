@@ -48,5 +48,10 @@ $router->post("{$urlBase}contratos/adendos", "AdendosController@store");
 $router->put("{$urlBase}adendos/{adendo}", "AdendosController@update");
 $router->delete("{$urlBase}adendos/{adendo}", "AdendosController@destroy");
 
+$router->get("{$urlBase}contratos/{contrato}/fixacoes", "FixacoesController@index");
+$router->psot("{$urlBase}contratos/fixacoes/", "FixacoesController@post");
+$router->put("{$urlBase}fixacoes/{fixacao}", "FixacoesController@update");
+$router->delete("{$urlBase}fixacoes/{fixacao}", "FixacoesController@destroy");
+
 $router->get("{$urlBase}pdfs/contratos/{contrato}", "PDF\ContratosController@index");
 $router->get("{$urlBase}unidades-medidas", "UnidadesMedidasController@index");

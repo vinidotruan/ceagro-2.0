@@ -34,6 +34,7 @@ function popularPorUnidade(cliente) {
                 <td>${unidade.cnpj || 'Não há Registros'}</td>
                 <td>${unidade.inscricao_estadual || 'Não há Registros'}</td>
                 <td>${(unidade.endereco) ? unidade.endereco.cidade : 'Não há Registros'}</td>
+                <td class="delete" style="text-align:center" id="${contrato.id}">
             </tr>`;
 
         $("#clientes tbody").append(linha);

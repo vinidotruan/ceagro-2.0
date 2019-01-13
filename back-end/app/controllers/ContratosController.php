@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Core\App;
 use App\Models\Cliente;
+use App\Models\Adendo;
+use App\Models\Fixacao;
 use App\Models\Contrato;
 
 class ContratosController extends Controller
@@ -58,7 +60,18 @@ class ContratosController extends Controller
 
     public function destroy($contrato)
     {
-        Contrato::delete($contrato);
+        $adendos = Adendo::get(['contrato_id', '=', $contrato]);
+        $fixacoes = Fixacao::get(['contrato_id', '=', $contrato]);
+
+        foreach ($adendos as $key => $adendo) {
+            Adendo::delete(['id', $adendo->id]);
+        }
+        foreach ($fixacoes as $key => $fixacao) {
+            Fixacao::delete(['id', $fixacao->id]);
+        }
+
+        $msg = Contrato::delete(['id',$contrato]);
+        return $this->responderJson($msg);
     }
 
     public function contratosFuturos()

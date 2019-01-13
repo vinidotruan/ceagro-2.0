@@ -111,6 +111,11 @@ class Contrato extends Model
         return $this->contaBancaria = ContaBancaria::find(['id', $this->vendedor_conta_bancaria_id]);
     }
 
+    public function cfop()
+    {
+        return Cfop::find(['id', $this->cfop]);
+    }
+
     public function ultimoFuturo()
     {
         return static::contratosFuturos()->futuros + $this->futuro;
@@ -119,17 +124,5 @@ class Contrato extends Model
     public function ultimoAtual()
     {
         return static::contratosAtuais()->atuais + $this->atual;
-    }
-
-    public function cfop()
-    {
-        return Cfop::find(['id', $this->cfop]);
-    }
-
-    public static function delete($campos = [])
-    {
-        $a = new Self();
-        $a = $a::find(['id', $campos]);
-        dd($a);
     }
 }

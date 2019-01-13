@@ -184,3 +184,5 @@ function compararContrato(contrato, formulario) {
         });
     });
 }
+
+

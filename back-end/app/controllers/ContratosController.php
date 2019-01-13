@@ -60,16 +60,6 @@ class ContratosController extends Controller
 
     public function destroy($contrato)
     {
-        $adendos = Adendo::get(['contrato_id', '=', $contrato]);
-        $fixacoes = Fixacao::get(['contrato_id', '=', $contrato]);
-
-        foreach ($adendos as $key => $adendo) {
-            Adendo::delete(['id', $adendo->id]);
-        }
-        foreach ($fixacoes as $key => $fixacao) {
-            Fixacao::delete(['id', $fixacao->id]);
-        }
-
         $msg = Contrato::delete(['id',$contrato]);
         return $this->responderJson($msg);
     }

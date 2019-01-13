@@ -51,6 +51,7 @@ class Contrato extends Model
 
     public $futuro = 160;
     public $atual = 1460;
+
     protected static $table = "contratos";
 
 
@@ -125,4 +126,12 @@ class Contrato extends Model
     {
         return static::contratosAtuais()->atuais + $this->atual;
     }
+
+    public static function delete($campos = [])
+    {
+        Adendo::delete(['contrato_id', $campos[1]]);
+        Fixacao::delete(['contrato_id', $campos[1]]);
+
+        return parent::delete($campos);
+    } 
 }

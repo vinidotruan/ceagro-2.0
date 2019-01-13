@@ -8,8 +8,9 @@ $router->get("{$urlBase}adaptar", "AdaptacaoController@index");
 
 $router->get("{$urlBase}clientes", "ClientesController@index");
 $router->post("{$urlBase}clientes", "ClientesController@store");
-$router->get("{$urlBase}clientes/{cliente}", "ClientesController@show");
 $router->put("{$urlBase}clientes/{cliente}", "ClientesController@update");
+$router->delete("{$urlBase}clientes/{cliente}", "ClientesController@destroy");
+$router->get("{$urlBase}clientes/{cliente}", "ClientesController@show");
 
 $router->get("{$urlBase}clientes/{cliente}/unidades", "UnidadesController@index");
 $router->post("{$urlBase}unidades", "UnidadesController@store");

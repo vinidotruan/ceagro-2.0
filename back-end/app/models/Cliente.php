@@ -37,4 +37,13 @@ class Cliente extends Model
     {
         return $this->unidades = Unidade::get(["cliente_id", "=", $this->id]);
     }
+
+    public function delete($campos = [])
+    {
+        Endereco::delete(['cliente_id', $campos[1]]);
+        Unidades::delete(['cliente_id', $campos[1]]);
+        ContaBancaria::delete(['cliente_id', $campos[1]]);
+
+        return parent::delete($campos);
+    }
 }

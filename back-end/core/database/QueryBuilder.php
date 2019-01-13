@@ -152,7 +152,6 @@ class QueryBuilder
             $campos,
             implode(" = ", $where)
         );
-        // dd($);
         try {
             $statement = $this->pdo->prepare($sql)->execute($dados);
             return $where[1];

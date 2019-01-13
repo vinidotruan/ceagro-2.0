@@ -40,4 +40,10 @@ class ClientesController extends Controller
 
         return $this->responderJSON($cliente);
     }
+
+    public function destroy($cliente)
+    {
+        $msg = Cliente::delete(['id', $cliente]);
+        return $this->responderJson($msg);
+    }
 }

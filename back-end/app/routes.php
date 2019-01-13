@@ -15,6 +15,7 @@ $router->get("{$urlBase}clientes/{cliente}", "ClientesController@show");
 $router->get("{$urlBase}clientes/{cliente}/unidades", "UnidadesController@index");
 $router->post("{$urlBase}unidades", "UnidadesController@store");
 $router->put("{$urlBase}unidades/{unidade}", "UnidadesController@update");
+$router->delete("{$urlBase}unidades/{unidade}", "UnidadesController@destroy");
 
 $router->get("{$urlBase}enderecos", "EnderecosController@index");
 $router->get("{$urlBase}clientes/{cliente}/enderecos", "EnderecosController@index");

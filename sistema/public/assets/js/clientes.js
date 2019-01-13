@@ -75,7 +75,6 @@ $("#unidade").submit(function (event) {
  * Ao clicar no botão da modal.
  */
 $("#deletarUnidade").on('click', () => {
-    $("#modal-default").modal('hide');
     deletarUnidade();
 });
 
@@ -420,13 +419,18 @@ function cadastrarUnidade() {
  * Deleta uma unidade
  */
 function deletarUnidade() {
+    esconderModalAviso();
     mostrarModal();
+    limparCamposUnidade();
     $.ajax({
         url: `../back-end/unidades/${unidade.id}`,
         type: 'DELETE'
     }).done(() =>
-        buscarUnidades()
-    ).always(() => esconderModal());
+        buscarUnidades(cliente.id)
+    ).always(() => {
+        esconderModal();
+        unidade = null;
+    });
 }
 
 /**
@@ -523,6 +527,9 @@ function mostrarSemUnidade() {
 
 function esconderModal() {
     $('#modal-default').modal('hide');
+}
+function esconderModalAviso() {
+    $('#modal-aviso').modal('hide');
 }
 
 function mostrarModal() {

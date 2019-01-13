@@ -1,4 +1,10 @@
-enderecos = null;
+clienteId = null
+
+$("#deletarCliente").on('click', () => {
+    $("#modal-default").modal('hide');
+    deletarCliente();
+});
+
 function buscar() {
     $.get("../back-end/clientes", function (response) {
         clientes = JSON.parse(response);
@@ -13,14 +19,19 @@ function buscar() {
 }
 
 function popularPesquisa(clientes, callback) {
+    $("#clientes tbody tr").remove();
+
     $.each(clientes, function (index, cliente) {
         if (cliente.unidades.length > 0) {
             popularPorUnidade(cliente);
-        } else {
-            enderecos += `${cliente.id},`;
         }
     });
-    $(`#clientes tbody tr`).on("click", function () {
+
+    $(`#clientes .item`).on("click", function () {
+        irParaCliente(this.id);
+    });
+
+    $(`#clientes .delete`).on("click", function () {
         selecionarCliente(this.id);
     });
     callback();
@@ -29,34 +40,51 @@ function popularPesquisa(clientes, callback) {
 function popularPorUnidade(cliente) {
     $.each(cliente.unidades, (index, unidade) => {
         var linha = `<tr id="${cliente.id}" class="clicavel">
-                <td>${cliente.nome_fantasia || 'Não há Registros'}</td>
-                <td>${unidade.razao_social}</td>
-                <td>${unidade.cnpj || 'Não há Registros'}</td>
-                <td>${unidade.inscricao_estadual || 'Não há Registros'}</td>
-                <td>${(unidade.endereco) ? unidade.endereco.cidade : 'Não há Registros'}</td>
-                <td class="delete" style="text-align:center" id="${contrato.id}">
+                <td class="item" id="${cliente.id}">${cliente.nome_fantasia || 'Não há Registros'}</td>
+                <td class="item" id="${cliente.id}">${unidade.razao_social}</td>
+                <td class="item" id="${cliente.id}">${unidade.cnpj || 'Não há Registros'}</td>
+                <td class="item" id="${cliente.id}">${unidade.inscricao_estadual || 'Não há Registros'}</td>
+                <td class="item" id="${cliente.id}">${(unidade.endereco) ? unidade.endereco.cidade : 'Não há Registros'}</td>
+                <td class="delete" style="text-align:center" id="${cliente.id}">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-aviso">
+                        <i class="fa fa-trash-o" style="color: red"></i>
+                    </button>
+                </td>
             </tr>`;
-
         $("#clientes tbody").append(linha);
     });
 }
 
-function popularPorCliente(cliente) {
-    var linha = `<tr id="${cliente.id}" class="clicavel">
-        <td>${cliente.nome_fantasia || 'Não há Registros'}</td>
-        <td>${cliente.razao_social || 'Não há unidades cadastradas'}</td>
-        <td>${cliente.cnpj || 'Não há Registros'}</td>
-        <td>${cliente.inscricao_estadual || 'Não há Registros'}</td>
-        <td>${cliente.unidade.endereco.cidade || 'Não há Registros'}</td>
-    </tr>`;
-
-    $("#clientes tbody").append(linha);
-}
-
-function selecionarCliente(cliente) {
+function irParaCliente(cliente) {
     $.get(`../back-end/clientes/${cliente}`, function (response) {
         cliente = JSON.parse(response);
         localStorage.setItem('cliente', JSON.stringify(cliente));
         $(location).attr('href', 'clientes.php');
     });
+}
+
+function selecionarCliente(clId) {
+    clienteId = clId;
+}
+
+function deletarCliente() {
+    mostrarModal();
+    $.ajax({
+        url: `../back-end/clientes/${clienteId}`,
+        type: 'DELETE'
+    }).done(() =>
+        buscar()
+    ).always(() => esconderModal());
+}
+
+/**
+ * UI
+ */
+function esconderModal() {
+    $('#modal-aviso').modal('hide');
+}
+
+function mostrarModal() {
+    $('#modal-aviso').modal({ backdrop: 'static', keyboard: false });
+
 }

@@ -41,7 +41,7 @@ class Cliente extends Model
     public static function delete($campos = [])
     {
         Endereco::delete(['cliente_id', $campos[1]]);
-        Unidades::delete(['cliente_id', $campos[1]]);
+        Unidade::delete(['cliente_id', $campos[1]]);
         ContaBancaria::delete(['cliente_id', $campos[1]]);
 
         return parent::delete($campos);

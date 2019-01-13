@@ -5,12 +5,13 @@ namespace App\Controllers;
 use App\Controllers\Controller;
 use App\Models\Fixacao;
 
-class FixacaoController extends Controller {
-    
+class FixacoesController extends Controller
+{
+
 
     public function index($contrato = null)
     {
-        if($contrato) {
+        if ($contrato) {
             $fixacoes = Fixacao::get(['contrato_id', '=', $contrato]);
         } else {
             $fixacoes = Fixacao::get();
@@ -21,8 +22,8 @@ class FixacaoController extends Controller {
 
     public function store($fixacao)
     {
-        Fixacao::create($fixacao);
-        $fixacoes = Fixacao::get(['contrato_id', '=', $fixacao['id']]);
+        $a = Fixacao::create($fixacao);
+        $fixacoes = Fixacao::get(['contrato_id', '=', $fixacao['contrato_id']]);
 
         return $this->responderJSON($fixacoes);
     }
@@ -40,7 +41,7 @@ class FixacaoController extends Controller {
 
     public function destroy($fixacao)
     {
-        $msg = Fixacao::delte(['id', $fixacao]);
+        $msg = Fixacao::delete(['id', $fixacao]);
         return $this->responderJSON($msg);
     }
 }

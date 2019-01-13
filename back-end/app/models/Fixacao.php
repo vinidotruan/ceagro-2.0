@@ -4,8 +4,10 @@ namespace App\Models;
 
 use App\Models\Model;
 
-class Fixacao extends Model {
+class Fixacao extends Model
+{
 
+    public $id;
     public $quantidade;
     public $preco;
     public $local_embarque;
@@ -23,6 +25,6 @@ class Fixacao extends Model {
 
     public function contasBancarias()
     {
-        return $this->contaBancaria = ContaBancaria::find(["id", $this->conta_bancaria_vededor_id]);
+        return $this->contaBancaria = ContaBancaria::find(["id", $this->conta_bancaria_vendedor_id]);
     }
 }

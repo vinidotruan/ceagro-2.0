@@ -34,12 +34,12 @@
 													<div class="col-xs-12 col-lg-4">
 														<div class="form-group">
 															<label>
-																<input type="radio" name="futuro" class="minimal" value="0" checked> Atual 
+																<input type="radio" name="futuro" id="a" class="minimal" value="0" checked> Atual 
 															</label>
 														</div>
 														<div class="form-group">
 															<label>
-																<input type="radio" name="futuro" class="minimal" value="1"> Futuro 
+																<input type="radio" name="futuro" id="f" class="minimal" value="true"> Futuro 
 															</label>
 														</div>
 													</div>
@@ -337,7 +337,7 @@
 												</div>
 											</div>
 
-											<div class="tab-pane" id="tab_2">
+											<div class="tab-pane" id="tab_2"F>
 												<div class="row">
 													<div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
 														<div class="row invoice-info">
@@ -369,14 +369,14 @@
 																					<div class="input-group-addon">
 																						<i class="fa fa-calendar"></i>
 																					</div>
-																					<input type="text" class="form-control pull-right" id="reservation">
+																					<input type="text" class="form-control pull-right" name="data_pagamento" id="reservation2">
 																				</div>
 																			</div>
 																		</div>
 																		<div class="col-xs-12 col-lg-6">
 																			<div class="form-group">
 																				<label for="vendedor_conta_bancaria_id">Contas Bancárias</label>
-																				<select class="form-control select2" name="vendedor_conta_bancaria_id" style="width: 100%;" id="contas" required></select>
+																				<select class="form-control select2" name="conta_bancaria_vendedor_id" style="width: 100%;" id="contas2" required></select>
 																			</div>
 																		</div>
 																	</div>
@@ -400,11 +400,15 @@
 														<table class="table table-striped">
 															<thead>
 																<tr>
-																	<th>Descrição</th>
+																	<th>Quantidade</th>
+																	<th>Preço</th>
+																	<th>Local do Embarque</th>
+																	<th>Data de Pagamento</th>
+																	<th>Conta Bancária</th>
 																	<th width="10%">Deletar</th>
 																</tr>
 															</thead>
-															<tbody id="adendos">
+															<tbody id="fixacoes">
 															</tbody>
 														</table>
 													</div>
@@ -451,6 +455,11 @@
 				locale: {
 				format: 'DD/MM/YYYY'
 			}
-			});
+		});
+		$('#reservation2').daterangepicker({
+				locale: {
+				format: 'DD/MM/YYYY'
+			}
+		});
 		</script>
 		<?php include 'partials/rodape.html' ?>

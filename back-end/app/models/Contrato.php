@@ -125,4 +125,11 @@ class Contrato extends Model
     {
         return Cfop::find(['id', $this->cfop]);
     }
+
+    public static function delete($campos = [])
+    {
+        $a = new Self();
+        $a = $a::find(['id', $campos]);
+        dd($a);
+    }
 }

@@ -24,11 +24,6 @@ $router->post("{$urlBase}clientes/contas-bancarias", "ContasBancariasController@
 $router->put("{$urlBase}contas-bancarias/{contaBancaria}", "ContasBancariasController@update");
 $router->get("{$urlBase}clientes/{cliente}/contas-bancarias", "ContasBancariasController@show");
 
-$router->get("{$urlBase}clientes/{cliente}/estabelecimentos", "EstabelecimentosController@index");
-$router->get("{$urlBase}estabelecimentos", "EstabelecimentosController@index");
-$router->get("{$urlBase}estabelecimentos/{estabelecimento}", "EstabelecimentosController@show");
-$router->post("{$urlBase}estabelecimentos", "EstabelecimentosController@store");
-
 $router->get("{$urlBase}produtos", "ProdutosController@index");
 $router->post("{$urlBase}produtos", "ProdutosController@store");
 $router->put("{$urlBase}produtos/{produto}", "ProdutosController@update");
@@ -38,6 +33,7 @@ $router->get("{$urlBase}contratos", "ContratosController@index");
 $router->get("{$urlBase}contratos/{contrato}", "ContratosController@show");
 $router->post("{$urlBase}contratos", "ContratosController@store");
 $router->put("{$urlBase}contratos/{contrato}", "ContratosController@update");
+$router->delete("{$urlBase}contratos/{contrato}", "ContratosController@destroy");
 $router->get("{$urlBase}contratos/futuros", "ContratosController@contratosFuturos");
 $router->get("{$urlBase}contratos/atuais", "ContratosController@contratosAtuais");
 $router->get("{$urlBase}contratos/dados-compradores", "ContratosController@dados");
@@ -48,8 +44,8 @@ $router->post("{$urlBase}contratos/adendos", "AdendosController@store");
 $router->put("{$urlBase}adendos/{adendo}", "AdendosController@update");
 $router->delete("{$urlBase}adendos/{adendo}", "AdendosController@destroy");
 
+$router->post("{$urlBase}contratos/fixacoes", "FixacoesController@store");
 $router->get("{$urlBase}contratos/{contrato}/fixacoes", "FixacoesController@index");
-$router->psot("{$urlBase}contratos/fixacoes/", "FixacoesController@post");
 $router->put("{$urlBase}fixacoes/{fixacao}", "FixacoesController@update");
 $router->delete("{$urlBase}fixacoes/{fixacao}", "FixacoesController@destroy");
 

@@ -146,17 +146,23 @@ function buscarContasBancarias(vendedorId) {
 
 function popularContasBancarias(contas) {
     $("#contas option").remove();
+    $("#contas2 option").remove();
     $("#select2-contas-contais").remove();
+    $("#select2-contas2-contais").remove();
     if (contas.length < 1) {
         const contas = `<option value=${null}>Não há conta cadastrada</option>`;
         $("#contas").append(contas);
         $("#contas").prop("disabled", true);
+        $("#contas2").append(contas);
+        $("#contas2").prop("disabled", true);
     } else {
         $("#contas").prop("disabled", false);
     }
+
     $.each(contas, (index, conta) => {
-        const contas = `<option value=${conta.id}>${conta.conta} | ${conta.agencia} - ${conta.banco}</option>`;
-        $("#contas").append(contas);
+        const conts = `<option value=${conta.id}>${conta.conta} | ${conta.agencia} - ${conta.banco}</option>`;
+        $("#contas").append(conts);
+        $("#contas2").append(conts);
     });
 
 }

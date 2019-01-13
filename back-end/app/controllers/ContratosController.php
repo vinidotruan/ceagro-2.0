@@ -56,6 +56,11 @@ class ContratosController extends Controller
         }
     }
 
+    public function destroy($contrato)
+    {
+        Contrato::delete($contrato);
+    }
+
     public function contratosFuturos()
     {
         $reflection = new \ReflectionClass("App\Models\Contrato");

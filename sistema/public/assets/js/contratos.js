@@ -7,9 +7,11 @@ $(document).ready(() => {
     buscarNumeroConfirmacao();
     if (temContratoL()) {
         buscarAdendos();
+        buscarFixacoes();
     }
 
 });
+
 
 $("#contrato").submit(() => {
     event.preventDefault();
@@ -29,11 +31,22 @@ $("#adendo").submit(() => {
     }
 });
 
+$("#fixacao").submit(() => {
+    event.preventDefault();
+    if (temFixacao()) {
+        atualizarFixacao();
+    } else {
+        cadastrarFixacao();
+    }
+});
+
 let contrato = null;
 let produtos = null;
 let _adendos = null;
+let _fixacoes = null;
 
 let adendo = null;
+let fixacao = null;
 let numeros_confirmacao = null;
 
 $("#produtos").change((event) => {
@@ -41,6 +54,7 @@ $("#produtos").change((event) => {
 })
 
 $('.minimal[name="futuro"]').on('ifChecked', event => {
+    event.target.value = (event.target.id == "f") ? 1 : 0;
     setNumeroConfirmacao();
 });
 
@@ -50,6 +64,10 @@ function temContratoL() {
 
 function temAdendo() {
     return (adendo) ? true : false;
+}
+
+function temFixacao() {
+    return (fixacao) ? true : false;
 }
 /**
  * PRODUTOS
@@ -107,7 +125,11 @@ function buscarNumeroConfirmacao() {
     $.get('../back-end/numero-confirmacao').done(response => {
         numeros_confirmacao = JSON.parse(response);
         if (temContratoL()) {
-            (contrato.futuro) ? numero_confirmacao[1] = contrato.numero_confirmacao : numero_confirmacao[0] = contrato.numero_confirmacao;
+            if (parseInt(contrato.futuro, 10)) {
+                numeros_confirmacao[1] = contrato.numero_confirmacao;
+            } else {
+                numeros_confirmacao[0] = contrato.numero_confirmacao;
+            }
         }
         setNumeroConfirmacao();
     })
@@ -128,7 +150,8 @@ function cadastrar() {
     mostrarModal();
     const dados = $("#contrato").serialize();
     $.post('../back-end/contratos', dados)
-        .done(() => {
+        .done(ct => {
+            contrato = JSON.parse(ct);
             alertCadastro();
             exibirSucesso();
         })
@@ -158,6 +181,28 @@ function buscarAdendos() {
         });
 }
 
+function buscarFixacoes() {
+    $.get(`../back-end/contratos/${contrato.id}/fixacoes`)
+        .done(fixacoes => {
+            _fixacoes = JSON.parse(fixacoes);
+            listarFixacoes(JSON.parse(fixacoes));
+        });
+}
+
+function cadastrarFixacao() {
+    mostrarModal();
+    $(`#fixacao`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
+    const dados = $("#fixacao").serialize();
+    $.post(`../back-end/contratos/fixacoes`, dados)
+        .done(fixacoes => {
+            _fixacoes = JSON.parse(fixacoes);
+            exibirSucesso();
+            listarFixacoes(_fixacoes);
+        })
+        .fail(() => exibirErro())
+        .always(() => esconderModal());
+}
+
 function cadastrarAdendo() {
     mostrarModal();
     $(`#adendo`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
@@ -182,12 +227,40 @@ function listarAdendos(adendos) {
         newRow.append(cols);
         $("#adendos").append(newRow)
     }
-    $('.item').each((index, td) => {
+    $('#adendos .item').each((index, td) => {
         $(td).attr('onclick', `selecionarAdendo(${td.id})`)
     });
-    $('.delete').each((index, td) => {
+    $('#adendos .delete').each((index, td) => {
         $(td).attr('onclick', `excluirAdendo(${td.id})`)
     });
+}
+
+function listarFixacoes(fixacoes) {
+    $('#fixacoes tr').remove();
+    for (const fixacao of fixacoes) {
+        var newRow = $(`<tr>`);
+        var cols = "";
+        cols += `<td class='item' id=${fixacao.id}>${fixacao.quantidade}</td>`;
+        cols += `<td class='item' id=${fixacao.id}>${fixacao.preco}</td>`;
+        cols += `<td class='item' id=${fixacao.id}>${fixacao.local_embarque}</td>`;
+        cols += `<td class='item' id=${fixacao.id}>${fixacao.data_pagamento}</td>`;
+
+        cols += `<td class='item' id=${fixacao.id}>${fixacao.contaBancaria.conta} | ${fixacao.contaBancaria.agencia} - ${fixacao.contaBancaria.banco}</td>`;
+        cols += `<td class='delete' id=${fixacao.id}><i class="fa fa-trash-o" style="color: red"></i></td>`
+        newRow.append(cols);
+        $("#fixacoes").append(newRow)
+    }
+    $('#fixacoes .item').each((index, td) => {
+        $(td).attr('onclick', `selecionarFixacao(${td.id})`)
+    });
+    $('#fixacoes .delete').each((index, td) => {
+        $(td).attr('onclick', `excluirFixacao(${td.id})`)
+    });
+}
+
+function selecionarFixacao(fixacaoId) {
+    fixacao = _.find(_fixacoes, { 'id': `${fixacaoId}` });
+    compararForm(fixacao, "fixacao");
 }
 
 function selecionarAdendo(adendoId) {
@@ -195,25 +268,51 @@ function selecionarAdendo(adendoId) {
     compararForm(adendo, "adendo");
 }
 
+function excluirFixacao(fixacaoId) {
+    mostrarModal();
+    $.ajax({
+        url: `../back-end/fixacoes/${fixacaoId}`,
+        type: 'DELETE'
+    }).done(() => {
+        buscarFixacoes();
+    }).always(() => esconderModal());
+}
+
 function excluirAdendo(adendoId) {
     mostrarModal();
     $.ajax({
         url: `../back-end/adendos/${adendoId}`,
         type: 'DELETE'
-    }).done(adendos => {
+    }).done(() => {
         buscarAdendos();
     }).always(() => esconderModal());
 }
 
+function atualizarFixacao() {
+    mostrarModal();
+    $(`#fixacao`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
+    $(`#fixacao`).append(`<input hidden name='id' value=${fixacao.id}>`);
+    const dados = $("#fixacao").serialize();
+    $.ajax({ type: 'PUT', url: `../back-end/fixacoes/${fixacao.id}`, data: dados })
+        .done(fixacoes => {
+            alertCadastro();
+            exibirSucesso();
+            buscarFixacoes();
+        })
+        .always(() => esconderModal())
+        .fail(() => exibirErro());
+}
+
 function atualizarAdendo() {
     mostrarModal();
+    $(`#adendo`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
+    $(`#adendo`).append(`<input hidden name='id' value=${adendo.id}>`);
     const dados = $("#adendo").serialize();
     $.ajax({ type: 'PUT', url: `../back-end/adendos/${adendo.id}`, data: dados })
         .done(adendos => {
             alertCadastro();
             exibirSucesso();
             buscarAdendos();
-            listarAdendos(adendos);
         })
         .always(() => esconderModal())
         .fail(() => exibirErro());
@@ -257,13 +356,11 @@ function exibirSucesso() {
 }
 
 function compararForm(contrato, formulario) {
-    console.log(contrato, formulario);
     $.each(contrato, function (campo, valor) {
         form = $(`#${formulario}`).find('select, input, textarea');
         $(form).each(function (index, formObj) {
             if (typeof valor === "object" && valor) {
                 compararForm(valor, campo);
-                console.log('valor: ', valor);
             }
             (formObj.name === campo) ? $(formObj).val(valor) : null;
         });

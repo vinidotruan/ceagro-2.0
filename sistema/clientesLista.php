@@ -1,8 +1,8 @@
-<?php include 'partials/cabecalho.html'?>
+<?php include 'partials/cabecalho.html' ?>
 <body class="hold-transition skin-blue sidebar-mini" onload="buscar()">
 	<div class="wrapper">
-	<?php include "partials/header.html";?>
-	<?php include "partials/menu.html";?>
+	<?php include "partials/header.html"; ?>
+	<?php include "partials/menu.html"; ?>
         <div class="content-wrapper">
 
 			<section class="content">
@@ -21,6 +21,7 @@
 											<th>CNPJ</th>
 											<th>Inscrição Estadual</th>
 											<th>Cidade</th>
+											<th>Excluir</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -37,6 +38,34 @@
         </div>
 		<div class="control-sidebar-bg"></div>
 	</div>
+	<div class="modal fade" id="modal-aviso">
+		<div class="modal-dialog">
+            <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">AVISO!</h4>
+              	</div>
+				<div class="modal-body">
+					<p>Você deseja realmente excluir este Cliente?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-danger pull-left" style="color:white" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id="deletarCliente">Excluir</button>
+				</div>
+            </div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: rgba(0,0,0,0)">
+                <div class="modal-body" style="background: rgba(0,0,0,0)">
+                </div>
+            </div>
+        </div>
+    </div>
 	<footer class="main-footer">
 			<div class="pull-right hidden-xs">
 				<i class="fab fa-optin-monster"></i>
@@ -45,8 +74,9 @@
 		</footer>
 		<div class="control-sidebar-bg"></div>
 	</div>
-	<?php include 'partials/imports.html'?>
+	<?php include 'partials/imports.html' ?>
 	<script>
 </script>
 	<script src="public/assets/js/clientesLista.js"></script>
-	<?php include 'partials/rodape.html'?>
+	<script src="public/assets/js/outros.js"></script>
+	<?php include 'partials/rodape.html' ?>

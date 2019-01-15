@@ -107,6 +107,7 @@
                                             <th>CNPJ</th>
                                             <th>Inscrição Estadual</th>
                                             <th>Razão Social</th>
+                                            <th>Deletar</th>
                                         </tr>
                                     </thead>
                                     <tbody id="unidades">
@@ -288,6 +289,25 @@
         </div>
         <div class="control-sidebar-bg"></div>
     </div>
+    <div class="modal fade" id="modal-aviso">
+		<div class="modal-dialog">
+            <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">AVISO!</h4>
+              	</div>
+				<div class="modal-body">
+					<p>Você deseja realmente excluir esta Unidade?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-danger pull-left" style="color:white" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id="deletarUnidade">Excluir</button>
+				</div>
+            </div>
+		</div>
+	</div>
     <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
             <div class="modal-content" style="background: rgba(0,0,0,0)">

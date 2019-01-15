@@ -44,13 +44,14 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
 
     public static $classMap = array (
         'App\\Controllers\\AdaptacaoController' => __DIR__ . '/../..' . '/app/controllers/AdaptacaoController.php',
-        'App\\Controllers\\AdendosController' => __DIR__ . '/../..' . '/app/controllers/AdendoController.php',
+        'App\\Controllers\\AdendosController' => __DIR__ . '/../..' . '/app/controllers/AdendosController.php',
         'App\\Controllers\\ClientesController' => __DIR__ . '/../..' . '/app/controllers/ClientesController.php',
         'App\\Controllers\\ContasBancariasController' => __DIR__ . '/../..' . '/app/controllers/ContasBancariasController.php',
         'App\\Controllers\\ContatosController' => __DIR__ . '/../..' . '/app/controllers/ContatosController.php',
         'App\\Controllers\\ContratosController' => __DIR__ . '/../..' . '/app/controllers/ContratosController.php',
         'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/controllers/Controller.php',
         'App\\Controllers\\EnderecosController' => __DIR__ . '/../..' . '/app/controllers/EnderecosController.php',
+        'App\\Controllers\\FixacoesController' => __DIR__ . '/../..' . '/app/controllers/FixacoesController.php',
         'App\\Controllers\\PDF\\ContratosController' => __DIR__ . '/../..' . '/app/controllers/PDF/ContratosController.php',
         'App\\Controllers\\ProdutosController' => __DIR__ . '/../..' . '/app/controllers/ProdutosController.php',
         'App\\Controllers\\Teste' => __DIR__ . '/../..' . '/app/controllers/teste.php',
@@ -69,6 +70,7 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
         'App\\Models\\Contato' => __DIR__ . '/../..' . '/app/models/Contato.php',
         'App\\Models\\Contrato' => __DIR__ . '/../..' . '/app/models/Contrato.php',
         'App\\Models\\Endereco' => __DIR__ . '/../..' . '/app/models/Endereco.php',
+        'App\\Models\\Fixacao' => __DIR__ . '/../..' . '/app/models/Fixacao.php',
         'App\\Models\\Model' => __DIR__ . '/../..' . '/app/models/Model.php',
         'App\\Models\\Produto' => __DIR__ . '/../..' . '/app/models/Produto.php',
         'App\\Models\\Unidade' => __DIR__ . '/../..' . '/app/models/Unidade.php',

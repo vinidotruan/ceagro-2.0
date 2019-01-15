@@ -33,16 +33,19 @@ class UnidadesController extends Controller
 
     public function update($unidade)
     {
-        $unidadeId = $unidade['unidade'];
-        unset($unidade['unidade']);
-
         $unidadeId = Unidade::update(
             $unidade,
-            ["id", $unidadeId]
+            ["id", $unidade['unidade']]
         );
 
         $unidade = Unidade::find(["cliente_id", $unidade['cliente_id']]);
 
-        echo json_encode($unidade);
+        return $this->responderJSON($unidade);
+    }
+
+    public function destroy($unidade)
+    {
+        $msg = Unidade::delete(['id', $unidade]);
+        return $this->responderJSON($msg);
     }
 }

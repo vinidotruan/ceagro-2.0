@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Core\App;
 use App\Models\Cliente;
+use App\Models\Adendo;
+use App\Models\Fixacao;
 use App\Models\Contrato;
 
 class ContratosController extends Controller
@@ -54,6 +56,12 @@ class ContratosController extends Controller
         } catch (\Exception $exception) {
             return $this->responderJSON($exception);
         }
+    }
+
+    public function destroy($contrato)
+    {
+        $msg = Contrato::delete(['id',$contrato]);
+        return $this->responderJson($msg);
     }
 
     public function contratosFuturos()

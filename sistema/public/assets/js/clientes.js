@@ -34,7 +34,7 @@ $(document).ready(() => {
     if (localStorage.hasOwnProperty('cliente')) {
 
         cliente = JSON.parse(localStorage.getItem("cliente"));
-        localStorage.removeItem("cliente");
+        // localStorage.removeItem("cliente");
 
         buscarContas(cliente.id, () => {
             compararFormCliente(cliente, "cliente");
@@ -70,6 +70,14 @@ $("#unidade").submit(function (event) {
     event.preventDefault();
     (temUnidade()) ? atualizarUnidade() : cadastrarUnidade();
 });
+
+/**
+ * Ao clicar no botão da modal.
+ */
+$("#deletarUnidade").on('click', () => {
+    deletarUnidade();
+});
+
 
 /**
  * Verifica se há cliente, caso haja
@@ -191,6 +199,12 @@ function popularUnidades(unidades) {
         cols += `<td>${unidade.cnpj}</td>`;
         cols += `<td>${unidade.inscricao_estadual}</td>`;
         cols += `<td>${unidade.razao_social}</td>`;
+        cols += `<td>${unidade.razao_social}</td>`;
+        cols += `<td class="delete" style="text-align:center" id="${unidade.id}">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-aviso">
+            <i class="fa fa-trash-o" style="color: red"></i>
+        </button>
+    </td>`;
         newRow.append(cols);
         $("#unidades").append(newRow)
     }
@@ -402,6 +416,24 @@ function cadastrarUnidade() {
 }
 
 /**
+ * Deleta uma unidade
+ */
+function deletarUnidade() {
+    esconderModalAviso();
+    mostrarModal();
+    limparCamposUnidade();
+    $.ajax({
+        url: `../back-end/unidades/${unidade.id}`,
+        type: 'DELETE'
+    }).done(() =>
+        buscarUnidades(cliente.id)
+    ).always(() => {
+        esconderModal();
+        unidade = null;
+    });
+}
+
+/**
  * Cadastra o endereço da unidade.
  */
 function cadastrarEndereco() {
@@ -495,6 +527,9 @@ function mostrarSemUnidade() {
 
 function esconderModal() {
     $('#modal-default').modal('hide');
+}
+function esconderModalAviso() {
+    $('#modal-aviso').modal('hide');
 }
 
 function mostrarModal() {

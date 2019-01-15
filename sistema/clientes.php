@@ -1,8 +1,8 @@
-<?php include 'partials/cabecalho.html'?>
+<?php include 'partials/cabecalho.html' ?>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
-	<?php include "partials/header.html";?>
-	<?php include "partials/menu.html";?>
+	<?php include "partials/header.html"; ?>
+	<?php include "partials/menu.html"; ?>
     <div class="wrapper">
         <div class="content-wrapper">
             <div class="row">
@@ -34,13 +34,15 @@
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <?php require ('partials/components/erro.html') ?>
+                                    <?php require('partials/components/erro.html') ?>
+                                    <?php require('partials/components/success.html') ?>
                                     <button type="submit" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
                         </div>
                     </section>
                 </div>
+
                 <div class="col-xs-6">
                     <section class="invoice">
                         <div class="row">
@@ -69,30 +71,34 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-xs-12">
-                                                <div class="form-group">
-                                                    <label for="razao_social">Razão Social</label>
-                                                    <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" autocomplete="off" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12">
                                             <div class="form-group">
-                                            <label for="carregamento">Responsável Logística/Cotas</label>
-                                            <textarea type="text" class="form-control" name="carregamento" placeholder="Informações sobre o carregamento" autocomplete="off" rows='5'></textarea>
+                                                <label for="razao_social">Razão Social</label>
+                                                <input type="text" class="form-control" name="razao_social" placeholder="Digite a razão social" autocomplete="off" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <?php require ('partials/components/erro.html') ?>
+                                    <?php require('partials/components/erro.html') ?>
+                                    <?php require('partials/components/success.html') ?>
                                     <button type="submit" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
-                        </section>
-                    </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
 
                 <div class="col-xs-12">
                     <section class="invoice">
+                    <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="page-header">
+                                    <i class="fa fa-address-book-o"></i> Lista de Unidades
+                                </h2>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-xs-12 table-responsive">
                                 <table class="table table-striped">
@@ -101,6 +107,7 @@
                                             <th>CNPJ</th>
                                             <th>Inscrição Estadual</th>
                                             <th>Razão Social</th>
+                                            <th>Deletar</th>
                                         </tr>
                                     </thead>
                                     <tbody id="unidades">
@@ -128,13 +135,13 @@
                                         <div class="col-xs-12 col-lg-8">
                                             <div class="form-group">
                                                 <label for="rua">Rua</label>
-                                                <input type="text" class="form-control" name="rua" placeholder="Digite o nome do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="rua" placeholder="Digite a rua" autocomplete="off" required>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="numero">Número</label>
-                                                <input type="text" class="form-control" name="numero" placeholder="Digite o código do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="numero" placeholder="Digite o número" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
@@ -142,14 +149,14 @@
                                         <div class="col-xs-12 col-lg-6">
                                             <div class="form-group">
                                                 <label for="cidade">Cidade</label>
-                                                <input type="text" class="form-control" name="cidade" placeholder="Digite o código do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="cidade" placeholder="Digite a cidade" autocomplete="off" required>
                                             </div>
                                         </div>
 
                                         <div class="col-xs-12 col-lg-6">
                                             <div class="form-group">
                                                 <label for="bairro">Bairro</label>
-                                                <input type="text" class="form-control" name="bairro" placeholder="Digite o código do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="bairro" placeholder="Digite o bairro" autocomplete="off" required>
                                             </div>
                                         </div>
                                     </div>
@@ -157,7 +164,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <label for="complemento">Complemento</label>
-                                                <input type="text" class="form-control" name="complemento" placeholder="Digite o código do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="complemento" placeholder="Digite o complemento" autocomplete="off" >
                                             </div>
                                         </div>
                                     </div>
@@ -165,20 +172,22 @@
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="estado">Estado</label>
-                                                <input type="text" class="form-control" name="estado" placeholder="Digite o código do produto" autocomplete="off" required>
+                                                <input type="text" class="form-control" name="estado" placeholder="Digite o Estado" autocomplete="off" required>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-lg-8">
                                             <div class="form-group">
                                                 <label for="cep">CEP</label>
-                                                <input type="text" class="form-control" name="cep" placeholder="Digite o código do produto" autocomplete="off" required data-inputmask='"mask": "99999-999"' data-mask>
+                                                <input type="text" class="form-control" name="cep" placeholder="Digite o CEP" autocomplete="off" required data-inputmask='"mask": "99999-999"' data-mask>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div class="box-footer">
-                                    <?php require ('partials/components/erro.html') ?>
+                                <div class="box-footer"> 
+                                    <?php require('partials/components/erro.html') ?>
+                                    <?php require('partials/components/unidade.html') ?>
+                                    <?php require('partials/components/success.html') ?>
                                     <button type="submit" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
@@ -186,7 +195,34 @@
                     </section>
                 </div>
 
-               
+                <div class="col-xs-12">
+                    <section class="invoice">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="page-header">
+                                <i class="fa fa-map-o"></i> Endereços
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Estado</th>
+                                            <th>Cidade</th>
+                                            <th>Rua</th>
+                                            <th>CEP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="enderecos">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 contasBancarias">
                     <section class="invoice">
                         <div class="row">
@@ -203,26 +239,27 @@
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="banco">Banco</label>
-                                                <input type="text" class="form-control" name="banco" placeholder="Digite o nome do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="banco" placeholder="Digite o banco" autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="agencia">Agência</label>
-                                                <input type="text" class="form-control" name="agencia" placeholder="Digite o código do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="agencia" placeholder="Digite a agência autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-lg-4">
                                             <div class="form-group">
                                                 <label for="conta">Conta</label>
-                                                <input type="text" class="form-control" name="conta" placeholder="Digite o código do produto" autocomplete="off">
+                                                <input type="text" class="form-control" name="conta" placeholder="Digite a conta" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="box-footer">
-                                    <?php require ('partials/components/erro.html') ?>
+                                    <?php require('partials/components/erro.html') ?>
+                                    <?php require('partials/components/success.html') ?>
                                     <button type="submit" class="btn btn-primary pull-right"></button>
                                 </div>
                             </form>
@@ -252,23 +289,46 @@
         </div>
         <div class="control-sidebar-bg"></div>
     </div>
+    <div class="modal fade" id="modal-aviso">
+		<div class="modal-dialog">
+            <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">AVISO!</h4>
+              	</div>
+				<div class="modal-body">
+					<p>Você deseja realmente excluir esta Unidade?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-danger pull-left" style="color:white" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id="deletarUnidade">Excluir</button>
+				</div>
+            </div>
+		</div>
+	</div>
     <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
             <div class="modal-content" style="background: rgba(0,0,0,0)">
                 <div class="modal-body" style="background: rgba(0,0,0,0)">
                 </div>
             </div>
-        <!-- /.modal-content -->
         </div>
-          <!-- /.modal-dialog -->
     </div>
     <footer class="main-footer">
 			<div class="pull-right hidden-xs">
 				<i class="fab fa-optin-monster"></i>
 			</div>
 			 Copyright © 2018 CEAGRO - Todos os Direitos Reservados. Feito com  <img src="http://dom.com.vc/dom.com.vc.gif" alt="DOM Creative Consulting" height="20" width="20">  por <a href="https://dom.com.vc">DOM</a>
-		</footer>
-	<?php include 'partials/imports.html'?>
+    </footer>
+    <style>
+        .ativado {
+            background-color : #3c8dbc  !important;
+            color: #ffffff;
+        }
+    </style>
+	<?php include 'partials/imports.html' ?>
     <script src="public/assets/js/clientes.js"></script>
     <script src="adminlte/plugins/input-mask/jquery.inputmask.js"></script>
     <script src="adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
@@ -276,5 +336,5 @@
     <script>
         $('[data-mask]').inputmask();
     </script>
-	<?php include 'partials/rodape.html'?>
+	<?php include 'partials/rodape.html' ?>
 	</div>

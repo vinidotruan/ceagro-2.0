@@ -4,11 +4,12 @@ namespace App\Controllers;
 
 use App\Models\Unidade;
 
-class UnidadesController extends Controller {
+class UnidadesController extends Controller
+{
 
     public function index($clienteId = null)
     {
-        if($clienteId) {
+        if ($clienteId) {
 
             $unidades = Unidade::get(['cliente_id', $clienteId]);
         } else {
@@ -17,7 +18,7 @@ class UnidadesController extends Controller {
         return $this->responderJSON($unidades);
     }
 
-    public function show($id) 
+    public function show($id)
     {
         $unidade = Unidade::get(["id", $id]);
         return $this->responderJSON($unidade);
@@ -25,23 +26,26 @@ class UnidadesController extends Controller {
 
     public function store($unidade)
     {
-        Unidade::store($unidade);
-        $unidade = Unidade::find(['cliente_id', $unidade['cliente_id']]);
+        $unidadeId = Unidade::create($unidade);
+        $unidade = Unidade::find(['id', $unidadeId]);
         return $this->responderJSON($unidade);
     }
 
     public function update($unidade)
     {
-        $unidadeId = $unidade['unidade'];
-        unset($unidade['unidade']);
-
         $unidadeId = Unidade::update(
             $unidade,
-            ["id", $unidadeId]
+            ["id", $unidade['unidade']]
         );
 
         $unidade = Unidade::find(["cliente_id", $unidade['cliente_id']]);
 
-        echo json_encode($unidade);
+        return $this->responderJSON($unidade);
+    }
+
+    public function destroy($unidade)
+    {
+        $msg = Unidade::delete(['id', $unidade]);
+        return $this->responderJSON($msg);
     }
 }

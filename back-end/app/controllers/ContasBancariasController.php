@@ -21,7 +21,7 @@ class ContasBancariasController extends Controller
 
     public function store($conta)
     {
-        $contaId = ContaBancaria::store($conta);
+        $contaId = ContaBancaria::create($conta);
         $contas = ContaBancaria::find(["cliente_id", $conta['cliente_id']]);
 
         return $this->responderJSON($contas);

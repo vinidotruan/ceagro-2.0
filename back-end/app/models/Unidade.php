@@ -30,4 +30,10 @@ class Unidade extends Model
     {
         return $this->endereco = Endereco::find(["unidade_id", $this->id]);
     }
+
+    public static function delete($campos = [])
+    {
+        Endereco::delete(['unidade_id', $campos[1]]);
+        return parent::delete($campos);
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 // $producao = true;
-$producao = false;
+$producao = 0;
 if (!$producao) {
     return [
         'database' => [
@@ -17,14 +17,14 @@ if (!$producao) {
     ];
 }
 
-return [ 
+return [
     'database' => [
-        'connection' => "mysql:host=mysql.ceagro.com.br", 
-        'dbname' => "ceagro01", 
-        'charset' => "utf8", 
-        'username' => "ceagro01", 
-        'password' => "saopio18", 
-        'options' => [ 
+        'connection' => "mysql:host=mysql.ceagro.com.br",
+        'dbname' => "ceagro01",
+        'charset' => "utf8",
+        'username' => "ceagro01",
+        'password' => "saopio18",
+        'options' => [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ],
     ],

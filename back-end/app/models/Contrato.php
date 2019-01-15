@@ -51,6 +51,7 @@ class Contrato extends Model
 
     public $futuro = 160;
     public $atual = 1460;
+
     protected static $table = "contratos";
 
 
@@ -58,6 +59,7 @@ class Contrato extends Model
     {
         $this->unidadeComprador();
         $this->unidadeVendedor();
+        $this->adendos();
         $this->comprador();
         $this->vendedor();
         $this->produto();
@@ -71,6 +73,10 @@ class Contrato extends Model
         return $this->unidadeComprador = Unidade::find(["id", $this->unidade_comprador_id]);
     }
 
+    public function adendos()
+    {
+        return $this->adendos = Adendo::get(["contrato_id", '=', $this->id]);
+    }
     public function unidadeVendedor()
     {
         return $this->unidadeVendedor = Unidade::find(["id", $this->unidade_vendedor_id]);
@@ -106,6 +112,11 @@ class Contrato extends Model
         return $this->contaBancaria = ContaBancaria::find(['id', $this->vendedor_conta_bancaria_id]);
     }
 
+    public function cfop()
+    {
+        return Cfop::find(['id', $this->cfop]);
+    }
+
     public function ultimoFuturo()
     {
         return static::contratosFuturos()->futuros + $this->futuro;
@@ -116,8 +127,11 @@ class Contrato extends Model
         return static::contratosAtuais()->atuais + $this->atual;
     }
 
-    public function cfop()
+    public static function delete($campos = [])
     {
-        return Cfop::find(['id', $this->cfop]);
-    }
+        Adendo::delete(['contrato_id', $campos[1]]);
+        Fixacao::delete(['contrato_id', $campos[1]]);
+
+        return parent::delete($campos);
+    } 
 }

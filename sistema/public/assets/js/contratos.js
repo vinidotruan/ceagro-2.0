@@ -1,35 +1,55 @@
 $(document).ready(() => {
+    contrato = JSON.parse(localStorage.getItem('contrato'));
     $('.select2').select2();
     $(".btn").text("Salvar");
     buscarProdutos();
     buscarUnidadesDeMedidas();
     buscarNumeroConfirmacao();
+    if (temContratoL()) {
+        buscarAdendos();
+    }
 
 });
 
 $("#contrato").submit(() => {
     event.preventDefault();
-    if (temContrato()) {
+    if (temContratoL()) {
         atualizar();
     } else {
         cadastrar();
     }
 });
 
+$("#adendo").submit(() => {
+    event.preventDefault();
+    if (temAdendo()) {
+        atualizarAdendo();
+    } else {
+        cadastrarAdendo();
+    }
+});
+
 let contrato = null;
 let produtos = null;
+let _adendos = null;
+
+let adendo = null;
 let numeros_confirmacao = null;
 
 $("#produtos").change((event) => {
     selecionarProduto(event.target.value);
 })
 
-$('.minimal[name="futuro"]').on('ifChecked', () => {
+$('.minimal[name="futuro"]').on('ifChecked', event => {
     setNumeroConfirmacao();
 });
 
-function temContrato() {
+function temContratoL() {
     return (contrato) ? true : false;
+}
+
+function temAdendo() {
+    return (adendo) ? true : false;
 }
 /**
  * PRODUTOS
@@ -86,6 +106,9 @@ function popularUnidadesMedidades(unidades) {
 function buscarNumeroConfirmacao() {
     $.get('../back-end/numero-confirmacao').done(response => {
         numeros_confirmacao = JSON.parse(response);
+        if (temContratoL()) {
+            (contrato.futuro) ? numero_confirmacao[1] = contrato.numero_confirmacao : numero_confirmacao[0] = contrato.numero_confirmacao;
+        }
         setNumeroConfirmacao();
     })
 }
@@ -124,6 +147,81 @@ function atualizar() {
         .always(() => esconderModal())
         .fail(() => exibirErro());
 }
+/** FIM CONTRATO */
+
+/** ADENDOS */
+function buscarAdendos() {
+    $.get(`../back-end/contratos/${contrato.id}/adendos/`)
+        .done(adendos => {
+            _adendos = JSON.parse(adendos);
+            listarAdendos(JSON.parse(adendos));
+        });
+}
+
+function cadastrarAdendo() {
+    mostrarModal();
+    $(`#adendo`).append(`<input hidden name='contrato_id' value=${contrato.id}>`);
+    const dados = $("#adendo").serialize();
+    $.post(`../back-end/contratos/adendos`, dados)
+        .done(adendos => {
+            _adendos = JSON.parse(adendos);
+            exibirSucesso();
+            listarAdendos(_adendos);
+        })
+        .fail(() => exibirErro())
+        .always(() => esconderModal());
+}
+
+function listarAdendos(adendos) {
+    $('#adendos tr').remove();
+    for (const adendo of adendos) {
+        var newRow = $(`<tr>`);
+        var cols = "";
+        cols += `<td class='item' id=${adendo.id}>${adendo.descricao}</td>`;
+        cols += `<td class='delete' id=${adendo.id}><i class="fa fa-trash-o" style="color: red"></i></td>`
+        newRow.append(cols);
+        $("#adendos").append(newRow)
+    }
+    $('.item').each((index, td) => {
+        $(td).attr('onclick', `selecionarAdendo(${td.id})`)
+    });
+    $('.delete').each((index, td) => {
+        $(td).attr('onclick', `excluirAdendo(${td.id})`)
+    });
+}
+
+function selecionarAdendo(adendoId) {
+    adendo = _.find(_adendos, { 'id': `${adendoId}` });
+    compararForm(adendo, "adendo");
+}
+
+function excluirAdendo(adendoId) {
+    mostrarModal();
+    $.ajax({
+        url: `../back-end/adendos/${adendoId}`,
+        type: 'DELETE'
+    }).done(adendos => {
+        buscarAdendos();
+    }).always(() => esconderModal());
+}
+
+function atualizarAdendo() {
+    mostrarModal();
+    const dados = $("#adendo").serialize();
+    $.ajax({ type: 'PUT', url: `../back-end/adendos/${adendo.id}`, data: dados })
+        .done(adendos => {
+            alertCadastro();
+            exibirSucesso();
+            buscarAdendos();
+            listarAdendos(adendos);
+        })
+        .always(() => esconderModal())
+        .fail(() => exibirErro());
+}
+
+/**
+ * 
+ */
 
 function mostrarModal() {
     $('#modal-default').modal({ backdrop: 'static', keyboard: false });
@@ -156,4 +254,18 @@ function exibirSucesso() {
     setTimeout(() => {
         $(".success").hide("slow");
     }, 2000);
+}
+
+function compararForm(contrato, formulario) {
+    console.log(contrato, formulario);
+    $.each(contrato, function (campo, valor) {
+        form = $(`#${formulario}`).find('select, input, textarea');
+        $(form).each(function (index, formObj) {
+            if (typeof valor === "object" && valor) {
+                compararForm(valor, campo);
+                console.log('valor: ', valor);
+            }
+            (formObj.name === campo) ? $(formObj).val(valor) : null;
+        });
+    });
 }

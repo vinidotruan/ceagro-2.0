@@ -49,20 +49,8 @@ function buscar() {
     $.get("../back-end/produtos").done((response) => {
         produtos = JSON.parse(response);
         popular(produtos);
-        buscarTipos();
     });
 }
-
-/**
- * Busca todos os tipos de produtos
- */
-function buscarTipos() {
-    $.get("../back-end/produtos/tipos").done(response => {
-        tipos = JSON.parse(response);
-        popularTipos(tipos);
-    });
-}
-
 
 /**
  * Limpa os campos do formulário de unidade.
@@ -104,7 +92,6 @@ function popular(produtos) {
         var cols = "";
         cols += `<td class='item' id=${produto.id}>${produto.codigo}</td>`;
         cols += `<td class='item' id=${produto.id}>${produto.nome}</td>`;
-        cols += `<td class='item' id=${produto.id}>${produto.tipo.descricao}</td>`;
         cols += `<td class='item' id=${produto.id}>${produto.descricao}</td>`;
         cols += `<td class='delete' id=${produto.id}><i class="fa fa-trash-o" style="color: red"></i></td>`
         newRow.append(cols);
@@ -136,18 +123,6 @@ function excluirProduto(produtoId) {
 function selecionarProduto(produtoId) {
     produto = _.find(produtos, { 'id': `${produtoId}` });
     compararForm(produto, "produto");
-}
-
-/**
- * Cria o select com os tipos de produtos químicos.
- * 
- * @param {*} tipos - Array de tipos de produtos químicos
- */
-function popularTipos(tipos) {
-    $.each(tipos, function (index, tipo) {
-        var option = '<option value="' + tipo.id + '">' + tipo.descricao + '</option>';
-        $("#tipos").append(option)
-    });
 }
 
 /**

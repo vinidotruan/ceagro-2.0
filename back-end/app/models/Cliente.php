@@ -10,7 +10,7 @@ class Cliente extends Model
     public $razao_social;
     public $cnpj;
     public $inscricao_estadual;
-    
+
     public $contasBancarias;
     public $endereco;
     public $unidades;
@@ -35,6 +35,6 @@ class Cliente extends Model
 
     public function unidades()
     {
-        return $this->unidades = Unidade::get(["cliente_id", "=",$this->id]);
+        return $this->unidades = Unidade::get(["cliente_id", "=", $this->id]);
     }
 }

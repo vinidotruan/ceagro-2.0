@@ -15,8 +15,8 @@ class Model
     public static function find($campos = ["id", 0])
     {
         $response = App::get('db')->find(
-            static::$table, 
-            $campos, 
+            static::$table,
+            $campos,
             static::class
         );
         return $a = array_shift($response);
@@ -38,7 +38,7 @@ class Model
         return "deletado com sucesso";
     }
 
-    public static function store($dados)
+    public static function create($dados)
     {
         $data = self::verifyFields($dados);
         return App::get('db')->insert(static::$table, $data);
@@ -46,12 +46,12 @@ class Model
 
     private static function verifyFields($data)
     {
-        $data = (array) $data;
+        $data = (array)$data;
         $reflection = new \ReflectionClass(static::class);
-        $instance = (array) $reflection->newInstanceWithoutConstructor();
+        $instance = (array)$reflection->newInstanceWithoutConstructor();
         foreach ($instance as $instanceKey => $field) {
             foreach ($data as $dataKey => $value) {
-                if(!array_key_exists($dataKey, $instance)) {
+                if (!array_key_exists($dataKey, $instance)) {
                     unset($data[$dataKey]);
                 }
             }

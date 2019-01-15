@@ -1,5 +1,8 @@
 var cliente = null;
 var unidade = null;
+var enderecos = [];
+var endereco = null;
+var conta = null;
 
 function temCliente() {
     return (cliente) ? true : false;
@@ -10,7 +13,11 @@ function temUnidade() {
 }
 
 function temEndereco() {
-    return (cliente.endereco) ? true : false;
+    return (endereco) ? true : false;
+}
+
+function temConta() {
+    return (conta) ? true : false;
 }
 
 /**
@@ -23,6 +30,7 @@ function temEndereco() {
  * localStorage
  */
 $(document).ready(() => {
+    $('#und').hide();
     if (localStorage.hasOwnProperty('cliente')) {
 
         cliente = JSON.parse(localStorage.getItem("cliente"));
@@ -32,9 +40,7 @@ $(document).ready(() => {
             compararFormCliente(cliente, "cliente");
         });
 
-        buscarEndereco(cliente.id, () => {
-            compararFormCliente(cliente, "cliente");
-        });
+        buscarEnderecos(cliente.id);
 
         buscarUnidades(cliente.id);
 
@@ -71,7 +77,11 @@ $("#unidade").submit(function (event) {
  */
 $("#endereco").submit(function (event) {
     event.preventDefault();
-    (temCliente() && temEndereco()) ? atualizarEndereco() : cadastrarEndereco();
+    if (temUnidade()) {
+        (temEndereco()) ? atualizarEndereco() : cadastrarEndereco();
+    } else {
+        mostrarSemUnidade();
+    }
 });
 
 /**
@@ -80,22 +90,29 @@ $("#endereco").submit(function (event) {
  */
 $("#contasBancarias").submit(function (event) {
     event.preventDefault();
-    cadastrarContaBancaria();
+    (temConta()) ? atualizarContaBancaria() : cadastrarContaBancaria();
 });
 
 /**
  *  FIM AJAX
  */
 
+/**
+ * Habilita todos os campos dos formulários;
+ */
 function habilitarForm() {
     $(`form *`).prop("disabled", false);
     $(`.btn`).prop("disabled", false);
 }
 
+/**
+ * Desabilita todos os campos dos formulários com exceção de cliente;
+ */
 function desabilitarForm() {
     $('form *').prop('disabled', true);
     $('.btn').prop('disabled', true);
     $("#cliente *").prop("disabled", false);
+    // $("#endereco *").prop("disabled", false);
 }
 
 /**
@@ -125,7 +142,7 @@ function compararFormCliente(cliente, formulario) {
 function buscarUnidades(clienteId) {
     $.get(`../back-end/clientes/${clienteId}/unidades`, function (response) {
         cliente.unidades = JSON.parse(response);
-    }).done(response => { popularUnidades(cliente.unidades) })
+    }).done(() => { popularUnidades(cliente.unidades) })
         .always(() => esconderModal())
         .fail(() => exibirErro("unidade"));
 }
@@ -136,13 +153,12 @@ function buscarUnidades(clienteId) {
  * @param {*} clienteId - Id do cliente.
  * @param {*} callback - Callback para poder realizar uma ação após o término do processo.
  */
-function buscarEndereco(clienteId, callback = null) {
-    $.get(`../back-end/clientes/${clienteId}/enderecos`, function (response) {
-        cliente.endereco = JSON.parse(response);
-        if (callback) {
-            callback();
-        }
-    });
+function buscarEnderecos(clienteId) {
+    $.get(`../back-end/clientes/${clienteId}/enderecos`)
+        .done(end => {
+            enderecos = JSON.parse(end);
+            popularEnderecos(JSON.parse(end));
+        });
 }
 
 /**
@@ -180,9 +196,32 @@ function popularUnidades(unidades) {
     }
     $('#unidades tr').each((index, linha) => {
         $(linha).attr('onclick', `selecionarUnidade(${linha.id})`)
+        $(linha).click(() => {
+            $('.item').toggleClass('ativado', false);
+            $(`#${linha.id}`).toggleClass('ativado', true);
+        })
+    });
+}
+function popularEnderecos(enderecos) {
+    $('#enderecos tr').remove();
+    for (const endereco of enderecos) {
+        var newRow = $(`<tr class='item' id=${endereco.id}>`);
+        var cols = "";
+        cols += `<td>${endereco.estado}</td>`;
+        cols += `<td>${endereco.cidade}</td>`;
+        cols += `<td>${endereco.rua}</td>`;
+        cols += `<td>${endereco.cep}</td>`;
+        newRow.append(cols);
+        $("#enderecos").append(newRow)
+    }
+    $('#enderecos tr').each((index, linha) => {
+        $(linha).attr('onclick', `selecionarEndereco(${linha.id})`)
     });
 }
 
+/**
+ * Atualiza a unidade do cliente.
+ */
 function atualizarUnidade() {
 
     mostrarModal();
@@ -195,6 +234,7 @@ function atualizarUnidade() {
         type: 'PUT',
         data: dados
     }).done(() => {
+        exibirSucesso('unidade');
         unidade = null;
         limparCamposUnidade();
         buscarUnidades(cliente.id);
@@ -212,14 +252,27 @@ function limparCamposUnidade() {
     return;
 }
 
+function limparCamposEndereco() {
+    $("#endereco :input").each((index, field) => {
+        $(field).val("");
+    });
+    return;
+}
+
 /**
  * Popula o formulário com uma unidade escolhida.
  * 
  * @param {Object} unidade - Unidade do estabelecimento.
  */
-function pupularUnidade(unidadeCliente) {
+function popularUnidade(unidadeCliente) {
     unidade = unidadeCliente;
     compararFormCliente(unidadeCliente, "unidade");
+}
+
+function popularEndereco(enderecoUnidade) {
+
+    endereco = enderecoUnidade;
+    compararFormCliente(enderecoUnidade, "endereco");
 }
 
 /**
@@ -229,9 +282,15 @@ function pupularUnidade(unidadeCliente) {
  */
 function selecionarUnidade(unidadeId) {
     const unidade = _.find(cliente.unidades, { 'id': `${unidadeId}` });
-    pupularUnidade(unidade);
+    (unidade.endereco) ? selecionarEndereco(unidade.endereco.id) : limparCamposEndereco();
+    popularUnidade(unidade);
 }
 
+function selecionarEndereco(enderecoId) {
+
+    const endereco = _.find(enderecos, { 'id': `${enderecoId}` });
+    popularEndereco(endereco);
+}
 
 /**
  * Cria uma tabela com as contas bancárias.
@@ -241,7 +300,7 @@ function selecionarUnidade(unidadeId) {
 function popularContas(contas) {
     $('#contas_bancarias tr').remove();
     for (const conta of contas) {
-        var newRow = $("<tr class='item'>");
+        var newRow = $(`<tr class='item' id=${conta.id}>`);
         var cols = "";
         cols += `<td>${conta.banco}</td>`;
         cols += `<td>${conta.agencia}</td>`;
@@ -249,7 +308,54 @@ function popularContas(contas) {
         newRow.append(cols);
         $("#contas_bancarias").append(newRow)
     }
+    $("#contas_bancarias tr").each((index, linha) => {
+        $(linha).attr('onclick', `selecionarContaBancaria(${linha.id})`)
+    });
 }
+
+
+/**
+ * Atualiza a conta do cliente.
+ */
+function atualizarContaBancaria() {
+    mostrarModal();
+    $(`#contasBancarias`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
+    $(`#contasBancarias`).append(`<input hidden name='id' id=${conta.id} value=${conta.id}>`);
+    dados = $("#contasBancarias").serialize();
+    $.ajax({
+        url: `../back-end/contas-bancarias/${conta.id}`,
+        type: 'PUT',
+        data: dados
+    }).done(() => {
+        limparCamposUnidade();
+        exibirSucesso('contasBancarias');
+        buscarContas(cliente.id);
+        $(`#contasBancarias input#${conta.id}`).remove()
+    }).fail(() => exibirErro("contasBancarias"))
+        .always(() => { esconderModal(); conta = null });
+}
+
+/**
+ * Seleciona uma conta no array de contas
+ * 
+ * @param {*} contaId - Id da conta do cliente. 
+ */
+function selecionarContaBancaria(contaId) {
+    const conta = _.find(cliente.contasBancarias, { 'id': `${contaId}` });
+    popularConta(conta);
+
+}
+
+/**
+ * Popula o formulário com uma conta escolhida.
+ * 
+ * @param {Object} conta - Unidade do estabelecimento.
+ */
+function popularConta(contasBancarias) {
+    conta = contasBancarias;
+    compararFormCliente(contasBancarias, "contasBancarias");
+}
+
 
 /**
  * 
@@ -265,7 +371,7 @@ function cadastrar() {
     $.post("../back-end/clientes", dados, response => {
         cliente = JSON.parse(response);
     }).done(
-        () => { habilitarForm() }
+        () => { habilitarForm(); exibirSucesso('cliente') }
     ).always(
         () => esconderModal()
     ).fail(
@@ -283,13 +389,15 @@ function cadastrarUnidade() {
     var dados = $("#unidade").serialize();
 
     $.post("../back-end/unidades", dados)
-        .done(() => {
+        .done(und => {
+            exibirSucesso('unidade');
             buscarUnidades(cliente.id);
             limparCamposUnidade();
+            unidade = JSON.parse(und);
         }).always(
             () => esconderModal()
         ).fail(
-            () => exibirErro("unidades")
+            () => exibirErro("unidade")
         );
 }
 
@@ -298,16 +406,18 @@ function cadastrarUnidade() {
  */
 function cadastrarEndereco() {
     mostrarModal();
+    $(`#endereco`).append(`<input hidden name='unidade_id' value=${unidade.id}>`);
     $(`#endereco`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     var dados = $("#endereco").serialize();
 
-    $.post("../back-end/clientes/enderecos", dados, function (response) {
-        faturamento = JSON.parse(response);
-    }).always(
-        () => esconderModal()
-    ).fail(
-        () => exibirErro("endereco")
-    );
+    $.post("../back-end/clientes/enderecos", dados)
+        .done(() => {
+            exibirSucesso('endereco');
+            endereco = null;
+            buscarEnderecos(cliente.id);
+        })
+        .always(() => esconderModal())
+        .fail(() => exibirErro("endereco"));
 }
 
 /**
@@ -317,46 +427,70 @@ function cadastrarContaBancaria() {
     $(`#contasBancarias`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
     mostrarModal();
     var dados = $("#contasBancarias").serialize();
-    $.post(`../back-end/clientes/contas-bancarias`, dados, function (response) {
-        esconderModal();
-        buscarContas(cliente.id);
-    });
+    $.post(`../back-end/clientes/contas-bancarias`, dados)
+        .fail(() => exibirErro('contasBancarias'))
+        .done(() => { buscarContas(cliente.id); exibirSucesso('contasBancarias') })
+        .always(() => { esconderModal(); });
 }
 
 /**
  * Atualiza um cliente.
  */
 function atualizar() {
+    mostrarModal();
     var dados = $('#cliente').serialize();
     $.ajax({
         url: `../back-end/clientes/${cliente.id}`,
         type: 'PUT',
         data: dados
-    });
+    }).done(() => exibirSucesso('cliente'))
+        .fail(() => exibirErro('cliente'))
+        .always(() => esconderModal());
 }
 
 /**
  * Atualiza o endereco do cliente.
  */
 function atualizarEndereco() {
+    mostrarModal();
     $(`#endereco`).append(`<input hidden name='cliente_id' value=${cliente.id}>`);
-    $(`#endereco`).append(`<input hidden name='id' value=${cliente.endereco.id}>`);
+    $(`#endereco`).append(`<input hidden name='id' value=${endereco.id}>`);
+    $(`#endereco`).append(`<input hidden name='unidade_id' value=${unidade.id}>`);
     var dados = $("#endereco").serialize();
     $.ajax({
-        url: `../back-end/clientes/enderecos/${cliente.endereco.id}`,
+        url: `../back-end/clientes/enderecos/${endereco.id}`,
         type: 'PUT',
-        data: dados,
-        success: function (response) {
-            entrega = JSON.parse(response);
-        }
-    });
+        data: dados
+    }).always(() => esconderModal())
+        .done(() => {
+            limparCamposEndereco();
+            exibirSucesso('endereco');
+            buscarEnderecos(cliente.id);
+            $(`#endereco input#${endereco.id}`).remove()
+            endereco = null;
+        })
+        .fail(() => exibirErro('endereco'));
 }
 
 function exibirErro(form) {
     $(`#${form} .erro`).show("slow");
     setTimeout(() => {
         $(".erro").hide("slow");
-    }, 2000);
+    }, 3000);
+}
+
+function exibirSucesso(form) {
+    $(`#${form} .success`).show("slow");
+    setTimeout(() => {
+        $(".success").hide("slow");
+    }, 5000);
+}
+
+function mostrarSemUnidade() {
+    $(`#endereco .warning#und`).show("slow");
+    setTimeout(() => {
+        $(".warning").hide("slow");
+    }, 5000);
 }
 
 function esconderModal() {

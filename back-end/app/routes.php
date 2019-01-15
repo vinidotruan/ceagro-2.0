@@ -21,6 +21,7 @@ $router->post("{$urlBase}clientes/enderecos", "EnderecosController@store");
 $router->put("{$urlBase}clientes/enderecos/{endereco}", "EnderecosController@update");
 
 $router->post("{$urlBase}clientes/contas-bancarias", "ContasBancariasController@store");
+$router->put("{$urlBase}contas-bancarias/{contaBancaria}", "ContasBancariasController@update");
 $router->get("{$urlBase}clientes/{cliente}/contas-bancarias", "ContasBancariasController@show");
 
 $router->get("{$urlBase}clientes/{cliente}/estabelecimentos", "EstabelecimentosController@index");
@@ -33,16 +34,19 @@ $router->post("{$urlBase}produtos", "ProdutosController@store");
 $router->put("{$urlBase}produtos/{produto}", "ProdutosController@update");
 $router->delete("{$urlBase}produtos/{produto}", "ProdutosController@destroy");
 
-$router->get("{$urlBase}produtos/tipos", "ProdutosController@tipos");
-
 $router->get("{$urlBase}contratos", "ContratosController@index");
 $router->get("{$urlBase}contratos/{contrato}", "ContratosController@show");
 $router->post("{$urlBase}contratos", "ContratosController@store");
-
 $router->put("{$urlBase}contratos/{contrato}", "ContratosController@update");
 $router->get("{$urlBase}contratos/futuros", "ContratosController@contratosFuturos");
 $router->get("{$urlBase}contratos/atuais", "ContratosController@contratosAtuais");
-$router->get("{$urlBase}contratos/a", "ContratosController@dados");
+$router->get("{$urlBase}contratos/dados-compradores", "ContratosController@dados");
+$router->get("{$urlBase}contratos/dados-vendedores", "ContratosController@dados2");
+
+$router->get("{$urlBase}contratos/{contrato}/adendos", "AdendosController@index");
+$router->post("{$urlBase}contratos/adendos", "AdendosController@store");
+$router->put("{$urlBase}adendos/{adendo}", "AdendosController@update");
+$router->delete("{$urlBase}adendos/{adendo}", "AdendosController@destroy");
 
 $router->get("{$urlBase}pdfs/contratos/{contrato}", "PDF\ContratosController@index");
 $router->get("{$urlBase}unidades-medidas", "UnidadesMedidasController@index");

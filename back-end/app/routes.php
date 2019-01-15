@@ -46,7 +46,7 @@ $router->get("{$urlBase}contratos/atuais", "ContratosController@contratosAtuais"
 $router->get("{$urlBase}contratos/a", "ContratosController@dados");
 
 $router->get("{$urlBase}unidades-medidas", "UnidadesMedidasController@index");
-$router->get("{$urlBase}pdfs/contratos/{contrato}", "PDF\ContratosController@index");
 
+$router->get("{$urlBase}pdfs/contratos/{contrato}", "PDF\ContratosController@index");
 $router->get("{$urlBase}pdfs/contratos/{contrato}/adendos", "PDF\ControllerPraEssePDf@index");
 $router->get("{$urlBase}pdfs/contratos/{contrato}/fixacoes", "PDF\ControllerPraEssePDf@index");

@@ -51,5 +51,8 @@ $router->get("{$urlBase}contratos/{contrato}/fixacoes", "FixacoesController@inde
 $router->put("{$urlBase}fixacoes/{fixacao}", "FixacoesController@update");
 $router->delete("{$urlBase}fixacoes/{fixacao}", "FixacoesController@destroy");
 
-$router->get("{$urlBase}pdfs/contratos/{contrato}", "PDF\ContratosController@index");
 $router->get("{$urlBase}unidades-medidas", "UnidadesMedidasController@index");
+$router->get("{$urlBase}pdfs/contratos/{contrato}", "PDF\ContratosController@index");
+
+$router->get("{$urlBase}pdfs/contratos/{contrato}/adendos", "PDF\ControllerPraEssePDf@index");
+$router->get("{$urlBase}pdfs/contratos/{contrato}/fixacoes", "PDF\ControllerPraEssePDf@index");

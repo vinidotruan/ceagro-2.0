@@ -43,6 +43,7 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
     );
 
     public static $classMap = array (
+        'App\\Adendos\\PDF\\AdendosController' => __DIR__ . '/../..' . '/app/controllers/PDF/AdendosController.php',
         'App\\Controllers\\AdaptacaoController' => __DIR__ . '/../..' . '/app/controllers/AdaptacaoController.php',
         'App\\Controllers\\AdendosController' => __DIR__ . '/../..' . '/app/controllers/AdendosController.php',
         'App\\Controllers\\ClientesController' => __DIR__ . '/../..' . '/app/controllers/ClientesController.php',
@@ -62,7 +63,9 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
         'App\\Core\\Database\\QueryBuilder' => __DIR__ . '/../..' . '/core/database/QueryBuilder.php',
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
+        'App\\Fixacoes\\PDF\\FixacoesController' => __DIR__ . '/../..' . '/app/controllers/PDF/FixacoesController.php',
         'App\\Models\\Adendo' => __DIR__ . '/../..' . '/app/models/Adendo.php',
+        'App\\Models\\Adendos' => __DIR__ . '/../..' . '/app/models/Adendos.php',
         'App\\Models\\Banco' => __DIR__ . '/../..' . '/app/models/Banco.php',
         'App\\Models\\Cfop' => __DIR__ . '/../..' . '/app/models/Cfop.php',
         'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/models/Cliente.php',

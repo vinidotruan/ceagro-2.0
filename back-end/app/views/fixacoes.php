@@ -50,7 +50,6 @@
     <section>
         <table>
                 <tr>
-<<<<<<< HEAD
                     <td class="padding20">Id contrato: <?= $fixacao->id_contrato ?></td>
                 </tr>
                 <tr>
@@ -70,12 +69,6 @@
                 </tr>
                 <tr>
                     <td class="padding20">Data pagamento: <?= $fixacao->data_pagamento ?></td>
-=======
-                    <td class="padding20">Id contrato: <?= $adendos->id_contrato ?></td>
-                </tr>
-                <tr>
-                    <td class="padding20">Descricao: <?= $adendos->descricao ?></td>
->>>>>>> master
                 </tr>
             </table>
     </section>

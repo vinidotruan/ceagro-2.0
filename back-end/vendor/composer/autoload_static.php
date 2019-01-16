@@ -43,7 +43,6 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
     );
 
     public static $classMap = array (
-        'App\\Adendos\\PDF\\AdendosController' => __DIR__ . '/../..' . '/app/controllers/PDF/AdendosController.php',
         'App\\Controllers\\AdaptacaoController' => __DIR__ . '/../..' . '/app/controllers/AdaptacaoController.php',
         'App\\Controllers\\AdendosController' => __DIR__ . '/../..' . '/app/controllers/AdendosController.php',
         'App\\Controllers\\ClientesController' => __DIR__ . '/../..' . '/app/controllers/ClientesController.php',
@@ -53,6 +52,7 @@ class ComposerStaticInit7af411bac7756e8562419bf7dd0e78b2
         'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/controllers/Controller.php',
         'App\\Controllers\\EnderecosController' => __DIR__ . '/../..' . '/app/controllers/EnderecosController.php',
         'App\\Controllers\\FixacoesController' => __DIR__ . '/../..' . '/app/controllers/FixacoesController.php',
+        'App\\Controllers\\PDF\\AdendosController' => __DIR__ . '/../..' . '/app/controllers/PDF/AdendosController.php',
         'App\\Controllers\\PDF\\ContratosController' => __DIR__ . '/../..' . '/app/controllers/PDF/ContratosController.php',
         'App\\Controllers\\ProdutosController' => __DIR__ . '/../..' . '/app/controllers/ProdutosController.php',
         'App\\Controllers\\Teste' => __DIR__ . '/../..' . '/app/controllers/teste.php',

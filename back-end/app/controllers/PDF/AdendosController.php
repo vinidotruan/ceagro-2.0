@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Adendos\PDF;
+namespace App\Controllers\PDF;
 
-use App\Models\Adendos;
+use App\Models\Adendo;
 use Dompdf\Dompdf;
 
 class AdendosController

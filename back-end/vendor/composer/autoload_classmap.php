@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Adendos\\PDF\\AdendosController' => $baseDir . '/app/controllers/PDF/AdendosController.php',
     'App\\Controllers\\AdaptacaoController' => $baseDir . '/app/controllers/AdaptacaoController.php',
     'App\\Controllers\\AdendosController' => $baseDir . '/app/controllers/AdendosController.php',
     'App\\Controllers\\ClientesController' => $baseDir . '/app/controllers/ClientesController.php',
@@ -16,6 +15,7 @@ return array(
     'App\\Controllers\\Controller' => $baseDir . '/app/controllers/Controller.php',
     'App\\Controllers\\EnderecosController' => $baseDir . '/app/controllers/EnderecosController.php',
     'App\\Controllers\\FixacoesController' => $baseDir . '/app/controllers/FixacoesController.php',
+    'App\\Controllers\\PDF\\AdendosController' => $baseDir . '/app/controllers/PDF/AdendosController.php',
     'App\\Controllers\\PDF\\ContratosController' => $baseDir . '/app/controllers/PDF/ContratosController.php',
     'App\\Controllers\\ProdutosController' => $baseDir . '/app/controllers/ProdutosController.php',
     'App\\Controllers\\Teste' => $baseDir . '/app/controllers/teste.php',

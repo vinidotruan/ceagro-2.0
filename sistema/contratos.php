@@ -328,6 +328,7 @@
 																<tr>
 																	<th>Descrição</th>
 																	<th width="10%">Deletar</th>
+																	<th width="10%">Imprimir</th>
 																</tr>
 															</thead>
 															<tbody id="adendos">

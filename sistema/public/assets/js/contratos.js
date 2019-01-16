@@ -224,6 +224,7 @@ function listarAdendos(adendos) {
         var cols = "";
         cols += `<td class='item' id=${adendo.id}>${adendo.descricao}</td>`;
         cols += `<td class='delete' id=${adendo.id}><i class="fa fa-trash-o" style="color: red"></i></td>`
+        cols += `<td class='delete' id=${adendo.id}><i class="fa fa-print" style="color: blue"></i></td>`
         newRow.append(cols);
         $("#adendos").append(newRow)
     }
@@ -232,6 +233,9 @@ function listarAdendos(adendos) {
     });
     $('#adendos .delete').each((index, td) => {
         $(td).attr('onclick', `excluirAdendo(${td.id})`)
+    });
+    $('#adendos .prit').each((index, td) => {
+        $(td).attr('onclick', `printAdendo(${td.id})`)
     });
 }
 

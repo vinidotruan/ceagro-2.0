@@ -38,22 +38,18 @@
         <div class="log">
             <img src="public/img/logo.png" alt="">
         </div>
-        <div class="data"> Porto Alegre
+        <div class="data paddingTop20"> Porto Alegre
             <?= $data ?>
         </div>
     </header>
     <section>
-        <div class="confirmacao">
-            <span>Confirmação número: <strong><?= $contrato->numero_confirmacao ?></strong></span>
-        </div>
-    </section>
-    <section>
+    <?php //dd($adendos); ?>
         <table>
                 <tr>
-                    <td class="padding20">Id contrato: <?= $adendos->id_contrato ?></td>
+                    <td class="paddingTop20">Id contrato: <?=$adendos->contrato_id?></td>
                 </tr>
                 <tr>
-                    <td class="padding20">Descricao: <?= $adendos->descricao ?></td>
+                    <td class="paddingTop20">Descrição: <?=$adendos->descricao?></td>
                 </tr>
             </table>
     </section>

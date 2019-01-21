@@ -38,37 +38,39 @@
         <div class="log">
             <img src="public/img/logo.png" alt="">
         </div>
-        <div class="data"> Porto Alegre
-            <?= $data ?>
+        <div class="data paddingTop20"><strong> Porto Alegre
+            <?= $data ?></strong>
         </div>
     </header>
     <section>
-        <div class="confirmacao">
-            <span>Confirmação número: <strong><?= $contrato->numero_confirmacao ?></strong></span>
-        </div>
-    </section>
-    <section>
+    <?php
+    foreach($fixacoes as $fixacao){
+        $contrato_id = $fixacao->contrato_id;
+        $quantidade = $fixacao->quantidade;
+        $preco = $fixacao->preco;
+        $local_embarque = $fixacao->local_embarque;
+        $conta_bancaria_vendedor_id = $fixacao->conta_bancaria_vendedor_id;
+        $data_pagamento = $fixacao->data_pagamento;
+    }
+    ?>
         <table>
                 <tr>
-                    <td class="padding20">Id contrato: <?= $fixacao->id_contrato ?></td>
+                    <td class="paddingTop20">Id contrato: <?= $contrato_id  ?></td>
                 </tr>
                 <tr>
-                    <td class="padding20">Descricao: <?= $fixacao->descricao ?></td>
+                    <td class="paddingTop20">Quantidade: <?= $quantidade ?></td>
                 </tr>
                 <tr>
-                    <td class="padding20">Quantidade: <?= $fixacao->quantidade ?></td>
+                    <td class="paddingTop20">Preço: <?= $preco ?></td>
                 </tr>
                 <tr>
-                    <td class="padding20">Preço: <?= $fixacao->preco ?></td>
+                    <td class="paddingTop20">Local de embarque: <?= $local_embarque ?></td>
                 </tr>
                 <tr>
-                    <td class="padding20">Local de embarque: <?= $fixacao->local_embarque ?></td>
+                    <td class="paddingTop20">Contas bancárias: <?= $conta_bancaria_vendedor_id?></td>
                 </tr>
                 <tr>
-                    <td class="padding20">Contas bancárias: <?= $fixacao->contas_bancarias ?></td>
-                </tr>
-                <tr>
-                    <td class="padding20">Data pagamento: <?= $fixacao->data_pagamento ?></td>
+                    <td class="paddingTop20">Data pagamento: <?= $data_pagamento ?></td>
                 </tr>
             </table>
     </section>

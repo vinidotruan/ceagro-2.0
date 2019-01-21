@@ -8,7 +8,7 @@ if (!$producao) {
             'dbname' => "ceagro",
             'charset' => "utf8",
             'username' => "root",
-            'password' => "root",
+            'password' => "",
             'options' => [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             ],

@@ -38,18 +38,23 @@
         <div class="log">
             <img src="public/img/logo.png" alt="">
         </div>
-        <div class="data paddingTop20"> Porto Alegre
-            <?= $data ?>
+        <div class="data paddingTop20"><strong> Porto Alegre
+            <?= $data ?></strong>
         </div>
     </header>
     <section>
-    <?php //dd($adendos); ?>
+    <?php
+    foreach($adendos as $adendo){
+        $contrato_id = $adendo->contrato_id;
+        $descricao = $adendo->descricao;
+    }
+    ?>
         <table>
                 <tr>
-                    <td class="paddingTop20">Id contrato: <?=$adendos->contrato_id?></td>
+                    <td class="paddingTop20">Id contrato: <?=$contrato_id?></td>
                 </tr>
                 <tr>
-                    <td class="paddingTop20">Descrição: <?=$adendos->descricao?></td>
+                    <td class="paddingTop20">Descrição: <?=$descricao?></td>
                 </tr>
             </table>
     </section>

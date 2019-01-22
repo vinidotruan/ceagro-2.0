@@ -45,31 +45,26 @@
     <section>
     <?php
     foreach($fixacoes as $fixacao){
-        $contrato_id = $fixacao->contrato_id;
-        $quantidade = $fixacao->quantidade;
-        $preco = $fixacao->preco;
-        $local_embarque = $fixacao->local_embarque;
-        $conta_bancaria_vendedor_id = $fixacao->conta_bancaria_vendedor_id;
-        $data_pagamento = $fixacao->data_pagamento;
-    }
     ?>
         <table>
-                <tr>
-                    <td class="paddingTop20">Quantidade: <?= $quantidade ?></td>
-                </tr>
-                <tr>
-                    <td class="paddingTop20">Preço: <?= $preco ?></td>
-                </tr>
-                <tr>
-                    <td class="paddingTop20">Local de embarque: <?= $local_embarque ?></td>
-                </tr>
-                <tr>
-                    <td class="paddingTop20">Contas bancárias: <?= $conta_bancaria_vendedor_id?></td>
-                </tr>
-                <tr>
-                    <td class="paddingTop20">Data pagamento: <?= $data_pagamento ?></td>
-                </tr>
-            </table>
+            <tr>
+                <td class="paddingTop20">Quantidade: <?= $fixacao->quantidade ?></td>
+            </tr>
+            <tr>
+                <td class="paddingTop20">Preço: <?= $fixacao->preco ?></td>
+            </tr>
+            <tr>
+                <td class="paddingTop20">Local de embarque: <?= $fixacao->local_embarque ?></td>
+            </tr>
+            <tr>
+                <td class="paddingTop20">Contas bancárias: <?= $fixacao->contasBancarias()->banco ." - ". $fixacao->contasBancarias()->agencia ." - ".$fixacao->contasBancarias()->conta?></td>            </tr>
+            <tr>
+                <td class="paddingTop20">Data pagamento: <?= $fixacao->data_pagamento; ?></td>
+            </tr>
+        </table>
+    <?php
+    }
+    ?>
     </section>
 </body>
 

@@ -141,13 +141,13 @@
         </div>
     </section>
     <section>
-        <table>
-            <?php foreach ($adendos as $key => $adendo):?>
-                <tr>
-                    <td class="paddingTop20"><strong>Descrição</strong>: <?=$adendo->descricao; ?></td>
-                </tr>
-            <?php endforeach?>
-            </table>
+        <?php foreach ($adendos as $adendo):?>
+        <table style="border: 1px black solid; width: 100%; margin-top: 3px;">
+            <tr>
+                <td class="paddingTop20" ><strong>Descrição</strong>: <?=$adendo->descricao; ?></td>
+            </tr>
+        </table>
+        <?php endforeach?>
     </section>
 </body>
 

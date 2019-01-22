@@ -1,10 +1,5 @@
 <?php
-<<<<<<< HEAD
-$producao = true;
-=======
-// $producao = true;
 $producao = 0;
->>>>>>> c31a5b391694c06087faf70c2a62852bb01e4a3b
 if (!$producao) {
     return [
         'database' => [
@@ -32,9 +27,5 @@ return [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ],
     ],
-<<<<<<< HEAD
-    'rotas' => 'back-end'
-=======
     'rotas' => 'back-end/'
->>>>>>> c31a5b391694c06087faf70c2a62852bb01e4a3b
 ];

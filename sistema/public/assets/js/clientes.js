@@ -34,7 +34,7 @@ $(document).ready(() => {
     if (localStorage.hasOwnProperty('cliente')) {
 
         cliente = JSON.parse(localStorage.getItem("cliente"));
-        // localStorage.removeItem("cliente");
+        localStorage.removeItem("cliente");
 
         buscarContas(cliente.id, () => {
             compararFormCliente(cliente, "cliente");

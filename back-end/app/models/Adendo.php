@@ -12,4 +12,9 @@ class Adendo extends Model
     public $descricao;
 
     public static $table = "adendos";
+
+    public function contrato()
+    {
+        return Contrato::find(['id', $this->contrato_id]);
+    }
 }

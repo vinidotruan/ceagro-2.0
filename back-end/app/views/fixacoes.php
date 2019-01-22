@@ -50,10 +50,25 @@
     <section>
         <table>
                 <tr>
-                    <td class="padding20">Id contrato: <?= $adendos->id_contrato ?></td>
+                    <td class="padding20">Id contrato: <?= $fixacao->id_contrato ?></td>
                 </tr>
                 <tr>
-                    <td class="padding20">Descricao: <?= $adendos->descricao ?></td>
+                    <td class="padding20">Descricao: <?= $fixacao->descricao ?></td>
+                </tr>
+                <tr>
+                    <td class="padding20">Quantidade: <?= $fixacao->quantidade ?></td>
+                </tr>
+                <tr>
+                    <td class="padding20">Preço: <?= $fixacao->preco ?></td>
+                </tr>
+                <tr>
+                    <td class="padding20">Local de embarque: <?= $fixacao->local_embarque ?></td>
+                </tr>
+                <tr>
+                    <td class="padding20">Contas bancárias: <?= $fixacao->contas_bancarias ?></td>
+                </tr>
+                <tr>
+                    <td class="padding20">Data pagamento: <?= $fixacao->data_pagamento ?></td>
                 </tr>
             </table>
     </section>

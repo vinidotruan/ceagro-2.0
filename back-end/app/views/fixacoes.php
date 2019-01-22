@@ -55,9 +55,6 @@
     ?>
         <table>
                 <tr>
-                    <td class="paddingTop20">Id contrato: <?= $contrato_id  ?></td>
-                </tr>
-                <tr>
                     <td class="paddingTop20">Quantidade: <?= $quantidade ?></td>
                 </tr>
                 <tr>

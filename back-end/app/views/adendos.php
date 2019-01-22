@@ -47,16 +47,15 @@
     foreach($adendos as $adendo){
         $contrato_id = $adendo->contrato_id;
         $descricao = $adendo->descricao;
+    ?>
+        <table>            
+            <tr>
+                <td class="paddingTop20">Descrição: <?=$descricao?></td>
+            </tr>
+        </table>
+    <?php
     }
     ?>
-        <table>
-                <tr>
-                    <td class="paddingTop20">Id contrato: <?=$contrato_id?></td>
-                </tr>
-                <tr>
-                    <td class="paddingTop20">Descrição: <?=$descricao?></td>
-                </tr>
-            </table>
     </section>
 </body>
 

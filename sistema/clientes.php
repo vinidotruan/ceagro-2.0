@@ -289,6 +289,7 @@
         </div>
         <div class="control-sidebar-bg"></div>
     </div>
+    
     <div class="modal fade" id="modal-aviso">
 		<div class="modal-dialog">
             <div class="modal-content">

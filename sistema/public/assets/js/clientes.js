@@ -53,6 +53,8 @@ $(document).ready(() => {
  * Adiciona o texto: Salvar a todos os botões
  */
 $(".btn").text("Salvar");
+$(".btn-danger").text("Fechar");
+$("#deletarUnidade").text("Excluir");
 /**
  * Verifica se há cliente, caso haja
  * atualiza, do contrário, cadastra um.

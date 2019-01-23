@@ -19,16 +19,16 @@ function buscarContratos() {
 
 function popularPesquisa(contratos, callback = null) {
     $('#contratos tbody tr').remove();
-    $.each(contratos, function (index, contrato) {
+    $.each(contratos, (index, contrato) => {
         var linha = `<tr id="${contrato.id}" class="clicavel">
             <td class="item" id="${contrato.id}">${contrato.numero_confirmacao}</td>
             <td class="item" id="${contrato.id}">${contrato.unidadeComprador.razao_social || "teste"}</td>
             <td class="item" id="${contrato.id}">${contrato.unidadeVendedor.razao_social}</td>
             <td class="item" id="${contrato.id}">${contrato.produto.nome}</td>
             <td style="text-align:center">
-                <button type="button" class="btn btn-default>
+                <button type="button" class="btn btn-default">
                     <a href="../back-end/pdfs/contratos/${contrato.id}" target="_blank" rel="noopener noreferrer">
-                        <i class="fa fa-download" aria-hidden="true" style="color:blue"></i>
+                        <i class="fa fa-print" style="color: blue"></i>
                     </a>
                 </button>
             </td>

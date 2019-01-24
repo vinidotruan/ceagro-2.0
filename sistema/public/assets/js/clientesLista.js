@@ -6,19 +6,22 @@ $("#deletarCliente").on('click', () => {
 });
 
 function buscar() {
-    $.get("../back-end/clientes").done(response => {
+    $.get("../back-end/clientes", function (response) {
         clientes = JSON.parse(response);
-        popularPesquisa(clientes);
-        tabela = $('#clientes').DataTable();
-    }).always(() => {
-        $(".overlay").remove();
+    }).done(() => {
+        popularPesquisa(clientes, () => {
+            $(function () {
+                $('#clientes').DataTable();
+                $(".overlay").remove();
+            })
+        });
     });
 }
 
-function popularPesquisa(clientes) {
+function popularPesquisa(clientes, callback) {
     $("#clientes tbody tr").remove();
 
-    $.each(clientes, (index, cliente) => {
+    $.each(clientes, function (index, cliente) {
         if (cliente.unidades.length > 0) {
             popularPorUnidade(cliente);
         }
@@ -31,7 +34,7 @@ function popularPesquisa(clientes) {
     $(`#clientes .delete`).on("click", function () {
         selecionarCliente(this.id);
     });
-
+    callback();
 }
 
 function popularPorUnidade(cliente) {
@@ -69,7 +72,9 @@ function deletarCliente() {
     $.ajax({
         url: `../back-end/clientes/${clienteId}`,
         type: 'DELETE'
-    }).always(() => esconderModal());
+    }).done(() =>
+        buscar()
+    ).always(() => esconderModal());
 }
 
 /**

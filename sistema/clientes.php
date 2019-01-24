@@ -213,6 +213,7 @@
                                             <th>Cidade</th>
                                             <th>Rua</th>
                                             <th>CEP</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody id="enderecos">
@@ -305,6 +306,26 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default btn-danger pull-left" style="color:white" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary" id="deletarUnidade">Excluir</button>
+				</div>
+            </div>
+		</div>
+	</div>
+    
+    <div class="modal fade" id="modal-endereco">
+		<div class="modal-dialog">
+            <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">AVISO!</h4>
+              	</div>
+				<div class="modal-body">
+					<p>Você deseja realmente excluir este Endereço?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-danger pull-left" style="color:white" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id="deletarEndereco">Excluir</button>
 				</div>
             </div>
 		</div>

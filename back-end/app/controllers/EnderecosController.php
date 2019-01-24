@@ -23,18 +23,22 @@ class EnderecosController extends Controller
     {
         $enderecoId = Endereco::create($endereco);
         $endereco = Endereco::find(["id", $enderecoId]);
-        echo json_encode($endereco);
+        return $this->responderJSON($endereco);
 
     }
 
     public function update($endereco)
     {
-        $enderecoId = $endereco['id'];
-        unset($endereco['endereco']);
-        $enderecoId = Endereco::update($endereco, ["id", $enderecoId]);
+        $enderecoId = Endereco::update($endereco, ["id", $endereco['endereco']]);
 
         $endereco = endereco::find(["id", $enderecoId]);
-        echo json_encode($endereco);
+        return $this->responderJSON($endereco);
 
+    }
+
+    public function destroy($endereco)
+    {
+        $msg = Endereco::delete(['id', $endereco]);
+        return $this->responderJSON($msg);
     }
 }

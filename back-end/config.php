@@ -1,5 +1,4 @@
 <?php
-// $producao = true;
 $producao = 0;
 if (!$producao) {
     return [

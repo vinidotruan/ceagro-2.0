@@ -78,5 +78,5 @@
 	<script>
 </script>
 	<script src="public/assets/js/clientesLista.js"></script>
-	<script src="public/assets/js/outros.js"></script>
+	<!-- <script src="public/assets/js/outros.js"></script> -->
 	<?php include 'partials/rodape.html' ?>

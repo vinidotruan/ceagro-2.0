@@ -1,7 +1,7 @@
 $(document).ready(() => {
     contrato = JSON.parse(localStorage.getItem('contrato'));
     $('.select2').select2();
-    $(".btn").text("Salvar");
+    $("form.btn, .box-footer>.btn").text("Salvar");
     buscarProdutos();
     buscarUnidadesDeMedidas();
     buscarNumeroConfirmacao();
@@ -49,9 +49,28 @@ let adendo = null;
 let fixacao = null;
 let numeros_confirmacao = null;
 
+/**
+ * Ao trocar de produto, filtra ele do array de produtos.
+ */
 $("#produtos").change((event) => {
     selecionarProduto(event.target.value);
 })
+
+/**
+ * Exclui um adendo
+ */
+$("#deletarAdendo").on('click', () => {
+    $("#modal-aviso").modal('hide');
+    excluirAdendo();
+});
+
+/**
+ * Exclui uma fixacao
+ */
+$("#deletarFixacao").on('click', () => {
+    $("#modal-aviso-fixacoes").modal('hide');
+    excluirFixacao();
+});
 
 $('.minimal[name="futuro"]').on('ifChecked', event => {
     event.target.value = (event.target.id == "f") ? 1 : 0;
@@ -223,15 +242,23 @@ function listarAdendos(adendos) {
         var newRow = $(`<tr>`);
         var cols = "";
         cols += `<td class='item' id=${adendo.id}>${adendo.descricao}</td>`;
-        cols += `<td class='delete' id=${adendo.id}><i class="fa fa-trash-o" style="color: red"></i></td>`
+        cols += `<td class="item" id=${adendo.id}>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-aviso">
+                <i class="fa fa-trash-o" style="color: red"></i>
+            </button>
+        </td>`
+        cols += `<td id=${adendo.id}>
+            <button type="button" class="btn btn-default">
+                <a href="../back-end/pdfs/contratos/${contrato.id}/adendos" target="_blank" rel="noopener noreferrer">
+                    <i class="fa fa-print" style="color: blue"></i>
+                </a>
+            </button>
+        </td>`
         newRow.append(cols);
         $("#adendos").append(newRow)
     }
     $('#adendos .item').each((index, td) => {
         $(td).attr('onclick', `selecionarAdendo(${td.id})`)
-    });
-    $('#adendos .delete').each((index, td) => {
-        $(td).attr('onclick', `excluirAdendo(${td.id})`)
     });
 }
 
@@ -246,15 +273,23 @@ function listarFixacoes(fixacoes) {
         cols += `<td class='item' id=${fixacao.id}>${fixacao.data_pagamento}</td>`;
 
         cols += `<td class='item' id=${fixacao.id}>${fixacao.contaBancaria.conta} | ${fixacao.contaBancaria.agencia} - ${fixacao.contaBancaria.banco}</td>`;
-        cols += `<td class='delete' id=${fixacao.id}><i class="fa fa-trash-o" style="color: red"></i></td>`
+        cols += `<td class="item" id=${fixacao.id}>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-aviso-fixacoes">
+                <i class="fa fa-trash-o" style="color: red"></i>
+            </button>
+        </td>`
+        cols += `<td id=${fixacao.id}>
+            <button type="button" class="btn btn-default">
+                <a href="../back-end/pdfs/contratos/${contrato.id}/fixacoes" target="_blank" rel="noopener noreferrer">
+                    <i class="fa fa-print" style="color: blue"></i>
+                </a>
+            </button>
+        </td>`
         newRow.append(cols);
         $("#fixacoes").append(newRow)
     }
     $('#fixacoes .item').each((index, td) => {
         $(td).attr('onclick', `selecionarFixacao(${td.id})`)
-    });
-    $('#fixacoes .delete').each((index, td) => {
-        $(td).attr('onclick', `excluirFixacao(${td.id})`)
     });
 }
 
@@ -268,20 +303,20 @@ function selecionarAdendo(adendoId) {
     compararForm(adendo, "adendo");
 }
 
-function excluirFixacao(fixacaoId) {
+function excluirFixacao() {
     mostrarModal();
     $.ajax({
-        url: `../back-end/fixacoes/${fixacaoId}`,
+        url: `../back-end/fixacoes/${fixacao.id}`,
         type: 'DELETE'
     }).done(() => {
         buscarFixacoes();
     }).always(() => esconderModal());
 }
 
-function excluirAdendo(adendoId) {
+function excluirAdendo() {
     mostrarModal();
     $.ajax({
-        url: `../back-end/adendos/${adendoId}`,
+        url: `../back-end/adendos/${adendo.id}`,
         type: 'DELETE'
     }).done(() => {
         buscarAdendos();

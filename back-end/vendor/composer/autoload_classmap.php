@@ -28,7 +28,6 @@ return array(
     'App\\Core\\Request' => $baseDir . '/core/Request.php',
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
     'App\\Models\\Adendo' => $baseDir . '/app/models/Adendo.php',
-    'App\\Models\\Adendos' => $baseDir . '/app/models/Adendos.php',
     'App\\Models\\Banco' => $baseDir . '/app/models/Banco.php',
     'App\\Models\\Cfop' => $baseDir . '/app/models/Cfop.php',
     'App\\Models\\Cliente' => $baseDir . '/app/models/Cliente.php',

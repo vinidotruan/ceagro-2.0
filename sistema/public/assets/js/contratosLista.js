@@ -26,7 +26,7 @@ function popularPesquisa(contratos, callback = null) {
             <td class="item" id="${contrato.id}">${contrato.unidadeVendedor.razao_social}</td>
             <td class="item" id="${contrato.id}">${contrato.produto.nome}</td>
             <td style="text-align:center">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-aviso">
+                <button type="button" class="btn btn-default>
                     <a href="../back-end/pdfs/contratos/${contrato.id}" target="_blank" rel="noopener noreferrer">
                         <i class="fa fa-download" aria-hidden="true" style="color:blue"></i>
                     </a>

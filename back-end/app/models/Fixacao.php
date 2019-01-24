@@ -27,4 +27,8 @@ class Fixacao extends Model
     {
         return $this->contaBancaria = ContaBancaria::find(["id", $this->conta_bancaria_vendedor_id]);
     }
+    public function contrato()
+    {
+        return Contrato::find(["id", $this->contrato_id]);
+    }
 }

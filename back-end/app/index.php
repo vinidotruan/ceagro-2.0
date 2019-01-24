@@ -213,7 +213,7 @@
                     <td class="linha">_________________________
                         <br>Assinatura do Vendedor
                         <br>
-                        <?= $contrato->unidadeVendedor->cnpj ?></td>
+                        <?= $contrato->vendedor->cnpj ?></td>
                     </td>
                 </tr>
                 <tr>

@@ -26,7 +26,11 @@ function popularPesquisa(contratos, callback = null) {
             <td class="item" id="${contrato.id}">${contrato.unidadeVendedor.razao_social}</td>
             <td class="item" id="${contrato.id}">${contrato.produto.nome}</td>
             <td style="text-align:center">
+<<<<<<< HEAD
                 <button type="button" class="btn btn-default>
+=======
+                <button type="button" class="btn btn-default">
+>>>>>>> 9eee1a9ecabce6f9836fdd541eb56b14f18db370
                     <a href="../back-end/pdfs/contratos/${contrato.id}" target="_blank" rel="noopener noreferrer">
                         <i class="fa fa-download" aria-hidden="true" style="color:blue"></i>
                     </a>

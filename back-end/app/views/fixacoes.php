@@ -70,6 +70,7 @@
         </div>
     </header>
     <section>
+<<<<<<< HEAD
         <div class="confirmacao">
             <span>Confirmação número: <strong><?= $fixacoes[0]->contrato()->numero_confirmacao ?></strong></span>
         </div>
@@ -160,6 +161,30 @@
             </tr>
         </table>
         <?php endforeach ?>
+=======
+    <?php
+    foreach($fixacoes as $fixacao){
+    ?>
+        <table>
+            <tr>
+                <td class="paddingTop20">Quantidade: <?= $fixacao->quantidade ?></td>
+            </tr>
+            <tr>
+                <td class="paddingTop20">Preço: <?= $fixacao->preco ?></td>
+            </tr>
+            <tr>
+                <td class="paddingTop20">Local de embarque: <?= $fixacao->local_embarque ?></td>
+            </tr>
+            <tr>
+                <td class="paddingTop20">Contas bancárias: <?= $fixacao->contasBancarias()->banco ." - ". $fixacao->contasBancarias()->agencia ." - ".$fixacao->contasBancarias()->conta?></td>            </tr>
+            <tr>
+                <td class="paddingTop20">Data pagamento: <?= $fixacao->data_pagamento; ?></td>
+            </tr>
+        </table>
+    <?php
+    }
+    ?>
+>>>>>>> 9eee1a9ecabce6f9836fdd541eb56b14f18db370
     </section>
 </body>
 

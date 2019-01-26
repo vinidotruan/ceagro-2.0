@@ -1,19 +1,17 @@
 contratoId = null;
 
+
 $("#deletarContrato").on('click', () => {
     $("#modal-default").modal('hide');
     deletarContrato();
 });
 
 function buscarContratos() {
-    $.get("../back-end/contratos", { limite: 50 }, response => {
+    $.get("../back-end/contratos").done(response => {
         contratos = JSON.parse(response);
         popularPesquisa(contratos, () => {
-            $(() => {
-                $('#contratos').destroy();
-                $('#contratos').DataTable();
-                $(".overlay").remove();
-            });
+            $(".overlay").remove();
+            table = $('#contratos').DataTable();
         });
     });
 }
@@ -75,7 +73,7 @@ function deletarContrato() {
         url: `../back-end/contratos/${contratoId}`,
         type: 'DELETE'
     }).done(() =>
-        buscarContratos()
+        table.row($(`#${contratoId}`)).remove().draw()
     ).always(() => esconderModal());
 }
 

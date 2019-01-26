@@ -1,5 +1,4 @@
 clienteId = null
-destroyed = true;
 
 $("#deletarCliente").on('click', () => {
     $("#modal-default").modal('hide');
@@ -70,11 +69,8 @@ function deletarCliente() {
     $.ajax({
         url: `../back-end/clientes/${clienteId}`,
         type: 'DELETE'
-    }).done(() => {
-        table.rows($(`.${clienteId}`)).remove().draw();
-        console.log(table.rows($(`.${clienteId}`)).remove().draw());
-
-    }
+    }).done(() =>
+        table.rows($(`.${clienteId}`)).remove().draw()
     ).always(() => esconderModal());
 }
 

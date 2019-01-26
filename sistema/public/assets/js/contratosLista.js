@@ -25,11 +25,9 @@ function popularPesquisa(contratos, callback = null) {
             <td class="item" id="${contrato.id}">${contrato.unidadeComprador.razao_social || "teste"}</td>
             <td class="item" id="${contrato.id}">${contrato.unidadeVendedor.razao_social}</td>
             <td class="item" id="${contrato.id}">${contrato.produto.nome}</td>
-            <td style="text-align:center">
-                <button type="button" class="btn btn-default">
-                    <a href="../back-end/pdfs/contratos/${contrato.id}" target="_blank" rel="noopener noreferrer">
-                        <i class="fa fa-print" style="color: blue"></i>
-                    </a>
+            <td class="download" style="text-align:center">
+                <button type="button" class="btn btn-default" id="${contrato.id}">
+                    <i class="fa fa-print" style="color: blue"></i>
                 </button>
             </td>
             <td class="delete" style="text-align:center" id="${contrato.id}">
@@ -44,6 +42,9 @@ function popularPesquisa(contratos, callback = null) {
     $(`#contratos .item`).on("click", function () {
         irParaContratos(this.id);
     });
+    $(`#contratos .download`).on("click", ({ target }) => {
+        abrirContrato(target.id);
+    });
     $(`#contratos .delete`).on("click", function () {
         selecionarContrato(this.id);
     });
@@ -52,6 +53,11 @@ function popularPesquisa(contratos, callback = null) {
 
 function selecionarContrato(ctId) {
     contratoId = ctId;
+}
+
+
+function abrirContrato(ctId) {
+    window.open(`../back-end/pdfs/contratos/${ctId}`, '_blank');
 }
 
 function irParaContratos(contrato) {

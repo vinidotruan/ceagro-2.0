@@ -1,4 +1,5 @@
 clienteId = null
+destroyed = true;
 
 $("#deletarCliente").on('click', () => {
     $("#modal-default").modal('hide');
@@ -6,14 +7,11 @@ $("#deletarCliente").on('click', () => {
 });
 
 function buscar() {
-    $.get("../back-end/clientes", function (response) {
+    $.get("../back-end/clientes").done(response => {
         clientes = JSON.parse(response);
-    }).done(() => {
         popularPesquisa(clientes, () => {
-            $(function () {
-                $('#clientes').DataTable();
-                $(".overlay").remove();
-            })
+            $(".overlay").remove();
+            table = $('#clientes').DataTable();
         });
     });
 }
@@ -39,7 +37,7 @@ function popularPesquisa(clientes, callback) {
 
 function popularPorUnidade(cliente) {
     $.each(cliente.unidades, (index, unidade) => {
-        var linha = `<tr id="${cliente.id}" class="clicavel">
+        var linha = `<tr id="${cliente.id}" class="clicavel ${cliente.id}">
                 <td class="item" id="${cliente.id}">${cliente.nome_fantasia || 'Não há Registros'}</td>
                 <td class="item" id="${cliente.id}">${unidade.razao_social}</td>
                 <td class="item" id="${cliente.id}">${unidade.cnpj || 'Não há Registros'}</td>
@@ -72,8 +70,11 @@ function deletarCliente() {
     $.ajax({
         url: `../back-end/clientes/${clienteId}`,
         type: 'DELETE'
-    }).done(() =>
-        buscar()
+    }).done(() => {
+        table.rows($(`.${clienteId}`)).remove().draw();
+        console.log(table.rows($(`.${clienteId}`)).remove().draw());
+
+    }
     ).always(() => esconderModal());
 }
 

@@ -9,7 +9,8 @@ function buscarContratos() {
     $.get("../back-end/contratos", { limite: 50 }, response => {
         contratos = JSON.parse(response);
         popularPesquisa(contratos, () => {
-            $(function () {
+            $(() => {
+                $('#contratos').destroy();
                 $('#contratos').DataTable();
                 $(".overlay").remove();
             });

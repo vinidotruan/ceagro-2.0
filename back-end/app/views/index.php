@@ -176,7 +176,7 @@
                 </tr>
                 <tr>
                     <td class="paddingTop20" colspan="3">Dados Bancários: 
-                    <?= "{$contrato->contaBancaria()->banco}, conta {$contrato->contaBancaria()->conta} agência {$contrato->contaBancaria()->agencia}" ?></td>
+                    <?php ($contrato->contaBancaria()) ? "{$contrato->contaBancaria()->banco}, conta {$contrato->contaBancaria()->conta} agência {$contrato->contaBancaria()->agencia}" : "Não há conta bancária cadastrada"?></td>
                 </tr>
                 <tr>
                     <td class="paddingTop20">Peso e Qualidade:

@@ -287,12 +287,12 @@
 								<div class="col-xs-12">
 									<div class="nav-tabs-custom">
 										<ul class="nav nav-tabs">
-											<li class="active"><a href="#a" data-toggle="tab">Adendos</a></li>
-											<li><a href="#tab_2" data-toggle="tab">Fixações</a></li>
+											<li class="active"><a href="#ade" data-toggle="tab">Adendos</a></li>
+											<li><a href="#fix" data-toggle="tab">Fixações</a></li>
 										</ul>
 										
 										<div class="tab-content">
-											<div class="tab-pane active" id="a">
+											<div class="tab-pane active" id="ade">
 												<div class="row">
 													<div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
 														<div class="row invoice-info">
@@ -338,7 +338,7 @@
 												</div>
 											</div>
 
-											<div class="tab-pane" id="tab_2"F>
+											<div class="tab-pane" id="fix">
 												<div class="row">
 													<div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
 														<div class="row invoice-info">

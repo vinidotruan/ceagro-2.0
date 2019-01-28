@@ -24,7 +24,7 @@ function popularPesquisa(contratos, callback = null) {
             <td class="item" id="${contrato.id}">${contrato.unidadeComprador.razao_social || "teste"}</td>
             <td class="item" id="${contrato.id}">${contrato.unidadeVendedor.razao_social}</td>
             <td class="item" id="${contrato.id}">${contrato.produto.nome}</td>
-            <td class="download" style="text-align:center">
+            <td class="download" style="text-align:center" id="${contrato.id}">
                 <button type="button" class="btn btn-default" id="${contrato.id}">
                     <i class="fa fa-print" style="color: blue"></i>
                 </button>
@@ -42,6 +42,7 @@ function popularPesquisa(contratos, callback = null) {
         irParaContratos(this.id);
     });
     $(`#contratos .download`).on("click", ({ target }) => {
+        console.log('test');
         abrirContrato(target.id);
     });
     $(`#contratos .delete`).on("click", function () {

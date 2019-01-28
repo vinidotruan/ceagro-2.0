@@ -50,7 +50,7 @@
         padding-top: 10px;
     }
     .linha {
-        padding-top: 50px;
+        padding-top: 30px;
     }
     .center{
         padding-left:33.33%;

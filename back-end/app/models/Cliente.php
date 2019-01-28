@@ -19,7 +19,6 @@ class Cliente extends Model
 
     public function __construct()
     {
-        $this->endereco();
         $this->unidades();
     }
 

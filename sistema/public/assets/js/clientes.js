@@ -55,6 +55,7 @@ $(document).ready(() => {
 $(".btn").text("Salvar");
 $(".btn-danger").text("Fechar");
 $("#deletarUnidade").text("Excluir");
+$("#deletarEndereco").text("Excluir");
 /**
  * Verifica se há cliente, caso haja
  * atualiza, do contrário, cadastra um.
@@ -80,7 +81,9 @@ $("#deletarUnidade").on('click', () => {
     deletarUnidade();
 });
 
-
+$("#deletarEndereco").on('click', () => {
+    deletarEndereco();
+})
 /**
  * Verifica se há cliente, caso haja
  * atualiza o endereço, do contrário, cadastra um.
@@ -227,11 +230,31 @@ function popularEnderecos(enderecos) {
         cols += `<td>${endereco.cidade}</td>`;
         cols += `<td>${endereco.rua}</td>`;
         cols += `<td>${endereco.cep}</td>`;
+        cols += `<td class="delete" style="text-align:center" data-toggle="modal" data-target="#modal-endereco"">
+        <button type="button" class="btn btn-default" >
+            <i class="fa fa-trash-o" style="color: red"></i>
+        </button>
+    </td>`
         newRow.append(cols);
         $("#enderecos").append(newRow)
     }
     $('#enderecos tr').each((index, linha) => {
         $(linha).attr('onclick', `selecionarEndereco(${linha.id})`)
+    });
+}
+
+function deletarEndereco() {
+    esconderModalEndereco();
+    mostrarModal();
+    limparCamposUnidade();
+    $.ajax({
+        url: `../back-end/enderecos/${endereco.id}`,
+        type: 'DELETE'
+    }).done(() =>
+        buscarEnderecos(cliente.id)
+    ).always(() => {
+        esconderModal();
+        unidade = null;
     });
 }
 
@@ -532,6 +555,9 @@ function esconderModal() {
 }
 function esconderModalAviso() {
     $('#modal-aviso').modal('hide');
+}
+function esconderModalEndereco() {
+    $('#modal-endereco').modal('hide');
 }
 
 function mostrarModal() {

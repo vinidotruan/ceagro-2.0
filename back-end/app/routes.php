@@ -18,6 +18,7 @@ $router->put("{$urlBase}unidades/{unidade}", "UnidadesController@update");
 $router->delete("{$urlBase}unidades/{unidade}", "UnidadesController@destroy");
 
 $router->get("{$urlBase}enderecos", "EnderecosController@index");
+$router->delete("{$urlBase}enderecos/{endereco}", "EnderecosController@destroy");
 $router->get("{$urlBase}clientes/{cliente}/enderecos", "EnderecosController@index");
 $router->post("{$urlBase}clientes/enderecos", "EnderecosController@store");
 $router->put("{$urlBase}clientes/enderecos/{endereco}", "EnderecosController@update");

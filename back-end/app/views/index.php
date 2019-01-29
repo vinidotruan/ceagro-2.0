@@ -58,6 +58,9 @@
     .cnpjCeagro{
         padding-left:60%;
     }
+    .ac {
+        width: 20px;
+    }
 </style>
 
 <body>
@@ -79,8 +82,8 @@
             <table>
                 <tr>
                     <td colspan="2">Vendedor:
-                        <?= $contrato->unidadeVendedor->razao_social ?></td>
-                    <td>A/C:
+                        <?= $contrato->unidadeVendedor()->razao_social ?></td>
+                    <td class="ac">A/C:
                         <?= $contrato->assinatura_vendedor ?></td>
                 </tr>
                 <tr>
@@ -113,7 +116,7 @@
                 <tr>
                     <td colspan="2">Comprador:
                         <?= $contrato->unidadeComprador()->razao_social ?></td>
-                    <td>A/C:
+                    <td class="ac">A/C:
                         <?= $contrato->assinatura_comprador ?></td>
                 </tr>
                 <tr>
@@ -158,25 +161,15 @@
                     <td class="paddingTop20" colspan="3"> Descrição: <?= $contrato->produto()->descricao ?></td>
                 </tr>
                 <tr>
-                    <td class="paddingTop20"> Preço: R$
-                        <?= $contrato->preco ?>. Local: <?= $contrato->local ?>
+                    <td class="paddingTop20" colspan="3">
+                        <?= $contrato->preco ?>. <?= $contrato->tipo_embarque ?>, <?= $contrato->local ?>, 
+                        <?= $contrato->retirada_entrega . " " . $contrato->data_embarque ?>, pagamento
+                        <?= $contrato->pagamento ?>
                     </td>
-                </tr>
-                <tr>
-                    <td class="paddingTop20"> Tipo Embarque: <?= $contrato->tipo_embarque ?></td>
-                </tr>
-                <tr>
-                    <td class="paddingTop20"> Embarque:
-                        <?= $contrato->retirada_entrega . " " . $contrato->data_embarque ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="paddingTop20">Pagamento:
-                        <?= $contrato->pagamento ?></td>
-                </tr>
-                <tr>
+                    <tr>
                     <td class="paddingTop20" colspan="3">Dados Bancários: 
-                    <?php ($contrato->contaBancaria()) ? "{$contrato->contaBancaria()->banco}, conta {$contrato->contaBancaria()->conta} agência {$contrato->contaBancaria()->agencia}" : "Não há conta bancária cadastrada"?></td>
+                        <?= ($contrato->contaBancaria()) ? "{$contrato->contaBancaria()->banco}, conta {$contrato->contaBancaria()->conta} agência {$contrato->contaBancaria()->agencia}" : "Não há conta bancária cadastrada"?>
+                    </td>
                 </tr>
                 <tr>
                     <td class="paddingTop20">Peso e Qualidade:
@@ -194,10 +187,14 @@
                 <td class="paddingTop10">Logística/Cotas Comprador:
                        <?= ($contrato->comprador->logistica_cotas && strlen($contrato->comprador->logistica_cotas) > 0) ? $contrato->comprador->logistica_cotas : "-" ?></td>
                 </tr>
-                <tr>
-                    <td class="paddingTop20" colspan="3">Observações:
-                        <?= $contrato->observacao ?></td>
-                </tr>
+                <?php if($contrato->observacao){
+                    echo "<tr>
+                        <td class='paddingTop20' colspan='3'>Observações:
+                            $contrato->observacao 
+                        </td>
+                    </tr>";
+                }
+                ?>
                 <tr>
                     <td class="paddingTop20">Comissão:
                         <?= $contrato->comissao ?></td>

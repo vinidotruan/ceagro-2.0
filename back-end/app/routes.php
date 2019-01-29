@@ -25,6 +25,7 @@ $router->put("{$urlBase}clientes/enderecos/{endereco}", "EnderecosController@upd
 
 $router->post("{$urlBase}clientes/contas-bancarias", "ContasBancariasController@store");
 $router->put("{$urlBase}contas-bancarias/{contaBancaria}", "ContasBancariasController@update");
+$router->delete("{$urlBase}contas-bancarias/{contaBancaria}", "ContasBancariasController@destroy");
 $router->get("{$urlBase}clientes/{cliente}/contas-bancarias", "ContasBancariasController@show");
 
 $router->get("{$urlBase}produtos", "ProdutosController@index");

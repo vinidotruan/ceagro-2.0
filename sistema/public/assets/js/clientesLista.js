@@ -18,17 +18,17 @@ function buscar() {
 function popularPesquisa(clientes, callback) {
     $("#clientes tbody tr").remove();
 
-    $.each(clientes, function (index, cliente) {
+    $.each(clientes, (index, cliente) => {
         if (cliente.unidades.length > 0) {
             popularPorUnidade(cliente);
         }
     });
 
-    $(`#clientes .item`).on("click", function () {
+    $(`#clientes .item`).on("click", () => {
         irParaCliente(this.id);
     });
 
-    $(`#clientes .delete`).on("click", function () {
+    $(`#clientes .delete`).on("click", () => {
         selecionarCliente(this.id);
     });
     callback();

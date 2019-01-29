@@ -61,7 +61,7 @@ class ContratosController extends Controller
     public function destroy($contrato)
     {
         $msg = Contrato::delete(['id',$contrato]);
-        return $this->responderJson($msg);
+        return $this->responderJSON($msg);
     }
 
     public function contratosFuturos()

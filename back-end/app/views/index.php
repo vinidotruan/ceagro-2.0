@@ -58,9 +58,6 @@
     .cnpjCeagro{
         padding-left:60%;
     }
-    .ac {
-        width: 20px;
-    }
 </style>
 
 <body>
@@ -81,9 +78,9 @@
         <div class="vendedor">
             <table>
                 <tr>
-                    <td colspan="2">Vendedor:
+                    <td colspan="2" class="ac">Vendedor:
                         <?= $contrato->unidadeVendedor()->razao_social ?></td>
-                    <td class="ac">A/C:
+                    <td >A/C:
                         <?= $contrato->assinatura_vendedor ?></td>
                 </tr>
                 <tr>
@@ -97,7 +94,7 @@
                 </tr>
                 <tr>
                     <td>
-                        CNPJ:
+                        CNPJ/CPF:
                         <?= $contrato->unidadeVendedor->cnpj ?>
                     </td>
                 </tr>
@@ -130,7 +127,7 @@
                 </tr>
                 <tr>
                     <td>
-                        CNPJ:
+                        CNPJ/CPF:
                         <?= $contrato->unidadeComprador->cnpj ?>
                     </td>
                 </tr>

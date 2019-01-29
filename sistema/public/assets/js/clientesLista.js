@@ -10,7 +10,7 @@ function buscar() {
         clientes = JSON.parse(response);
         popularPesquisa(clientes, () => {
             $(".overlay").remove();
-            table = $('#clientes').DataTable();
+            table = $('#clientes').DataTable({ "order": [1, "asc"] });
         });
     });
 }
@@ -24,11 +24,11 @@ function popularPesquisa(clientes, callback) {
         }
     });
 
-    $(`#clientes .item`).on("click", () => {
+    $(`#clientes .item`).on("click", function () {
         irParaCliente(this.id);
     });
 
-    $(`#clientes .delete`).on("click", () => {
+    $(`#clientes .delete`).on("click", function () {
         selecionarCliente(this.id);
     });
     callback();

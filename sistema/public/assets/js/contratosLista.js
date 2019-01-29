@@ -11,7 +11,7 @@ function buscarContratos() {
         contratos = JSON.parse(response);
         popularPesquisa(contratos, () => {
             $(".overlay").remove();
-            table = $('#contratos').DataTable();
+            table = $('#contratos').DataTable({ "order": [1, "asc"] });
         });
     });
 }
@@ -41,9 +41,9 @@ function popularPesquisa(contratos, callback = null) {
     $(`#contratos .item`).on("click", function () {
         irParaContratos(this.id);
     });
-    $(`#contratos .download`).on("click", ({ target }) => {
-        console.log('test');
-        abrirContrato(target.id);
+    $(`#contratos .download`).on("click", function (event) {
+        console.log(event);
+        abrirContrato(event.target.id);
     });
     $(`#contratos .delete`).on("click", function () {
         selecionarContrato(this.id);

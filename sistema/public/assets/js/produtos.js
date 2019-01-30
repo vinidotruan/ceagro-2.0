@@ -26,7 +26,10 @@ function cadastrar() {
     var dados = $('#produto').serialize();
     $.post('../back-end/produtos', dados).done(() => {
         buscar();
-    }).always(() => esconderModal());
+    }).always(() => {
+        esconderModal();
+        limparCampos();
+    });
 }
 
 /**

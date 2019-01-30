@@ -34,7 +34,7 @@ $(document).ready(() => {
     if (localStorage.hasOwnProperty('cliente')) {
 
         cliente = JSON.parse(localStorage.getItem("cliente"));
-        // localStorage.removeItem("cliente");
+        localStorage.removeItem("cliente");
 
         buscarContas(cliente.id, () => {
             compararFormCliente(cliente, "cliente");
@@ -56,6 +56,7 @@ $(".btn").text("Salvar");
 $(".btn-danger").text("Fechar");
 $("#deletarUnidade").text("Excluir");
 $("#deletarEndereco").text("Excluir");
+$("#deletarConta").text("Excluir");
 /**
  * Verifica se há cliente, caso haja
  * atualiza, do contrário, cadastra um.
@@ -83,6 +84,9 @@ $("#deletarUnidade").on('click', () => {
 
 $("#deletarEndereco").on('click', () => {
     deletarEndereco();
+})
+$("#deletarConta").on('click', () => {
+    deletarConta();
 })
 /**
  * Verifica se há cliente, caso haja
@@ -291,6 +295,13 @@ function limparCamposUnidade() {
     return;
 }
 
+function limparCamposContas() {
+    $("#contasBancarias :input").each((index, field) => {
+        $(field).val("");
+    });
+    return;
+}
+
 function limparCamposEndereco() {
     $("#endereco :input").each((index, field) => {
         $(field).val("");
@@ -344,6 +355,11 @@ function popularContas(contas) {
         cols += `<td>${conta.banco}</td>`;
         cols += `<td>${conta.agencia}</td>`;
         cols += `<td>${conta.conta}</td>`;
+        cols += `<td class="delete" style="text-align:center; width:5%" id="${conta.id}">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-conta">
+            <i class="fa fa-trash-o" style="color: red"></i>
+        </button>
+    </td>`;
         newRow.append(cols);
         $("#contas_bancarias").append(newRow)
     }
@@ -455,6 +471,20 @@ function deletarUnidade() {
     ).always(() => {
         esconderModal();
         unidade = null;
+    });
+}
+function deletarConta() {
+    esconderModalAviso();
+    mostrarModal();
+    limparCamposContas();
+    $.ajax({
+        url: `../back-end/contas-bancarias/${conta.id}`,
+        type: 'DELETE'
+    }).done(() =>
+        buscarContas(cliente.id)
+    ).always(() => {
+        esconderModal();
+        conta = null;
     });
 }
 

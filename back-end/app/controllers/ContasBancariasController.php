@@ -38,4 +38,10 @@ class ContasBancariasController extends Controller
 
         return $this->responderJSON($ultimaConta);
     }
+
+    public function destroy($conta)
+    {
+        $msg = ContaBancaria::delete(["id", $conta]);
+        return $this->responderJSON($msg);
+    }
 }

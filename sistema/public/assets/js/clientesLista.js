@@ -6,14 +6,11 @@ $("#deletarCliente").on('click', () => {
 });
 
 function buscar() {
-    $.get("../back-end/clientes", function (response) {
+    $.get("../back-end/clientes").done(response => {
         clientes = JSON.parse(response);
-    }).done(() => {
         popularPesquisa(clientes, () => {
-            $(function () {
-                $('#clientes').DataTable();
-                $(".overlay").remove();
-            })
+            $(".overlay").remove();
+            table = $('#clientes').DataTable({ "order": [1, "asc"] });
         });
     });
 }
@@ -21,7 +18,7 @@ function buscar() {
 function popularPesquisa(clientes, callback) {
     $("#clientes tbody tr").remove();
 
-    $.each(clientes, function (index, cliente) {
+    $.each(clientes, (index, cliente) => {
         if (cliente.unidades.length > 0) {
             popularPorUnidade(cliente);
         }
@@ -39,7 +36,7 @@ function popularPesquisa(clientes, callback) {
 
 function popularPorUnidade(cliente) {
     $.each(cliente.unidades, (index, unidade) => {
-        var linha = `<tr id="${cliente.id}" class="clicavel">
+        var linha = `<tr id="${cliente.id}" class="clicavel ${cliente.id}">
                 <td class="item" id="${cliente.id}">${cliente.nome_fantasia || 'Não há Registros'}</td>
                 <td class="item" id="${cliente.id}">${unidade.razao_social}</td>
                 <td class="item" id="${cliente.id}">${unidade.cnpj || 'Não há Registros'}</td>
@@ -73,7 +70,7 @@ function deletarCliente() {
         url: `../back-end/clientes/${clienteId}`,
         type: 'DELETE'
     }).done(() =>
-        buscar()
+        table.rows($(`.${clienteId}`)).remove().draw()
     ).always(() => esconderModal());
 }
 

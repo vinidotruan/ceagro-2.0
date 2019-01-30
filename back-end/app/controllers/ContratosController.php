@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\App;
 use App\Models\Cliente;
+use App\Models\Cfop;
 use App\Models\Adendo;
 use App\Models\Fixacao;
 use App\Models\Contrato;
@@ -61,7 +62,7 @@ class ContratosController extends Controller
     public function destroy($contrato)
     {
         $msg = Contrato::delete(['id',$contrato]);
-        return $this->responderJson($msg);
+        return $this->responderJSON($msg);
     }
 
     public function contratosFuturos()
@@ -143,6 +144,16 @@ class ContratosController extends Controller
         }
 
         return $this->responderJSON($vendedores);
+    }
+
+    public function cfop($cfop)
+    {
+        try {
+            Cfop::create($cfop);
+
+        } catch (\Exception $exception) {
+            return $this->responderJSON($exception);
+        }
     }
 
 }

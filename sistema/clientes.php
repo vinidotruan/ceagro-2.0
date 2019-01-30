@@ -58,8 +58,9 @@
                                     <div class="form-row">
                                         <div class="col-xs-12 col-lg-6">
                                             <div class="form-group">
-                                                <label for="cnpj">CNPJ</label>
-                                                <input type="text" class="form-control" name="cnpj" placeholder="Digite o cnpj" autocomplete="off"  data-inputmask='"mask": "99.999.999/9999-99"' data-mask>
+                                                <label for="cnpj">CNPJ/CPF</label>
+                                                <!-- <input type="text" class="form-control" name="cnpj" placeholder="Digite o cnpj" autocomplete="off"  data-inputmask='"mask": "99.999.999/9999-99"' data-mask> -->
+                                                <input type="text" class="form-control" name="cnpj" placeholder="Digite o CNPJ ou CPF" autocomplete="off" >
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-lg-6">
@@ -273,6 +274,7 @@
                                             <th>Banco</th>
                                             <th>Agência</th>
                                             <th>Conta</th>
+                                            <th>Deletar</th>
                                         </tr>
                                     </thead>
                                     <tbody id="contas_bancarias">
@@ -306,6 +308,26 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default btn-danger pull-left" style="color:white" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary" id="deletarUnidade">Excluir</button>
+				</div>
+            </div>
+		</div>
+	</div>
+
+    <div class="modal fade" id="modal-conta">
+		<div class="modal-dialog">
+            <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">AVISO!</h4>
+              	</div>
+				<div class="modal-body">
+					<p>Você deseja realmente excluir esta Conta?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-danger pull-left" style="color:white" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id="deletarConta">Excluir</button>
 				</div>
             </div>
 		</div>

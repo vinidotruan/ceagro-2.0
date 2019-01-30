@@ -1,18 +1,17 @@
 contratoId = null;
 
+
 $("#deletarContrato").on('click', () => {
     $("#modal-default").modal('hide');
     deletarContrato();
 });
 
 function buscarContratos() {
-    $.get("../back-end/contratos", { limite: 50 }, response => {
+    $.get("../back-end/contratos").done(response => {
         contratos = JSON.parse(response);
         popularPesquisa(contratos, () => {
-            $(function () {
-                $('#contratos').DataTable();
-                $(".overlay").remove();
-            });
+            $(".overlay").remove();
+            table = $('#contratos').DataTable({ "order": [1, "asc"] });
         });
     });
 }
@@ -25,11 +24,9 @@ function popularPesquisa(contratos, callback = null) {
             <td class="item" id="${contrato.id}">${contrato.unidadeComprador.razao_social || "teste"}</td>
             <td class="item" id="${contrato.id}">${contrato.unidadeVendedor.razao_social}</td>
             <td class="item" id="${contrato.id}">${contrato.produto.nome}</td>
-            <td style="text-align:center">
-                <button type="button" class="btn btn-default">
-                    <a href="../back-end/pdfs/contratos/${contrato.id}" target="_blank" rel="noopener noreferrer">
-                        <i class="fa fa-print" style="color: blue"></i>
-                    </a>
+            <td class="download" style="text-align:center" id="${contrato.id}">
+                <button type="button" class="btn btn-default" id="${contrato.id}">
+                    <i class="fa fa-print" style="color: blue"></i>
                 </button>
             </td>
             <td class="delete" style="text-align:center" id="${contrato.id}">
@@ -44,6 +41,10 @@ function popularPesquisa(contratos, callback = null) {
     $(`#contratos .item`).on("click", function () {
         irParaContratos(this.id);
     });
+    $(`#contratos .download`).on("click", function (event) {
+        console.log(event);
+        abrirContrato(event.target.id);
+    });
     $(`#contratos .delete`).on("click", function () {
         selecionarContrato(this.id);
     });
@@ -52,6 +53,11 @@ function popularPesquisa(contratos, callback = null) {
 
 function selecionarContrato(ctId) {
     contratoId = ctId;
+}
+
+
+function abrirContrato(ctId) {
+    window.open(`../back-end/pdfs/contratos/${ctId}`, '_blank');
 }
 
 function irParaContratos(contrato) {
@@ -68,7 +74,7 @@ function deletarContrato() {
         url: `../back-end/contratos/${contratoId}`,
         type: 'DELETE'
     }).done(() =>
-        buscarContratos()
+        table.row($(`#${contratoId}`)).remove().draw()
     ).always(() => esconderModal());
 }
 

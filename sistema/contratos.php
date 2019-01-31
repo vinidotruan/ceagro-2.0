@@ -195,18 +195,8 @@
 																<input type="text" class="form-control" name="local" placeholder="Informe o local do contrato" autocomplete="off" required> 
 															</div>
 														</div>
-
-														<div class="col-xs-12 col-lg-1">
-															<div class="form-group">
-																<label for="retirada_entrega">Retirada/Entrega</label>
-																<select name="retirada_entrega" class="form-control">
-																	<option value="retirada">Retirada</option>
-																	<option value="entrega">Entrega</option>
-																</select>
-															</div>
-														</div>
 													
-														<div class="col-xs-12 col-lg-3">
+														<div class="col-xs-12 col-lg-4">
 															<div class="form-group">
 																<label for="data_embarque">Data do Embarque</label>
 																<div class="input-group">
@@ -217,6 +207,19 @@
 																</div>
 															</div>
 														</div>
+
+														<div class="col-xs-12 col-lg-8"></div>
+														<div class="col-xs-12 col-lg-4">
+															<div class="form-group">
+																<label for="retirada_entrega">Opção de Embarque</label>
+																<select name="retirada_entrega" class="form-control">
+																	<option value="retirada">Retirada</option>
+																	<option value="entrega">Entrega</option>
+																	<option value="transferencia">Transferência</option>
+																</select>
+															</div>
+														</div>
+
 														<div class="form-row">
 															<div class="col-xs-12">
 																<div class="form-group">

@@ -88,9 +88,8 @@
                 <tr>
                     <td class="halfSize">Vendedor:
                         <?= $contrato->unidadeVendedor()->razao_social ?></td>
-                    <td class="ac">A/C:
-                        <?= $contrato->assinatura_vendedor ?></td>
                 </tr>
+               
                 <tr>
                     <td>
                         <?= ($contrato->unidadeVendedor->endereco->rua && strlen($contrato->unidadeVendedor->endereco->rua) > 0) ? "{$contrato->unidadeVendedor->endereco->rua}, " : 'Não cadastrada, ' ?>
@@ -112,6 +111,10 @@
                         <?= ($contrato->unidadeVendedor->inscricao_estadual && strlen($contrato->unidadeVendedor->inscricao_estadual) > 0) ? $contrato->unidadeVendedor->inscricao_estadual : "-" ?>
                     </td>
                 </tr>
+                <tr>
+                    <td> A/C:
+                    <?= $contrato->assinatura_vendedor ?></td>
+                </tr>
             </table>
         </div>
     </section>
@@ -121,8 +124,6 @@
                 <tr>
                     <td class="halfSize">Comprador:
                         <?= $contrato->unidadeComprador()->razao_social ?></td>
-                    <td class="ac">A/C:
-                        <?= $contrato->assinatura_comprador ?></td>
                 </tr>
                 <tr>
                     <td>
@@ -145,6 +146,10 @@
                         <?= ($contrato->unidadeComprador->inscricao_estadual && strlen($contrato->unidadeComprador->inscricao_estadual) > 0) ? $contrato->unidadeComprador->inscricao_estadual : "-" ?>
                     </td>
                 </tr>
+                <tr>
+                <td>A/C:
+                        <?= $contrato->assinatura_comprador ?></td>
+                        </tr>
             </table>
         </div>
     </section>
@@ -168,12 +173,12 @@
                 <tr>
                     <td class="paddingTop20" colspan="3">
                         Preço: <?= $contrato->preco ?>. <?= $contrato->tipo_embarque ?>, <?= $contrato->local ?>.<br> 
-                        <?= ucfirst($contrato->retirada_entrega) . ": de " . str_replace('-','à',$contrato->data_embarque) ?>, pagamento
+                        <?= ucfirst($contrato->retirada_entrega) . ": de " . str_replace('-', 'à', $contrato->data_embarque) ?>, pagamento
                         <?= $contrato->pagamento ?>
                     </td>
                     <tr>
                     <td class="paddingTop20" colspan="3">Dados Bancários: 
-                        <?= ($contrato->contaBancaria()) ? "{$contrato->contaBancaria()->banco}, conta {$contrato->contaBancaria()->conta} agência {$contrato->contaBancaria()->agencia}" : "Não há conta bancária cadastrada"?>
+                        <?= ($contrato->contaBancaria()) ? "{$contrato->contaBancaria()->banco}, conta {$contrato->contaBancaria()->conta} agência {$contrato->contaBancaria()->agencia}" : "Não há conta bancária cadastrada" ?>
                     </td>
                 </tr>
                 <tr>
@@ -192,7 +197,7 @@
                 <td class="paddingTop10">Logística/Cotas Comprador:
                        <?= ($contrato->comprador->logistica_cotas && strlen($contrato->comprador->logistica_cotas) > 0) ? $contrato->comprador->logistica_cotas : "-" ?></td>
                 </tr>
-                <?php if($contrato->observacao){
+                <?php if ($contrato->observacao) {
                     echo "<tr>
                         <td class='paddingTop20' colspan='3'>Observações:
                             $contrato->observacao 

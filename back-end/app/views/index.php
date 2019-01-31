@@ -58,6 +58,14 @@
     .cnpjCeagro{
         padding-left:60%;
     }
+    .ac{
+        width:300px;
+        text-align:right;
+    }
+    .halfSize{
+        width:300px;
+        text-align:left;
+    }
 </style>
 
 <body>
@@ -78,9 +86,9 @@
         <div class="vendedor">
             <table>
                 <tr>
-                    <td colspan="2" class="ac">Vendedor:
+                    <td class="halfSize">Vendedor:
                         <?= $contrato->unidadeVendedor()->razao_social ?></td>
-                    <td >A/C:
+                    <td class="ac">A/C:
                         <?= $contrato->assinatura_vendedor ?></td>
                 </tr>
                 <tr>
@@ -111,7 +119,7 @@
         <div class="comprador">
             <table>
                 <tr>
-                    <td colspan="2">Comprador:
+                    <td class="halfSize">Comprador:
                         <?= $contrato->unidadeComprador()->razao_social ?></td>
                     <td class="ac">A/C:
                         <?= $contrato->assinatura_comprador ?></td>

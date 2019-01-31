@@ -448,7 +448,7 @@ function cadastrarUnidade() {
             exibirSucesso('unidade');
             buscarUnidades(cliente.id);
             limparCamposUnidade();
-            unidade = JSON.parse(und);
+            unidade = null;
         }).always(
             () => esconderModal()
         ).fail(

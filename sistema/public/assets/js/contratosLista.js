@@ -26,12 +26,12 @@ function popularPesquisa(contratos, callback = null) {
             <td class="item" id="${contrato.id}">${contrato.produto.nome}</td>
             <td class="download" style="text-align:center" id="${contrato.id}">
                 <button type="button" class="btn btn-default" id="${contrato.id}">
-                    <i class="fa fa-print" style="color: blue"></i>
+                    <i class="fa fa-print" style="color: blue"  id="${contrato.id}"></i>
                 </button>
             </td>
             <td class="delete" style="text-align:center" id="${contrato.id}">
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-aviso">
-                    <i class="fa fa-trash-o" style="color: red"></i>
+                    <i class="fa fa-trash-o" style="color: red" ></i>
                 </button>
             </td>
         </tr>`;

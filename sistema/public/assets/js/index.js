@@ -48,14 +48,3 @@ $.get("../back-end/contratos/atuais", function (response) {
     });
 });
 
-$("#cfop").submit(function (event) {
-    event.preventDefault();
-
-    var dados = $("#cfop").serialize();
-
-    $.post("../back-end/cfop", dados)
-        .done(() => {
-        }).always(
-        ).fail(
-        );
-});

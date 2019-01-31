@@ -145,15 +145,4 @@ class ContratosController extends Controller
 
         return $this->responderJSON($vendedores);
     }
-
-    public function cfop($cfop)
-    {
-        try {
-            Cfop::create($cfop);
-
-        } catch (\Exception $exception) {
-            return $this->responderJSON($exception);
-        }
-    }
-
 }

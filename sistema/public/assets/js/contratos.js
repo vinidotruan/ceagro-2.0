@@ -5,6 +5,7 @@ $(document).ready(() => {
     buscarProdutos();
     buscarUnidadesDeMedidas();
     buscarNumeroConfirmacao();
+    buscarCfops();
     if (temContratoL()) {
         buscarAdendos();
         buscarFixacoes();
@@ -103,6 +104,19 @@ function popularProdutos(produtos) {
     $.each(produtos, (index, produto) => {
         const option = `<option value=${produto.id}>${produto.nome}</option>`;
         $("#produtos").append(option);
+    })
+}
+
+function buscarCfops() {
+    $.get(`../back-end/cfops`).done((response) => {
+        cfops = JSON.parse(response);
+        popularCfops(cfops)
+    });
+}
+function popularCfops(cfops) {
+    $.each(cfops, (index, cfop) => {
+        const option = `<option value=${cfop.id}>${cfop.descricao}</option>`;
+        $("#cfops").append(option);
     })
 }
 

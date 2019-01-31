@@ -167,8 +167,8 @@
                 </tr>
                 <tr>
                     <td class="paddingTop20" colspan="3">
-                        <?= $contrato->preco ?>. <?= $contrato->tipo_embarque ?>, <?= $contrato->local ?>, 
-                        <?= $contrato->retirada_entrega . " " . $contrato->data_embarque ?>, pagamento
+                        Preço: <?= $contrato->preco ?>. <?= $contrato->tipo_embarque ?>, <?= $contrato->local ?>.<br> 
+                        <?= ucfirst($contrato->retirada_entrega) . ": de " . str_replace('-','à',$contrato->data_embarque) ?>, pagamento
                         <?= $contrato->pagamento ?>
                     </td>
                     <tr>

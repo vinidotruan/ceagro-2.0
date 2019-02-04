@@ -173,8 +173,8 @@
                 <tr>
                     <td class="paddingTop20" colspan="3">
                         Preço: <?= $contrato->preco ?>. <?= $contrato->tipo_embarque ?>, <?= $contrato->local ?>.<br> 
-                        <?= ucfirst($contrato->retirada_entrega) . ": de " . str_replace('-', 'à', $contrato->data_embarque) ?>, pagamento
-                        <?= $contrato->pagamento ?>
+                        <?= ucfirst($contrato->retirada_entrega) . ": de " . str_replace('-', 'à', $contrato->data_embarque) ?>.
+                        <br>Pagamento <?= $contrato->pagamento ?>
                     </td>
                     <tr>
                     <td class="paddingTop20" colspan="3">Dados Bancários: 

@@ -237,8 +237,8 @@
 																<div class="form-group">
 																	<label for="peso_qualidade">Peso & Qualidade</label>
 																	<select name="peso_qualidade" class="form-control">
-																		<option value="Na Origem">Na Origem</option>
-																		<option value="No Destino">No Destino</option>
+																		<option value="Na origem">Na origem</option>
+																		<option value="No destino">No destino</option>
 																	</select>
 																</div>
 															</div>

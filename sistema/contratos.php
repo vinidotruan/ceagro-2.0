@@ -51,7 +51,7 @@
 							</div>
 							<div class="row">
 								<!-- Dados do Vendedor -->
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<div class="col-xs-12 col-lg-6">
 									<section class="invoice box cliente" id="vendedor" style="width: auto">
 										<div class="row">
 											<div class="col-xs-12">
@@ -94,7 +94,7 @@
 									</section>
 								</div>
 								<!-- Dados do Comprador -->
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<div class="col-xs-12 col-lg-6">
 									<section class="invoice box cliente" id="comprador" style="width: auto">
 										<div class="row">
 											<div class="col-xs-12">
@@ -266,7 +266,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
+								<div class="col-xs-12">
 								<section class="invoice" id="button">
 									<div class="box-footer">
 										<?php require('partials/components/erro.html') ?>
@@ -281,7 +281,7 @@
 				</div>
 				  
 				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
+					<div class="col-xs-12">
 						<section class="invoice">
 							<div class="row">
 								<div class="col-xs-12">
@@ -294,7 +294,7 @@
 										<div class="tab-content">
 											<div class="tab-pane active" id="ade">
 												<div class="row">
-													<div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
+													<div class="col-xs-12 col-lg-12">
 														<div class="row invoice-info">
 															<form role="form" id="adendo">
 																<div class="box-body">
@@ -340,7 +340,7 @@
 
 											<div class="tab-pane" id="fix">
 												<div class="row">
-													<div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
+													<div class="col-xs-12 col-lg-12">
 														<div class="row invoice-info">
 															<form role="form" id="fixacao">
 																<div class="box-body">

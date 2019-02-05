@@ -74,7 +74,11 @@
             <img src="public/img/logo.png" alt="">
         </div>
         <div class="data"> Porto Alegre
-            <?= $data ?>
+        <?php
+        setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+        date_default_timezone_set('America/Sao_Paulo');
+        echo strftime('%d de %B de %Y', strtotime($contrato->data_cadastro));
+        ?>
         </div>
     </header>
     <section>

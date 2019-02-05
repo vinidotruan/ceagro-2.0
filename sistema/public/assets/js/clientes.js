@@ -210,8 +210,8 @@ function popularUnidades(unidades) {
         cols += `<td>${unidade.razao_social}</td>`;
         cols += `<td>${unidade.razao_social}</td>`;
         cols += `<td class="delete" style="text-align:center" id="${unidade.id}">
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-aviso">
-            <i class="fa fa-trash-o" style="color: red"></i>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-aviso">
+            <i class="fa fa-trash-o"></i>
         </button>
     </td>`;
         newRow.append(cols);
@@ -235,8 +235,8 @@ function popularEnderecos(enderecos) {
         cols += `<td>${endereco.rua}</td>`;
         cols += `<td>${endereco.cep}</td>`;
         cols += `<td class="delete" style="text-align:center" data-toggle="modal" data-target="#modal-endereco"">
-        <button type="button" class="btn btn-default" >
-            <i class="fa fa-trash-o" style="color: red"></i>
+        <button type="button" class="btn btn-danger" >
+            <i class="fa fa-trash-o"></i>
         </button>
     </td>`
         newRow.append(cols);
@@ -356,8 +356,8 @@ function popularContas(contas) {
         cols += `<td>${conta.agencia}</td>`;
         cols += `<td>${conta.conta}</td>`;
         cols += `<td class="delete" style="text-align:center; width:5%" id="${conta.id}">
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-conta">
-            <i class="fa fa-trash-o" style="color: red"></i>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-conta">
+            <i class="fa fa-trash-o"></i>
         </button>
     </td>`;
         newRow.append(cols);

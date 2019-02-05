@@ -257,13 +257,13 @@ function listarAdendos(adendos) {
         var cols = "";
         cols += `<td class='item' id=${adendo.id}>${adendo.descricao}</td>`;
         cols += `<td class="item" id=${adendo.id}>
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-aviso">
-                <i class="fa fa-trash-o" style="color: red"></i>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-aviso">
+                <i class="fa fa-trash-o"></i>
             </button>
         </td>`
         cols += `<td class="download" id=${adendo.id}>
-            <button type="button" class="btn btn-default">
-                <i class="fa fa-print" style="color: blue"></i>
+            <button type="button" class="btn btn-primary">
+                <i class="fa fa-print"></i>
             </button>
         </td>`
         newRow.append(cols);
@@ -289,13 +289,13 @@ function listarFixacoes(fixacoes) {
 
         cols += `<td class='item' id=${fixacao.id}>${fixacao.contaBancaria.conta} | ${fixacao.contaBancaria.agencia} - ${fixacao.contaBancaria.banco}</td>`;
         cols += `<td class="item" id=${fixacao.id}>
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-aviso-fixacoes">
-                <i class="fa fa-trash-o" style="color: red"></i>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-aviso-fixacoes">
+                <i class="fa fa-trash-o"></i>
             </button>
         </td>`
         cols += `<td class="download" style="text-align:center" id="${fixacao.id}">
-                    <button type="button" class="btn btn-default">
-                        <i class="fa fa-print" style="color: blue"></i>
+                    <button type="button" class="btn btn-primary">
+                        <i class="fa fa-print"></i>
                     </button>
                 </td>`
         newRow.append(cols);

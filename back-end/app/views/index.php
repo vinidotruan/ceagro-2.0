@@ -75,9 +75,9 @@
         </div>
         <div class="data"> Porto Alegre, 
         <?php
-        setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-        date_default_timezone_set('America/Sao_Paulo');
-        echo strftime('%d de %B de %Y', strtotime($contrato->data_cadastro));
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
+            echo strftime('%d de %B de %Y', strtotime($contrato->data_cadastro));
         ?>
         </div>
     </header>
@@ -110,13 +110,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td >
                     Inscrição Estadual:
                         <?= ($contrato->unidadeVendedor->inscricao_estadual && strlen($contrato->unidadeVendedor->inscricao_estadual) > 0) ? $contrato->unidadeVendedor->inscricao_estadual : "-" ?>
                     </td>
-                </tr>
-                <tr>
-                    <td> A/C:
+                    <td class="ac" > A/C:
                     <?= $contrato->assinatura_vendedor ?></td>
                 </tr>
             </table>
@@ -149,9 +147,7 @@
                     Inscrição Estadual:
                         <?= ($contrato->unidadeComprador->inscricao_estadual && strlen($contrato->unidadeComprador->inscricao_estadual) > 0) ? $contrato->unidadeComprador->inscricao_estadual : "-" ?>
                     </td>
-                </tr>
-                <tr>
-                <td>A/C:
+                <td class="ac">A/C:
                         <?= $contrato->assinatura_comprador ?></td>
                         </tr>
             </table>
@@ -177,12 +173,12 @@
                 <tr>
                     <td class="paddingTop20" colspan="3">
                         Preço: <?= $contrato->preco ?>. <?= $contrato->tipo_embarque ?>, <?= $contrato->local ?>.<br> 
-                        <?= ucfirst($contrato->retirada_entrega) . ": de " . str_replace('-', 'à', $contrato->data_embarque) ?>.
+                        <?= ucfirst($contrato->retirada_entrega) . " de " . str_replace('-', 'à', $contrato->data_embarque) ?>.
                         <br>Pagamento <?= $contrato->pagamento ?>
                     </td>
                     <tr>
                     <td class="paddingTop20" colspan="3">Dados Bancários: 
-                        <?= ($contrato->contaBancaria()) ? "{$contrato->contaBancaria()->banco}, conta {$contrato->contaBancaria()->conta} agência {$contrato->contaBancaria()->agencia}" : "Não há conta bancária cadastrada" ?>
+                        <?= ($contrato->contaBancaria()) ?"{$contrato->contaBancaria()->banco}, conta {$contrato->contaBancaria()->conta} agência {$contrato->contaBancaria()->agencia}" : "Não há conta bancária cadastrada" ?>
                     </td>
                 </tr>
                 <tr>

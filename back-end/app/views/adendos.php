@@ -70,7 +70,6 @@
         </div>
     </header>
     <section>
-<<<<<<< HEAD
         <div class="confirmacao">
             <span>Confirmação número: <strong><?= $adendos[0]->contrato()->numero_confirmacao ?></strong></span>
         </div>
@@ -149,21 +148,6 @@
             </tr>
         </table>
         <?php endforeach?>
-=======
-    <?php
-    foreach($adendos as $adendo){
-        $contrato_id = $adendo->contrato_id;
-        $descricao = $adendo->descricao;
-    ?>
-        <table>            
-            <tr>
-                <td class="paddingTop20">Descrição: <?=$descricao?></td>
-            </tr>
-        </table>
-    <?php
-    }
-    ?>
->>>>>>> 9eee1a9ecabce6f9836fdd541eb56b14f18db370
     </section>
 </body>
 

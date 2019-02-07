@@ -155,7 +155,7 @@
 														<div class="col-xs-12 col-lg-4">
 															<div class="form-group">
 																<label for="unidade_medida_id">Unidades</label>
-																<select class="form-control select2" name="unidade_medida_id" style="width: 100%;" id="unidades" required></select>
+																<select class="form-control" name="unidade_medida_id" style="width: 100%;" id="unidades" required></select>
 															</div>
 														</div>
 														<div class="col-xs-12 col-lg-4">

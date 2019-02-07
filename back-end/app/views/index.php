@@ -92,6 +92,8 @@
                 <tr>
                     <td class="halfSize">Vendedor:
                         <?= $contrato->unidadeVendedor()->razao_social ?></td>
+                        <td class="ac" > A/C:
+                    <?= $contrato->assinatura_vendedor ?></td>
                 </tr>
                
                 <tr>
@@ -114,8 +116,7 @@
                     Inscrição Estadual:
                         <?= ($contrato->unidadeVendedor->inscricao_estadual && strlen($contrato->unidadeVendedor->inscricao_estadual) > 0) ? $contrato->unidadeVendedor->inscricao_estadual : "-" ?>
                     </td>
-                    <td class="ac" > A/C:
-                    <?= $contrato->assinatura_vendedor ?></td>
+                    
                 </tr>
             </table>
         </div>
@@ -126,6 +127,8 @@
                 <tr>
                     <td class="halfSize">Comprador:
                         <?= $contrato->unidadeComprador()->razao_social ?></td>
+                        <td class="ac">A/C:
+                        <?= $contrato->assinatura_comprador ?></td>
                 </tr>
                 <tr>
                     <td>
@@ -147,8 +150,7 @@
                     Inscrição Estadual:
                         <?= ($contrato->unidadeComprador->inscricao_estadual && strlen($contrato->unidadeComprador->inscricao_estadual) > 0) ? $contrato->unidadeComprador->inscricao_estadual : "-" ?>
                     </td>
-                <td class="ac">A/C:
-                        <?= $contrato->assinatura_comprador ?></td>
+                
                         </tr>
             </table>
         </div>
@@ -173,8 +175,8 @@
                 <tr>
                     <td class="paddingTop20" colspan="3">
                         Preço: <?= $contrato->preco ?>. <?= $contrato->tipo_embarque ?>, <?= $contrato->local ?>.<br> 
-                        <?= ucfirst($contrato->retirada_entrega) . " de " . str_replace('-', 'à', $contrato->data_embarque) ?>.
-                        <br>Pagamento <?= $contrato->pagamento ?>
+                        <div class="paddingTop20"><?= ucfirst($contrato->retirada_entrega) . " de " . str_replace('-', 'à', $contrato->data_embarque) ?>.</div>
+                        <div class=""><br>Pagamento: <?= $contrato->pagamento ?></div>
                     </td>
                     <tr>
                     <td class="paddingTop20" colspan="3">Dados Bancários: 
@@ -227,7 +229,7 @@
                     <td class="linha center"><pre>____________________________________________</pre></td>
                 </tr>
                 <tr>
-                    <td class="center"><pre><b> CEAGRO CORRETORA DE MERCADORIAS LTDA</b></pre></td>
+                    <td class="center"><pre>CEAGRO CORRETORA DE MERCADORIAS LTDA</pre></td>
                 </tr>
                 <tr>
                     <td class="cnpjCeagro"><pre>90.880.204/0001-57</pre></td>
@@ -235,5 +237,5 @@
             </table>
     </section>
 </body>
-
+<!--Developed by Lucas Monteiro and Ruan Vinícius-->
 </html>

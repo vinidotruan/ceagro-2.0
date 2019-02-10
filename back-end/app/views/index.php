@@ -59,12 +59,14 @@
         padding-left:60%;
     }
     .ac{
-        width:300px;
-        text-align:right;
+	   width: 30%;
+	   overflow: auto;
+	   text-align:left;
     }
     .halfSize{
-        width:300px;
+        width:400px;
         text-align:left;
+		overflow: auto;
     }
 </style>
 

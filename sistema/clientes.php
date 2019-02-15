@@ -106,6 +106,7 @@
                                     <thead>
                                         <tr>
                                             <th>CNPJ</th>
+                                            <th>CNPJ</th>
                                             <th>Inscrição Estadual</th>
                                             <th>Razão Social</th>
                                             <th>Deletar</th>

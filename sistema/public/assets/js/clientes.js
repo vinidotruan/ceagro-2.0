@@ -32,7 +32,7 @@ $(document).ready(() => {
   $("#und").hide();
   if (localStorage.hasOwnProperty("cliente")) {
     cliente = JSON.parse(localStorage.getItem("cliente"));
-    // localStorage.removeItem("cliente");
+    localStorage.removeItem("cliente");
 
     buscarContas(cliente.id, () => {
       compararFormCliente(cliente, "cliente");
@@ -92,7 +92,9 @@ $("#deletarConta").on("click", () => {
 $("#endereco").submit(function(event) {
   event.preventDefault();
   if (temUnidade()) {
-    temEndereco() ? atualizarEndereco() : cadastrarEndereco();
+    temEndereco() && unidade.endereco != null
+      ? atualizarEndereco()
+      : cadastrarEndereco();
   } else {
     mostrarSemUnidade();
   }
@@ -311,6 +313,7 @@ function limparCamposContas() {
 }
 
 function limparCamposEndereco() {
+  endereco = null;
   $("#endereco :input").each((index, field) => {
     $(field).val("");
   });

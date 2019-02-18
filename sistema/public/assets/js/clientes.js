@@ -207,7 +207,7 @@ function buscarContas(clienteId, callback = null) {
  */
 function popularUnidades(unidades) {
   $("#unidades tr").remove();
-  var i = 0;
+  var i = 1;
   for (const unidade of unidades) {
     var newRow = $(`<tr class='item' id=${unidade.id}>`);
     var cols = "";
@@ -234,7 +234,7 @@ function popularUnidades(unidades) {
 }
 function popularEnderecos(enderecos) {
   $("#enderecos tr").remove();
-  var counterEndereco = 0;
+  var counterEndereco = 1;
   for (const endereco of enderecos) {
     var newRow = $(`<tr class='item' id=${endereco.id}>`);
     var cols = "";

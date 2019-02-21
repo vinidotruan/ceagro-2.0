@@ -327,8 +327,8 @@
 															<thead>
 																<tr>
 																	<th>Descrição</th>
-																	<th width="10%">Deletar</th>
 																	<th width="10%">Imprimir</th>
+																	<th width="10%">Deletar</th>
 																</tr>
 															</thead>
 															<tbody id="adendos">
@@ -406,8 +406,8 @@
 																	<th>Local do Embarque</th>
 																	<th>Data de Pagamento</th>
 																	<th>Conta Bancária</th>
-																	<th width="10%">Deletar</th>
 																	<th width="10%">Imprimir</th>
+																	<th width="10%">Deletar</th>
 																</tr>
 															</thead>
 															<tbody id="fixacoes">

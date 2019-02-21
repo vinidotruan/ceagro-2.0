@@ -142,7 +142,7 @@
     </section>
     <section style="margin-top: 20px">
         <?php foreach($fixacoes as $fixacao): ?>
-        <table style="border: 1px black solid; width: 100%; margin-top: 3px;">
+        <table><!--  style="border: 1px black solid; width: 100%; margin-top: 3px;" -->
             <tr>
                 <td class="padding20">Quantidade: <?= $fixacao->quantidade ?></td>
             </tr>

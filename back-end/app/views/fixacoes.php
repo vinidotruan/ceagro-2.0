@@ -144,20 +144,25 @@
         <?php foreach($fixacoes as $fixacao): ?>
         <table><!--  style="border: 1px black solid; width: 100%; margin-top: 3px;" -->
             <tr>
-                <td class="padding20">Quantidade: <?= $fixacao->quantidade ?></td>
+                <td class="padding20">Fixacão: Conforme acordado entre as partes, fica fixado  <?= $fixacao->quantidade ?>, a R$ <?= $fixacao->preco ?> por saco de sessenta quilos. (retirada/entrega) <?= $fixacao->local_embarque ?> e pagamento <?= $fixacao->data_pagamento ?>. Remessa via <?='Banco:'. $fixacao->contasBancarias()->banco .'- agência:'. $fixacao->contasBancarias()->agencia .'- conta:'.$fixacao->contasBancarias()->conta?>.
+            </tr>
+            <!--
+            <tr>
+                <td class="padding20">Quantidade:  //$fixacao->quantidade </td>
             </tr>
             <tr>
-                <td class="padding20">Preço: <?= $fixacao->preco ?></td>
+                <td class="padding20">Preço: //$fixacao->preco </td>
             </tr>
             <tr>
-                <td class="padding20">Local de embarque: <?= $fixacao->local_embarque ?></td>
+                <td class="padding20">Local de embarque: //$fixacao->local_embarque </td>
             </tr>
             <tr>
-                <td class="padding20">Contas bancárias: <?= 'Banco:'. $fixacao->contasBancarias()->banco .'- agência:'. $fixacao->contasBancarias()->agencia .'- conta:'.$fixacao->contasBancarias()->conta ?></td>
+                <td class="padding20">Contas bancárias: //'Banco:'. $fixacao->contasBancarias()->banco .'- agência:'. $fixacao->contasBancarias()->agencia .'- conta:'.$fixacao->contasBancarias()->conta </td>
             </tr>
             <tr>
-                <td class="padding20">Data pagamento: <?= $fixacao->data_pagamento ?></td>
+                <td class="padding20">Data pagamento: //$fixacao->data_pagamento </td>
             </tr>
+            -->
         </table>
         <?php endforeach ?>
     </section>

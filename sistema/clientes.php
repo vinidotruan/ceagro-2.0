@@ -105,7 +105,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>CNPJ</th>
+                                            <th>Nº</th>
                                             <th>CNPJ</th>
                                             <th>Inscrição Estadual</th>
                                             <th>Razão Social</th>
@@ -211,6 +211,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
+                                            <th>Nº</th>
                                             <th>Estado</th>
                                             <th>Cidade</th>
                                             <th>Rua</th>

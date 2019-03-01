@@ -58,6 +58,16 @@
     .cnpjCeagro{
         padding-left:60%;
     }
+    .ac{
+	   width: 30%;
+	   overflow: auto;
+	   text-align:left;
+    }
+    .halfSize{
+        width:400px;
+        text-align:left;
+		overflow: auto;
+    }
 </style>
 
 <body>
@@ -65,7 +75,7 @@
         <div class="log">
             <img src="public/img/logo.png" alt="">
         </div>
-        <div class="data paddingTop20"><strong> Porto Alegre
+        <div class="data"><strong> Porto Alegre
             <?= $data ?></strong>
         </div>
     </header>
@@ -78,9 +88,9 @@
         <div class="vendedor">
             <table>
                 <tr>
-                    <td colspan="2">Vendedor:
+                    <td class="halfSize">Vendedor:
                         <?= $fixacoes[0]->contrato()->unidadeVendedor->razao_social ?></td>
-                    <td>A/C:
+                    <td class="ac">A/C:
                         <?= $fixacoes[0]->contrato()->assinatura_vendedor ?></td>
                 </tr>
                 <tr>
@@ -111,9 +121,9 @@
         <div class="comprador">
             <table>
                 <tr>
-                    <td colspan="2">Comprador:
+                    <td class="halfSize">Comprador:
                         <?= $fixacoes[0]->contrato()->unidadeComprador()->razao_social ?></td>
-                    <td>A/C:
+                    <td class="ac">A/C:
                         <?= $fixacoes[0]->contrato()->assinatura_comprador ?></td>
                 </tr>
                 <tr>
@@ -144,7 +154,18 @@
         <?php foreach($fixacoes as $fixacao): ?>
         <table><!--  style="border: 1px black solid; width: 100%; margin-top: 3px;" -->
             <tr>
-                <td class="padding20">Fixacão: Conforme acordado entre as partes, fica fixado  <?= $fixacao->quantidade ?>, a R$ <?= $fixacao->preco ?> por saco de sessenta quilos. (retirada/entrega) <?= $fixacao->local_embarque ?> e pagamento <?= $fixacao->data_pagamento ?>. Remessa via <?='Banco:'. $fixacao->contasBancarias()->banco .'- agência:'. $fixacao->contasBancarias()->agencia .'- conta:'.$fixacao->contasBancarias()->conta?>.
+                <td>Produto:
+                    <?= $fixacoes[0]->contrato()->produto->nome ?></td>
+                <td>Safra:
+                    <?= $fixacoes[0]->contrato()->safra ?? "Nenhum" ?></td>
+            </tr>
+            <tr>
+                <td class="paddingTop20">Quantidade:
+                    <?= $fixacoes[0]->contrato()->quantidade ?></td>
+                    <td class="paddingTop20">Unidade: <?= $fixacoes[0]->contrato()->unidade()->titulo ?></td>
+            </tr>
+            <tr>
+                <td class="padding20">Fixacão: Conforme acordado entre as partes, fica fixado  <?= $fixacao->quantidade ?>, a R$ <?= $fixacao->preco ?> por saco de sessenta quilos. <?=$fixacoes[0]->contrato()->retirada_entrega?> <?= $fixacao->local_embarque ?> e pagamento <?= $fixacao->data_pagamento ?>. Remessa via <?='Banco:'. $fixacao->contasBancarias()->banco .'- agência:'. $fixacao->contasBancarias()->agencia .'- conta:'.$fixacao->contasBancarias()->conta?>.
             </tr>
             <!--
             <tr>

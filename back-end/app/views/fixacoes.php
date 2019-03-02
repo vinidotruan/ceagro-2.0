@@ -75,13 +75,11 @@
         <div class="log">
             <img src="public/img/logo.png" alt="">
         </div>
-        <!-- <div class="data"> Porto Alegre, 
         <?php
             setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
             date_default_timezone_set('America/Sao_Paulo');
             echo strftime('%d de %B de %Y', strtotime($fixacoes[0]->contrato()->data_cadastro));
         ?>
-        </div> -->
     </header>
     <section>
         <div class="confirmacao">
@@ -96,9 +94,15 @@
             <table>
                 <tr>
                     <td class="halfSize">Vendedor:
+<<<<<<< HEAD
                         <?= $fixacoes[0]->contrato()->unidadeVendedor()->razao_social ?></td>
                         <td class="ac" > A/C:
                     <?= $fixacoes[0]->contrato()->assinatura_vendedor ?></td>
+=======
+                        <?= $fixacoes[0]->contrato()->unidadeVendedor->razao_social ?></td>
+                    <td class="ac">A/C:
+                        <?= $fixacoes[0]->contrato()->assinatura_vendedor ?></td>
+>>>>>>> 9330ef89467bfd2ce6da485b35aa39b0c41e0c0e
                 </tr>
                
                 <tr>
@@ -132,7 +136,11 @@
                 <tr>
                     <td class="halfSize">Comprador:
                         <?= $fixacoes[0]->contrato()->unidadeComprador()->razao_social ?></td>
+<<<<<<< HEAD
                         <td class="ac">A/C:
+=======
+                    <td class="ac">A/C:
+>>>>>>> 9330ef89467bfd2ce6da485b35aa39b0c41e0c0e
                         <?= $fixacoes[0]->contrato()->assinatura_comprador ?></td>
                 </tr>
                 <tr>
@@ -181,6 +189,7 @@
     </section>
     <section style="margin-top: 20px">
         <?php foreach($fixacoes as $fixacao): ?>
+<<<<<<< HEAD
         <table>
             <tr>
                 <td class="padding20">
@@ -190,7 +199,40 @@
                 <?= $fixacao->local_embarque ?> e pagamento 
                 <?= $fixacao->data_pagamento ?>. Remessa via 
                 <?='Banco:'. $fixacao->contasBancarias()->banco .'- agência:'. $fixacao->contasBancarias()->agencia .'- conta:'.$fixacao->contasBancarias()->conta?>.
+=======
+        <table><!--  style="border: 1px black solid; width: 100%; margin-top: 3px;" -->
+            <tr>
+                <td>Produto:
+                    <?= $fixacoes[0]->contrato()->produto->nome ?></td>
+                <td>Safra:
+                    <?= $fixacoes[0]->contrato()->safra ?? "Nenhum" ?></td>
             </tr>
+            <tr>
+                <td class="paddingTop20">Quantidade:
+                    <?= $fixacoes[0]->contrato()->quantidade ?></td>
+                    <td class="paddingTop20">Unidade: <?= $fixacoes[0]->contrato()->unidade()->titulo ?></td>
+            </tr>
+            <tr>
+                <td class="padding20">Fixacão: Conforme acordado entre as partes, fica fixado  <?= $fixacao->quantidade ?>, a R$ <?= $fixacao->preco ?> por saco de sessenta quilos. <?=$fixacoes[0]->contrato()->retirada_entrega?> <?= $fixacao->local_embarque ?> e pagamento <?= $fixacao->data_pagamento ?>. Remessa via <?='Banco:'. $fixacao->contasBancarias()->banco .'- agência:'. $fixacao->contasBancarias()->agencia .'- conta:'.$fixacao->contasBancarias()->conta?>.
+            </tr>
+            <!--
+            <tr>
+                <td class="padding20">Quantidade:  //$fixacao->quantidade </td>
+            </tr>
+            <tr>
+                <td class="padding20">Preço: //$fixacao->preco </td>
+            </tr>
+            <tr>
+                <td class="padding20">Local de embarque: //$fixacao->local_embarque </td>
+            </tr>
+            <tr>
+                <td class="padding20">Contas bancárias: //'Banco:'. $fixacao->contasBancarias()->banco .'- agência:'. $fixacao->contasBancarias()->agencia .'- conta:'.$fixacao->contasBancarias()->conta </td>
+            </tr>
+            <tr>
+                <td class="padding20">Data pagamento: //$fixacao->data_pagamento </td>
+>>>>>>> 9330ef89467bfd2ce6da485b35aa39b0c41e0c0e
+            </tr>
+            -->
         </table>
         <?php endforeach ?>
     </section>

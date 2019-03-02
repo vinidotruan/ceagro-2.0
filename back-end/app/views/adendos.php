@@ -76,17 +76,13 @@
         <div class="log">
             <img src="public/img/logo.png" alt="">
         </div>
-        <div class="data"> Porto Alegre, 
-        <?php
-            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-            date_default_timezone_set('America/Sao_Paulo');
-            echo strftime('%d de %B de %Y', strtotime($adendos[0]->contrato()->data_cadastro));
-        ?>
-        </div>
     </header>
     <section>
-        <div class="confirmacao">
-            <span>Confirmação número: <strong><?= $adendos[0]->contrato()->numero_confirmacao ?></strong></span>
+        <div class="confirmacao" >
+            <span>Confirmação número: <strong><?=$adendos[0]->contrato()->numero_confirmacao ?></strong></span>
+        </div>
+        <div >
+            <span>Contrato feito na data: <?= strftime('%d/%m/%Y', strtotime($adendos[0]->contrato()->data_cadastro)) ?></span>
         </div>
     </section>
     <section>
@@ -178,10 +174,14 @@
             </table>
     </section>
     <section>
+        <?php $i=1 ?>
         <?php foreach ($adendos as $adendo):?>
         <table >
             <tr>
-                <td class="paddingTop20" ><strong>Descrição</strong>: <?=$adendo->descricao; ?></td>
+                <td class="paddingTop20" ><strong>Adendo 0<?= $i++ ?></strong></td>
+            </tr>
+            <tr>
+                <td class="" ><strong>Descrição</strong>: <?=$adendo->descricao; ?></td>
             </tr>
         </table>
         <?php endforeach?>

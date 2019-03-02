@@ -24,7 +24,6 @@ class AdendosController
         
         $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
-        // dd($adendos);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
         $dompdf->stream("codexworld", array("Attachment" => 0));

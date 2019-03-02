@@ -370,7 +370,7 @@
 																					<div class="input-group-addon">
 																						<i class="fa fa-calendar"></i>
 																					</div>
-																					<input type="text" class="form-control pull-right" name="data_pagamento" id="reservation2">
+																					<input type="text" class="form-control pull-right" name="data_pagamento" id="reservation2" autocomplete="off">
 																				</div>
 																			</div>
 																		</div>
@@ -491,16 +491,34 @@
 		</script>
 	<script src="adminlte/bower_components/moment/min/moment.min.js"></script>
 	<script src="adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
 		<script>
 		$('#reservation').daterangepicker({
 				locale: {
 				format: 'DD/MM/YYYY'
 			}
 		});
-		$('#reservation2').daterangepicker({
-				locale: {
-				format: 'DD/MM/YYYY'
-			}
-		});
+		// $('#reservation2').datepicker({
+		// 		locale: {
+		// 		format: 'DD/MM/Y	YYY'
+		// 	}
+		// });
+		$.fn.datepicker.dates['pt'] = {
+			days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+			daysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+			daysMin: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+			months: ["Janeirp", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julio", "Agosto", "Setmebro", "Outubro", "Novembro", "Dezembro"],
+			monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+			today: "Hoje",
+			clear: "Limpar",
+			format: "dd/mm/yyyy",
+			titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
+			weekStart: 0
+		};
+		$('#reservation2').datepicker({
+			autoclose: true,
+			language:'pt'
+		})
 		</script>
 		<?php include 'partials/rodape.html' ?>

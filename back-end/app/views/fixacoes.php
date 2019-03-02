@@ -9,7 +9,7 @@
     <title>Fixações</title>
 </head>
 <style>
-    * {
+       * {
         margin: 0;
         padding: 0;
         font-family: Arial, Helvetica, sans-serif;
@@ -50,13 +50,23 @@
         padding-top: 10px;
     }
     .linha {
-        padding-top: 50px;
+        padding-top: 30px;
     }
     .center{
         padding-left:33.33%;
     }
     .cnpjCeagro{
         padding-left:60%;
+    }
+    .ac{
+	   width: 30%;
+	   overflow: auto;
+	   text-align:left;
+    }
+    .halfSize{
+        width:400px;
+        text-align:left;
+		overflow: auto;
     }
 </style>
 
@@ -65,27 +75,35 @@
         <div class="log">
             <img src="public/img/logo.png" alt="">
         </div>
-        <div class="data paddingTop20"><strong> Porto Alegre
-            <?= $data ?></strong>
-        </div>
+        <!-- <div class="data"> Porto Alegre, 
+        <?php
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
+            echo strftime('%d de %B de %Y', strtotime($fixacoes[0]->contrato()->data_cadastro));
+        ?>
+        </div> -->
     </header>
     <section>
         <div class="confirmacao">
-            <span>Confirmação número: <strong><?= $fixacoes[0]->contrato()->numero_confirmacao ?></strong></span>
+            <span>Confirmação número: <strong><?=$fixacoes[0]->contrato()->numero_confirmacao ?></strong></span>
+        </div>
+        <div class="confirmacao">
+            <span>Feito na data: <?= strftime('%d/%m/%Y', strtotime($fixacoes[0]->contrato()->data_cadastro)) ?></span>
         </div>
     </section>
     <section>
         <div class="vendedor">
             <table>
                 <tr>
-                    <td colspan="2">Vendedor:
-                        <?= $fixacoes[0]->contrato()->unidadeVendedor->razao_social ?></td>
-                    <td>A/C:
-                        <?= $fixacoes[0]->contrato()->assinatura_vendedor ?></td>
+                    <td class="halfSize">Vendedor:
+                        <?= $fixacoes[0]->contrato()->unidadeVendedor()->razao_social ?></td>
+                        <td class="ac" > A/C:
+                    <?= $fixacoes[0]->contrato()->assinatura_vendedor ?></td>
                 </tr>
+               
                 <tr>
                     <td>
-                        Rua <?= ($fixacoes[0]->contrato()->unidadeVendedor->endereco->rua && strlen($fixacoes[0]->contrato()->unidadeVendedor->endereco->rua) > 0) ? "{$fixacoes[0]->contrato()->unidadeVendedor->endereco->rua}, " : 'não cadastrada, ' ?>
+                        <?= ($fixacoes[0]->contrato()->unidadeVendedor->endereco->rua && strlen($fixacoes[0]->contrato()->unidadeVendedor->endereco->rua) > 0) ? "{$fixacoes[0]->contrato()->unidadeVendedor->endereco->rua}, " : 'Não cadastrada, ' ?>
                         <?= ($fixacoes[0]->contrato()->unidadeVendedor->endereco->numero && strlen($fixacoes[0]->contrato()->unidadeVendedor->endereco->numero) > 0) ? "{$fixacoes[0]->contrato()->unidadeVendedor->endereco->numero}, " : ' -,  ' ?>
                     
                         <?= ($fixacoes[0]->contrato()->unidadeVendedor->endereco->cidade && strlen($fixacoes[0]->contrato()->unidadeVendedor->endereco->cidade)) ? "{$fixacoes[0]->contrato()->unidadeVendedor->endereco->cidade} - " : "" ?>
@@ -94,15 +112,16 @@
                 </tr>
                 <tr>
                     <td>
-                        CNPJ:
+                        CNPJ/CPF:
                         <?= $fixacoes[0]->contrato()->unidadeVendedor->cnpj ?>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td >
                     Inscrição Estadual:
                         <?= ($fixacoes[0]->contrato()->unidadeVendedor->inscricao_estadual && strlen($fixacoes[0]->contrato()->unidadeVendedor->inscricao_estadual) > 0) ? $fixacoes[0]->contrato()->unidadeVendedor->inscricao_estadual : "-" ?>
                     </td>
+                    
                 </tr>
             </table>
         </div>
@@ -111,14 +130,14 @@
         <div class="comprador">
             <table>
                 <tr>
-                    <td colspan="2">Comprador:
+                    <td class="halfSize">Comprador:
                         <?= $fixacoes[0]->contrato()->unidadeComprador()->razao_social ?></td>
-                    <td>A/C:
+                        <td class="ac">A/C:
                         <?= $fixacoes[0]->contrato()->assinatura_comprador ?></td>
                 </tr>
                 <tr>
                     <td>
-                        Rua <?= ($fixacoes[0]->contrato()->unidadeComprador->endereco->rua && strlen($fixacoes[0]->contrato()->unidadeComprador->endereco->rua) > 0) ? "{$fixacoes[0]->contrato()->unidadeComprador->endereco->rua}, " : 'não cadastrada, ' ?>
+                        <?= ($fixacoes[0]->contrato()->unidadeComprador->endereco->rua && strlen($fixacoes[0]->contrato()->unidadeComprador->endereco->rua) > 0) ? "{$fixacoes[0]->contrato()->unidadeComprador->endereco->rua}, " : 'Não cadastrada, ' ?>
                         <?= ($fixacoes[0]->contrato()->unidadeComprador->endereco->numero && strlen($fixacoes[0]->contrato()->unidadeComprador->endereco->numero) > 0) ? "{$fixacoes[0]->contrato()->unidadeComprador->endereco->numero}, " : ' -,  ' ?>
                     
                         <?= ($fixacoes[0]->contrato()->unidadeComprador->endereco->cidade && strlen($fixacoes[0]->contrato()->unidadeComprador->endereco->cidade)) ? "{$fixacoes[0]->contrato()->unidadeComprador->endereco->cidade} - " : "" ?>
@@ -127,7 +146,7 @@
                 </tr>
                 <tr>
                     <td>
-                        CNPJ:
+                        CNPJ/CPF:
                         <?= $fixacoes[0]->contrato()->unidadeComprador->cnpj ?>
                     </td>
                 </tr>
@@ -136,27 +155,41 @@
                     Inscrição Estadual:
                         <?= ($fixacoes[0]->contrato()->unidadeComprador->inscricao_estadual && strlen($fixacoes[0]->contrato()->unidadeComprador->inscricao_estadual) > 0) ? $fixacoes[0]->contrato()->unidadeComprador->inscricao_estadual : "-" ?>
                     </td>
-                </tr>
+                
+                        </tr>
             </table>
         </div>
     </section>
+    <section>
+        <div class="produto">
+            <table>
+                <tr>
+                    <td  style="width: 333px">Produto:
+                        <?= $fixacoes[0]->contrato()->produto->nome ?></td>
+                    <td  >Safra:
+                        <?= $fixacoes[0]->contrato()->safra ?? "Nenhum" ?></td>
+                </tr>
+                <tr>
+                    <td class="paddingTop20">Quantidade:
+                        <?= $fixacoes[0]->contrato()->quantidade ?>
+                    </td>
+                    <td class="paddingTop20">Unidade: <?= $fixacoes[0]->contrato()->unidade()->titulo ?>
+                    </td>
+                </tr>
+                
+            </table>
+    </section>
     <section style="margin-top: 20px">
         <?php foreach($fixacoes as $fixacao): ?>
-        <table style="border: 1px black solid; width: 100%; margin-top: 3px;">
+        <table>
             <tr>
-                <td class="padding20">Quantidade: <?= $fixacao->quantidade ?></td>
-            </tr>
-            <tr>
-                <td class="padding20">Preço: <?= $fixacao->preco ?></td>
-            </tr>
-            <tr>
-                <td class="padding20">Local de embarque: <?= $fixacao->local_embarque ?></td>
-            </tr>
-            <tr>
-                <td class="padding20">Contas bancárias: <?= 'Banco:'. $fixacao->contasBancarias()->banco .'- agência:'. $fixacao->contasBancarias()->agencia .'- conta:'.$fixacao->contasBancarias()->conta ?></td>
-            </tr>
-            <tr>
-                <td class="padding20">Data pagamento: <?= $fixacao->data_pagamento ?></td>
+                <td class="padding20">
+                Fixacão: Conforme acordado entre as partes, fica fixado  <?= $fixacao->quantidade ?>, 
+                a R$ <?= $fixacao->preco ?> por saco de sessenta quilos. 
+                <?= $fixacao->contrato()->retirada_entrega?>
+                <?= $fixacao->local_embarque ?> e pagamento 
+                <?= $fixacao->data_pagamento ?>. Remessa via 
+                <?='Banco:'. $fixacao->contasBancarias()->banco .'- agência:'. $fixacao->contasBancarias()->agencia .'- conta:'.$fixacao->contasBancarias()->conta?>.
             </tr>
         </table>
         <?php endforeach ?>

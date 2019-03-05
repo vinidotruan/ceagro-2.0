@@ -260,9 +260,11 @@ function listarAdendos(adendos) {
     var newRow = $(`<tr>`);
     var cols = "";
     cols += `<td class='item' id=${adendo.id}>${adendo.descricao}</td>`;
-    cols += `<td class="download" id=${adendo.id}>
-            <button type="button" class="btn btn-primary">
-                <i class="fa fa-print"></i>
+    cols += `<td>
+            <button type="button" class="btn btn-primary download" id="${
+              adendo.id
+            }">
+                <i class="fa fa-print" id="${adendo.id}"></i>
             </button>
         </td>`;
     cols += `<td class="item" id=${adendo.id}>
@@ -276,8 +278,8 @@ function listarAdendos(adendos) {
   $("#adendos .item").each((index, td) => {
     $(td).attr("onclick", `selecionarAdendo(${td.id})`);
   });
-  $(`#adendos .download`).on("click", () => {
-    abrirAdendos(contrato.id);
+  $(`#adendos .download`).on("click", ({ target }) => {
+    abrirAdendos(target.id);
   });
 }
 
@@ -294,9 +296,11 @@ function listarFixacoes(fixacoes) {
     cols += `<td class='item' id=${fixacao.id}>${
       fixacao.contaBancaria.conta
     } | ${fixacao.contaBancaria.agencia} - ${fixacao.contaBancaria.banco}</td>`;
-    cols += `<td class="download" style="text-align:center" id="${fixacao.id}">
-        <button type="button" class="btn btn-primary">
-            <i class="fa fa-print"></i>
+    cols += `<td style="text-align:center" id="${fixacao.id}">
+        <button type="button" class="btn btn-primary download" id="${
+          fixacao.id
+        }">
+            <i class="fa fa-print" id="${fixacao.id}"></i>
         </button>
     </td>`;
     cols += `<td class="item" id=${fixacao.id}>
@@ -310,16 +314,16 @@ function listarFixacoes(fixacoes) {
   $("#fixacoes .item").each((index, td) => {
     $(td).attr("onclick", `selecionarFixacao(${td.id})`);
   });
-  $(`#fixacoes .download`).on("click", () => {
-    abrirFixacoes(contrato.id);
+  $(`#fixacoes .download`).on("click", ({ target }) => {
+    abrirFixacoes(target.id);
   });
 }
 
 function abrirFixacoes(ctId) {
-  window.open(`../back-end/pdfs/contratos/${ctId}/fixacoes`, "_blank");
+  window.open(`../back-end/pdfs/contratos/fixacoes/${ctId}`, "_blank");
 }
-function abrirAdendos(ctId) {
-  window.open(`../back-end/pdfs/contratos/${ctId}/adendos`, "_blank");
+function abrirAdendos(addId) {
+  window.open(`../back-end/pdfs/contratos/adendos/${addId}`, "_blank");
 }
 
 function selecionarFixacao(fixacaoId) {

@@ -8,9 +8,9 @@ use Dompdf\Dompdf;
 class AdendosController
 {
 
-    public function index($contratoId)
+    public function index($adendoId)
     {
-        $adendos = Adendo::get(['contrato_id', '=',$contratoId]);
+        $adendo = Adendo::find(['id', $adendoId]);
         setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         date_default_timezone_set('America/Sao_Paulo');
         $data = strftime('%A, %d de %B de %Y', strtotime('today'));

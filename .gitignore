@@ -1,3 +1,4 @@
-/node_modules
+./sistema/node_modules
+./back-end/vendor
 /ceagro.sql
 config.php

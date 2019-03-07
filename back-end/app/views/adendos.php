@@ -71,7 +71,7 @@
 
     .table {
         position:fixed;
-        top:1000px;
+        top:870px;
         left:115px;
     }
 </style>

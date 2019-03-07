@@ -50,7 +50,7 @@
         padding-top: 10px;
     }
     .linha {
-        padding-top: 30px;
+        margin-top: 300px;
     }
     .center{
         padding-left:33.33%;
@@ -68,6 +68,12 @@
         text-align:left;
 		overflow: auto;
     }
+
+    .table {
+        position:fixed;
+        top:1000px;
+        left:115px;
+    }
 </style>
 
 
@@ -76,6 +82,9 @@
         <div class="log">
             <img src="public/img/logo.png" alt="">
         </div>
+        <div class="data">Adendo feito na data:<strong> 
+        <?= strftime('%d/%m/%Y', strtotime($adendo->data_cadastro)) ?></strong>
+        </div>
     </header>
     <section>
         <div class="confirmacao" >
@@ -83,9 +92,6 @@
         </div>
         <div >
             <span>Contrato feito na data: <?= strftime('%d/%m/%Y', strtotime($adendo->contrato()->data_cadastro)) ?></span>
-        </div>
-        <div >
-            <span>Adendo feito na data: <?= strftime('%d/%m/%Y', strtotime($adendo->data_cadastro)) ?></span>
         </div>
     </section>
     <section>
@@ -179,6 +185,30 @@
         <table style="margin-top:10px">
             <tr>
                 <td class="" ><strong>Descrição</strong>: <?=$adendo->descricao; ?></td>
+            </tr>
+        </table>
+    </section>
+    <section class="table">
+        <table>
+            <tr>
+                <td>_________________________
+                    <br>Assinatura do Comprador
+                    <br>
+                    <?= $adendo->contrato()->unidadeComprador->cnpj ?></td>
+                <td>_________________________
+                    <br>Assinatura do Vendedor
+                    <br>
+                    <?= $adendo->contrato()->unidadeVendedor->cnpj ?></td>
+                </td>
+            </tr>
+            <tr>
+                <td class="linha center"><pre>____________________________________________</pre></td>
+            </tr>
+            <tr>
+                <td class="center"><pre>CEAGRO CORRETORA DE MERCADORIAS LTDA</pre></td>
+            </tr>
+            <tr>
+                <td class="cnpjCeagro"><pre>90.880.204/0001-57</pre></td>
             </tr>
         </table>
     </section>

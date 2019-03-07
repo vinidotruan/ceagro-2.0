@@ -50,7 +50,7 @@
         padding-top: 10px;
     }
     .linha {
-        padding-top: 30px;
+        margin-top: 300px;
     }
     .center{
         padding-left:33.33%;
@@ -68,6 +68,12 @@
         text-align:left;
 		overflow: auto;
     }
+
+    .table {
+        position:fixed;
+        top:1000px;
+        left:115px;
+    }
 </style>
 
 <body>
@@ -75,16 +81,16 @@
         <div class="log">
             <img src="public/img/logo.png" alt="">
         </div>
+        <div class="data">Fixação feita na data:<strong> 
+        <?= strftime('%d/%m/%Y', strtotime($fixacao->data_cadastro)) ?></strong>
+        </div>
     </header>
     <section>
         <div class="confirmacao" >
             <span>Confirmação número: <strong><?=$fixacao->contrato()->numero_confirmacao ?></strong></span>
         </div>
-        <div >
+        <div>
             <span>Contrato feito na data: <?= strftime('%d/%m/%Y', strtotime($fixacao->contrato()->data_cadastro)) ?></span>
-        </div>
-        <div >
-            <span>Fixação feita na data: <?= strftime('%d/%m/%Y', strtotime($fixacao->data_cadastro)) ?></span>
         </div>
     </section>
     <section>
@@ -179,12 +185,36 @@
         <table style="margin-top:10px">
             <tr>
                 <td class="padding20">
-                <strong>Descrição: </strong>: Conforme acordado entre as partes, fica fixado  <?= $fixacao->quantidade ?>, 
-                a R$ <?= $fixacao->preco ?> por saco de sessenta quilos. 
+                <strong>Descrição: </strong> Conforme acordado entre as partes, fica fixado  <?= $fixacao->quantidade ?>, 
+                a <?= $fixacao->preco ?> por saco de sessenta quilos. 
                 <?= $fixacao->contrato()->retirada_entrega?>
                 <?= $fixacao->local_embarque ?> e pagamento 
                 <?= $fixacao->data_pagamento ?>. Remessa via 
                 <?='Banco:'. $fixacao->contasBancarias()->banco .'- agência:'. $fixacao->contasBancarias()->agencia .'- conta:'.$fixacao->contasBancarias()->conta?>.
+            </tr>
+        </table>
+    </section>
+    <section class="table">
+        <table>
+            <tr>
+                <td>_________________________
+                    <br>Assinatura do Comprador
+                    <br>
+                    <?= $fixacao->contrato()->unidadeComprador->cnpj ?></td>
+                <td>_________________________
+                    <br>Assinatura do Vendedor
+                    <br>
+                    <?= $fixacao->contrato()->unidadeVendedor->cnpj ?></td>
+                </td>
+            </tr>
+            <tr>
+                <td class="linha center"><pre>____________________________________________</pre></td>
+            </tr>
+            <tr>
+                <td class="center"><pre>CEAGRO CORRETORA DE MERCADORIAS LTDA</pre></td>
+            </tr>
+            <tr>
+                <td class="cnpjCeagro"><pre>90.880.204/0001-57</pre></td>
             </tr>
         </table>
     </section>
